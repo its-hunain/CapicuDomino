@@ -1,0 +1,71 @@
+{
+    "data":
+    {
+        "texture":
+        [
+            {
+                "url": "Textures/eyeTexture",
+                "value": "",
+                "thumbnailURL": ""
+            }
+        ],
+        "mesh":
+        [
+            {
+                "url": "",
+                "value": "eye",
+                "thumbnailURL": ""
+            }
+        ],
+        "color":
+        [
+            {
+                "url": "",
+                "value": "#FFFFF0",
+                "thumbnailURL": ""
+            },
+            {
+                "url": "",
+                "value": "#FFFF0F",
+                "thumbnailURL": ""
+            },
+            {
+                "url": "",
+                "value": "#FFF0FF",
+                "thumbnailURL": ""
+            },
+            {
+                "url": "",
+                "value": "#FF0FFF",
+                "thumbnailURL": ""
+            },
+            {
+                "url": "",
+                "value": "#F0FFFF",
+                "thumbnailURL": ""
+            }
+        ],
+        "blend": [
+            {
+                "url": "",
+                "value": "0",
+                "thumbnailURL": "AvatarBuilder/Eyes/eyes1"
+            },
+            {
+                "url": "",
+                "value": "1",
+                "thumbnailURL": "AvatarBuilder/Eyes/eyes2"
+            },
+            {
+                "url": "",
+                "value": "2",
+                "thumbnailURL": "AvatarBuilder/Eyes/eyes3"
+            },
+            {
+                "url": "",
+                "value": "3",
+                "thumbnailURL": "AvatarBuilder/Eyes/eyes4"
+            }
+        ]
+    }
+}

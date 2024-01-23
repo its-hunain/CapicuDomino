@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 0de2eb60eb7694fe2aa0a967c04ce7c3
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - FONTSPRING DEMO - Yoshida Sans Semi Bold Cond
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: da24ee31e76e5432bbf64d61144ce439, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

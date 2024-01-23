@@ -1,0 +1,129 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7451005440754805604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7451005440754805606}
+  - component: {fileID: 7451005440754805605}
+  m_Layer: 0
+  m_Name: ----WebServiceManager----
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7451005440754805606
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7451005440754805604}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7451005440754805605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7451005440754805604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b155724d83ca34474aa9e81c9ced5c14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  getSetUserAvatarSpecs: api/users/avatar/categories
+  getAvatarBuilderCategories: api/avatar-builder/categories
+  uploadObjectToS3Server: api/upload/object
+  uploadImageToS3Server: api/upload/image
+  getAssetBuilderCategories: api/asset-builder/categories
+  GetAssetBuilderItemsByCategoryID: api/asset-builder/categories
+  getUserAssetsCategories: api/users/asset/categories
+  setUserAssetsCategories: api/users/asset/categories
+  getMintedUserAssetsCategories: api/users/set-minted-inventory
+  setMintedUserAssetsCategories: api/users/set-minted-inventory
+  getDomiCoins: api/users/getDomicoins
+  getGameCenter: api/game-center
+  getPlayerProfile: api/users/me
+  checkInternetConnectivity: api/hello
+  getPromotionDiscount: api/general/check-white-list-date
+  getTournamentMatchDetails: api/tournaments/tournament_match/
+  attemptToJoinTournamentMatch: api/game/join-game
+  opponentFailToJoinTournament: api/game/queue
+  getEnvironments: api/general/season
+  debug: 0
+  SSLPinning: 0
+  flagSprites:
+  - {fileID: 21300000, guid: faa108c367c98459283ecee5635192c3, type: 3}
+  - {fileID: 21300000, guid: 623eedc98b81f4cc7a160b070810c57b, type: 3}
+  - {fileID: 21300000, guid: bbce5e2bfdc1e4960a75ea7e91d5697f, type: 3}
+  - {fileID: 21300000, guid: 6071aaacd62984081be64ea86ace4bcc, type: 3}
+  - {fileID: 21300000, guid: bf3234ab1fe9948d782d38d71dee0dbd, type: 3}
+  - {fileID: 21300000, guid: 49239c600fff44980ba82dc70d592ee0, type: 3}
+  - {fileID: 21300000, guid: c8463f3ed06b3488881d8e912421f4a6, type: 3}
+  - {fileID: 21300000, guid: a71e39cc24e464d5cb1b6624cf60610f, type: 3}
+  - {fileID: 21300000, guid: 2f6a8006b56c94de1abbc5ac57d2931d, type: 3}
+  - {fileID: 21300000, guid: cfb0c2c24884d4657af0b5bfa847c8ba, type: 3}
+  - {fileID: 21300000, guid: 03dc914adb12c481482d0a88508bff90, type: 3}
+  classSprites:
+  - {fileID: 21300000, guid: 52c324dc2e3474822a7c488b51e9fee2, type: 3}
+  - {fileID: 21300000, guid: 03906548b14a14c77923d2853d29b0c6, type: 3}
+  - {fileID: 21300000, guid: f1d0f38965ad84711ad12a625206a32c, type: 3}
+  - {fileID: 21300000, guid: ea35b245b9104460b8b92ead40e43a28, type: 3}
+  - {fileID: 21300000, guid: e1869761ea2404881b6870bb2e671f99, type: 3}
+  - {fileID: 21300000, guid: 05e41e85170774f15acaaf510c738c11, type: 3}
+  - {fileID: 21300000, guid: a1c772c13b07345bf9b3f43e580327bb, type: 3}
+  - {fileID: 21300000, guid: c3b1d3bd1d8ab4d32a2b1951257f2028, type: 3}
+  playerPersonalData:
+    Message: 
+    Data:
+      User:
+        userID: 
+        FirstName: 
+        WhiteListed: 0
+        discount: 0
+        LastName: 
+        Email: 
+        UserName: 
+        Level: 0
+        CharacterId: 
+        AssetGender: 
+        Domicoins: 
+        isAdmin: 0
+        Country: 
+        DateOfBirth: 
+        Gender: 
+        FlagShortCode: 
+        ProfilePicUrl: 
+        playerClass: 
+        mintedSaveUserAssetsData:
+          mintedInventory: []
+          mintedGender: 
+          mintedAvatarName: 
+          mintedAvatarClass: 
+          mintedAvatarImageUrl: 
+          mintedCharacter:
+            Uri: 
+            TokenID: 
+      Games:
+        GamesWon: 0
+        GamesPlayed: 0
+        GamesWonPercentage: 0
+      TournamentStats:
+        TournamentPlayed: 0
+        TournamentWon: 0
+        TournamentLost: 0
+        ChampionshipWon: 0
+      userGameModeScoreInfo: []

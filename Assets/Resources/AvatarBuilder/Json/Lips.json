@@ -1,0 +1,66 @@
+{
+    "data":
+    {
+        "texture":
+        [
+            {
+                "url": "Textures/lipsTexture",
+                "value": "",
+                "thumbnailURL": ""
+            }
+        ],
+        "mesh":
+        [
+            {
+                "url": "",
+                "value": "lips",
+                "thumbnailURL": ""
+            }
+        ],
+        "color":
+        [
+            {
+                "url": "",
+                "value": "#FFFFF0",
+                "thumbnailURL": ""
+            },
+            {
+                "url": "",
+                "value": "#FFFF0F",
+                "thumbnailURL": ""
+            },
+            {
+                "url": "",
+                "value": "#FFF0FF",
+                "thumbnailURL": ""
+            },
+            {
+                "url": "",
+                "value": "#FF0FFF",
+                "thumbnailURL": ""
+            },
+            {
+                "url": "",
+                "value": "#F0FFFF",
+                "thumbnailURL": ""
+            }
+        ],
+        "blend": [
+            {
+                "url": "",
+                "value": "0",
+                "thumbnailURL": "AvatarBuilder/Lips/Lips1"
+            },
+            {
+                "url": "",
+                "value": "1",
+                "thumbnailURL": "AvatarBuilder/Lips/Lips2"
+            },
+            {
+                "url": "",
+                "value": "2",
+                "thumbnailURL": "AvatarBuilder/Lips/Lips3"
+            }
+        ]
+    }
+}

@@ -1,0 +1,26 @@
+{
+  "message": "Success",
+  "tokenURI": [
+    "https://dominoes-images-preprod.s3.amazonaws.com/-ohBco72JkvIoOVOrgdab.json",
+    "https://dominoes-images-preprod.s3.amazonaws.com/4Vgo0PfpKbuYwUHFKITIj.json",
+    "https://dominoes-images-preprod.s3.amazonaws.com/cXVRFDqIdId_o3dEIFXTD.json",
+    "https://dominoes-images-preprod.s3.amazonaws.com/ECd7e6sYA25VmQ8IVkpDl.json",
+    "https://dominoes-images-preprod.s3.amazonaws.com/4m-ayk2kYKoSv-0XBF2cV.json",
+    "https://dominoes-images-preprod.s3.amazonaws.com/FQhpiEz6ZGXY76NOfD_tp.json",
+    "https://dominoes-images-preprod.s3.amazonaws.com/gX0Z83a3ONL8Fw71jDmts.json",
+    "https://cubixco.s3.amazonaws.com/gP_D8VBjdonNcY-ZHkMcV.json",
+    "https://cubixco.s3.amazonaws.com/833L5jP83daGFnmsHouUn.json",
+    "https://cubixco.s3.amazonaws.com/sB-shQK9IlyG_3AtrGHuy.json",
+    "https://cubixco.s3.amazonaws.com/6r5nYxjh0RPhcq3mr0sD-.json",
+    "https://cubixco.s3.amazonaws.com/v6RqU8X-2vj9jzmzxTjKt.json",
+    "https://cubixco.s3.amazonaws.com/93-MW0Tcps31IKIZ8JraT.json",
+    "https://dominoes-images-preprod.s3.amazonaws.com/-Skbw9WBDWcudStQ9mMMj.json",
+    "https://dominoes-images-preprod.s3.amazonaws.com/fTjkrgpeeq2kMY2M7YYc0.json",
+    "https://cubixco.s3.amazonaws.com/CdRtgmC8RurnEkVVoTu7o.json",
+    "https://cubixco.s3.amazonaws.com/YWwFmRE4LKTVvFvD8uxwQ.json",
+    "https://dominoes-images-preprod.s3.amazonaws.com/Lh-zBdTPnk1jMiB1f8Fee.json",
+    "https://cubixco.s3.amazonaws.com/3gjaxpdzPiUMjfv_4kjPG.json",
+    "https://dominoes-images-preprod.s3.amazonaws.com/Q3IMiAm5KmrN-ATTvIa87.json",
+    "https://cubixco.s3.amazonaws.com/YZwLYG0lsX0p8NjyMT__T.json"
+  ]
+}

@@ -1,0 +1,9 @@
+<b>Objective: </b> The player who wins the hand with the fewest points wins the game.
+<b>How the game is played: </b> The game will restart automatically in case a player draws 5 or more doubles.
+The player with the double six starts the first and only round. While with 3 players or less the highest double starts the game (double 5, double 4, double 3, double 2, double 1, if there is no double 6). In case there is no double at the start of the round, the player with the highest tile starts the game, this only applies for 2 or 3 players.
+If a player cannot make a move with his hand, he must draw tiles from the graveyard until he draws a playable tile. If a player cannot make a move with his hand and there are no tiles left in the graveyard, the player must skip his turn until he can make a move.
+<b>Pass: </b> explained in how to play.
+<b>Blocked: </b> in case of blocking, points are counted individually and the player with the least amount of points wins.
+<b>In case of a tie: </b> tied players must draw 1 tile each and the player with the least number of pints wins the game.
+<b>Points: </b> The player with the fewest points wins.
+<b>Graveyard: </b> In case of 3 players or less; players take 7 tiles each, leaving the remaining tiles on one side of the table, the player who has no tiles in his hand must "take" tiles from the graveyard, one by one, until he finds one that can be placed in that round.
