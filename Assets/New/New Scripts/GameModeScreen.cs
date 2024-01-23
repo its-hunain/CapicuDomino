@@ -16,9 +16,13 @@ public class GameModeScreen : MonoBehaviour
     {
         closeBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.gameModeScreen.gameObject, false));
 
-        blocking.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.coinsScreen.gameObject, true));
-        draw.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.coinsScreen.gameObject, true));
-        muggins.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.coinsScreen.gameObject, true));
+        blocking.onClick.AddListener(() =>GameModeSelection(GameRulesManager.GameRules.GameMode4));
+        draw.onClick.AddListener(() =>    GameModeSelection(GameRulesManager.GameRules.GameMode5));
+        muggins.onClick.AddListener(() => GameModeSelection(GameRulesManager.GameRules.GameMode5));
     }
-
+    void GameModeSelection(GameRulesManager.GameRules gameRules)
+    {
+        GameRulesManager.currentSelectedGame_Rule = gameRules;
+        UI_Manager.instance.ChangeScreen(UI_Manager.instance.coinsScreen.gameObject, true);
+    }
 }

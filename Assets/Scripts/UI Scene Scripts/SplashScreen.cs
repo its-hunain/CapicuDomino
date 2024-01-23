@@ -21,9 +21,11 @@ public class SplashScreen : MonoBehaviour
 
     private void OnEnable()
     {
-        
+
         isAnimating = true;
     }
+
+ 
 
     private void Awake()
     {

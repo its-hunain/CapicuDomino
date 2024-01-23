@@ -19,15 +19,15 @@ public class NoOfPlayersScreen : MonoBehaviour
         backBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.noOfPlayers.gameObject, false));
 
     
-       twoPlayerBtn.onClick.AddListener(() =>StartGame());
-       threePlayerBtn.onClick.AddListener(() =>StartGame());
-       fourPlayerBtn.onClick.AddListener(() =>StartGame());
+       twoPlayerBtn.onClick.AddListener(() =>StartGame(2));
+       threePlayerBtn.onClick.AddListener(() =>StartGame(3));
+       fourPlayerBtn.onClick.AddListener(() =>StartGame(4));
 
 
     }
-    void StartGame()
+    void StartGame(int i)
     {
-
+        GameRulesManager.noOfPlayers = i;
         SceneManager.LoadScene(Global.GameScene);
 
         //  StartCoroutine(UI_ScreenManager._ChangeScreen(UI_ScreenManager.instance.uiScene_LoadingScreen.gameObject, gameObject, true));

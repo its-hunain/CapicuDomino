@@ -23,8 +23,8 @@ public class ChatScreenHandler : MonoBehaviour
 
     private void Start()
     {
-        OpenEmoji.onClick.AddListener(() => { OpenEmojiScreen(); });
-        OpenChat.onClick.AddListener(() => { OpenChatScreen(); });
+      //  OpenEmoji.onClick.AddListener(() => { OpenEmojiScreen(); });
+      //  OpenChat.onClick.AddListener(() => { OpenChatScreen(); });
         CloseEmoji.onClick.AddListener(() => { CloseParticularScreen(EmojiScreen); });
         CloseChat.onClick.AddListener(() => {CloseParticularScreen(ChatScreen); });
         if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Bot)

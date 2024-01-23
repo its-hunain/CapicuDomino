@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class QuitAppPopUpScreen : MonoBehaviour
 {
     // Importing "PassTextParam"
-    [DllImport("__Internal")]
-    public static extern void PassTextParam(string text);
+  //  [DllImport("__Internal")]
+    //public static extern void PassTextParam(string text);
 
     [Header("PopUp Items")]
     public Button noBtn;
