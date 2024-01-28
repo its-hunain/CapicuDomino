@@ -13,6 +13,8 @@ public class CoinsScreen : MonoBehaviour
     void Start()
     {
         backBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.coinsScreen.gameObject, false));
+        closeBtn.onClick.AddListener(() => Close());
+
 
         foreach (var item in coinBtn)
         {
@@ -21,5 +23,12 @@ public class CoinsScreen : MonoBehaviour
         }
 
     }
+    void Close()
+    {
+        UI_Manager.instance.ChangeScreen(UI_Manager.instance.coinsScreen.gameObject, false);
+        UI_Manager.instance.ChangeScreen(UI_Manager.instance.gameModeScreen.gameObject, false);
+
+    }
+
 
 }
