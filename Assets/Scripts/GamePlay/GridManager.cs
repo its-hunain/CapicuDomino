@@ -491,10 +491,11 @@ public class GridManager : MonoBehaviour
             }
 
             //Rule4 Scoring implementation
-            if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode4)
+         //   if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode4)
+            if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5)
             {
-                Debug.Log("it's Rule4 so changing the sum formula...");
-                Debug.Log("old sum was = " + allPlayerPipsSum);
+                //Debug.Log("it's Rule4 so changing the sum formula...");   not any more
+                //Debug.Log("old sum was = " + allPlayerPipsSum);
                 allPlayerPipsSum = Rule4.CalculateRoundEndScoring(allPlayerPipsSum);
                 Debug.Log("New Sum is: " + allPlayerPipsSum);
             }
@@ -502,7 +503,8 @@ public class GridManager : MonoBehaviour
             if (currentPlayer.dominosCurrentList.Count == 0)
             {
                 //Check Sabanio
-                if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode6)
+               // if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode6)
+                if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5)
                 {
                     Debug.Log("********************* Check Sabanio *********************");
                     allPlayerPipsSum = (Rule6.CheckSabanio(currentPlayer.currentPlacedTile)) ? allPlayerPipsSum *= 2 : allPlayerPipsSum; //Double the score if Sabanio
@@ -907,7 +909,8 @@ public class GridManager : MonoBehaviour
         {
 
 
-            if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode3)
+           // if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode3)
+            if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5)
             {
                 if (TurnSwitch == GamePlayUIPanel.instance.players.Count - 1)
                 {

@@ -774,32 +774,33 @@ public class Rule4 : GameRulesManager
     public static int CalculateRoundEndScoring(int winnerScore)
     {
         Debug.Log(winnerScore);
-        if (winnerScore >= 0 && winnerScore < 3) winnerScore = 1;                   // from 0 to 2 pints 1 point
-        else if (winnerScore >= 3 && winnerScore <= 20) winnerScore = 2;            // 3 to 20, 2 points
-        else if (winnerScore >= 21 && winnerScore <= 30) winnerScore = 3;           // 21 to 30, 3 points
-        else if (winnerScore >= 31 && winnerScore <= 40) winnerScore = 4;           // from 31 to 40, 4 points
-        else if (winnerScore >= 41 && winnerScore <= 50) winnerScore = 5;           // from 41 to 50, 5 points
-        else if (winnerScore >= 51 && winnerScore <= 60) winnerScore = 6;           // from 51 to 60, 6 points
-        else if (winnerScore >= 61 && winnerScore <= 70) winnerScore = 7;           // from 61 to 70, 7 points
-        else if (winnerScore >= 71 && winnerScore <= 80) winnerScore = 8;           // from 71 to 80, 8 points
-        else if (winnerScore >= 81 && winnerScore <= 90) winnerScore = 9;           // from 81 to 90, 9 points
-        else if (winnerScore >= 91 && winnerScore <= 100) winnerScore = 10;         // from 91 to 100, 10 points
-        else if (winnerScore >= 101 && winnerScore <= 110) winnerScore = 11;        // from 101 to 110, 11 points
-        else if (winnerScore >= 111 && winnerScore <= 120) winnerScore = 12;        // from 111 to 120, 12 points
-        else if (winnerScore >= 121 && winnerScore <= 130) winnerScore = 13;        // from 121 to 130, 13 points
-        else if (winnerScore >= 131 && winnerScore <= 140) winnerScore = 14;        // from 131 to 140, 14 points
-        else if (winnerScore >= 141 && winnerScore <= 150) winnerScore = 15;        // from 141 to 150, 15 points
-        else if (winnerScore >= 151 && winnerScore <= 160) winnerScore = 16;        // from 151 to 160, 16 points
-        else if (winnerScore >= 161 && winnerScore <= 170) winnerScore = 17;        // from 161 to 170, 17 points
-        else if (winnerScore >= 171 && winnerScore <= 180) winnerScore = 18;        // from 171 to 180, 18 points
-        else winnerScore = 19;
+        //if (winnerScore >= 0 && winnerScore < 3) winnerScore = 1;                   // from 0 to 2 pints 1 point
+        //else if (winnerScore >= 3 && winnerScore <= 20) winnerScore = 2;            // 3 to 20, 2 points
+        //else if (winnerScore >= 21 && winnerScore <= 30) winnerScore = 3;           // 21 to 30, 3 points
+        //else if (winnerScore >= 31 && winnerScore <= 40) winnerScore = 4;           // from 31 to 40, 4 points
+        //else if (winnerScore >= 41 && winnerScore <= 50) winnerScore = 5;           // from 41 to 50, 5 points
+        //else if (winnerScore >= 51 && winnerScore <= 60) winnerScore = 6;           // from 51 to 60, 6 points
+        //else if (winnerScore >= 61 && winnerScore <= 70) winnerScore = 7;           // from 61 to 70, 7 points
+        //else if (winnerScore >= 71 && winnerScore <= 80) winnerScore = 8;           // from 71 to 80, 8 points
+        //else if (winnerScore >= 81 && winnerScore <= 90) winnerScore = 9;           // from 81 to 90, 9 points
+        //else if (winnerScore >= 91 && winnerScore <= 100) winnerScore = 10;         // from 91 to 100, 10 points
+        //else if (winnerScore >= 101 && winnerScore <= 110) winnerScore = 11;        // from 101 to 110, 11 points
+        //else if (winnerScore >= 111 && winnerScore <= 120) winnerScore = 12;        // from 111 to 120, 12 points
+        //else if (winnerScore >= 121 && winnerScore <= 130) winnerScore = 13;        // from 121 to 130, 13 points
+        //else if (winnerScore >= 131 && winnerScore <= 140) winnerScore = 14;        // from 131 to 140, 14 points
+        //else if (winnerScore >= 141 && winnerScore <= 150) winnerScore = 15;        // from 141 to 150, 15 points
+        //else if (winnerScore >= 151 && winnerScore <= 160) winnerScore = 16;        // from 151 to 160, 16 points
+        //else if (winnerScore >= 161 && winnerScore <= 170) winnerScore = 17;        // from 161 to 170, 17 points
+        //else if (winnerScore >= 171 && winnerScore <= 180) winnerScore = 18;        // from 171 to 180, 18 points
+        //else winnerScore = 19;
 
         //Capicua
         //double the score if last tile can be played on either both sides 
         if (canLastTilePlayedOnBothSides)
         {
             Debug.Log("It was a capicua, so doubling the given score.");
-            winnerScore *= 2;
+          //  winnerScore *= 2;
+            winnerScore += 25;
             canLastTilePlayedOnBothSides = false;
         }
         return winnerScore; 

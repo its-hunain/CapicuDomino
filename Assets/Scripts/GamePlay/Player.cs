@@ -872,7 +872,7 @@ public class Player : MonoBehaviour
         {
             Debug.LogError(Rule4.CheckPassPoints() == true ? "Yes it's a pass, rewarding 2 points" : "No pass");
         }
-        else if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode3)
+        else if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5)
         {
             Debug.LogError(Rule3.FirstImmediatePassPoints() == true ? "Yes it's a first immediate pass point, rewarding 25 points" : "No immediate pass");
         }
