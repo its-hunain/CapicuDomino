@@ -549,20 +549,20 @@ public class GridManager : MonoBehaviour
                 }
 
                 //Because it's a 1 round game so game finish. don't distribute badges and all. . .
-                if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5)
-                {
-                    foreach (var item in playerScoresList)
-                    {
-                        //Step 8: Set Score on profile
-                        yield return StartCoroutine(item.Player._SetScore(item.Score));
-                        yield return new WaitForSeconds(0.5f);
-                    }
-                    yield return new WaitForSeconds(0.5f);
+                //if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5)
+                //{
+                //    foreach (var item in playerScoresList)
+                //    {
+                //        //Step 8: Set Score on profile
+                //        yield return StartCoroutine(item.Player._SetScore(item.Score));
+                //        yield return new WaitForSeconds(0.5f);
+                //    }
+                //    yield return new WaitForSeconds(0.5f);
 
-                    FinishTheGame(currentPlayer);
-                    yield break;
-                }
-                else
+                //    FinishTheGame(currentPlayer);
+                //    yield break;
+                //}
+                //else
                 {
                     //Step 6: Move Badges To Center
                     Debug.Log("Step 6: MoveBadgesToCenter");
@@ -921,7 +921,7 @@ public class GridManager : MonoBehaviour
             }
 
 
-            Player winner = (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5) ? null : DecideWinner(currentPlayer);
+            Player winner = /*(GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5) ? null :*/ DecideWinner(currentPlayer);
 
             if (winner != null)
             {

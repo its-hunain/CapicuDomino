@@ -480,7 +480,7 @@ public class Player : MonoBehaviour
             }
 
             //Check Capicua
-            if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode4 &&  noOfPossibilities >= 2 && GridManager.instance.currentPlayer.dominosCurrentList.Count == 1)
+            if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5 &&  noOfPossibilities >= 2 && GridManager.instance.currentPlayer.dominosCurrentList.Count == 1)
             {
                 if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Bot)
                 {

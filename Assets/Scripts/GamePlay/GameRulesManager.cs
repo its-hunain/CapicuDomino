@@ -970,7 +970,7 @@ public class Rule4 : GameRulesManager
 /// </summary>
 public class Rule5 : GameRulesManager
 {
-    public const int maxScoreToWin = 0; // Worst Looser = 10
+    public const int maxScoreToWin = 200; // Worst Looser = 10
 
 
     // <summary>
@@ -981,7 +981,7 @@ public class Rule5 : GameRulesManager
     /// <returns></returns>
     public static PlayerScore/*Winner*/ CalculateScore_RoundBlocked(List<PlayerScore> playerScores)
     {
-        List<PlayerScore> playerScoresListCache = playerScores.OrderBy(x => x.Score).ToList(); // Acesding order
+        List<PlayerScore> playerScoresListCache = playerScores.OrderByDescending(x => x.Score).ToList(); // Acesding order
         PlayerScore winnerPlayer = null;
 
         //if tie in scoring, Play the tie breaker
@@ -1007,7 +1007,7 @@ public class Rule5 : GameRulesManager
     public static Player DecideWinner()
     {
         //Asc Order
-        Player[] playersCache = GamePlayUIPanel.instance.players.OrderBy(x => x.playerPersonalData.playerScore).ToArray();
+        Player[] playersCache = GamePlayUIPanel.instance.players.OrderByDescending(x => x.playerPersonalData.playerScore).ToArray();
 
         //foreach (var item in GamePlayUIPanel.instance.players)
         //{

@@ -69,8 +69,8 @@ public class CameraController : MonoBehaviour
                 SwitchToSidelView(0.5f);
                 break;
             case CameraView.Side:
-                SwitchToFirstPersonlView(0.5f);
-                //SwitchToTopView();
+               // SwitchToFirstPersonlView(0.5f);
+                SwitchToTopView();
                 break;
             case CameraView.FPV:
                 SwitchToTopView();
