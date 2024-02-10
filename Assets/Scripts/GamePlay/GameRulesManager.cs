@@ -760,7 +760,7 @@ public class Rule3 : GameRulesManager
 public class Rule4 : GameRulesManager
 {
     public const int passPoint = 2;
-    public const int maxScoreToWin = 20; // Worst Looser = 0
+    public const int maxScoreToWin = 200; // Worst Looser = 0
     public static bool canLastTilePlayedOnBothSides = false;
 
     // <summary>

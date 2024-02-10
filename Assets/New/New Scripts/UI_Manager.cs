@@ -19,7 +19,7 @@ public class UI_Manager : MonoBehaviour
     public FriendsPlayScreen friendsPlayScreen;
     public InvitePlayersScreen invitePlayersScreen;
     public PartnerScreen partnerScreen;
-
+    public ScoreToWinScreen scoreToWinScreen;
 
     // Start is called before the first frame update
     void Start()

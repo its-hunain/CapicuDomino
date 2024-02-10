@@ -551,7 +551,7 @@ public class Player : MonoBehaviour
                 Debug.Log("Can't Play");
                 GridManager.instance.hiddenLayerMask.SetActive(true);
                 //Taking new tile from boneyard
-                if (GridManager.instance.dominosCurrentList.Count > 0)
+                if (GridManager.instance.dominosCurrentList.Count > 0 && GameRulesManager.currentSelectedGame_Rule != GameRulesManager.GameRules.GameMode4)
                 {
                     if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Multiplayer)
                     {
@@ -569,7 +569,7 @@ public class Player : MonoBehaviour
                         };
                         GameManager.instace.SendMatchStateAsync(OpCodes.UPDATE, updateMessage.ToJson());
                     }
-                    else
+                    else// if (GameRulesManager.currentSelectedGame_Rule != GameRulesManager.GameRules.GameMode4)
                     {
                         //reset timer
                         //ResetTimerImageValue();
@@ -724,18 +724,18 @@ public class Player : MonoBehaviour
         {
             Debug.Log("Can't Play");
             //Taking new tile from boneyard
-            if (GridManager.instance.dominosCurrentList.Count > 0)
+            if (GridManager.instance.dominosCurrentList.Count > 0 && GameRulesManager.currentSelectedGame_Rule != GameRulesManager.GameRules.GameMode4)
             {
-                //reset timer
-                //ResetTimerImageValue();
-                TurnTimerController.instance.StartTimer(this);
-                Debug.Log("Picking Up New Tile");
-                dominosCurrentList.Add(GridManager.instance.dominosCurrentList[0]);
-                Shuffle();
-                GridManager.instance.dominosCurrentList.RemoveAt(0);
-                GamePlayUIPanel.UpdateBoneYardText(GridManager.instance.dominosCurrentList.Count);
+                    //reset timer
+                    //ResetTimerImageValue();
+                    TurnTimerController.instance.StartTimer(this);
+                    Debug.Log("Picking Up New Tile");
+                    dominosCurrentList.Add(GridManager.instance.dominosCurrentList[0]);
+                    Shuffle();
+                    GridManager.instance.dominosCurrentList.RemoveAt(0);
+                    GamePlayUIPanel.UpdateBoneYardText(GridManager.instance.dominosCurrentList.Count);
 
-                StartCoroutine(_StartMove());
+                    StartCoroutine(_StartMove());
             }
             //Pass the Turn, this Bot can not play
             else
@@ -868,11 +868,12 @@ public class Player : MonoBehaviour
         StartCoroutine(GridManager.instance._ChangeTurn());
 
         //Check Pass
-        if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode4)
-        {
-            Debug.LogError(Rule4.CheckPassPoints() == true ? "Yes it's a pass, rewarding 2 points" : "No pass");
-        }
-        else if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5)
+        //    if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode4)
+        //    {
+        //        Debug.LogError(Rule4.CheckPassPoints() == true ? "Yes it's a pass, rewarding 2 points" : "No pass");
+        //    }
+        // else 
+        if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5)
         {
             Debug.LogError(Rule3.FirstImmediatePassPoints() == true ? "Yes it's a first immediate pass point, rewarding 25 points" : "No immediate pass");
         }

@@ -16,8 +16,8 @@ public class GameModeScreen : MonoBehaviour
     {
         closeBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.gameModeScreen.gameObject, false));
 
-        blocking.onClick.AddListener(() =>GameModeSelection(GameRulesManager.GameRules.GameMode4, blocking));
         capicu.onClick.AddListener(() =>    GameModeSelection(GameRulesManager.GameRules.GameMode5, capicu));
+        blocking.onClick.AddListener(() =>GameModeSelection(GameRulesManager.GameRules.GameMode4, blocking));
         nines.onClick.AddListener(() => GameModeSelection(GameRulesManager.GameRules.GameMode5, nines));
     }
     void GameModeSelection(GameRulesManager.GameRules gameRules,Button btn)
@@ -32,6 +32,7 @@ public class GameModeScreen : MonoBehaviour
         UI_Manager.instance.noOfPlayers.ResetBtns();
         if (btn == blocking)
         {
+           // UI_Manager.instance.ChangeScreen(UI_Manager.instance.scoreToWinScreen.gameObject, true);
             UI_Manager.instance.noOfPlayers.twoPlayerBtn.interactable = true;
         }
         else if (btn == capicu)
