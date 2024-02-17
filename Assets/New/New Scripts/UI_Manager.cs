@@ -21,13 +21,41 @@ public class UI_Manager : MonoBehaviour
     public PartnerScreen partnerScreen;
     public ScoreToWinScreen scoreToWinScreen;
 
+
+    public string userName = null;
+    public string userCountry;
+    public string userAge;
+    public string userGender;
+
+
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
+        GetUserDataFromSave();
     }
-
- 
+    public void GetUserDataFromSave()
+    {
+        userName = PlayerPrefs.GetString("Name");
+        userCountry = PlayerPrefs.GetString("Country");
+        userAge = PlayerPrefs.GetString("Age");
+        userGender = PlayerPrefs.GetString("Gender");
+    }
+    public void UpdateUserData(string name, string country, string age, string gender)
+    {
+        name = userName;
+        country = userCountry;
+        age = userAge;
+        gender = userGender;
+    }
+    public void SaveUserData(string name, string country, string age, string gender)
+    {
+        PlayerPrefs.SetString("Name", name);
+        PlayerPrefs.SetString("Country", country);
+        PlayerPrefs.SetString("Age", age);
+        PlayerPrefs.SetString("Gender", gender);
+        GetUserDataFromSave();
+    }
     public void ChangeScreen(GameObject obj,bool on)
     {
         obj.SetActive(on);

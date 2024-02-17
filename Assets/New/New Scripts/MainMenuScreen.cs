@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class MainMenuScreen : MonoBehaviour
 {
     public Button profileBtn;
+    public Text name;
+    public Text country;
+
     public Button shopBtn;
     public Button coinsBtn;
     public Button settingsBtn;
@@ -20,6 +23,8 @@ public class MainMenuScreen : MonoBehaviour
 
     void Start()
     {
+        name.text = UI_Manager.instance.userName;
+        country.text = UI_Manager.instance.userCountry;
 
         //  shopBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance..gameObject, true));
         profileBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.profileScreen.gameObject, true));
