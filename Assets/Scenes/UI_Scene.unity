@@ -6819,7 +6819,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: b72c7a8a20e94fa4bbbfc9fdeb42bed5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7656,7 +7656,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1065.1294, y: 0}
+  m_AnchoredPosition: {x: -1065.1295, y: 0}
   m_SizeDelta: {x: -2130.26, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &307852162
@@ -36360,6 +36360,7 @@ MonoBehaviour:
   friendsPlayScreen: {fileID: 809116392}
   invitePlayersScreen: {fileID: 106254180}
   partnerScreen: {fileID: 951670274}
+  scoreToWinScreen: {fileID: 0}
 --- !u!1 &1339708748
 GameObject:
   m_ObjectHideFlags: 0
@@ -41664,7 +41665,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: b72c7a8a20e94fa4bbbfc9fdeb42bed5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -41972,7 +41973,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: b72c7a8a20e94fa4bbbfc9fdeb42bed5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -44983,7 +44984,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: b72c7a8a20e94fa4bbbfc9fdeb42bed5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

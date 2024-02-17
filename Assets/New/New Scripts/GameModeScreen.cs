@@ -16,15 +16,16 @@ public class GameModeScreen : MonoBehaviour
     {
         closeBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.gameModeScreen.gameObject, false));
 
-        capicu.onClick.AddListener(() =>    GameModeSelection(GameRulesManager.GameRules.GameMode5, capicu));
-        blocking.onClick.AddListener(() =>GameModeSelection(GameRulesManager.GameRules.GameMode4, blocking));
-        nines.onClick.AddListener(() => GameModeSelection(GameRulesManager.GameRules.GameMode5, nines));
+        capicu.onClick.AddListener(() =>    GameModeSelection(GameRulesManager.GameRules.GameMode5, capicu,false));
+        blocking.onClick.AddListener(() =>GameModeSelection(GameRulesManager.GameRules.GameMode4, blocking,false));
+        nines.onClick.AddListener(() => GameModeSelection(GameRulesManager.GameRules.GameMode5, nines,true));
     }
-    void GameModeSelection(GameRulesManager.GameRules gameRules,Button btn)
+    void GameModeSelection(GameRulesManager.GameRules gameRules,Button btn,bool isNines)
     {
         GameRulesManager.currentSelectedGame_Rule = gameRules;
         UI_Manager.instance.ChangeScreen(UI_Manager.instance.coinsScreen.gameObject, true);
         ChangeNoOfPlayers(btn) ;
+        Rule5.isNines = isNines;
     }
 
     void ChangeNoOfPlayers(Button btn)

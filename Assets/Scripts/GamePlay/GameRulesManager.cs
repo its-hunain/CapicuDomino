@@ -971,7 +971,7 @@ public class Rule4 : GameRulesManager
 public class Rule5 : GameRulesManager
 {
     public const int maxScoreToWin = 200; // Worst Looser = 10
-
+    public static bool isNines = false;
 
     // <summary>
     //   Locked: in the event of a locked, the points are counted individually and the player with the least amount of points wins.

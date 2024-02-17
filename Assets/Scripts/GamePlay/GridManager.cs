@@ -1179,7 +1179,17 @@ public class GridManager : MonoBehaviour
             tile.gameObject.name = tile.First.ToString() + tile.Second.ToString();
 
             tile.transform.localScale = Vector3.one;
-            dominosCurrentList.Add(tile);
+            if (tile.First+tile.Second ==0 && Rule5.isNines)
+            {
+                print("Nines: " + Rule5.isNines);
+                print("Here is your 00 tile: " + tile.First + tile.Second);
+            }
+            else
+            {
+                dominosCurrentList.Add(tile);
+                print("dominosCurrentList: " + dominosList[0]);
+
+            }
             if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Bot) dominosList.RemoveAt(index);
         }
 
@@ -1195,11 +1205,16 @@ public class GridManager : MonoBehaviour
         List<Player> players = (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Bot) ? GamePlayUIPanel.instance.players : GamePlayUIPanel.instance.players.OrderBy(n => n.playerPersonalData.playerSeatID).ToList();
         foreach (var player in players)
         {
+            int noOfTiles = 7;
+
             if (SoundManager.instance != null) SoundManager.instance.DominoDistributionPlayer(true);
-
-
-            //7 tiles distribution
-            for (int i = 0; i < 7; i++)
+            if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5 && Rule5.isNines)
+            {
+                noOfTiles = 9;
+              //  print("dominosCurrentList: " + dominosCurrentList[0]);
+            }
+            //7 tiles distribution or 9 if its nines game
+            for (int i = 0; i < noOfTiles; i++)
             {
                 if (roundNum == 1)
                 {
@@ -1209,9 +1224,9 @@ public class GridManager : MonoBehaviour
                         firstTileValue = dominosCurrentList[0].First; //saving (6,6)
                         firstTile = dominosCurrentList[0]; //saving first tile to start playing (6,6)
                         firstTilePlayer = currentPlayer = player; //first player to play the turn
-                        //Server Update
-                        //FirstPlayer Update on server
-                        //FirstPlayerIndex = currentPlayerIndex
+                                                                  //Server Update
+                                                                  //FirstPlayer Update on server
+                                                                  //FirstPlayerIndex = currentPlayerIndex
                     }
                 }
                 player.dominosCurrentList.Add(dominosCurrentList[0]); //adding current tile in player hand list.
@@ -1226,6 +1241,7 @@ public class GridManager : MonoBehaviour
             }
             player.Shuffle(); // Arranging players hand tiles
             yield return new WaitForSeconds(0.5f);
+
         }
 
         //if some tiles left after distribution
