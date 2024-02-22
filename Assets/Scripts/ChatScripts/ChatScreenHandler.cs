@@ -23,8 +23,8 @@ public class ChatScreenHandler : MonoBehaviour
 
     private void Start()
     {
-      //  OpenEmoji.onClick.AddListener(() => { OpenEmojiScreen(); });
-      //  OpenChat.onClick.AddListener(() => { OpenChatScreen(); });
+        OpenEmoji.onClick.AddListener(() => { OpenEmojiScreen(); });
+        OpenChat.onClick.AddListener(() => { OpenChatScreen(); });
         CloseEmoji.onClick.AddListener(() => { CloseParticularScreen(EmojiScreen); });
         CloseChat.onClick.AddListener(() => {CloseParticularScreen(ChatScreen); });
         if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Bot)
@@ -38,6 +38,7 @@ public class ChatScreenHandler : MonoBehaviour
     /// </summary>
     void RandomSpawnEmoji()
     {
+        print("RandomSpawnEmoji");
         int randomEmoji = Random.Range(0, Emojis.Count);
         int randomPlayerIndex = Random.Range(1, GamePlayUIPanel.instance.players.Count);
         SpawnChatMessage(ChatData.MsgType.Emojis, randomEmoji, GamePlayUIPanel.instance.players[randomPlayerIndex].playerPersonalData.playerUserID);

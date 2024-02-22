@@ -23,8 +23,7 @@ public class MainMenuScreen : MonoBehaviour
 
     void Start()
     {
-        name.text = UI_Manager.instance.userName;
-        country.text = UI_Manager.instance.userCountry;
+        UpdateUI();
 
         //  shopBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance..gameObject, true));
         profileBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.profileScreen.gameObject, true));
@@ -41,5 +40,10 @@ public class MainMenuScreen : MonoBehaviour
       //  leaderBoardBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance..gameObject, true));
 
     }
+    public void UpdateUI()
+    {
+        name.text = UI_Manager.instance.userName;
+        country.text = UI_Manager.instance.userCountry;
 
+    }
 }

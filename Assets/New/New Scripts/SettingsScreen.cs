@@ -18,6 +18,8 @@ public class SettingsScreen : MonoBehaviour
         closeBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.settingScreen.gameObject, false));
 
         aboutBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.aboutScreen.gameObject, true));
+        termsBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.aboutScreen.gameObject, true));
+        policyBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.aboutScreen.gameObject, true));
         logoutBtn.onClick.AddListener(() => LogOut());
     }
 

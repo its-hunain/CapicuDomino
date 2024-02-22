@@ -41,13 +41,8 @@ public class UI_Manager : MonoBehaviour
         userAge = PlayerPrefs.GetString("Age");
         userGender = PlayerPrefs.GetString("Gender");
     }
-    public void UpdateUserData(string name, string country, string age, string gender)
-    {
-        name = userName;
-        country = userCountry;
-        age = userAge;
-        gender = userGender;
-    }
+
+
     public void SaveUserData(string name, string country, string age, string gender)
     {
         PlayerPrefs.SetString("Name", name);
@@ -55,6 +50,8 @@ public class UI_Manager : MonoBehaviour
         PlayerPrefs.SetString("Age", age);
         PlayerPrefs.SetString("Gender", gender);
         GetUserDataFromSave();
+        UI_Manager.instance.profileScreen.UpdateUI();
+        UI_Manager.instance.menuScreen.UpdateUI();
     }
     public void ChangeScreen(GameObject obj,bool on)
     {

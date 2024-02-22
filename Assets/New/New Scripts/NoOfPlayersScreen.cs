@@ -29,6 +29,7 @@ public class NoOfPlayersScreen : MonoBehaviour
     void StartGame(int i)
     {
         GameRulesManager.noOfPlayers = i;
+        GameRulesManager.currentSelectedGame_MatchType = GameRulesManager.MatchType.Bot;
         SceneManager.LoadScene(Global.GameScene);
 
     }

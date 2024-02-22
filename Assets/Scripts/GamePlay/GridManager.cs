@@ -1183,6 +1183,7 @@ public class GridManager : MonoBehaviour
             {
                 print("Nines: " + Rule5.isNines);
                 print("Here is your 00 tile: " + tile.First + tile.Second);
+                tile.gameObject.SetActive(false);
             }
             else
             {

@@ -106,8 +106,8 @@ public class Player : MonoBehaviour
     {
         playerPersonalData.playerUserID = userID;
         playerPersonalData.playerName = name;
-        playerPersonalData.playerStates = playerStates;
         playerPersonalData.playerNameText.text = name.Split(' ')[0];
+        playerPersonalData.playerStates = playerStates;
         if (texture2D != null) playerPersonalData.playerRawImage.texture = playerPersonalData.playerTexture = texture2D;
         else playerPersonalData.playerRawImage.texture = playerPersonalData.playerTexture = BotRandomData.malePics[0];
         playerPersonalData.playerClassSprite = playerStates.classSprite;

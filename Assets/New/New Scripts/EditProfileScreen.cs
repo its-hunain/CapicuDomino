@@ -27,7 +27,7 @@ public class EditProfileScreen : MonoBehaviour
         backBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.editProfileScreen.gameObject, false));
         saveBtn.onClick.AddListener(() => SavePlayerInfo());
     }
-    void SavePlayerInfo()
+    public void SavePlayerInfo()
     {
 
         UI_Manager.instance.SaveUserData(name.text.ToString(), country.text.ToString(), age.text.ToString(), gender.text.ToString());

@@ -25,10 +25,7 @@ public class ProfilePanelScreen : MonoBehaviour
 
     void Start()
     {
-           name.text = UI_Manager.instance.userName;
-        country.text = UI_Manager.instance.userCountry;
-            age.text = UI_Manager.instance.userAge;
-         gender.text = UI_Manager.instance.userGender;
+        UpdateUI();
 
         editProfileBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.editProfileScreen.gameObject, true));
      //   fbConnectBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance..gameObject, true));
@@ -37,5 +34,12 @@ public class ProfilePanelScreen : MonoBehaviour
 
         closeBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.profileScreen.gameObject, false));
     }
+    public void UpdateUI()
+    {
+        name.text = UI_Manager.instance.userName;
+        country.text = UI_Manager.instance.userCountry;
+        age.text = UI_Manager.instance.userAge;
+        gender.text = UI_Manager.instance.userGender;
 
+    }
 }
