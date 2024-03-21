@@ -13,11 +13,11 @@ public class PlayerPersonalData : MonoBehaviour
     
     public static string Player_OS;
     public static string GameId;
-    public static string playerUserID= UI_Manager.instance.userName;
+    public static string playerUserID;//= UI_Manager.instance.userName;
     public static int playerSeatID;
     public static int playerScore;
     public static float playerDomiCoins;
-    public static string playerName = UI_Manager.instance.userName;
+    public static string playerName;// = UI_Manager.instance.userName;
     public static string playerEmail;
     public static string playerPassword;
     public static string authProvider;

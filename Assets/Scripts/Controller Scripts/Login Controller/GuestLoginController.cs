@@ -68,7 +68,7 @@ public class GuestLoginController : MonoBehaviour
 
     private void login()
     {
-        string guestUserID = GuestLoginGenerator.GenerateUniqueUserId();
+        string guestUserID =PlayerPersonalData.playerUserID= GuestLoginGenerator.GenerateUniqueUserId();
         string guestName = GuestLoginGenerator.GenerateUniqueName();
         string guestEmail = GuestLoginGenerator.GenerateUniqueEmail();
         string guestPassword = GuestLoginGenerator.GenerateRandomPassword();
@@ -85,7 +85,9 @@ public class GuestLoginController : MonoBehaviour
             keyValuePairs.Add("Password", guestPassword);
             keyValuePairs.Add("AuthProvider", PlayerPersonalData.authProvider);
 
-            WebServiceManager.instance.APIRequest(WebServiceManager.instance.signUpFunction, Method.POST, null, keyValuePairs, PlayerPersonalData.OnSuccessfullyProfileDownload, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
+
+           UI_Manager.instance.ChangeScreen(UI_Manager.instance.menuScreen.gameObject, true);
+            // WebServiceManager.instance.APIRequest(WebServiceManager.instance.signUpFunction, Method.POST, null, keyValuePairs, PlayerPersonalData.OnSuccessfullyProfileDownload, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
         }
     }
 

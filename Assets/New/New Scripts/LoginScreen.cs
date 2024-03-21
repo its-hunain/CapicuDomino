@@ -14,7 +14,7 @@ public class LoginScreen : MonoBehaviour
     {
        fbLoginBtn.onClick.AddListener(()    =>UI_Manager.instance.ChangeScreen(UI_Manager.instance.menuScreen.gameObject,true));
        appleLoginBtn.onClick.AddListener(() =>UI_Manager.instance.ChangeScreen(UI_Manager.instance.menuScreen.gameObject,true));
-       guestLoginBtn.onClick.AddListener(() =>UI_Manager.instance.ChangeScreen(UI_Manager.instance.menuScreen.gameObject,true));
+    //   guestLoginBtn.onClick.AddListener(() =>UI_Manager.instance.ChangeScreen(UI_Manager.instance.menuScreen.gameObject,true));
     }
 
    void LoginWithFB()

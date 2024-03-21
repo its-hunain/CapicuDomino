@@ -33,7 +33,7 @@ public class NakamaConnection : ScriptableObject
     /// </summary>
     public async Task Connect()
     {
-        try
+        //try
         {
             // Connect to the Nakama server.
             Client = new Client(Scheme, Host, Port, ServerKey, UnityWebRequestAdapter.Instance);
@@ -69,12 +69,12 @@ public class NakamaConnection : ScriptableObject
             await Socket.ConnectAsync(Session, true);
             Debug.Log("UpdatePlayerDataOnNakama: Client = " + Client);
         }
-        catch (Exception ex)
-        {
-            Debug.LogError("Exception: " + ex);
-            var gamePlayWaitingPopUp = GamePlayWaitingPopUp.instance == null ? FindObjectOfType<GamePlayWaitingPopUp>(false) : GamePlayWaitingPopUp.instance;
-            gamePlayWaitingPopUp.SetData("Fail To Connect!", false);
-        }
+      //  catch (Exception ex)
+        //{
+        //    Debug.LogError("Exception: " + ex);
+        //    var gamePlayWaitingPopUp = GamePlayWaitingPopUp.instance == null ? FindObjectOfType<GamePlayWaitingPopUp>(false) : GamePlayWaitingPopUp.instance;
+        //    gamePlayWaitingPopUp.SetData("Fail To Connect!", false);
+        //}
     }
 
     public async Task UpdatePlayerDataOnNakama()

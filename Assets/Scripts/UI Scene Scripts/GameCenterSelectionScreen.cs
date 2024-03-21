@@ -9,7 +9,7 @@ using static GameRulesManager;
 
 public class GameCenterSelectionScreen : MonoBehaviour
 {
-    public static string selectedGameCenterID;
+    public static string selectedGameCenterID="1";
 
     [SerializeField]
     public GameCenters gameCenters;

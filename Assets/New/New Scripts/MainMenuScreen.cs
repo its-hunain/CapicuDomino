@@ -31,9 +31,9 @@ public class MainMenuScreen : MonoBehaviour
         shopBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.shopScreen.gameObject, true));
         settingsBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.settingScreen.gameObject, true));
 
-        botGameBtn.onClick.AddListener(()     => UI_Manager.instance.ChangeScreen(UI_Manager.instance.gameModeScreen.gameObject, true));
-        randomGameBtn.onClick.AddListener(()  => UI_Manager.instance.ChangeScreen(UI_Manager.instance.gameModeScreen.gameObject, true));
-        friendsGameBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.gameModeScreen.gameObject, true));
+        botGameBtn.onClick.AddListener(()     => GameModeSelection(GameRulesManager.MatchType.Bot));
+        randomGameBtn.onClick.AddListener(()  => GameModeSelection(GameRulesManager.MatchType.Multiplayer));
+        friendsGameBtn.onClick.AddListener(() => GameModeSelection(GameRulesManager.MatchType.Multiplayer));
 
 
         partnerGameBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.partnerScreen.gameObject, true));
@@ -45,5 +45,11 @@ public class MainMenuScreen : MonoBehaviour
         name.text = UI_Manager.instance.userName;
         country.text = UI_Manager.instance.userCountry;
 
+    }
+
+    public void GameModeSelection(GameRulesManager.MatchType matchType)
+    {
+        GameRulesManager.currentSelectedGame_MatchType = matchType;
+        UI_Manager.instance.ChangeScreen(UI_Manager.instance.gameModeScreen.gameObject, true);
     }
 }
