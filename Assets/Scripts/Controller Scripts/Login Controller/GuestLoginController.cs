@@ -87,7 +87,7 @@ public class GuestLoginController : MonoBehaviour
 
 
            UI_Manager.instance.ChangeScreen(UI_Manager.instance.menuScreen.gameObject, true);
-            // WebServiceManager.instance.APIRequest(WebServiceManager.instance.signUpFunction, Method.POST, null, keyValuePairs, PlayerPersonalData.OnSuccessfullyProfileDownload, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
+             WebServiceManager.instance.APIRequest(WebServiceManager.instance.signUpFunction, Method.POST, null, keyValuePairs, PlayerPersonalData.OnSuccessfullyProfileDownload, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
         }
     }
 

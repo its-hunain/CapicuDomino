@@ -46,8 +46,9 @@ public class WebServiceManager : MonoBehaviour
     public static WebServiceManager instance;
 
     //Live
-    //public static string baseURL = "http://dominosstaging.cubestagearea.xyz:3002/";
-    public static string baseURL;// = "https://dominosapi-dev.cubestagearea.xyz/";
+    public static string baseURL = "http://3.22.222.43:3002/";
+
+    //public static string baseURL;// = "https://dominosapi-dev.cubestagearea.xyz/";
     //--
 
     public delegate void OnWebServiceResponse(JObject data, string getFunction, long code);
