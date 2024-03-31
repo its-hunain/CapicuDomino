@@ -147,7 +147,7 @@ public class NakamaConnection : ScriptableObject
         Debug.Log("userId: " + PlayerPersonalData.playerUserID);
         string jsonRawData = Serialize.ToJson(attemptToJoinTournamentMatch);
 
-        WebServiceManager.instance.APIRequest(apiFunction, Method.PUT, jsonRawData, null, OnSuccessJoinTournamentMatch, OnFailJoinTournamentMatch);
+      //  WebServiceManager.instance.APIRequest(apiFunction, Method.PUT, jsonRawData, null, OnSuccessJoinTournamentMatch, OnFailJoinTournamentMatch);
     }
 
     public void NoPlayerEnterInTournamentMatch_Api(string apiFunction)
@@ -155,7 +155,7 @@ public class NakamaConnection : ScriptableObject
         Dictionary<string, object> paramsData = new Dictionary<string, object>(); //Add After Api will Created
         paramsData.Add("matchId", GameRulesManager.matchDetails.matchID);
 
-        WebServiceManager.instance.APIRequest(apiFunction, Method.GET, null, paramsData, OnSuccessWaitingOver, OnFailJoinTournamentMatch);
+    //    WebServiceManager.instance.APIRequest(apiFunction, Method.GET, null, paramsData, OnSuccessWaitingOver, OnFailJoinTournamentMatch);
     }
 
     public void OnSuccessWaitingOver(JObject keyValuePairs, long code)

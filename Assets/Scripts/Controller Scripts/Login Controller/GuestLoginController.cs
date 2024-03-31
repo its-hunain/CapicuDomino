@@ -51,11 +51,11 @@ public class GuestLoginController : MonoBehaviour
         loadDataFromPRefs();
 
         Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
-        keyValuePairs.Add("UserID", PlayerPersonalData.playerUserID);
-        keyValuePairs.Add("FullName", PlayerPersonalData.playerName);
-        //keyValuePairs.Add("Email", PlayerProfile.Player_Email);
-        //keyValuePairs.Add("Password", PlayerProfile.Player_Password);
-        //keyValuePairs.Add("AuthProvider", PlayerProfile.authProvider);
+        keyValuePairs.Add("userId", PlayerPersonalData.playerUserID);
+        keyValuePairs.Add("displayName", PlayerPersonalData.playerName);
+        keyValuePairs.Add("email", PlayerPersonalData.playerEmail);
+        //keyValuePairs.Add("Password", PlayerPersonalData.playerPassword);
+        keyValuePairs.Add("authProvider", PlayerPersonalData.authProvider);
 
 
         WebServiceManager.instance.APIRequest(WebServiceManager.instance.signUpFunction, Method.POST, null, keyValuePairs, PlayerPersonalData.OnSuccessfullyProfileDownload, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
@@ -79,15 +79,15 @@ public class GuestLoginController : MonoBehaviour
         if (!string.IsNullOrEmpty(guestEmail) && !string.IsNullOrEmpty(guestPassword) && !string.IsNullOrEmpty(guestUserID) && !string.IsNullOrEmpty(guestName))
         {
             Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
-            keyValuePairs.Add("UserID", guestUserID);
-            keyValuePairs.Add("FullName", guestName);
-            keyValuePairs.Add("Email", guestEmail);
-            keyValuePairs.Add("Password", guestPassword);
-            keyValuePairs.Add("AuthProvider", PlayerPersonalData.authProvider);
+            keyValuePairs.Add("userId", guestUserID);
+            keyValuePairs.Add("displayName", guestName);
+            keyValuePairs.Add("email", guestEmail);
+          //  keyValuePairs.Add("Password", guestPassword);
+            keyValuePairs.Add("authProvider", PlayerPersonalData.authProvider);
 
 
            UI_Manager.instance.ChangeScreen(UI_Manager.instance.menuScreen.gameObject, true);
-             WebServiceManager.instance.APIRequest(WebServiceManager.instance.signUpFunction, Method.POST, null, keyValuePairs, PlayerPersonalData.OnSuccessfullyProfileDownload, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
+           WebServiceManager.instance.APIRequest(WebServiceManager.instance.signUpFunction, Method.POST, null, keyValuePairs, PlayerPersonalData.OnSuccessfullyProfileDownload, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
         }
     }
 

@@ -33,9 +33,9 @@ public class PlayerPersonalData : MonoBehaviour
     public static string sessionID;
     internal static List<FriendDetail> facebookFriends;
 
-    internal static void OnSuccessfullyProfileDownload(JObject keyValuePairs, long successCode)
+    internal static void OnSuccessfullyProfileDownload(string keyValuePairs, long successCode)
     {
-        //Debug.Log("OnSuccessfullyProfileDownload: "  + keyValuePairs.ToString());
+        Debug.Log("OnSuccessfullyProfileDownload: "  + keyValuePairs.ToString());
         if (!ResponseStatus.Check(successCode))
         {
             Debug.LogError("successCode Error: " + successCode.ToString());
@@ -51,6 +51,7 @@ public class PlayerPersonalData : MonoBehaviour
         WebglUserSession.userLoggedIn = true;
 
         PlayerPersonalDataJSON playerPersonalDataJson = PlayerPersonalDataJSON.FromJson(keyValuePairs.ToString());
+        WebServiceManager.instance.playerPersonalData = playerPersonalDataJson;
         playerUserID = playerPersonalDataJson.Data.User.userID;
         playerName = playerPersonalDataJson.Data.User.FirstName + " " + playerPersonalDataJson.Data.User.LastName;
         playerEmail = playerPersonalDataJson.Data.User.Email;
@@ -70,10 +71,10 @@ public class PlayerPersonalData : MonoBehaviour
         playerStatesJson.gamesWon = playerPersonalDataJson.Data.Games.GamesWon;
         playerStatesJson.gamesWonPercentage = playerPersonalDataJson.Data.Games.GamesWonPercentage;
 
-        playerStatesJson.tournnamentPlayed = playerPersonalDataJson.Data.TournamentStats.TournamentPlayed;
-        playerStatesJson.tournnamentWon = playerPersonalDataJson.Data.TournamentStats.TournamentWon;
-        playerStatesJson.tournnamentLost = playerPersonalDataJson.Data.TournamentStats.TournamentLost;
-        playerStatesJson.championshipsWon = playerPersonalDataJson.Data.TournamentStats.ChampionshipWon;
+        //playerStatesJson.tournnamentPlayed = playerPersonalDataJson.Data.TournamentStats.TournamentPlayed;
+        //playerStatesJson.tournnamentWon = playerPersonalDataJson.Data.TournamentStats.TournamentWon;
+        //playerStatesJson.tournnamentLost = playerPersonalDataJson.Data.TournamentStats.TournamentLost;
+        //playerStatesJson.championshipsWon = playerPersonalDataJson.Data.TournamentStats.ChampionshipWon;
 
         playerStatesJson.playerClass = playerPersonalDataJson.Data.User.playerClass;
         playerStatesJson.playerFlagShortCode = playerPersonalDataJson.Data.User.FlagShortCode;
@@ -88,7 +89,6 @@ public class PlayerPersonalData : MonoBehaviour
 
         playerStates = playerStatesJson;
 
-        WebServiceManager.instance.playerPersonalData = playerPersonalDataJson;
         WebServiceManager.instance.StartCoroutine(_GetTexture(profilePicURL));
         WebServiceManager.instance.StartCoroutine(_GetFlag(playerStatesJson.playerFlagShortCode));
 

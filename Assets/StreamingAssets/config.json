@@ -1,5 +1,5 @@
 {
-    "baseUrl": "https://pre-api.dewskill2earn.com/",
+    "baseUrl": "http://3.22.222.43:3002/",
     "websiteUrl": "http://138.68.50.136:4200/",
     "nakamaScheme": "https",
     "nakamaHost": "pre-socket.dewskill2earn.com",

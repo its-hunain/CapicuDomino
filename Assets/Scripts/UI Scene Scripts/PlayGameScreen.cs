@@ -41,7 +41,7 @@ public class PlayGameScreen : MonoBehaviour
         settingBtn.onClick.AddListener(() => SettingButtonDelegate());
 
         yield return new WaitUntil(() => !string.IsNullOrEmpty(Global.GetBearerToken) && !string.IsNullOrEmpty(WebServiceManager.baseURL));
-        WebServiceManager.instance.APIRequest(WebServiceManager.instance.getGameCenter, Method.GET, null, null, UI_ScreenManager.instance.gameCenterSelectionScreen.OnSuccessfullyDataDownloaded, OnFail, CACHEABLE.NULL, true, null);
+      //  WebServiceManager.instance.APIRequest(WebServiceManager.instance.getGameCenter, Method.GET, null, null, UI_ScreenManager.instance.gameCenterSelectionScreen.OnSuccessfullyDataDownloaded, OnFail, CACHEABLE.NULL, true, null);
     }
 
 

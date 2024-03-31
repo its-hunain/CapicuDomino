@@ -221,7 +221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4436674948632458071, guid: 7f045c84de7d24f8d8f9f65c48810879, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -450,8 +450,12 @@ PrefabInstance:
       value: ----WebServiceManager----
       objectReference: {fileID: 0}
     - target: {fileID: 7451005440754805605, guid: 5d76c51a9972c4c92bed4ea2255aff00, type: 3}
+      propertyPath: debug
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451005440754805605, guid: 5d76c51a9972c4c92bed4ea2255aff00, type: 3}
       propertyPath: signUpFunction
-      value: api/mobile/socialLogin
+      value: api/auth/mobile/socialLogin
       objectReference: {fileID: 0}
     - target: {fileID: 7451005440754805606, guid: 5d76c51a9972c4c92bed4ea2255aff00, type: 3}
       propertyPath: m_RootOrder

@@ -33,7 +33,7 @@ namespace AvatarBuilder
         private IEnumerator Start()
         {
             yield return new WaitUntil(() => !string.IsNullOrEmpty(Global.GetBearerToken) && !string.IsNullOrEmpty(WebServiceManager.baseURL));
-            WebServiceManager.instance.APIRequest(WebServiceManager.instance.getSetUserAvatarSpecs, Method.GET, null, null, AvatarScreenManager.instance.OnSuccessGetAvatarSpecs, AvatarScreenManager.instance.OnFailGetAvatarSpecs, CACHEABLE.NULL, true, null);
+            //WebServiceManager.instance.APIRequest(WebServiceManager.instance.getSetUserAvatarSpecs, Method.GET, null, null, AvatarScreenManager.instance.OnSuccessGetAvatarSpecs, AvatarScreenManager.instance.OnFailGetAvatarSpecs, CACHEABLE.NULL, true, null);
         }
 
         #region Download Categories 
@@ -50,7 +50,7 @@ namespace AvatarBuilder
             {
                 Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
                 keyValuePairs.Add("gender", (int)instance.currentSelectedGender);
-                WebServiceManager.instance.APIRequest(url, Method.GET, null, keyValuePairs, instance.OnSuccessfullyCategoriesDownload, instance.OnFailDownload, CACHEABLE.NULL, true, null);
+    //            WebServiceManager.instance.APIRequest(url, Method.GET, null, keyValuePairs, instance.OnSuccessfullyCategoriesDownload, instance.OnFailDownload, CACHEABLE.NULL, true, null);
                 //instance.StartCoroutine(_ItemsDownloaderAsynchrously(Callback , dummyJsonBaseURL+"categories"));
             }
         }
@@ -80,7 +80,7 @@ namespace AvatarBuilder
             }
             else
             {
-                WebServiceManager.instance.APIRequest(url, Method.GET, null, null, instance.OnSuccessfullyItemsDownload, instance.OnFailDownload, CACHEABLE.NULL, true, null);
+       //         WebServiceManager.instance.APIRequest(url, Method.GET, null, null, instance.OnSuccessfullyItemsDownload, instance.OnFailDownload, CACHEABLE.NULL, true, null);
             }
         }
 

@@ -80,7 +80,7 @@ public class SelectCoinsToPlayScreen : MonoBehaviour
 
         ChangeSelectable(selectedBtn);
 
-        WebServiceManager.instance.APIRequest(WebServiceManager.instance.getDomiCoins, Method.GET, null, null, OnSuccessfullyDataDownloaded, OnFail, CACHEABLE.NULL, true, null);
+     //   WebServiceManager.instance.APIRequest(WebServiceManager.instance.getDomiCoins, Method.GET, null, null, OnSuccessfullyDataDownloaded, OnFail, CACHEABLE.NULL, true, null);
     }
 
     private void OnFail(string obj)

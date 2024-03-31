@@ -39,7 +39,7 @@ namespace Dominos
     [Serializable]
     public partial class PlayerData
     {
-        [JsonProperty("user")]
+        [JsonProperty("result")]
         public User User;
 
         [JsonProperty("games")]

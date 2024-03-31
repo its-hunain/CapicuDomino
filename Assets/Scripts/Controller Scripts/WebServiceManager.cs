@@ -90,7 +90,7 @@ public class WebServiceManager : MonoBehaviour
     }
 
 
-    public void APIRequest(string getFunction, Method getMethod, string rawData = null, Dictionary<string, object> getParameters = null, Action<JObject, long> OnSuccess = null, Action<string> OnFail = null, CACHEABLE cacheable = 0, bool showLoader = true, FileUplaod fileUplaod = null)
+    public void APIRequest(string getFunction, Method getMethod, string rawData = null, Dictionary<string, object> getParameters = null, Action<string, long> OnSuccess = null, Action<string> OnFail = null, CACHEABLE cacheable = 0, bool showLoader = true, FileUplaod fileUplaod = null)
     {
         if (showLoader)
             WaitingLoader.instance.ShowHide(showLoader);
@@ -103,7 +103,7 @@ public class WebServiceManager : MonoBehaviour
         StartCoroutine(WaitForRequest(baseURL, getFunction, getMethod, rawData, getParameters, OnSuccess, OnFail, cacheable, showLoader , fileUplaod));
     }
 
-    IEnumerator WaitForRequest(string baseURL, string getFunction, Method getMethod, string rawData = null, Dictionary<string, object> getParameters = null, Action<JObject, long> OnSuccess = null, Action<string> OnFail = null, CACHEABLE cacheable = 0, bool showLoader = true, FileUplaod fileUplaod = null)
+    IEnumerator WaitForRequest(string baseURL, string getFunction, Method getMethod, string rawData = null, Dictionary<string, object> getParameters = null, Action<string, long> OnSuccess = null, Action<string> OnFail = null, CACHEABLE cacheable = 0, bool showLoader = true, FileUplaod fileUplaod = null)
     {
         UnityWebRequest www;
 
@@ -273,21 +273,22 @@ public class WebServiceManager : MonoBehaviour
 
             //--
             JObject data = new JObject();
-            try
-            {
-                data = JObject.Parse(www.downloadHandler.text,Global.jsonLoadSettings);
-                //--
-                //RaiseOnWebServiceResponse(data, getFunction, www.responseCode);
-                //--
-                OnSuccess?.Invoke(data, www.responseCode);
-            }
-            catch (Exception ex)
-            {
-                if (debug)
-                    Debug.LogError("Exception Error" + ex.Message);
+                OnSuccess?.Invoke(www.downloadHandler.text, www.responseCode);
+            //try
+            //{
+            //    data = JObject.Parse(www.downloadHandler.text,Global.jsonLoadSettings);
+            //    //--
+            //   // RaiseOnWebServiceResponse(data, getFunction, www.responseCode);
+            //    //--
+            //    OnSuccess?.Invoke(data, www.responseCode);
+            //}
+            //catch (Exception ex)
+            //{
+            //    if (debug)
+            //        Debug.LogError("Exception Error" + ex.Message);
 
-                OnFail?.Invoke(ex.Message);
-            }
+            //    OnFail?.Invoke(ex.Message);
+            //}
         }
 
         www.Dispose();

@@ -45,7 +45,7 @@ public class InternetConnectivityCheck : MonoBehaviour
 
         if (request.result == UnityWebRequest.Result.Success)
         {
-            Debug.Log("Internet connection available");
+           // Debug.Log("Internet connection available");
             OnSuccess();
         }
         else

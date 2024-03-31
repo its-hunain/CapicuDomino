@@ -38,7 +38,7 @@ namespace AvatarBuilder
             }
             string json = AvatarParent_FbxHolder.instance.currentSelectedAvatar.SaveAvatarSpecs();
             Debug.Log(json);
-            WebServiceManager.instance.APIRequest(WebServiceManager.instance.getSetUserAvatarSpecs, Method.PUT, json,null, AvatarScreenManager.instance.OnSuccessGetAvatarSpecs, null,CACHEABLE.NULL,true,null); //Update
+            //WebServiceManager.instance.APIRequest(WebServiceManager.instance.getSetUserAvatarSpecs, Method.PUT, json,null, AvatarScreenManager.instance.OnSuccessGetAvatarSpecs, null,CACHEABLE.NULL,true,null); //Update
             //AvatarParent_FbxHolder.instance.ResetAvatarData();
             AvatarParent_FbxHolder.instance.currentSelectedAvatar.gameObject.SetActive(false);
             GenderSelectionScreen.DeleteInt(GenderSelectionScreen.gender_PrefKey);
