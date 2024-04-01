@@ -39,9 +39,10 @@ public class GuestLoginController : MonoBehaviour
 
         PlayerPersonalData.playerUserID =   PlayerPrefs.GetString(Global.UserID);
         PlayerPersonalData.playerName =   PlayerPrefs.GetString(Global.UserName);
-        //PlayerProfile.Player_Email = PlayerPrefs.GetString(ConstantVariables.UserEmail);
+        PlayerPersonalData.playerEmail = PlayerPrefs.GetString(Global.UserEmail);
+
         //PlayerProfile.Player_rawImage_Texture2D = TextureConverter.Base64ToTexture2D(PlayerPrefs.GetString("Picture"));
-        //PlayerProfile.authProvider =   PlayerPrefs.GetString(ConstantVariables.AuthProvider);
+        PlayerPersonalData.authProvider = PlayerPrefs.GetString(Global.AuthProvider);
         //PlayerProfile.Player_coins =   PlayerPrefs.GetInt("Coins");
         //Controller.instance.Home_Screen.GetComponent<HomeScreen>().ChipsSettter();
     }
@@ -83,12 +84,18 @@ public class GuestLoginController : MonoBehaviour
             keyValuePairs.Add("displayName", guestName);
             keyValuePairs.Add("email", guestEmail);
           //  keyValuePairs.Add("Password", guestPassword);
-            keyValuePairs.Add("authProvider", PlayerPersonalData.authProvider);
+            keyValuePairs.Add("authProvider", Global.Guest);
 
 
            UI_Manager.instance.ChangeScreen(UI_Manager.instance.menuScreen.gameObject, true);
            WebServiceManager.instance.APIRequest(WebServiceManager.instance.signUpFunction, Method.POST, null, keyValuePairs, PlayerPersonalData.OnSuccessfullyProfileDownload, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
         }
+
+        PlayerPrefs.SetString(Global.AuthProvider, Global.Guest);
+        PlayerPrefs.SetString(Global.UserID, guestUserID);
+        PlayerPrefs.SetString(Global.UserName, guestName);
+        PlayerPrefs.SetString(Global.UserEmail, guestEmail);
+        PlayerPrefs.Save();
     }
 
 

@@ -11,10 +11,21 @@ public class GamePlayWaitingPopUp : MonoBehaviour
 
     public Text TimerText;
 
+    public List<GameObject> profilePic = new();
     private void Awake()
     {
         instance = this;
-        if(GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Bot) EnableDisable(false);
+        if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Bot)
+        {
+            EnableDisable(false);
+        }
+        else
+        {
+            for (int i = 0; i < GameRulesManager.noOfPlayers; i++)
+            {
+                profilePic[i].SetActive(true);
+            }
+        }
         //if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Bot) //No need of waiting in bot game
         //{
         //}
@@ -25,6 +36,8 @@ public class GamePlayWaitingPopUp : MonoBehaviour
         //        SetData("Waiting for the Opponents...");
         //    }
         //}
+
+
     }
 
     public void SetData(string msg, bool showTimer = false)

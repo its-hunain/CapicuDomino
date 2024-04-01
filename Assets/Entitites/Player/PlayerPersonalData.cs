@@ -128,7 +128,6 @@ public class PlayerPersonalData : MonoBehaviour
     {
         UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
         yield return www.SendWebRequest();
-
         if (www.result != UnityWebRequest.Result.Success)
         {
             Debug.Log(www.error);
@@ -136,6 +135,7 @@ public class PlayerPersonalData : MonoBehaviour
         else
         {
             PlayerPersonalData.playerTexture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+            Debug.Log("PlayerPersonalData.playerTexture : "  + PlayerPersonalData.playerTexture == null);
         }
     }
 

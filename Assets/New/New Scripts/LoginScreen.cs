@@ -8,7 +8,16 @@ public class LoginScreen : MonoBehaviour
     public Button fbLoginBtn;
     public Button appleLoginBtn;
     public Button guestLoginBtn;
+    public GameObject mainmenu;
 
+    private void Awake()
+    {
+        if (PlayerPrefs.HasKey(Global.AuthProvider))
+        {
+            gameObject.SetActive(false);
+            mainmenu.SetActive(true);
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {

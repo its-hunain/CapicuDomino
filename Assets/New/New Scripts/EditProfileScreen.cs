@@ -19,10 +19,10 @@ public class EditProfileScreen : MonoBehaviour
 
     void Start()
     {
-            name.text = UI_Manager.instance.userName;
+         name.text = UI_Manager.instance.userName;
          country.text = UI_Manager.instance.userCountry;
-             age.text = UI_Manager.instance.userAge;
-        gender.text =  UI_Manager.instance.userGender;
+         age.text = UI_Manager.instance.userAge;
+         gender.text =  UI_Manager.instance.userGender;
 
         backBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.editProfileScreen.gameObject, false));
         saveBtn.onClick.AddListener(() => SavePlayerInfo());

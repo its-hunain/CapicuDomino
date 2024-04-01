@@ -28,7 +28,7 @@ public class UIScene_LoadingScreen : MonoBehaviour
             while (j<=loadingMsgs[i].Length-1)
             {
                 loadingText.text += loadingMsgs[i][j];
-                yield return new WaitForSeconds(0.1f);
+                yield return null;
                 j++;
             }
             yield return new WaitForSeconds(1f);

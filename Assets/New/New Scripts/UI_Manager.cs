@@ -23,7 +23,7 @@ public class UI_Manager : MonoBehaviour
 
 
     public string userName = null;
-    public string userCountry;
+    public string userCountry = "US";
     public string userAge;
     public string userGender;
 

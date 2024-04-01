@@ -20536,6 +20536,7 @@ MonoBehaviour:
   fbLoginBtn: {fileID: 1494043832}
   appleLoginBtn: {fileID: 996514845}
   guestLoginBtn: {fileID: 835029265}
+  mainmenu: {fileID: 1207675293}
 --- !u!111 &742563927
 Animation:
   m_ObjectHideFlags: 0

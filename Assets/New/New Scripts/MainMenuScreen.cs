@@ -42,8 +42,8 @@ public class MainMenuScreen : MonoBehaviour
     }
     public void UpdateUI()
     {
-        name.text = UI_Manager.instance.userName;
-        country.text = UI_Manager.instance.userCountry;
+        name.text = PlayerPersonalData.playerName;
+        //country.text = UI_Manager.instance.userCountry;
 
     }
 
