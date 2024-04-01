@@ -61,32 +61,32 @@ public class PlayerStatesPopUp : MonoBehaviour
         playerClassIcon.sprite  = profileStatesPopUpData.playerClassIcon;
         className.text          = profileStatesPopUpData.className;
 
-        profilePicBorder.color = GetBorderColor(profileStatesPopUpData.userGameModeInfo);
+        //profilePicBorder.color = GetBorderColor(profileStatesPopUpData.userGameModeInfo);
 
         GamePlayUIPanel.OpenClosePopUp(gameObject, true, true);
     }
 
-    private Color GetBorderColor(UserGameModeInfo userGameModeInfo)
-    {
-        UserGameModeScoreInfo userGameModeScoreInfo = userGameModeInfo.userGameModeScoreInfos.ToList().Find(x => x.GameMode.Equals(GameRulesManager.currentSelectedGame_Rule));
-        switch (userGameModeScoreInfo.medalRank)
-        {
-            case 1:
-                return Color.white;
-            case 2:
-                return Color.yellow;
-            case 3:
-                return Color.blue;
-            case 4:
-                return new Color(1, 0.3774137f,0,1);
-            //return Color.red;
-            case 5:
-                return new Color(0.3254902f, 0.7960785f, 0.1686275f, 1);
-                //return Color.green;
-            default:
-                return Color.white;
-        }
-    }
+    //private Color GetBorderColor(UserGameModeInfo userGameModeInfo)
+    //{
+    //    UserGameModeScoreInfo userGameModeScoreInfo = userGameModeInfo.userGameModeScoreInfos.ToList().Find(x => x.GameMode.Equals(GameRulesManager.currentSelectedGame_Rule));
+    //    switch (userGameModeScoreInfo.medalRank)
+    //    {
+    //        case 1:
+    //            return Color.white;
+    //        case 2:
+    //            return Color.yellow;
+    //        case 3:
+    //            return Color.blue;
+    //        case 4:
+    //            return new Color(1, 0.3774137f,0,1);
+    //        //return Color.red;
+    //        case 5:
+    //            return new Color(0.3254902f, 0.7960785f, 0.1686275f, 1);
+    //            //return Color.green;
+    //        default:
+    //            return Color.white;
+    //    }
+    //}
 }
 
 public class ProfileStatesPopUpData
@@ -113,7 +113,4 @@ public class ProfileStatesPopUpData
     public Sprite playerClassIcon;
     public string className;
 
-
-    [Header("UserGameModeInfo")]
-    public UserGameModeInfo userGameModeInfo;
 }

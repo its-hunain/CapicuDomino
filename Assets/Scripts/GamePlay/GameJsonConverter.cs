@@ -44,12 +44,6 @@ namespace Dominos
 
         [JsonProperty("games")]
         public Games Games;
-
-        [JsonProperty("tournamentStats")]
-        public TournamentStats TournamentStats;
-
-        [JsonProperty("userGameModeScoreInfo")]
-        public UserGameModeScoreInfo[] userGameModeScoreInfo;
     }
 
     [Serializable]
@@ -85,21 +79,6 @@ namespace Dominos
         public string GamesWonPercentage;
     }
 
-    [Serializable]
-    public partial class TournamentStats
-    {
-        [JsonProperty("tournamentPlayed")]
-        public int TournamentPlayed;
-
-        [JsonProperty("tournamentWon")]
-        public int TournamentWon ;
-
-        [JsonProperty("tournamentLost")]
-        public int TournamentLost ;
-
-        [JsonProperty("championshipWon")]
-        public int ChampionshipWon ;
-    }
 
     [Serializable]
     public partial class User
@@ -134,8 +113,6 @@ namespace Dominos
         [JsonProperty("level")]
         public int Level = 0;
 
-        [JsonProperty("characterId")]
-        public string CharacterId = "";
 
         [JsonProperty("assetGender")]
         public string AssetGender = "";
@@ -161,8 +138,6 @@ namespace Dominos
         [JsonProperty("profilePicUrl", NullValueHandling = NullValueHandling.Ignore)]
         public string ProfilePicUrl = "";
 
-        [JsonProperty("className", NullValueHandling = NullValueHandling.Ignore)]
-        public string playerClass = "";
     }
 
     public partial class PlayerPersonalDataJSON

@@ -27,7 +27,6 @@ public class PlayerPersonalData : MonoBehaviour
     public static string location;
     public static string profilePicURL;
     public static PlayerStates playerStates;
-    public static UserGameModeScoreInfo[] userGameModeScoreInfos;
     public static Texture2D playerTexture;
     [Header("Nakama Details")]
     public static string sessionID;
@@ -64,8 +63,6 @@ public class PlayerPersonalData : MonoBehaviour
         location = playerPersonalDataJson.Data.User.Country;
         profilePicURL = playerPersonalDataJson.Data.User.ProfilePicUrl;
 
-        userGameModeScoreInfos = playerPersonalDataJson.Data.userGameModeScoreInfo;
-
         PlayerStates playerStatesJson = new PlayerStates();
         playerStatesJson.gamesPlayed = playerPersonalDataJson.Data.Games.GamesPlayed;
         playerStatesJson.gamesWon = playerPersonalDataJson.Data.Games.GamesWon;
@@ -76,16 +73,10 @@ public class PlayerPersonalData : MonoBehaviour
         //playerStatesJson.tournnamentLost = playerPersonalDataJson.Data.TournamentStats.TournamentLost;
         //playerStatesJson.championshipsWon = playerPersonalDataJson.Data.TournamentStats.ChampionshipWon;
 
-        playerStatesJson.playerClass = playerPersonalDataJson.Data.User.playerClass;
         playerStatesJson.playerFlagShortCode = playerPersonalDataJson.Data.User.FlagShortCode;
 
-        //WebServiceManager.instance.FindFlagSprite(playerStatesJson.playerFlagShortCode, playerStatesJson.flagSprite);
-        playerStatesJson.classSprite = WebServiceManager.instance.FindClassSprite(playerStatesJson.playerClass);
 
-        UserGameModeInfo userGameModeInfo = new UserGameModeInfo();
-        userGameModeInfo.userGameModeScoreInfos = userGameModeScoreInfos;
 
-        playerStatesJson.userGameModeInfo = userGameModeInfo;
 
         playerStates = playerStatesJson;
 
@@ -135,7 +126,7 @@ public class PlayerPersonalData : MonoBehaviour
         else
         {
             PlayerPersonalData.playerTexture = ((DownloadHandlerTexture)www.downloadHandler).texture;
-            Debug.Log("PlayerPersonalData.playerTexture : "  + PlayerPersonalData.playerTexture == null);
+            print("PlayerPersonalData.playerTexture : "  + PlayerPersonalData.playerTexture == null);
         }
     }
 
@@ -177,23 +168,9 @@ public class PlayerStates
     public string gamesWon;
     public string gamesWonPercentage;
 
-    public int tournnamentPlayed;
-    public int tournnamentWon;
-    public int tournnamentLost;
-
-    public int championshipsWon;
-
-    public string playerClass;
     public string playerFlagShortCode;
 
     public Sprite flagSprite;
-    public Sprite classSprite;
-
-    [SerializeField]
-    public BlockChainData blockChainData;
-
-    [SerializeField]
-    public UserGameModeInfo userGameModeInfo;
 
     public void GenerateDummyData()
     {   
@@ -201,21 +178,10 @@ public class PlayerStates
         gamesWon = UnityEngine.Random.Range(0, 10).ToString();
         gamesWonPercentage = UnityEngine.Random.Range(0f, 10.0f).ToString();
 
-        tournnamentPlayed = UnityEngine.Random.Range(0, 10);
-        tournnamentWon = UnityEngine.Random.Range(0, 10);
-        tournnamentLost = UnityEngine.Random.Range(0, 10);
 
-        championshipsWon = UnityEngine.Random.Range(0, 10);
-
-        playerClass = WebServiceManager.instance.classSprites[UnityEngine.Random.Range(0, WebServiceManager.instance.classSprites.Count)].name;
         playerFlagShortCode = WebServiceManager.instance.flagSprites[UnityEngine.Random.Range(0, WebServiceManager.instance.flagSprites.Count)].name;
 
-        //WebServiceManager.instance.FindFlagSprite(playerFlagShortCode , flagSprite);
         flagSprite = WebServiceManager.instance.FindFlagSprite(playerFlagShortCode);
-        classSprite = WebServiceManager.instance.FindClassSprite(playerClass);
-
-        userGameModeInfo = new UserGameModeInfo();
-        userGameModeInfo.userGameModeScoreInfos = GenerateRandomGameScoreInfoForBot();
     }
 
 

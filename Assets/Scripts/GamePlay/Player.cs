@@ -110,7 +110,7 @@ public class Player : MonoBehaviour
         playerPersonalData.playerStates = playerStates;
         if (texture2D != null) playerPersonalData.playerRawImage.texture = playerPersonalData.playerTexture = texture2D;
         else playerPersonalData.playerRawImage.texture = playerPersonalData.playerTexture = BotRandomData.malePics[0];
-        playerPersonalData.playerClassSprite = playerStates.classSprite;
+        //playerPersonalData.playerClassSprite = playerStates.classSprite;
         if (userID.Contains("bot"))
             playerPersonalData.flagImage.sprite = playerPersonalData.playerFlagSprite = playerStates.flagSprite;
         else
@@ -127,7 +127,7 @@ public class Player : MonoBehaviour
         StartCoroutine(_GetTexture(avatarURL));
         StartCoroutine(_GetFlag(playerState.playerFlagShortCode));
         //playerPersonalData.flagImage.sprite = playerPersonalData.playerFlagSprite = playerStates.flagSprite;
-        playerPersonalData.playerClassSprite = playerState.classSprite;
+        //playerPersonalData.playerClassSprite = playerState.classSprite;
     }
 
 
@@ -928,20 +928,20 @@ public class Player : MonoBehaviour
 
         PlayerStates playerStats = playerData.playerStates;
 
-        playerStatesPopUp.userGameModeInfo = playerStats.userGameModeInfo;
+        //playerStatesPopUp.userGameModeInfo = playerStats.userGameModeInfo;
 
         playerStatesPopUp.gamesPlayed = playerStats.gamesPlayed.ToString();
         playerStatesPopUp.gamesWon = playerStats.gamesWon.ToString();
         playerStatesPopUp.gamesWonPercentage = playerStats.gamesWonPercentage.ToString();
 
-        playerStatesPopUp.tournamentPlayed = playerStats.tournnamentPlayed.ToString();
-        playerStatesPopUp.tournamentWon = playerStats.tournnamentWon.ToString();
-        playerStatesPopUp.tournamentLost = playerStats.tournnamentLost.ToString();
+        //playerStatesPopUp.tournamentPlayed = playerStats.tournnamentPlayed.ToString();
+        //playerStatesPopUp.tournamentWon = playerStats.tournnamentWon.ToString();
+        //playerStatesPopUp.tournamentLost = playerStats.tournnamentLost.ToString();
 
-        playerStatesPopUp.championShipWon = playerStats.championshipsWon.ToString();
+        //playerStatesPopUp.championShipWon = playerStats.championshipsWon.ToString();
 
         playerStatesPopUp.flagName = playerStats.playerFlagShortCode.ToString();
-        playerStatesPopUp.className = playerStats.playerClass.ToString();
+        //playerStatesPopUp.className = playerStats.playerClass.ToString();
 
         //Find Flag by shortcode
         //Find Class by class name
@@ -1004,26 +1004,17 @@ public class PlayerData
     public PlayerStates UpdatePlayerStats(MetaData metaData)
     {
         Debug.Log("UpdatePlayerStats");
-        this.playerStates.blockChainData = BlockChainData.FromJson(metaData.blockChainData);
-        this.playerStates.userGameModeInfo = UserGameModeInfo.FromJson(metaData.userGameModeInfo);
+        //this.playerStates.blockChainData = BlockChainData.FromJson(metaData.blockChainData);
+        //this.playerStates.userGameModeInfo = UserGameModeInfo.FromJson(metaData.userGameModeInfo);
 
         this.playerStates.gamesPlayed = (metaData.GamesPlayed);
         this.playerStates.gamesWon = (metaData.GamesWon);
         this.playerStates.gamesWonPercentage = (metaData.GamesWonPercentage);
 
-        this.playerStates.tournnamentPlayed = int.Parse(metaData.TournnamentPlayed);
-        this.playerStates.tournnamentWon = int.Parse(metaData.TournnamentWon);
-        this.playerStates.tournnamentLost = int.Parse(metaData.TournnamentLost);
-
-        this.playerStates.championshipsWon = int.Parse(metaData.ChampionshipsWon);
-
-        this.playerStates.playerClass = metaData.PlayerClass;
         this.playerStates.playerFlagShortCode = metaData.PlayerFlagShortCode;
-        Sprite classSprite = WebServiceManager.instance.FindClassSprite(metaData.PlayerClass);
-        Debug.Log("this.playerStates.playerClass: " + this.playerStates.playerClass);
+        //Sprite classSprite = WebServiceManager.instance.FindClassSprite(metaData.PlayerClass);
         Debug.Log("this.playerStates.playerFlagShortCode: " + this.playerStates.playerFlagShortCode);
-        Debug.Log((classSprite == null) ? "classSprite Null" : "classSprite NotNull");
-        this.playerStates.classSprite = classSprite;
+        //Debug.Log((classSprite == null) ? "classSprite Null" : "classSprite NotNull");
         //WebServiceManager.instance.FindFlagSprite(metaData.PlayerFlagShortCode, this.playerStates.flagSprite , flagImage);
         //this.flagImage.sprite = this.playerFlagSprite = GamePlayUIPanel.instance.FindFlagSprite(metaData.PlayerFlagShortCode);
         return this.playerStates;

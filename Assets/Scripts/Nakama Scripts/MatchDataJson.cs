@@ -103,16 +103,9 @@ public static class MatchDataJson
     {
 
         Dictionary<string, object> values = new Dictionary<string, object>();
-        values.Add("blockChainData", Serialize.ToJson(PlayerPersonalData.playerStates.blockChainData));
-        values.Add("userGameModeInfo", Serialize.ToJson(PlayerPersonalData.playerStates.userGameModeInfo));
         values.Add("gamesPlayed", PlayerPersonalData.playerStates.gamesPlayed.ToString());
         values.Add("gamesWon", PlayerPersonalData.playerStates.gamesWon.ToString());
         values.Add("gamesWonPercentage", PlayerPersonalData.playerStates.gamesWonPercentage.ToString());
-        values.Add("tournnamentPlayed", PlayerPersonalData.playerStates.tournnamentPlayed.ToString());
-        values.Add("tournnamentWon", PlayerPersonalData.playerStates.tournnamentWon.ToString());
-        values.Add("tournnamentLost", PlayerPersonalData.playerStates.tournnamentLost.ToString());
-        values.Add("championshipsWon", PlayerPersonalData.playerStates.championshipsWon.ToString());
-        values.Add("playerClass", PlayerPersonalData.playerStates.playerClass.ToString());
         values.Add("playerFlagShortCode", PlayerPersonalData.playerStates.playerFlagShortCode.ToString());
         //{
         //    { "blockChainData", PlayerPersonalData.playerStates.blockChainData},
@@ -235,51 +228,14 @@ namespace Dominos
         [JsonProperty("gamesPlayed")]
         public string GamesPlayed = "";
 
-        [JsonProperty("playerClass")]
-        public string PlayerClass = "";
-
-        [JsonProperty("tournnamentWon")]
-        public string TournnamentWon = "";
-
-        [JsonProperty("tournnamentLost")]
-        public string TournnamentLost = "";
-
-        [JsonProperty("championshipsWon")]
-        public string ChampionshipsWon = "";
-
-        [JsonProperty("tournnamentPlayed")]
-        public string TournnamentPlayed = "";
-
         [JsonProperty("gamesWonPercentage")]
         public string GamesWonPercentage = "";
 
         [JsonProperty("playerFlagShortCode")]
         public string PlayerFlagShortCode = "";
 
-        [JsonProperty("blockChainData")]
-        public string blockChainData;
-
-        [JsonProperty("userGameModeInfo")]
-        public string userGameModeInfo;
     }
 
-
-    [Serializable]
-    public partial class UserGameModeInfo
-    {
-        [JsonProperty("UserGameModeScoreInfo")]
-        public UserGameModeScoreInfo[] userGameModeScoreInfos;
-    }
-
-    public partial class UserGameModeInfo
-    {
-        public static UserGameModeInfo FromJson(string json) => JsonConvert.DeserializeObject<UserGameModeInfo>(json, Dominos.Converter.Settings);
-    }
-
-    public partial class BlockChainData
-    {
-        public static BlockChainData FromJson(string json) => JsonConvert.DeserializeObject<BlockChainData>(json, Dominos.Converter.Settings);
-    }
 
 
     public partial class MetaData
@@ -351,8 +307,6 @@ namespace Dominos
     #endregion
     public static class Serialize
     {
-        public static string ToJson(this BlockChainData self) => JsonConvert.SerializeObject(self, Dominos.Converter.Settings);
-        public static string ToJson(this UserGameModeInfo self) => JsonConvert.SerializeObject(self, Dominos.Converter.Settings);
         public static string ToJson(this MatchStart self) => JsonConvert.SerializeObject(self, Dominos.Converter.Settings);
     }
 
