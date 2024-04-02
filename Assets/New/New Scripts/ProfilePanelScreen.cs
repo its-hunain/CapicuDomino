@@ -36,10 +36,9 @@ public class ProfilePanelScreen : MonoBehaviour
     }
     public void UpdateUI()
     {
-        name.text = UI_Manager.instance.userName;
-        country.text = UI_Manager.instance.userCountry;
-        age.text = UI_Manager.instance.userAge;
-        gender.text = UI_Manager.instance.userGender;
+        name.text = PlayerPersonalData.playerName;
+        var temp = Sprite.Create(PlayerPersonalData.playerTexture,new Rect(0.0f, 0.0f, PlayerPersonalData.playerTexture.width, PlayerPersonalData.playerTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
+        profileImage.sprite = temp;
 
     }
 }

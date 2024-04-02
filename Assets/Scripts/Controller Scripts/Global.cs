@@ -21,7 +21,6 @@ public static class Global
     public const string UIScene = "UI_Scene";
     public const string GameScene = "BotScene";
     public const string CustomizeAvatarScene = "InventoryBuilder";
-
     public static JsonSerializerSettings jsonSerializerSettings = new JsonSerializerSettings
     {
         NullValueHandling = NullValueHandling.Ignore,

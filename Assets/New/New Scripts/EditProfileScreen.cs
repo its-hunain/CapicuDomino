@@ -19,18 +19,24 @@ public class EditProfileScreen : MonoBehaviour
 
     void Start()
     {
-         name.text = UI_Manager.instance.userName;
-         country.text = UI_Manager.instance.userCountry;
-         age.text = UI_Manager.instance.userAge;
-         gender.text =  UI_Manager.instance.userGender;
-
         backBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.editProfileScreen.gameObject, false));
         saveBtn.onClick.AddListener(() => SavePlayerInfo());
     }
     public void SavePlayerInfo()
     {
-
         UI_Manager.instance.SaveUserData(name.text.ToString(), country.text.ToString(), age.text.ToString(), gender.text.ToString());
         UI_Manager.instance.ChangeScreen(UI_Manager.instance.editProfileScreen.gameObject, false);
+    }
+
+    public void UpdateUI()
+    {
+        name.text = PlayerPersonalData.playerName;
+        var temp = Sprite.Create(PlayerPersonalData.playerTexture, new Rect(0.0f, 0.0f, PlayerPersonalData.playerTexture.width, PlayerPersonalData.playerTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
+        profileImage.sprite = temp;
+        //  country.text = UI_Manager.instance.userCountry;
+        //  age.text = UI_Manager.instance.userAge;
+        //  gender.text =  UI_Manager.instance.userGender;
+
+
     }
 }

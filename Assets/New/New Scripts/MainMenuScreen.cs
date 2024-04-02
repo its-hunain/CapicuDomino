@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class MainMenuScreen : MonoBehaviour
 {
     public Button profileBtn;
+    public Image profileImage;
+
     public Text name;
     public Text country;
 
@@ -23,7 +25,7 @@ public class MainMenuScreen : MonoBehaviour
 
     void Start()
     {
-        UpdateUI();
+       // UpdateUI();
 
         //  shopBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance..gameObject, true));
         profileBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.profileScreen.gameObject, true));
@@ -43,6 +45,9 @@ public class MainMenuScreen : MonoBehaviour
     public void UpdateUI()
     {
         name.text = PlayerPersonalData.playerName;
+        var temp = Sprite.Create(PlayerPersonalData.playerTexture, new Rect(0.0f, 0.0f, PlayerPersonalData.playerTexture.width, PlayerPersonalData.playerTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
+        profileImage.sprite = temp;
+        
         //country.text = UI_Manager.instance.userCountry;
 
     }

@@ -88,6 +88,7 @@ public class PlayerPersonalData : MonoBehaviour
             Debug.Log("Global.gameType: " + Global.gameType);
             SplashScreen.instance.OnLoadingCompleted();
         }
+
     }
 
     private static void OnFailfullyWhiteListedDiscoountDownload(string msg)
@@ -128,6 +129,7 @@ public class PlayerPersonalData : MonoBehaviour
             PlayerPersonalData.playerTexture = ((DownloadHandlerTexture)www.downloadHandler).texture;
             print("PlayerPersonalData.playerTexture : "  + PlayerPersonalData.playerTexture == null);
         }
+
     }
 
 

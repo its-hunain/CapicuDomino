@@ -22,34 +22,28 @@ public class UI_Manager : MonoBehaviour
     public ScoreToWinScreen scoreToWinScreen;
 
 
-    public string userName = null;
-    public string userCountry = "US";
-    public string userAge;
-    public string userGender;
-
 
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
-        GetUserDataFromSave();
+       StartCoroutine(UpdateUI());
     }
-    public void GetUserDataFromSave()
+
+    public IEnumerator UpdateUI()
     {
-        userName = PlayerPrefs.GetString("Name");
-        userCountry = PlayerPrefs.GetString("Country");
-        userAge = PlayerPrefs.GetString("Age");
-        userGender = PlayerPrefs.GetString("Gender");
+        Debug.LogError("UpdateUI");
+        yield return new WaitForSeconds(2f);
+        menuScreen.UpdateUI();
+        profileScreen.UpdateUI();
+        editProfileScreen.UpdateUI();
     }
-
-
     public void SaveUserData(string name, string country, string age, string gender)
     {
         PlayerPrefs.SetString("Name", name);
         PlayerPrefs.SetString("Country", country);
         PlayerPrefs.SetString("Age", age);
         PlayerPrefs.SetString("Gender", gender);
-        GetUserDataFromSave();
         UI_Manager.instance.profileScreen.UpdateUI();
         UI_Manager.instance.menuScreen.UpdateUI();
     }
