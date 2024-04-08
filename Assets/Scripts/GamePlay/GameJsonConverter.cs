@@ -89,6 +89,9 @@ namespace Dominos
         [JsonProperty("firstName")]
         public string FirstName ;
 
+        [JsonProperty("age")]
+        public string Age ;
+
         [JsonProperty("whiteListed")]
         public bool WhiteListed;
 

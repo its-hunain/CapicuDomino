@@ -27,7 +27,7 @@ public class UI_Manager : MonoBehaviour
     void Start()
     {
         instance = this;
-       StartCoroutine(UpdateUI());
+      // StartCoroutine(UpdateUI());
     }
 
     public IEnumerator UpdateUI()

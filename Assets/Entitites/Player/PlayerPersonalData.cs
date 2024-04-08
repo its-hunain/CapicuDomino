@@ -23,6 +23,10 @@ public class PlayerPersonalData : MonoBehaviour
     public static string authProvider;
     public static bool playerWhiteListed;
 
+
+    public static string country;
+    public static int age;
+    public static string gender;
     public static float discount;
     public static string location;
     public static string profilePicURL;
@@ -54,6 +58,9 @@ public class PlayerPersonalData : MonoBehaviour
         playerUserID = playerPersonalDataJson.Data.User.userID;
         playerName = playerPersonalDataJson.Data.User.FirstName + " " + playerPersonalDataJson.Data.User.LastName;
         playerEmail = playerPersonalDataJson.Data.User.Email;
+        country = playerPersonalDataJson.Data.User.Country;
+        gender = playerPersonalDataJson.Data.User.Gender;
+        age = int.Parse(playerPersonalDataJson.Data.User.Age);
         playerDomiCoins = float.Parse(playerPersonalDataJson.Data.User.Domicoins);
         //Debug.LogError("playerDomiCoins: " + playerDomiCoins);
         playerWhiteListed = playerPersonalDataJson.Data.User.WhiteListed;
@@ -88,7 +95,7 @@ public class PlayerPersonalData : MonoBehaviour
             Debug.Log("Global.gameType: " + Global.gameType);
             SplashScreen.instance.OnLoadingCompleted();
         }
-
+        UI_Manager.instance.StartCoroutine(UI_Manager.instance.UpdateUI());
     }
 
     private static void OnFailfullyWhiteListedDiscoountDownload(string msg)

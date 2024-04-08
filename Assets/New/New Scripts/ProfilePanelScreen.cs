@@ -40,5 +40,16 @@ public class ProfilePanelScreen : MonoBehaviour
         var temp = Sprite.Create(PlayerPersonalData.playerTexture,new Rect(0.0f, 0.0f, PlayerPersonalData.playerTexture.width, PlayerPersonalData.playerTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
         profileImage.sprite = temp;
 
+        country.text = PlayerPersonalData.country;
+        email.text = PlayerPersonalData.playerEmail;
+        age.text = PlayerPersonalData.age.ToString();
+        gender.text = PlayerPersonalData.gender;
+
+
+        totalWinning.text = PlayerPersonalData.playerStates.gamesWon;
+        totalPlay.text = PlayerPersonalData.playerStates.gamesPlayed;
+        totalCoins.text = PlayerPersonalData.playerDomiCoins.ToString();
+
+        flag.sprite = PlayerPersonalData.playerStates.flagSprite;
     }
 }

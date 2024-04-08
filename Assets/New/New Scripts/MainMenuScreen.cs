@@ -10,6 +10,7 @@ public class MainMenuScreen : MonoBehaviour
 
     public Text name;
     public Text country;
+    public Image flag;
 
     public Button shopBtn;
     public Button coinsBtn;
@@ -47,8 +48,8 @@ public class MainMenuScreen : MonoBehaviour
         name.text = PlayerPersonalData.playerName;
         var temp = Sprite.Create(PlayerPersonalData.playerTexture, new Rect(0.0f, 0.0f, PlayerPersonalData.playerTexture.width, PlayerPersonalData.playerTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
         profileImage.sprite = temp;
-        
-        //country.text = UI_Manager.instance.userCountry;
+        flag.sprite = PlayerPersonalData.playerStates.flagSprite;
+        country.text = PlayerPersonalData.country;
 
     }
 

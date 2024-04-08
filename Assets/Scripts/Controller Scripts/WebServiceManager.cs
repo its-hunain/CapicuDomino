@@ -35,7 +35,7 @@ public class WebServiceManager : MonoBehaviour
     [Header("General Apis")]
     [SerializeField]    internal string getDomiCoins                  = "";
     [SerializeField]    internal string getGameCenter                 = "";
-    [SerializeField]    internal string getPlayerProfile              = "";
+    [SerializeField]    internal string getPlayerProfile              = ""; //can be also use as post
     [SerializeField]    internal string checkInternetConnectivity     = "";
     
     [Space]
