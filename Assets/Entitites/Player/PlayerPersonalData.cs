@@ -147,7 +147,8 @@ public class PlayerPersonalData : MonoBehaviour
     static IEnumerator _GetFlag(string shortCode)
     {
         //UnityWebRequest www = UnityWebRequestTexture.GetTexture("https://countryflagsapi.com/png/" + shortCode);
-
+        Texture2D tempTexture = WebServiceManager.instance.tempFlagTexture;
+        Debug.LogError("shortCode: " + shortCode);
         UnityWebRequest www = UnityWebRequestTexture.GetTexture("https://flagcdn.com/h20/" + shortCode.ToLower() + ".jpg");
         yield return www.SendWebRequest();
 
@@ -157,10 +158,9 @@ public class PlayerPersonalData : MonoBehaviour
         }
         else
         {
-            
-            var tempTexture = ((DownloadHandlerTexture)www.downloadHandler).texture;
-            playerStates.flagSprite = Sprite.Create((Texture2D)tempTexture, new Rect(0.0f, 0.0f, tempTexture.width, tempTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
+            tempTexture = ((DownloadHandlerTexture)www.downloadHandler).texture;
         }
+        playerStates.flagSprite = Sprite.Create((Texture2D)tempTexture, new Rect(0.0f, 0.0f, tempTexture.width, tempTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
     }
 
     internal static void OnFailDownload(string msg)

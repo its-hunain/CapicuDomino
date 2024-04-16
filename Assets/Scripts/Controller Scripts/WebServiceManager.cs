@@ -20,6 +20,7 @@ public enum CACHEABLE { NULL, USER_DATA }
 
 public class WebServiceManager : MonoBehaviour
 {
+    public Texture2D tempFlagTexture;
     [SerializeField] internal string getSetUserAvatarSpecs            = "";
     [SerializeField] internal string getAvatarBuilderCategories       = "";
     [SerializeField] internal string uploadObjectToS3Server           = "";
