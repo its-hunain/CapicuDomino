@@ -54,9 +54,14 @@ public class PlayerPersonalData : MonoBehaviour
         WebglUserSession.userLoggedIn = true;
 
         PlayerPersonalDataJSON playerPersonalDataJson = PlayerPersonalDataJSON.FromJson(keyValuePairs.ToString());
+
+        if (!String.IsNullOrEmpty(playerPersonalDataJson.Data.User.accessToken))
+        {
+            Global.GetBearerToken = Global.GetAuthToken = playerPersonalDataJson.Data.User.accessToken;
+        }
         WebServiceManager.instance.playerPersonalData = playerPersonalDataJson;
         playerUserID = playerPersonalDataJson.Data.User.userID;
-        playerName = playerPersonalDataJson.Data.User.FirstName + " " + playerPersonalDataJson.Data.User.LastName;
+        playerName = playerPersonalDataJson.Data.User.UserName;//.FirstName + " " + playerPersonalDataJson.Data.User.LastName;
         playerEmail = playerPersonalDataJson.Data.User.Email;
         country = playerPersonalDataJson.Data.User.Country;
         gender = playerPersonalDataJson.Data.User.Gender;
@@ -89,6 +94,55 @@ public class PlayerPersonalData : MonoBehaviour
 
         WebServiceManager.instance.StartCoroutine(_GetTexture(profilePicURL));
         WebServiceManager.instance.StartCoroutine(_GetFlag(playerStatesJson.playerFlagShortCode));
+
+        if (SceneManager.GetActiveScene().name.Equals(Global.SplashScene))
+        {
+            Debug.Log("Global.gameType: " + Global.gameType);
+            SplashScreen.instance.OnLoadingCompleted();
+        }
+        UI_Manager.instance.StartCoroutine(UI_Manager.instance.UpdateUI());
+    }
+    internal static void OnSuccessfullyProfileUpdated(string keyValuePairs, long successCode)
+    {
+        Debug.Log("OnSuccessfullyProfileUpdated: " + keyValuePairs.ToString());
+        if (!ResponseStatus.Check(successCode))
+        {
+            Debug.LogError("successCode Error: " + successCode.ToString());
+            Debug.LogError("Some Error: " + keyValuePairs.ToString());
+            if (successCode == 403)
+            {
+                WebglUserSession.userLoggedIn = false;
+                UI_ScreenManager.OpenClosePopUp(WebglUserSession.instance.userSessionFailedPopUp, true, true);
+
+            }
+            return;
+        }
+        WebglUserSession.userLoggedIn = true;
+
+        User user = User.FromJson(keyValuePairs.ToString());
+
+            Global.GetBearerToken = Global.GetAuthToken = user.accessToken;
+        WebServiceManager.instance.playerPersonalData.Data.User = user;
+        playerUserID = user.userID;
+        playerName =   user.UserName;//.FirstName + " " + playerPersonalDataJson.Data.User.LastName;
+        playerEmail =  user.Email;
+        country =      user.Country;
+        gender = user.Gender;
+        age = int.Parse(user.Age);
+        playerDomiCoins = float.Parse(user.Domicoins);
+        //Debug.LogError("playerDomiCoins: " + playerDomiCoins);
+        playerWhiteListed = user.WhiteListed;
+        //discount = playerPersonalDataJson.Data.User.discount;
+        //Debug.Log("discount: " + discount.ToString());
+        playerPassword = user.Email;
+        location = user.Country;
+        profilePicURL = user.ProfilePicUrl;
+
+        PlayerStates playerStatesJson = new PlayerStates();
+
+
+        WebServiceManager.instance.StartCoroutine(_GetTexture(profilePicURL));
+         WebServiceManager.instance.StartCoroutine(_GetFlag(playerStatesJson.playerFlagShortCode));
 
         if (SceneManager.GetActiveScene().name.Equals(Global.SplashScene))
         {

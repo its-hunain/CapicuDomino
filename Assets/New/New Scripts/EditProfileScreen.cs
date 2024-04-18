@@ -38,7 +38,7 @@ public class EditProfileScreen : MonoBehaviour
         postData.Add("age", age);
         postData.Add("gender", gender);
 
-        WebServiceManager.instance.APIRequest(WebServiceManager.instance.getPlayerProfile, Method.POST, null, postData,PlayerPersonalData.OnSuccessfullyProfileDownload, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
+        WebServiceManager.instance.APIRequest(WebServiceManager.instance.getPlayerProfile, Method.POST, null, postData,PlayerPersonalData.OnSuccessfullyProfileUpdated, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
         UI_Manager.instance.ChangeScreen(UI_Manager.instance.editProfileScreen.gameObject, false);
     }
     public void UpdateUISuccess()

@@ -83,6 +83,9 @@ namespace Dominos
     [Serializable]
     public partial class User
     {
+        [JsonProperty("accessToken")]
+        public string accessToken;
+
         [JsonProperty("_id")]
         public string userID ;
 
@@ -146,6 +149,10 @@ namespace Dominos
     public partial class PlayerPersonalDataJSON
     {
         public static PlayerPersonalDataJSON FromJson(string json) => JsonConvert.DeserializeObject<PlayerPersonalDataJSON>(json, Dominos.Converter.Settings);
+    }
+    public partial class User
+    {
+        public static User FromJson(string json) => JsonConvert.DeserializeObject<User>(json, Dominos.Converter.Settings);
     }
 
     [Serializable]

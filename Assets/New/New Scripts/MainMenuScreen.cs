@@ -24,6 +24,8 @@ public class MainMenuScreen : MonoBehaviour
     public Button partnerGameBtn;
     public Button leaderBoardBtn;
 
+
+
     void Start()
     {
        // UpdateUI();
