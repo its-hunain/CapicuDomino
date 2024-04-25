@@ -10078,8 +10078,9 @@ GameObject:
   - component: {fileID: 389382442}
   - component: {fileID: 389382444}
   - component: {fileID: 389382443}
+  - component: {fileID: 389382445}
   m_Layer: 5
-  m_Name: CoinButton
+  m_Name: Shop Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10147,6 +10148,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389382441}
   m_CullTransparentMesh: 1
+--- !u!114 &389382445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389382441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f4029105a86b24d9387cabd450f5db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productId: TableTheme1
+  productName: Capicu Table
+  itemType: 2
+  price: 0
+  isBought: 1
+  btn: {fileID: 1120070033}
+  priceTxt: {fileID: 1273280862}
+  selectionFrame: {fileID: 1028129289}
 --- !u!1 &393524864
 GameObject:
   m_ObjectHideFlags: 0
@@ -11812,8 +11833,9 @@ GameObject:
   - component: {fileID: 447881981}
   - component: {fileID: 447881983}
   - component: {fileID: 447881982}
+  - component: {fileID: 447881984}
   m_Layer: 5
-  m_Name: CoinButton (2)
+  m_Name: Shop Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11879,6 +11901,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 447881980}
   m_CullTransparentMesh: 1
+--- !u!114 &447881984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447881980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f4029105a86b24d9387cabd450f5db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productId: coins
+  productName: 1.5k Coins
+  itemType: 0
+  price: 10
+  isBought: 0
+  btn: {fileID: 148746797}
+  priceTxt: {fileID: 1801902014}
+  selectionFrame: {fileID: 0}
 --- !u!1 &450155269
 GameObject:
   m_ObjectHideFlags: 0
@@ -11916,7 +11958,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1461.38, y: 300}
+  m_SizeDelta: {x: 1460.92, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &450155271
 MonoBehaviour:
@@ -15136,8 +15178,9 @@ GameObject:
   - component: {fileID: 547069111}
   - component: {fileID: 547069113}
   - component: {fileID: 547069112}
+  - component: {fileID: 547069114}
   m_Layer: 5
-  m_Name: CoinButton (3)
+  m_Name: Shop Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15203,6 +15246,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 547069110}
   m_CullTransparentMesh: 1
+--- !u!114 &547069114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547069110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f4029105a86b24d9387cabd450f5db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productId: coins
+  productName: 2k Coins
+  itemType: 0
+  price: 12
+  isBought: 0
+  btn: {fileID: 16345586}
+  priceTxt: {fileID: 525912162}
+  selectionFrame: {fileID: 0}
 --- !u!1 &547394692
 GameObject:
   m_ObjectHideFlags: 0
@@ -28185,8 +28248,9 @@ GameObject:
   - component: {fileID: 963975082}
   - component: {fileID: 963975084}
   - component: {fileID: 963975083}
+  - component: {fileID: 963975085}
   m_Layer: 5
-  m_Name: CoinButton (1)
+  m_Name: Shop Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28252,6 +28316,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963975081}
   m_CullTransparentMesh: 1
+--- !u!114 &963975085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963975081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f4029105a86b24d9387cabd450f5db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productId: coins
+  productName: 1k Coins
+  itemType: 0
+  price: 8
+  isBought: 0
+  btn: {fileID: 1891192352}
+  priceTxt: {fileID: 2132514669}
+  selectionFrame: {fileID: 0}
 --- !u!1 &967611101
 GameObject:
   m_ObjectHideFlags: 0
@@ -30130,8 +30214,9 @@ GameObject:
   - component: {fileID: 1030881106}
   - component: {fileID: 1030881108}
   - component: {fileID: 1030881107}
+  - component: {fileID: 1030881109}
   m_Layer: 5
-  m_Name: CoinButton (3)
+  m_Name: Shop Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30199,6 +30284,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030881105}
   m_CullTransparentMesh: 1
+--- !u!114 &1030881109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030881105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f4029105a86b24d9387cabd450f5db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productId: TileTheme4
+  productName: Magenta
+  itemType: 1
+  price: 5
+  isBought: 0
+  btn: {fileID: 1233984431}
+  priceTxt: {fileID: 1254276924}
+  selectionFrame: {fileID: 322526128}
 --- !u!1 &1044140273
 GameObject:
   m_ObjectHideFlags: 0
@@ -30726,8 +30831,9 @@ GameObject:
   - component: {fileID: 1069489759}
   - component: {fileID: 1069489761}
   - component: {fileID: 1069489760}
+  - component: {fileID: 1069489762}
   m_Layer: 5
-  m_Name: CoinButton (1)
+  m_Name: Shop Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30795,6 +30901,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069489758}
   m_CullTransparentMesh: 1
+--- !u!114 &1069489762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1069489758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f4029105a86b24d9387cabd450f5db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productId: TableTheme2
+  productName: 
+  itemType: 2
+  price: 5
+  isBought: 0
+  btn: {fileID: 1483520767}
+  priceTxt: {fileID: 1022643017}
+  selectionFrame: {fileID: 842356629}
 --- !u!1 &1073665372
 GameObject:
   m_ObjectHideFlags: 0
@@ -36159,7 +36285,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $5.00
+  m_Text: $0
 --- !u!222 &1273280863
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -37458,6 +37584,8 @@ MonoBehaviour:
   invitePlayersScreen: {fileID: 106254180}
   partnerScreen: {fileID: 951670274}
   scoreToWinScreen: {fileID: 0}
+  purchaseSuccessPanel: {fileID: 1153731360}
+  purchaseFailPanel: {fileID: 1450599038}
 --- !u!1 &1339708748
 GameObject:
   m_ObjectHideFlags: 0
@@ -44373,8 +44501,9 @@ GameObject:
   - component: {fileID: 1593708921}
   - component: {fileID: 1593708923}
   - component: {fileID: 1593708922}
+  - component: {fileID: 1593708924}
   m_Layer: 5
-  m_Name: CoinButton
+  m_Name: Shop Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44442,6 +44571,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1593708920}
   m_CullTransparentMesh: 1
+--- !u!114 &1593708924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593708920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f4029105a86b24d9387cabd450f5db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productId: TileTheme1
+  productName: Capicu
+  itemType: 1
+  price: 0
+  isBought: 1
+  btn: {fileID: 1854778255}
+  priceTxt: {fileID: 1715531045}
+  selectionFrame: {fileID: 1291364550}
 --- !u!1 &1594152103
 GameObject:
   m_ObjectHideFlags: 0
@@ -44611,8 +44760,9 @@ GameObject:
   - component: {fileID: 1599722025}
   - component: {fileID: 1599722027}
   - component: {fileID: 1599722026}
+  - component: {fileID: 1599722028}
   m_Layer: 5
-  m_Name: CoinButton (2)
+  m_Name: Shop Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44680,6 +44830,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1599722024}
   m_CullTransparentMesh: 1
+--- !u!114 &1599722028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1599722024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f4029105a86b24d9387cabd450f5db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productId: TileTheme3
+  productName: Blue
+  itemType: 1
+  price: 5
+  isBought: 0
+  btn: {fileID: 401917148}
+  priceTxt: {fileID: 1906228272}
+  selectionFrame: {fileID: 575021825}
 --- !u!1 &1607012593
 GameObject:
   m_ObjectHideFlags: 0
@@ -45918,6 +46088,17 @@ MonoBehaviour:
   tilesScroll: {fileID: 1831857176}
   tablesScroll: {fileID: 2012053133}
   selectionImage: {fileID: 715220941}
+  shopBtns:
+  - {fileID: 1982978811}
+  - {fileID: 963975085}
+  - {fileID: 447881984}
+  - {fileID: 547069114}
+  - {fileID: 1593708924}
+  - {fileID: 1760641639}
+  - {fileID: 1599722028}
+  - {fileID: 1030881109}
+  - {fileID: 389382445}
+  - {fileID: 1069489762}
 --- !u!1 &1648821701
 GameObject:
   m_ObjectHideFlags: 0
@@ -47930,7 +48111,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $5.00
+  m_Text: $0
 --- !u!222 &1715531046
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -48677,7 +48858,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1740092398}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1153731360}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1740092398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49479,8 +49672,9 @@ GameObject:
   - component: {fileID: 1760641636}
   - component: {fileID: 1760641638}
   - component: {fileID: 1760641637}
+  - component: {fileID: 1760641639}
   m_Layer: 5
-  m_Name: CoinButton (1)
+  m_Name: Shop Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49548,6 +49742,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760641635}
   m_CullTransparentMesh: 1
+--- !u!114 &1760641639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760641635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f4029105a86b24d9387cabd450f5db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productId: TileTheme2
+  productName: Rose Gold
+  itemType: 1
+  price: 5
+  isBought: 0
+  btn: {fileID: 783582460}
+  priceTxt: {fileID: 2099937547}
+  selectionFrame: {fileID: 1975414798}
 --- !u!1 &1761981199
 GameObject:
   m_ObjectHideFlags: 0
@@ -55195,8 +55409,9 @@ GameObject:
   - component: {fileID: 1982978808}
   - component: {fileID: 1982978810}
   - component: {fileID: 1982978809}
+  - component: {fileID: 1982978811}
   m_Layer: 5
-  m_Name: CoinButton
+  m_Name: Shop Item
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55262,6 +55477,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1982978807}
   m_CullTransparentMesh: 1
+--- !u!114 &1982978811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1982978807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16f4029105a86b24d9387cabd450f5db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  productId: coins
+  productName: 500 Coins
+  itemType: 0
+  price: 5
+  isBought: 0
+  btn: {fileID: 404910258}
+  priceTxt: {fileID: 2048218147}
+  selectionFrame: {fileID: 0}
 --- !u!1 &1984402829
 GameObject:
   m_ObjectHideFlags: 0

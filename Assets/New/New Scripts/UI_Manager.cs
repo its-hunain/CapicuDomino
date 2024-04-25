@@ -21,7 +21,8 @@ public class UI_Manager : MonoBehaviour
     public PartnerScreen partnerScreen;
     public ScoreToWinScreen scoreToWinScreen;
 
-
+    public GameObject purchaseSuccessPanel;
+    public GameObject purchaseFailPanel;
 
     // Start is called before the first frame update
     void Start()

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,6 +19,7 @@ public class ShopScreen : MonoBehaviour
 
     public Image selectionImage;
 
+    public List<ShopItemBtn> shopBtns;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,11 @@ public class ShopScreen : MonoBehaviour
         backBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.shopScreen.gameObject, false));
         settingsBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.settingScreen.gameObject, true));
 
+        foreach (var item in shopBtns)
+        {
+            if (UI_ScreenManager.instance.ownedProducts.Exists(x => x.productId == item.productId))
+                item.isBought = true;
+        }
     }
 
     void SwitchPanels(Button btn, GameObject panel)
@@ -40,5 +47,16 @@ public class ShopScreen : MonoBehaviour
 
         panel.SetActive(true);
         selectionImage.transform.position = btn.transform.position;
+    }
+
+    public void ChangeSelectable()
+    {
+        foreach (var item in shopBtns)
+        {
+            if (item.selectionFrame)
+            {
+                item.selectionFrame.gameObject.SetActive(false);
+            }
+        }
     }
 }

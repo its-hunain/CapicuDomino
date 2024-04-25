@@ -44,6 +44,9 @@ public class WebServiceManager : MonoBehaviour
     [SerializeField] internal string signUpFunction = "";
     [SerializeField] internal string customLoginFunction = "";
 
+    [SerializeField] internal string getProducts = "";
+    [SerializeField] internal string buyProducts = "";
+
     public static WebServiceManager instance;
 
     //Live

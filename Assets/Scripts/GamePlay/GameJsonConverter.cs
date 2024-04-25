@@ -145,6 +145,31 @@ namespace Dominos
         public string ProfilePicUrl = "";
 
     }
+    /// <summary>
+
+    [Serializable]
+    public partial class BuyShopItem
+    {
+        [JsonProperty("productId")]
+        public string productId;
+        [JsonProperty("productName")]
+        public string productName;
+        [JsonProperty("productPrice")]
+        public string productPrice;
+
+    }
+
+
+    public partial class BuyShopItem
+    {
+        public static BuyShopItem FromJson(string json) => JsonConvert.DeserializeObject<BuyShopItem>(json, Dominos.Converter.Settings);
+
+    }
+    /// </summary>
+    /// 
+
+
+
 
     public partial class PlayerPersonalDataJSON
     {
