@@ -466,6 +466,10 @@ PrefabInstance:
       value: api/auth/mobile/socialLogin
       objectReference: {fileID: 0}
     - target: {fileID: 7451005440754805605, guid: 5d76c51a9972c4c92bed4ea2255aff00, type: 3}
+      propertyPath: getLeaderboards
+      value: api/users/LeaderBoard
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451005440754805605, guid: 5d76c51a9972c4c92bed4ea2255aff00, type: 3}
       propertyPath: tempFlagTexture
       value: 
       objectReference: {fileID: 2800000, guid: faa108c367c98459283ecee5635192c3, type: 3}
@@ -998,6 +1002,7 @@ MonoBehaviour:
   errorPopUpScreen: {fileID: 1454192873}
   uiScene_Background: {fileID: 0}
   userNotFoundPopUpScreen: {fileID: 1553370912}
+  ownedProducts: []
 --- !u!1001 &1248958634
 PrefabInstance:
   m_ObjectHideFlags: 0

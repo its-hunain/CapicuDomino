@@ -42,7 +42,7 @@ public class MainMenuScreen : MonoBehaviour
 
 
         partnerGameBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.partnerScreen.gameObject, true));
-      //  leaderBoardBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance..gameObject, true));
+        leaderBoardBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.leaderBoardScreen.gameObject, true));
 
     }
     public void UpdateUI()

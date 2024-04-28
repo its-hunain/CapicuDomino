@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UI_Manager : MonoBehaviour
+public class UI_Manager : MonoBehaviour //new
 {
     public static UI_Manager instance;
     public LoginScreen loginScreen;
@@ -20,6 +20,7 @@ public class UI_Manager : MonoBehaviour
     public InvitePlayersScreen invitePlayersScreen;
     public PartnerScreen partnerScreen;
     public ScoreToWinScreen scoreToWinScreen;
+    public LeaderBoardScript leaderBoardScreen;
 
     public GameObject purchaseSuccessPanel;
     public GameObject purchaseFailPanel;
