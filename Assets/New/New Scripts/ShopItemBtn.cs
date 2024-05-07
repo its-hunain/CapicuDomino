@@ -19,8 +19,6 @@ public class ShopItemBtn : MonoBehaviour
     public Image selectionFrame;
 
 
-    public List<Material> domMats = new List<Material>();
-
 
     // Start is called before the first frame update
     void Start()
@@ -94,7 +92,7 @@ public class ShopItemBtn : MonoBehaviour
     void OnSuccess(string keyValuePairs, long successCode)
     {
         Debug.Log("OnSuccessfullyGetProducts: " + keyValuePairs.ToString());
-        UI_ScreenManager.instance.ownedProducts.Add(BuyShopItem.FromJson(keyValuePairs.ToString()));
+        UI_Manager.instance.shopScreen.ownedProducts = FetchOwnShopItem.FromJson(keyValuePairs.ToString());
 
         isBought = true;
         priceTxt.text = "SELECT";
@@ -110,13 +108,13 @@ public class ShopItemBtn : MonoBehaviour
     }
 
 
-    public void UpdateTileTheme(Color color)
-    {
-        foreach (var item in domMats)
-        {
-            item.color = color;
-        }
-    }
+    //public void UpdateTileTheme(Color color)
+    //{
+    //    foreach (var item in domMats)
+    //    {
+    //        item.color = color;
+    //    }
+    //}
 }
 public enum ItemTypeEnum
 {

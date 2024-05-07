@@ -93,7 +93,7 @@ public class PlayerPersonalData : MonoBehaviour
         playerStates = playerStatesJson;
 
         WebServiceManager.instance.StartCoroutine(_GetTexture(profilePicURL));
-        WebServiceManager.instance.StartCoroutine(_GetFlag(playerStatesJson.playerFlagShortCode));
+      //  WebServiceManager.instance.StartCoroutine(_GetFlag(playerStatesJson.playerFlagShortCode));
 
         if (SceneManager.GetActiveScene().name.Equals(Global.SplashScene))
         {
@@ -142,7 +142,7 @@ public class PlayerPersonalData : MonoBehaviour
 
 
         WebServiceManager.instance.StartCoroutine(_GetTexture(profilePicURL));
-         WebServiceManager.instance.StartCoroutine(_GetFlag(playerStatesJson.playerFlagShortCode));
+       //  WebServiceManager.instance.StartCoroutine(_GetFlag(playerStatesJson.playerFlagShortCode));
 
         if (SceneManager.GetActiveScene().name.Equals(Global.SplashScene))
         {

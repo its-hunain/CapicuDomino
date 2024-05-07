@@ -8455,7 +8455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data:
-    value: []
+    data: []
   closeBtn: {fileID: 1274447742}
   content: {fileID: 1375937200}
   prefab: {fileID: 5417852095507766431, guid: bdc9903dfe2930541a89081951a7e0ea, type: 3}
@@ -10431,7 +10431,6 @@ MonoBehaviour:
   btn: {fileID: 1120070033}
   priceTxt: {fileID: 1273280862}
   selectionFrame: {fileID: 1028129289}
-  domMats: []
 --- !u!1 &393524864
 GameObject:
   m_ObjectHideFlags: 0
@@ -12185,7 +12184,6 @@ MonoBehaviour:
   btn: {fileID: 148746797}
   priceTxt: {fileID: 1801902014}
   selectionFrame: {fileID: 0}
-  domMats: []
 --- !u!1 &450155269
 GameObject:
   m_ObjectHideFlags: 0
@@ -15606,7 +15604,6 @@ MonoBehaviour:
   btn: {fileID: 16345586}
   priceTxt: {fileID: 525912162}
   selectionFrame: {fileID: 0}
-  domMats: []
 --- !u!1 &547394692
 GameObject:
   m_ObjectHideFlags: 0
@@ -28788,7 +28785,6 @@ MonoBehaviour:
   btn: {fileID: 1891192352}
   priceTxt: {fileID: 2132514669}
   selectionFrame: {fileID: 0}
-  domMats: []
 --- !u!1 &967611101
 GameObject:
   m_ObjectHideFlags: 0
@@ -30757,7 +30753,6 @@ MonoBehaviour:
   btn: {fileID: 1233984431}
   priceTxt: {fileID: 1254276924}
   selectionFrame: {fileID: 322526128}
-  domMats: []
 --- !u!1 &1044140273
 GameObject:
   m_ObjectHideFlags: 0
@@ -31375,7 +31370,6 @@ MonoBehaviour:
   btn: {fileID: 1483520767}
   priceTxt: {fileID: 1022643017}
   selectionFrame: {fileID: 842356629}
-  domMats: []
 --- !u!1 &1073665372
 GameObject:
   m_ObjectHideFlags: 0
@@ -38381,7 +38375,6 @@ MonoBehaviour:
   errorPopUpScreen: {fileID: 1586957368}
   uiScene_Background: {fileID: 1147248765}
   userNotFoundPopUpScreen: {fileID: 2038785333}
-  ownedProducts: []
 --- !u!4 &1337515263
 Transform:
   m_ObjectHideFlags: 0
@@ -38427,6 +38420,9 @@ MonoBehaviour:
   leaderBoardScreen: {fileID: 325054056}
   purchaseSuccessPanel: {fileID: 1153731360}
   purchaseFailPanel: {fileID: 1450599038}
+  dominoMat:
+  - {fileID: 2100000, guid: 22310eae5d61d473d93a25a42edb5681, type: 2}
+  - {fileID: 2100000, guid: 584be7e8d37174ced8b14481afc0da63, type: 2}
 --- !u!1 &1339708748
 GameObject:
   m_ObjectHideFlags: 0
@@ -45794,7 +45790,6 @@ MonoBehaviour:
   btn: {fileID: 1854778255}
   priceTxt: {fileID: 1715531045}
   selectionFrame: {fileID: 1291364550}
-  domMats: []
 --- !u!1 &1594152103
 GameObject:
   m_ObjectHideFlags: 0
@@ -46054,7 +46049,6 @@ MonoBehaviour:
   btn: {fileID: 401917148}
   priceTxt: {fileID: 1906228272}
   selectionFrame: {fileID: 575021825}
-  domMats: []
 --- !u!1 &1607012593
 GameObject:
   m_ObjectHideFlags: 0
@@ -47304,6 +47298,9 @@ MonoBehaviour:
   - {fileID: 1030881109}
   - {fileID: 389382445}
   - {fileID: 1069489762}
+  ownedProducts:
+    _id: 
+    myProducts: []
 --- !u!1 &1648821701
 GameObject:
   m_ObjectHideFlags: 0
@@ -51005,7 +51002,6 @@ MonoBehaviour:
   btn: {fileID: 783582460}
   priceTxt: {fileID: 2099937547}
   selectionFrame: {fileID: 1975414798}
-  domMats: []
 --- !u!1 &1761981199
 GameObject:
   m_ObjectHideFlags: 0
@@ -56982,7 +56978,6 @@ MonoBehaviour:
   btn: {fileID: 404910258}
   priceTxt: {fileID: 2048218147}
   selectionFrame: {fileID: 0}
-  domMats: []
 --- !u!1 &1984402829
 GameObject:
   m_ObjectHideFlags: 0

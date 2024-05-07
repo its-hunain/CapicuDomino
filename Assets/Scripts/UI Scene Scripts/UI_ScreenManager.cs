@@ -30,8 +30,6 @@ public class UI_ScreenManager : MonoBehaviour
 
     public GameObject userNotFoundPopUpScreen;
 
-    [SerializeField]
-    public List<BuyShopItem> ownedProducts = new List<BuyShopItem>();
 
 
     private void Awake()
@@ -45,7 +43,6 @@ public class UI_ScreenManager : MonoBehaviour
 
         if (SoundManager.instance != null) SoundManager.instance.MenuBGPlayer(true);
 
-        WebServiceManager.instance.APIRequest(WebServiceManager.instance.getProducts, Method.GET, null, null, OnSuccess, OnFail);
 
         //Hitting again when scene reload after finish one game.
         WebServiceManager.instance.APIRequest(WebServiceManager.instance.getPlayerProfile, Method.GET, null, null, PlayerPersonalData.OnSuccessfullyProfileDownload, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
@@ -53,17 +50,6 @@ public class UI_ScreenManager : MonoBehaviour
 
     }
 
-    void OnSuccess(string keyValuePairs, long successCode)
-    {
-        Debug.Log("OnSuccessfullyGetProducts: " + keyValuePairs.ToString());
-        ownedProducts.Add( BuyShopItem.FromJson(keyValuePairs.ToString()));
-
-
-    }
-    void OnFail(string msg)
-    {
-
-    }
     public static void OpenClosePopUp(GameObject panel, bool doOpen, bool showBlackBG)
     {
         //Debug.Log("OpenClosePopUp" + panel,panel);

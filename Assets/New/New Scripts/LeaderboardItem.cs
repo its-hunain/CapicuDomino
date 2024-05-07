@@ -9,7 +9,8 @@ public class LeaderboardItem : MonoBehaviour
     public Text userRank;
     public Text userName;
     public Text userWins;
-    public Image userImage;
+    public Image userImage = null;
+
 
     public void SetData(LeaderboardDatum data)
     {
@@ -29,7 +30,10 @@ public class LeaderboardItem : MonoBehaviour
         }
         else
         {
-          //DOwnloadTexture  userImage.sprite = ((DownloadHandlerTexture)www.downloadHandler).texture;
+            Texture2D tex = ((DownloadHandlerTexture)www.downloadHandler).texture;
+            Sprite sprite = Sprite.Create(tex, new Rect(0, 0, tex.width, tex.height), new Vector2(tex.width / 2, tex.height / 2));
+          //  userImage.sprite = sprite;
+
         }
 
     }

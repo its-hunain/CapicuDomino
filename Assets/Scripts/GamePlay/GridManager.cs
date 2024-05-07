@@ -13,7 +13,7 @@ using UnityEngine.UI;
 public class GridManager : MonoBehaviour
 {
     [Header("High Five Special Collider")]
-    public List<PlayerData> tempPlayers = new();
+    public List<PlayerData> tempPlayers = new List<PlayerData>();
 
     [Space]
     [Header("High Five Special Collider")]
@@ -97,6 +97,12 @@ public class GridManager : MonoBehaviour
 
     TableBordersController tableBordersController;
 
+
+    [Space]
+    public List<Material> dominoMat;
+
+
+
     private void Awake()
     {
         instance = this;
@@ -107,6 +113,10 @@ public class GridManager : MonoBehaviour
     //Calling this start in restarting game as well.
     public void Start()
     {
+        var str = PlayerPrefs.GetString("TileTheme");
+        Debug.LogError("Tile: " +str);
+        UpdateTileTheme(str);
+
         Debug.Log("Match Started...");
 
         //if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Multiplayer)
@@ -123,6 +133,45 @@ public class GridManager : MonoBehaviour
             StartGame();
         }
     }
+
+    public void UpdateTileTheme(string theme)
+    {
+        Color color = Color.white;
+        switch (theme)
+        {//255
+
+            case "TileTheme1":
+                foreach (var item in dominoMat)
+                {
+                    item.color = color;
+                }
+                break;
+
+            case "TileTheme2":
+                color = new Color(235, 95, 165, 255);
+                foreach (var item in dominoMat)
+                {
+                    item.color = color;
+                }
+                break;
+            case "TileTheme3":
+                color = new Color(127, 142, 243, 255);
+                foreach (var item in dominoMat)
+                {
+                    item.color = color;
+                }
+                break;
+            case "TileTheme4":
+                color = new Color(157, 51, 238, 255);
+                foreach (var item in dominoMat)
+                {
+                    item.color = color;
+                }
+                break;
+
+        }
+    }
+
 
     public void StartGame()
     {

@@ -1,6 +1,7 @@
 namespace Dominos
 {
     using System;
+    using System.Collections.Generic;
     using AssetBuilder;
     using Newtonsoft.Json;
     using UnityEngine;
@@ -148,6 +149,22 @@ namespace Dominos
     /// <summary>
 
     [Serializable]
+    public partial class FetchOwnShopItem
+    {
+        [JsonProperty("_id")]
+        public string _id;
+
+        [JsonProperty("myProducts")]
+        public List<BuyShopItem> myProducts;
+    }
+
+    public partial class FetchOwnShopItem
+    {
+        public static FetchOwnShopItem FromJson(string json) => JsonConvert.DeserializeObject<FetchOwnShopItem>(json, Dominos.Converter.Settings);
+
+    }
+
+    [Serializable]
     public partial class BuyShopItem
     {
         [JsonProperty("productId")]
@@ -156,14 +173,6 @@ namespace Dominos
         public string productName;
         [JsonProperty("productPrice")]
         public string productPrice;
-
-    }
-
-
-    public partial class BuyShopItem
-    {
-        public static BuyShopItem FromJson(string json) => JsonConvert.DeserializeObject<BuyShopItem>(json, Dominos.Converter.Settings);
-
     }
     /// </summary>
     /// 

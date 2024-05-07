@@ -1,3 +1,4 @@
+using Dominos;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,9 +22,15 @@ public class ShopScreen : MonoBehaviour
 
     public List<ShopItemBtn> shopBtns;
 
+
+    [SerializeField]
+    public FetchOwnShopItem ownedProducts;// = new List<BuyShopItem>();
+
     // Start is called before the first frame update
     void Start()
     {
+
+        GetOwnedProds();
         coinsBtn.onClick.AddListener(() => SwitchPanels(coinsBtn,coinsScroll));
         tilesBtn.onClick.AddListener(() => SwitchPanels(tilesBtn,tilesScroll));
         tablesBtn.onClick.AddListener(() => SwitchPanels(tablesBtn,tablesScroll));
@@ -33,7 +40,7 @@ public class ShopScreen : MonoBehaviour
 
         foreach (var item in shopBtns)
         {
-            if (UI_ScreenManager.instance.ownedProducts.Exists(x => x.productId == item.productId))
+            if (ownedProducts.myProducts.Exists(x => x.productId == item.productId))
                 item.isBought = true;
         }
     }
@@ -59,4 +66,30 @@ public class ShopScreen : MonoBehaviour
             }
         }
     }
+    [ContextMenu("Try")]
+    void GetOwnedProds()
+    {
+        WebServiceManager.instance.APIRequest(WebServiceManager.instance.getProducts, Method.GET, null, null, OnSuccess, OnFail);
+    }
+    void OnSuccess(string keyValuePairs, long successCode)
+    {
+        Debug.Log("OnSuccessfullyGetProducts: " + keyValuePairs.ToString());
+        ownedProducts = FetchOwnShopItem.FromJson(keyValuePairs.ToString());
+
+
+        foreach (var item in shopBtns)
+        {
+            if (ownedProducts.myProducts.Exists(x => x.productId == item.productId))
+                item.isBought = true;
+        }
+
+
+    }
+    void OnFail(string msg)
+    {
+        Debug.Log("OnFailGetProducts: " + msg);
+
+    }
+
+
 }

@@ -17,6 +17,8 @@ public class LeaderBoardScript : MonoBehaviour
     void Start()
     {
         WebServiceManager.instance.APIRequest(WebServiceManager.instance.getLeaderboards, Method.GET, null, null, OnSucess);
+
+        closeBtn.onClick.AddListener(() => Close());
     }
     void OnSucess(string keyValuePairs, long successCode)
     {
@@ -31,7 +33,7 @@ public class LeaderBoardScript : MonoBehaviour
         data = LeaderboardData.FromJson(keyValuePairs.ToString());
 
 
-        foreach (var item in data.value)
+        foreach (var item in data.data)
         {
             var temp = Instantiate(prefab, content);
             temp.SetData(item);
@@ -49,7 +51,7 @@ public class LeaderBoardScript : MonoBehaviour
 [Serializable]
 public partial class LeaderboardData
 {
-    public List<LeaderboardDatum> value;
+    public List<LeaderboardDatum> data;
 }
 
 [Serializable]

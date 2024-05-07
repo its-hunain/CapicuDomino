@@ -1,3 +1,4 @@
+using Dominos;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,12 +26,16 @@ public class UI_Manager : MonoBehaviour //new
     public GameObject purchaseSuccessPanel;
     public GameObject purchaseFailPanel;
 
+
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
-      // StartCoroutine(UpdateUI());
+        // StartCoroutine(UpdateUI());
+
+
     }
+
 
     public IEnumerator UpdateUI()
     {
@@ -53,4 +58,6 @@ public class UI_Manager : MonoBehaviour //new
     {
         obj.SetActive(on);
     }
+
+
 }
