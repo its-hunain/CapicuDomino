@@ -98,41 +98,45 @@ public class Tile : MonoBehaviour
 
     public void UpdateTileTheme(string theme)
     {
-        Color color = Color.white;
-        switch (theme)
-        {//255
+        Color color;// = Color.white;
 
-            case "TileTheme1":
-                foreach (var item in  mat.materials)
-                {
-                    item.color = color;
-                    item.color = color;
-                }
-                break;
+        if (theme == "TileTheme1")
+        {
 
-            case "TileTheme2":
-                color = new Color(235, 95, 165, 255);
-                foreach (var item in  mat.materials)
-                {
-                    item.color = color;
-                }
-                break;
-            case "TileTheme3":
-                color = new Color(127, 142, 243, 255);
-                foreach (var item in  mat.materials)
-                {
-                    item.color = color;
-                }
-                break;
-            case "TileTheme4":
-                color = new Color(157, 51, 238, 255);
-                foreach (var item in  mat.materials)
-                {
-                    item.color = color;
-                }
-                break;
-
+            foreach (var item in mat.materials)
+            {
+                item.color = Color.white;
+            }
         }
+
+        else if (theme == "TileTheme2")
+        {
+
+            color = new Color(235, 95, 165, 255);
+            foreach (var item in mat.materials)
+            {
+                item.color = color;
+            }
+        }
+        else if (theme == "TileTheme3")
+        {
+
+            color = new Color(127, 142, 243, 255);
+            foreach (var item in mat.materials)
+            {
+                item.color = color;
+            }
+        }
+        else if (theme == "TileTheme4")
+        {
+
+            color = new Color(157, 51, 238, 255);
+            foreach (var item in mat.materials)
+            {
+                item.color = color;
+            }
+        }
+
     }
 
     /// <summary>
