@@ -88,6 +88,51 @@ public class Tile : MonoBehaviour
         orignalTexture = Resources.Load<Texture>("DominoSprites/3DTilesTexture/" + First.ToString() + Second.ToString());
         originalSprite = Resources.Load<Sprite>("DominoSprites/UITilesSprite/" + First.ToString() + Second.ToString());
         mat.materials[1].mainTexture = emptyTexture;
+
+        var str = PlayerPrefs.GetString("TileTheme");
+        Debug.LogError("Tile: " + str);
+        UpdateTileTheme(str);
+
+    }
+
+
+    public void UpdateTileTheme(string theme)
+    {
+        Color color = Color.white;
+        switch (theme)
+        {//255
+
+            case "TileTheme1":
+                foreach (var item in  mat.materials)
+                {
+                    item.color = color;
+                    item.color = color;
+                }
+                break;
+
+            case "TileTheme2":
+                color = new Color(235, 95, 165, 255);
+                foreach (var item in  mat.materials)
+                {
+                    item.color = color;
+                }
+                break;
+            case "TileTheme3":
+                color = new Color(127, 142, 243, 255);
+                foreach (var item in  mat.materials)
+                {
+                    item.color = color;
+                }
+                break;
+            case "TileTheme4":
+                color = new Color(157, 51, 238, 255);
+                foreach (var item in  mat.materials)
+                {
+                    item.color = color;
+                }
+                break;
+
+        }
     }
 
     /// <summary>
