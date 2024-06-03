@@ -92,15 +92,16 @@ public class PlayerPersonalData : MonoBehaviour
 
         playerStates = playerStatesJson;
 
-        WebServiceManager.instance.StartCoroutine(_GetTexture(profilePicURL));
+        ImageCacheManager.instance.CheckOrDownloadImage(profilePicURL, null, UpdatePic);
+
+        //WebServiceManager.instance.StartCoroutine(_GetTexture(profilePicURL));
       //  WebServiceManager.instance.StartCoroutine(_GetFlag(playerStatesJson.playerFlagShortCode));
 
-        if (SceneManager.GetActiveScene().name.Equals(Global.SplashScene))
-        {
-            Debug.Log("Global.gameType: " + Global.gameType);
-            SplashScreen.instance.OnLoadingCompleted();
-        }
-        UI_Manager.instance.StartCoroutine(UI_Manager.instance.UpdateUI());
+        //if (SceneManager.GetActiveScene().name.Equals(Global.SplashScene))
+        //{
+        //    Debug.Log("Global.gameType: " + Global.gameType);
+        //    SplashScreen.instance.OnLoadingCompleted();
+        //}
     }
     internal static void OnSuccessfullyProfileUpdated(string keyValuePairs, long successCode)
     {
@@ -140,38 +141,18 @@ public class PlayerPersonalData : MonoBehaviour
 
         PlayerStates playerStatesJson = new PlayerStates();
 
-
-        WebServiceManager.instance.StartCoroutine(_GetTexture(profilePicURL));
+        ImageCacheManager.instance.CheckOrDownloadImage(profilePicURL , null, UpdatePic);
+        //WebServiceManager.instance.StartCoroutine(_GetTexture(profilePicURL));
        //  WebServiceManager.instance.StartCoroutine(_GetFlag(playerStatesJson.playerFlagShortCode));
 
-        if (SceneManager.GetActiveScene().name.Equals(Global.SplashScene))
-        {
-            Debug.Log("Global.gameType: " + Global.gameType);
-            SplashScreen.instance.OnLoadingCompleted();
-        }
-        UI_Manager.instance.StartCoroutine(UI_Manager.instance.UpdateUI());
+        //if (SceneManager.GetActiveScene().name.Equals(Global.SplashScene))
+        //{
+        //    Debug.Log("Global.gameType: " + Global.gameType);
+        //    SplashScreen.instance.OnLoadingCompleted();
+        //}
     }
 
-    private static void OnFailfullyWhiteListedDiscoountDownload(string msg)
-    {
-        Debug.LogError("Error: " + msg);
-    }
 
-    private static void OnSuccessfullyWhiteListedDiscoountDownload(JObject keyValuePairs, long code)
-    {
-        string resp = keyValuePairs.ToString();
-        if (ResponseStatus.Check(code))
-        {
-            CheckWhiteList checkWhiteList = CheckWhiteList.FromJson(resp);
-            playerWhiteListed = checkWhiteList.isWhitelisted;
-            discount = checkWhiteList.discount;
-            Debug.Log("OnSuccessfullyWhiteListedDiscoountDownload: " + resp);
-        }
-        else
-        {
-            Debug.LogError("Error: " + resp);
-        }
-    }
 
     /// <summary>
     /// Download My Picture
@@ -193,6 +174,12 @@ public class PlayerPersonalData : MonoBehaviour
 
     }
 
+    private static void UpdatePic(Texture2D texture)
+    {
+        playerTexture = texture;
+        UI_Manager.instance.UpdateUI();
+
+    }
 
     /// <summary>
     /// Download My Flag

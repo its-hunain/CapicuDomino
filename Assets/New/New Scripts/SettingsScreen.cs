@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SettingsScreen : MonoBehaviour
@@ -25,8 +26,10 @@ public class SettingsScreen : MonoBehaviour
 
     public void LogOut()
     {
-        UI_Manager.instance.ChangeScreen(UI_Manager.instance.settingScreen.gameObject, false);
-        UI_Manager.instance.ChangeScreen(UI_Manager.instance.menuScreen.gameObject, false);
+        //UI_Manager.instance.ChangeScreen(UI_Manager.instance.settingScreen.gameObject, false);
+        //UI_Manager.instance.ChangeScreen(UI_Manager.instance.menuScreen.gameObject, false);
+        PlayerPrefs.DeleteAll();
+        SceneManager.LoadScene(Global.UIScene);
     }
 
 }

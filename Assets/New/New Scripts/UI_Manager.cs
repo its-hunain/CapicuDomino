@@ -6,6 +6,7 @@ using UnityEngine;
 public class UI_Manager : MonoBehaviour //new
 {
     public static UI_Manager instance;
+    public SplashScreen splashScreen;
     public LoginScreen loginScreen;
     public MainMenuScreen menuScreen;
     public ProfilePanelScreen profileScreen;
@@ -37,23 +38,23 @@ public class UI_Manager : MonoBehaviour //new
     }
 
 
-    public IEnumerator UpdateUI()
+    public void UpdateUI()
     {
-        Debug.LogError("UpdateUI");
-        yield return new WaitForSeconds(2f);
+        Debug.Log("UpdateUI");
+        //yield return new WaitForSeconds(2f);
         menuScreen.UpdateUI();
         profileScreen.UpdateUI();
         editProfileScreen.UpdateUI();
     }
-    public void SaveUserData(string name, string country, string age, string gender)
-    {
-        PlayerPrefs.SetString("Name", name);
-        PlayerPrefs.SetString("Country", country);
-        PlayerPrefs.SetString("Age", age);
-        PlayerPrefs.SetString("Gender", gender);
-        UI_Manager.instance.profileScreen.UpdateUI();
-        UI_Manager.instance.menuScreen.UpdateUI();
-    }
+    //public void SaveUserData(string name, string country, string age, string gender)
+    //{
+    //    PlayerPrefs.SetString("Name", name);
+    //    PlayerPrefs.SetString("Country", country);
+    //    PlayerPrefs.SetString("Age", age);
+    //    PlayerPrefs.SetString("Gender", gender);
+    //    UI_Manager.instance.profileScreen.UpdateUI();
+    //    UI_Manager.instance.menuScreen.UpdateUI();
+    //}
     public void ChangeScreen(GameObject obj,bool on)
     {
         obj.SetActive(on);

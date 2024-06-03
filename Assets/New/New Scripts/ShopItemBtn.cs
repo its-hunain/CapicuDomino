@@ -49,7 +49,6 @@ public class ShopItemBtn : MonoBehaviour
 
     void OnPurchase()
     {
-        UI_Manager.instance.purchaseSuccessPanel.SetActive(!isBought);
         UI_Manager.instance.shopScreen.ChangeSelectable();
 
 
@@ -91,6 +90,8 @@ public class ShopItemBtn : MonoBehaviour
     }
     void OnSuccess(string keyValuePairs, long successCode)
     {
+        UI_Manager.instance.purchaseSuccessPanel.SetActive(true);
+
         Debug.Log("OnSuccessfullyGetProducts: " + keyValuePairs.ToString());
         UI_Manager.instance.shopScreen.ownedProducts = FetchOwnShopItem.FromJson(keyValuePairs.ToString());
 

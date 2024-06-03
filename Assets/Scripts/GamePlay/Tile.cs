@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class Tile : MonoBehaviour
 {
@@ -42,7 +43,7 @@ public class Tile : MonoBehaviour
 
     public bool isFrontFace = false; //if tile face is hidden
 
-    [Header("Possiblities For Same Phase Child")]
+    [Header("Possibilities For Same Phase Child")]
     public TileChilds childPossibility;
 
     public void Start()
@@ -90,7 +91,6 @@ public class Tile : MonoBehaviour
         mat.materials[1].mainTexture = emptyTexture;
 
         var str = PlayerPrefs.GetString("TileTheme");
-        Debug.LogError("Tile: " + str);
         UpdateTileTheme(str);
 
     }
@@ -98,45 +98,41 @@ public class Tile : MonoBehaviour
 
     public void UpdateTileTheme(string theme)
     {
-        Color color;// = Color.white;
+        Color color = Color.white;
 
         if (theme == "TileTheme1")
         {
-
-            foreach (var item in mat.materials)
-            {
-                item.color = Color.white;
-            }
+            color = Color.white;
         }
 
         else if (theme == "TileTheme2")
         {
 
             color = new Color(235, 95, 165, 255);
-            foreach (var item in mat.materials)
-            {
-                item.color = color;
-            }
         }
         else if (theme == "TileTheme3")
         {
 
             color = new Color(127, 142, 243, 255);
-            foreach (var item in mat.materials)
-            {
-                item.color = color;
-            }
         }
         else if (theme == "TileTheme4")
         {
-
             color = new Color(157, 51, 238, 255);
-            foreach (var item in mat.materials)
-            {
-                item.color = color;
-            }
+        }
+        else
+        {
+            color = Color.white;
         }
 
+        foreach (var item in mat.sharedMaterials)
+        {
+            item.SetColor("_Color", color);
+
+            //item.color = color;
+            Debug.Log(" item.color : " + item.color);
+        }
+
+        Debug.Log("theme: "  + theme);
     }
 
     /// <summary>
