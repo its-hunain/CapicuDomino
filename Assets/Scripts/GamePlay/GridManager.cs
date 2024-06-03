@@ -1290,10 +1290,10 @@ public class GridManager : MonoBehaviour
             item.gameObject.SetActive(true);
         }
 
-        foreach (var item in SpawnPointManger.instance.points)
-        {
-            item.gameObject.SetActive(true);
-        }
+        //foreach (var item in SpawnPointManger.instance.points)
+        //{
+        //    item.gameObject.SetActive(true);
+        //}
 
         //if 2 player game selected
         if (numberOfPlayers == 2)
@@ -1309,16 +1309,6 @@ public class GridManager : MonoBehaviour
             //Destroy(GamePlayUIPanel.instance.players[2].gameObject);
             GamePlayUIPanel.instance.players[2].gameObject.SetActive(false);
             GamePlayUIPanel.instance.players.RemoveAt(2);
-
-            //Removing Spawn Points
-            //Player 4 Position
-            SpawnPointManger.instance.points[1].gameObject.SetActive(false);
-            SpawnPointManger.instance.points.RemoveAt(1);
-
-            //Player 3 Position
-            SpawnPointManger.instance.points[2].gameObject.SetActive(false);
-            SpawnPointManger.instance.points.RemoveAt(2);
-
         }
 
         //if 3 player game selected
@@ -1330,11 +1320,6 @@ public class GridManager : MonoBehaviour
             //Destroy(GamePlayUIPanel.instance.players[1].gameObject);
             GamePlayUIPanel.instance.players[3].gameObject.SetActive(false);
             GamePlayUIPanel.instance.players.RemoveAt(3);
-
-            //Removing Spawn Points
-            //Player 4 Position
-            SpawnPointManger.instance.points[3].gameObject.SetActive(false);
-            SpawnPointManger.instance.points.RemoveAt(3);
         }
         else
         {
