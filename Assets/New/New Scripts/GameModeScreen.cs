@@ -14,7 +14,7 @@ public class GameModeScreen : MonoBehaviour
 
     void Start()
     {
-        closeBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.gameModeScreen.gameObject, false));
+        closeBtn.onClick.AddListener(() => BackBtnCallBack());
 
         capicu.onClick.AddListener(() =>    GameModeSelection(GameRulesManager.GameRules.GameMode5, capicu,false));
         blocking.onClick.AddListener(() =>GameModeSelection(GameRulesManager.GameRules.GameMode4, blocking,false));
@@ -47,6 +47,15 @@ public class GameModeScreen : MonoBehaviour
             UI_Manager.instance.noOfPlayers.threePlayerBtn.interactable = true;
 
         }
+    }
+
+    void BackBtnCallBack() 
+    {    
+        if (GameRulesManager.isPrivateRoom)
+        {
+            UI_Manager.instance.ChangeScreen(UI_Manager.instance.createJoinRoomButtonPanel.gameObject, true);
+        }
+        UI_Manager.instance.ChangeScreen(UI_Manager.instance.gameModeScreen.gameObject, false);
     }
 
 }

@@ -36,9 +36,9 @@ public class MainMenuScreen : MonoBehaviour
         shopBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.shopScreen.gameObject, true));
         settingsBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.settingScreen.gameObject, true));
 
-        botGameBtn.onClick.AddListener(()     => GameModeSelection(GameRulesManager.MatchType.Bot));
-        randomGameBtn.onClick.AddListener(()  => GameModeSelection(GameRulesManager.MatchType.Multiplayer));
-        friendsGameBtn.onClick.AddListener(() => GameModeSelection(GameRulesManager.MatchType.Multiplayer));
+        botGameBtn.onClick.AddListener(()     => BotSelection(GameRulesManager.MatchType.Bot));
+        randomGameBtn.onClick.AddListener(()  => RandomSelection(GameRulesManager.MatchType.Multiplayer));
+        friendsGameBtn.onClick.AddListener(() => FriendSelection(GameRulesManager.MatchType.Multiplayer));
 
 
         partnerGameBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.partnerScreen.gameObject, true));
@@ -55,9 +55,29 @@ public class MainMenuScreen : MonoBehaviour
 
     }
 
-    public void GameModeSelection(GameRulesManager.MatchType matchType)
+    public void BotSelection(GameRulesManager.MatchType matchType)
     {
+        GameRulesManager.isPrivateRoom = false;
+        GameRulesManager.privateRoomId = "";
         GameRulesManager.currentSelectedGame_MatchType = matchType;
         UI_Manager.instance.ChangeScreen(UI_Manager.instance.gameModeScreen.gameObject, true);
+    }
+
+    public void RandomSelection(GameRulesManager.MatchType matchType)
+    {
+        GameRulesManager.privateRoomId = "";
+        GameRulesManager.isPrivateRoom = false;
+        GameRulesManager.currentSelectedGame_MatchType = matchType;
+
+        UI_Manager.instance.ChangeScreen(UI_Manager.instance.gameModeScreen.gameObject, true);
+    }
+
+    public void FriendSelection(GameRulesManager.MatchType matchType)
+    {
+        GameRulesManager.isPrivateRoom = true;
+        GameRulesManager.privateRoomId = "";
+        GameRulesManager.currentSelectedGame_MatchType = matchType;
+
+        UI_Manager.instance.ChangeScreen(UI_Manager.instance.createJoinRoomButtonPanel.gameObject, true);
     }
 }

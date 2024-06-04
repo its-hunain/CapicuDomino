@@ -29,16 +29,23 @@ public class NoOfPlayersScreen : MonoBehaviour
     void StartGame(int i)
     {
         GameRulesManager.noOfPlayers = i;
-       // GameRulesManager.currentSelectedGame_MatchType = GameRulesManager.MatchType.Bot;
-        SceneManager.LoadScene(Global.GameScene);
+       
+        if (GameRulesManager.isPrivateRoom)
+        {
+            UI_Manager.instance.ChangeScreen(UI_Manager.instance.invitePlayersScreen.gameObject, true);
+        }
+        else
+        {
+           // GameRulesManager.currentSelectedGame_MatchType = GameRulesManager.MatchType.Bot;
+            SceneManager.LoadScene(Global.GameScene);
+        }
 
     }
     void Close()
     {
         UI_Manager.instance.ChangeScreen(UI_Manager.instance.coinsScreen.gameObject, false);
         UI_Manager.instance.ChangeScreen(UI_Manager.instance.gameModeScreen.gameObject, false);
-        UI_Manager.instance.ChangeScreen(this.gameObject, false);
-
+        UI_Manager.instance.ChangeScreen(UI_Manager.instance.noOfPlayers.gameObject, false);
     }
 
 

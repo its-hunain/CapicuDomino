@@ -1034,10 +1034,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ExitSearchhing()
+    public async void ExitSearching()
     {
-        NakamaConnection.CancelMatchmaking();
+       await NakamaConnection.CancelMatchmaking();
+       await QuitMatch();
     }
+
+    
     /// <summary>
     /// Quits the current match.
     /// </summary>

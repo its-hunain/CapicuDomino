@@ -11,11 +11,21 @@ public class InternetConnectivityCheck : MonoBehaviour
     public Transform rotator;
 
     private Vector3 rotationEuler;
+    public static InternetConnectivityCheck instance;
 
     void Awake()
     {
         waitingLoader.SetActive(false);
-        DontDestroyOnLoad(gameObject);
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     // Start is called before the first frame update

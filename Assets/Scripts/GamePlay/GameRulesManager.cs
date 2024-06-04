@@ -12,7 +12,8 @@ public class GameRulesManager : MonoBehaviour
     public static Player lastRoundWinnerPlayer = null;
     public static bool wasTheWinnerTied = false;
     public static bool forceLeave = true;
-
+    public static bool isPrivateRoom = false;
+    public static string privateRoomId = "";
     public static TournamentDetails matchDetails;
 
     public enum GameRules
@@ -36,8 +37,6 @@ public class GameRulesManager : MonoBehaviour
         SingleMatch,
         Tournament
     }
-
-
 
     public static MatchType currentSelectedGame_MatchType = MatchType.Bot;
     public static GameType currentSelectedGame_GameType = GameType.SingleMatch;
@@ -91,6 +90,8 @@ public class GameRulesManager : MonoBehaviour
         Debug.Log("Game currentSelectedMatchType: " + currentSelectedGame_MatchType);
         Debug.Log("Game currentSelectedGame_GameType: " + currentSelectedGame_GameType);
         Debug.Log("Game selectedGameCenterID: " + GameCenterSelectionScreen.selectedGameCenterID);
+        Debug.Log("isPrivateRoom: " + isPrivateRoom);
+        Debug.Log("privateRoomId: " + privateRoomId);
         Debug.Log("*********Current Game Details*********");
     }
 

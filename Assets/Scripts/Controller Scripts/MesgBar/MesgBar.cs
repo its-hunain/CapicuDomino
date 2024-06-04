@@ -23,7 +23,8 @@ public class MesgBar : MonoBehaviour
 		{
 			Destroy(gameObject);
 		}
-	}
+        this.gameObject.SetActive(false);
+    }
 
 	public void show(string mesg, bool isError = true)
 	{
@@ -36,9 +37,9 @@ public class MesgBar : MonoBehaviour
 		LeanTween.moveLocalY(mesgBar, 0, 1f).setEase(LeanTweenType.easeOutExpo);
 		//--
 		if (isError)
-			holder.color = errorColor;
+            txt.color = errorColor;
 		else
-			holder.color = mesgColor;
+            txt.color = mesgColor;
 		//--
 		txt.text = mesg;
 		//--

@@ -717,7 +717,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 603386616}
   m_HandleRect: {fileID: 603386615}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -34484,7 +34484,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -60.200134, y: -65.200195}
+  m_AnchoredPosition: {x: -60.200195, y: -65.200195}
   m_SizeDelta: {x: 98.4078, y: 98.4078}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1459142416
@@ -35320,9 +35320,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3857382871799071380}
-        m_TargetAssemblyTypeName: QuitGamePopup, Assembly-CSharp
-        m_MethodName: QuitGame
+      - m_Target: {fileID: 7829106494885012939}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: ExitSearching
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

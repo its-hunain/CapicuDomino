@@ -18,12 +18,13 @@ public class UI_Manager : MonoBehaviour //new
     public GameModeScreen gameModeScreen;
     public CoinsScreen coinsScreen;
     public NoOfPlayersScreen noOfPlayers;
-    public FriendsPlayScreen friendsPlayScreen;
+    public CreateJoinRoomButtonPanel createJoinRoomButtonPanel;
     public InvitePlayersScreen invitePlayersScreen;
+    public JoinRoomScreen joinRoomScreen;
     public PartnerScreen partnerScreen;
     public ScoreToWinScreen scoreToWinScreen;
     public LeaderBoardScript leaderBoardScreen;
-
+    
     public GameObject purchaseSuccessPanel;
     public GameObject purchaseFailPanel;
 
