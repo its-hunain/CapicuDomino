@@ -5,30 +5,15 @@ using UnityEngine.UI;
 
 public class CoinsScreen : MonoBehaviour
 {
-    public Button backBtn;
     public Button closeBtn;
 
-    public List<Button> coinBtn;
 
     void Start()
     {
-        backBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.coinsScreen.gameObject, false));
-        closeBtn.onClick.AddListener(() => Close());
-
-
-        foreach (var item in coinBtn)
-        {
-            item.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.noOfPlayers.gameObject, true));
-
-        }
-
+        closeBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.coinsScreen.gameObject, false));
     }
-    void Close()
-    {
-        UI_Manager.instance.ChangeScreen(UI_Manager.instance.coinsScreen.gameObject, false);
-        UI_Manager.instance.ChangeScreen(UI_Manager.instance.gameModeScreen.gameObject, false);
-
-    }
+   
+     
 
 
 }

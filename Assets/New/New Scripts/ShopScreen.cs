@@ -13,6 +13,7 @@ public class ShopScreen : MonoBehaviour
     public Button backBtn;
     public Button settingsBtn;
 
+    public Text coinsText;
 
     public GameObject coinsScroll;
     public GameObject tilesScroll;
@@ -29,6 +30,7 @@ public class ShopScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        coinsText.text= PlayerPersonalData.playerDomiCoins.ToString();
 
         GetOwnedProds();
         coinsBtn.onClick.AddListener(() => SwitchPanels(coinsBtn,coinsScroll));

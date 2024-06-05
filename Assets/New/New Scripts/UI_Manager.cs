@@ -11,7 +11,7 @@ public class UI_Manager : MonoBehaviour //new
     public MainMenuScreen menuScreen;
     public ProfilePanelScreen profileScreen;
     public EditProfileScreen editProfileScreen;
-    public GameObject coinScreen;
+   // public GameObject coinScreen;
     public ShopScreen shopScreen;
     public SettingsScreen settingScreen;
     public AboutScreen aboutScreen;

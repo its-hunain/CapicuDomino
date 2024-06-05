@@ -10,6 +10,8 @@ public class MainMenuScreen : MonoBehaviour
 
     public Text name;
     public Text country;
+    public Text coinTxt;
+
     public Image flag;
 
     public Button shopBtn;
@@ -32,7 +34,7 @@ public class MainMenuScreen : MonoBehaviour
 
         //  shopBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance..gameObject, true));
         profileBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.profileScreen.gameObject, true));
-        coinsBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.coinScreen.gameObject, true));
+        coinsBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.coinsScreen.gameObject, true));
         shopBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.shopScreen.gameObject, true));
         settingsBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.settingScreen.gameObject, true));
 
@@ -52,7 +54,7 @@ public class MainMenuScreen : MonoBehaviour
         profileImage.sprite = temp;
         flag.sprite = PlayerPersonalData.playerStates.flagSprite;
         country.text = PlayerPersonalData.country;
-
+        coinTxt.text =PlayerPersonalData.playerDomiCoins.ToString();
     }
 
     public void BotSelection(GameRulesManager.MatchType matchType)

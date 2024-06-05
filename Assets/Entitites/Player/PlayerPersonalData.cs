@@ -16,7 +16,7 @@ public class PlayerPersonalData : MonoBehaviour
     public static string playerUserID;//= UI_Manager.instance.userName;
     public static int playerSeatID;
     public static int playerScore;
-    public static float playerDomiCoins;
+    public static int playerDomiCoins;
     public static string playerName;// = UI_Manager.instance.userName;
     public static string playerEmail;
     public static string playerPassword;
@@ -66,7 +66,7 @@ public class PlayerPersonalData : MonoBehaviour
         country = playerPersonalDataJson.Data.User.Country;
         gender = playerPersonalDataJson.Data.User.Gender;
         age = int.Parse(playerPersonalDataJson.Data.User.Age);
-        playerDomiCoins = float.Parse(playerPersonalDataJson.Data.User.Domicoins);
+        playerDomiCoins = playerPersonalDataJson.Data.User.Domicoins;
         //Debug.LogError("playerDomiCoins: " + playerDomiCoins);
         playerWhiteListed = playerPersonalDataJson.Data.User.WhiteListed;
         //discount = playerPersonalDataJson.Data.User.discount;
@@ -130,7 +130,7 @@ public class PlayerPersonalData : MonoBehaviour
         country =      user.Country;
         gender = user.Gender;
         age = int.Parse(user.Age);
-        playerDomiCoins = float.Parse(user.Domicoins);
+        playerDomiCoins = user.Domicoins;
         //Debug.LogError("playerDomiCoins: " + playerDomiCoins);
         playerWhiteListed = user.WhiteListed;
         //discount = playerPersonalDataJson.Data.User.discount;
@@ -178,6 +178,8 @@ public class PlayerPersonalData : MonoBehaviour
     {
         playerTexture = texture;
         UI_Manager.instance.UpdateUI();
+
+        UI_Manager.instance.settingScreen.GetSoundSettings();
 
     }
 

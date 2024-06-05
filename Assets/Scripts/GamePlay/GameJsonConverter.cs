@@ -124,8 +124,8 @@ namespace Dominos
         [JsonProperty("assetGender")]
         public string AssetGender = "";
 
-        [JsonProperty("domicoins")]
-        public string Domicoins = "";
+        [JsonProperty("coins")]
+        public int Domicoins;
 
         [JsonProperty("is_admin")]
         public bool isAdmin;
