@@ -43,8 +43,8 @@ public class GameRulesManager : MonoBehaviour
     public static GameRules currentSelectedGame_Rule = GameRules.GameMode1;
     public static string currentSelectedGame_RuleDescription = "";
     public static int currentSelectedGame_ScoreToWin = 200; //Dynamic based on game
-    public static int currentSelectedGame_CoinsToPlay = 100; //100,200
-    public static int noOfPlayers = 3;//2,3,4
+    public static int currentSelectedGame_CoinsToPlay = 100; //default 100 coins game
+    public static int noOfPlayers = 2;//2,3,4
 
     public static GameRulesManager instance;
 

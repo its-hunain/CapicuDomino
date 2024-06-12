@@ -1,8 +1,10 @@
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static NativeGallery;
 
 public class EditProfileScreen : MonoBehaviour
 {
@@ -20,8 +22,41 @@ public class EditProfileScreen : MonoBehaviour
     void Start()
     {
         backBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.editProfileScreen.gameObject, false));
+        uploadImageBtn.onClick.AddListener(() => PickImage(512));
         saveBtn.onClick.AddListener(() => SavePlayerInfo());
     }
+
+ 
+    private void PictureFetch(Texture2D texture2D)
+    {
+        profileImage.sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), new Vector2(texture2D.width / 2, texture2D.height / 2));
+
+        
+    }
+
+    private void PickImage(int maxSize)
+    {
+        Permission permission = GetImageFromGallery((path) =>
+        {
+            Debug.Log("Image path: " + path);
+            if (path != null)
+            {
+                // Create Texture from selected image
+                Texture2D texture = LoadImageAtPath(path, maxSize);
+                if (texture == null)
+                {
+                    Debug.Log("Couldn't load texture from " + path);
+                    return;
+                }
+
+                PictureFetch(texture);
+            }
+        });
+
+        Debug.Log("Permission result: " + permission);
+    }
+
+
     public void SavePlayerInfo()
     {
         //UI_Manager.instance.SaveUserData(name.text.ToString(), country.text.ToString(), age.text.ToString(), gender.text.ToString());

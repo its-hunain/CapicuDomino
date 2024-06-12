@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,9 @@ public class GamePlayWaitingPopUp : MonoBehaviour
     public Text TimerText;
 
     public List<GameObject> profilePic = new();
+
+
+
     private void Awake()
     {
         instance = this;
@@ -24,8 +28,13 @@ public class GamePlayWaitingPopUp : MonoBehaviour
             for (int i = 0; i < GameRulesManager.noOfPlayers; i++)
             {
                 profilePic[i].SetActive(true);
+                profilePic[i].transform.GetChild(0).gameObject.SetActive(false);
             }
+
+            SetImage(0);
         }
+        
+
         //if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Bot) //No need of waiting in bot game
         //{
         //}
@@ -46,12 +55,23 @@ public class GamePlayWaitingPopUp : MonoBehaviour
         TimerText.gameObject.SetActive(showTimer);
     }
 
+    public void SetImage(int index) 
+    {
+        Debug.Log("Set Image");
+        var temp = Sprite.Create(PlayerPersonalData.playerTexture, new Rect(0.0f, 0.0f, PlayerPersonalData.playerTexture.width, PlayerPersonalData.playerTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
+        GameObject maskParent = profilePic[index].transform.GetChild(0).gameObject;
+        maskParent.SetActive(true);
+        maskParent.transform.GetChild(0).GetComponent<Image>().sprite = temp;
+
+    }
+
     public void EnableDisable(bool state)
     {
         Debug.Log("EnableDisable...");
         if (!state)
-        {   SetData("");    }
+        { SetData(""); }
 
         gameObject.SetActive(state);
+
     }
 }
