@@ -32,7 +32,14 @@ public class NoOfPlayersScreen : MonoBehaviour
        
         if (GameRulesManager.isPrivateRoom)
         {
-            UI_Manager.instance.ChangeScreen(UI_Manager.instance.invitePlayersScreen.gameObject, true);
+            if (GameRulesManager.isCreatingRoom) 
+            {
+                UI_Manager.instance.ChangeScreen(UI_Manager.instance.invitePlayersScreen.gameObject, true);
+            }
+            else
+            {
+                SceneManager.LoadScene(Global.GameScene);
+            }
         }
         else
         {
@@ -43,7 +50,7 @@ public class NoOfPlayersScreen : MonoBehaviour
     }
     void Close()
     {
-        UI_Manager.instance.ChangeScreen(UI_Manager.instance.coinsScreen.gameObject, false);
+        UI_Manager.instance.ChangeScreen(UI_Manager.instance.selectCoinsToPlayScreen.gameObject, false);
         UI_Manager.instance.ChangeScreen(UI_Manager.instance.gameModeScreen.gameObject, false);
         UI_Manager.instance.ChangeScreen(UI_Manager.instance.noOfPlayers.gameObject, false);
     }

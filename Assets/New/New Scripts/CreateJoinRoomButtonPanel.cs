@@ -21,12 +21,14 @@ public class CreateJoinRoomButtonPanel : MonoBehaviour
 
     public void CreateBtnCallBack()
     {
+        GameRulesManager.isCreatingRoom = true;
         UI_Manager.instance.ChangeScreen(UI_Manager.instance.gameModeScreen.gameObject, true);
         UI_Manager.instance.ChangeScreen(UI_Manager.instance.createJoinRoomButtonPanel.gameObject, false);
     }
 
     public void JoinBtnCallBack()
     {
+        GameRulesManager.isCreatingRoom = false;
         UI_Manager.instance.ChangeScreen(UI_Manager.instance.joinRoomScreen.gameObject, true);
         UI_Manager.instance.ChangeScreen(UI_Manager.instance.createJoinRoomButtonPanel.gameObject, false);
     }

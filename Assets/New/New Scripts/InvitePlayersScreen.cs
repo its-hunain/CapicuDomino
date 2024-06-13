@@ -47,9 +47,34 @@ public class InvitePlayersScreen : MonoBehaviour
             //UI_Manager.instance.ChangeScreen(UI_Manager.instance.joinRoomScreen.gameObject, false);
           
             NativeShare nativeShare = new NativeShare();
-            Debug.Log("Room Name:" + roomID.text);
-            nativeShare.SetSubject("Game Request").SetTitle("Capicu").SetText("Your friend invited you to join a Capicu Table. \n The Room Id is: " + roomID.text).Share();
 
+            string GameRule = "Capicu";
+
+            if (Rule5.isNines)
+            {
+                GameRule = "NINES";
+            }
+            else
+            {
+                if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode4)
+                {
+                    GameRule = "BLOCK";
+                }
+                else 
+                { 
+                    GameRule = "CAPICU";
+                }
+            }
+            string gameDetails = "Your friend invited you to join a Capicu Table."
+                                + "\n Room Id: " + roomID.text
+                                + "\n No Of Players: " + GameRulesManager.noOfPlayers
+                                + "\n Game Type: " + GameRule;
+
+
+            Debug.Log(gameDetails);
+            nativeShare.SetSubject("Game Request")
+                .SetTitle("Capicu Game")
+                .SetText(gameDetails).Share();
         }
     }
 

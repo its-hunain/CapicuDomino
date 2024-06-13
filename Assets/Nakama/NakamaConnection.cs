@@ -101,12 +101,15 @@ public class NakamaConnection : ScriptableObject
 
         string query = "";
         const string engine = "unity";
+        string privateRoomId = string.IsNullOrEmpty(GameRulesManager.privateRoomId.Trim()) ? "empty" : GameRulesManager.privateRoomId;
 
         var stringProperties = new Dictionary<string, string>
         {
             { "engine", engine },
             {"gameRule", GameRule},
+            {"isNines", Rule5.isNines.ToString()},
             {"gameType", GameRulesManager.currentSelectedGame_GameType.ToString()},
+            {"privateRoomId", privateRoomId},
             {"gameCenter", GameCenterSelectionScreen.selectedGameCenterID.ToString()}
         };
 
@@ -117,17 +120,19 @@ public class NakamaConnection : ScriptableObject
 
         Debug.Log("GameCenterSelectionScreen.selectedGameCenterID : " + GameCenterSelectionScreen.selectedGameCenterID.ToString());
 
-
         query =
             "+properties.engine:" + engine +
             " +properties.gameRule:" + GameRule +
+            " +properties.isNines:" + Rule5.isNines.ToString() +
             " +properties.gameType:" + GameRulesManager.currentSelectedGame_GameType.ToString() +
+            " +privateRoomId:" + privateRoomId +
             " +properties.gameCenter:" + GameCenterSelectionScreen.selectedGameCenterID.ToString() +
             " +properties.coins:" + coinsToPlay +
             " +properties.noOfPlayers:" + GameRulesManager.noOfPlayers;
 
         int minPlayer = GameRulesManager.currentSelectedGame_GameType == GameRulesManager.GameType.Tournament ? 2 : maxPlayers;
 
+        Debug.Log("Querry: " + query);
         // Add this client to the matchmaking pool and get a ticket.
         var matchmakerTicket = await Socket.AddMatchmakerAsync(query, minPlayer /*min count*/, maxPlayers /*max count*/, stringProperties, numericProperties);
         currentMatchmakingTicket = matchmakerTicket.Ticket;

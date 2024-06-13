@@ -15,8 +15,9 @@ public class UI_Manager : MonoBehaviour //new
     public ShopScreen shopScreen;
     public SettingsScreen settingScreen;
     public AboutScreen aboutScreen;
-    public GameModeScreen gameModeScreen;
     public CoinsScreen coinsScreen;
+    public GameModeScreen gameModeScreen;
+    public SelectCoinsToPlayScreen selectCoinsToPlayScreen;
     public NoOfPlayersScreen noOfPlayers;
     public CreateJoinRoomButtonPanel createJoinRoomButtonPanel;
     public InvitePlayersScreen invitePlayersScreen;

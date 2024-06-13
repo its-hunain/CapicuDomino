@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2515,8 +2514,8 @@ MonoBehaviour:
   termsBtn: {fileID: 1705442610}
   policyBtn: {fileID: 908977055}
   closeBtn: {fileID: 1044375318}
-  musicOn: 1
   soundOn: 1
+  musicOn: 1
 --- !u!1 &98979770
 GameObject:
   m_ObjectHideFlags: 0
@@ -5879,6 +5878,7 @@ GameObject:
   - component: {fileID: 213195322}
   - component: {fileID: 213195321}
   - component: {fileID: 213195320}
+  - component: {fileID: 213195323}
   m_Layer: 5
   m_Name: Select Button
   m_TagString: Untagged
@@ -5988,6 +5988,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213195318}
   m_CullTransparentMesh: 1
+--- !u!114 &213195323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213195318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c0e6daf8d944d6bbef2bccb23a1e59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisBtn: {fileID: 213195320}
+  value: 300
 --- !u!1 &215057108
 GameObject:
   m_ObjectHideFlags: 0
@@ -9922,7 +9936,6 @@ GameObject:
   - component: {fileID: 352315085}
   - component: {fileID: 352315087}
   - component: {fileID: 352315086}
-  - component: {fileID: 352315088}
   m_Layer: 5
   m_Name: 100 COINS
   m_TagString: Untagged
@@ -9990,20 +10003,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 352315084}
   m_CullTransparentMesh: 1
---- !u!114 &352315088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 352315084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdfe7fdb1ed4af94cbefd6eb5972d53e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buyBtn: {fileID: 403536966}
-  value: 100
 --- !u!1 &356150213
 GameObject:
   m_ObjectHideFlags: 0
@@ -11464,6 +11463,7 @@ GameObject:
   - component: {fileID: 403536968}
   - component: {fileID: 403536967}
   - component: {fileID: 403536966}
+  - component: {fileID: 403536969}
   m_Layer: 5
   m_Name: Select Button
   m_TagString: Untagged
@@ -11573,6 +11573,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403536964}
   m_CullTransparentMesh: 1
+--- !u!114 &403536969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403536964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c0e6daf8d944d6bbef2bccb23a1e59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisBtn: {fileID: 403536966}
+  value: 100
 --- !u!1 &404910256
 GameObject:
   m_ObjectHideFlags: 0
@@ -15587,6 +15601,7 @@ GameObject:
   - component: {fileID: 527986010}
   - component: {fileID: 527986009}
   - component: {fileID: 527986008}
+  - component: {fileID: 527986011}
   m_Layer: 5
   m_Name: Select Button
   m_TagString: Untagged
@@ -15696,6 +15711,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 527986006}
   m_CullTransparentMesh: 1
+--- !u!114 &527986011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527986006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c0e6daf8d944d6bbef2bccb23a1e59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisBtn: {fileID: 527986008}
+  value: 50
 --- !u!1 &529220536
 GameObject:
   m_ObjectHideFlags: 0
@@ -22992,9 +23021,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   backBtn: {fileID: 656280211}
-  coinsBtnPrefab: {fileID: 5910144492872902394, guid: beae80ef7eaf14998afb5503524997c1, type: 3}
-  coinsBtnsList: []
-  coinsParentTransform: {fileID: 735038220}
 --- !u!111 &773181325
 Animation:
   m_ObjectHideFlags: 0
@@ -27476,7 +27502,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &912332217
 RectTransform:
   m_ObjectHideFlags: 0
@@ -39931,8 +39957,9 @@ MonoBehaviour:
   shopScreen: {fileID: 1646367023}
   settingScreen: {fileID: 98287359}
   aboutScreen: {fileID: 920413307}
-  gameModeScreen: {fileID: 1506722827}
   coinsScreen: {fileID: 234585359}
+  gameModeScreen: {fileID: 1506722827}
+  selectCoinsToPlayScreen: {fileID: 1954622549}
   noOfPlayers: {fileID: 859463515}
   createJoinRoomButtonPanel: {fileID: 1935708375}
   invitePlayersScreen: {fileID: 280527681}
@@ -45441,7 +45468,6 @@ GameObject:
   - component: {fileID: 1502970065}
   - component: {fileID: 1502970067}
   - component: {fileID: 1502970066}
-  - component: {fileID: 1502970068}
   m_Layer: 5
   m_Name: 200 COINS
   m_TagString: Untagged
@@ -45509,20 +45535,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1502970064}
   m_CullTransparentMesh: 1
---- !u!114 &1502970068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1502970064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdfe7fdb1ed4af94cbefd6eb5972d53e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buyBtn: {fileID: 1645640867}
-  value: 200
 --- !u!1 &1506722823
 GameObject:
   m_ObjectHideFlags: 0
@@ -48744,7 +48756,6 @@ GameObject:
   - component: {fileID: 1609578145}
   - component: {fileID: 1609578147}
   - component: {fileID: 1609578146}
-  - component: {fileID: 1609578148}
   m_Layer: 5
   m_Name: 300 COINS
   m_TagString: Untagged
@@ -48812,20 +48823,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1609578144}
   m_CullTransparentMesh: 1
---- !u!114 &1609578148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1609578144}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdfe7fdb1ed4af94cbefd6eb5972d53e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buyBtn: {fileID: 213195320}
-  value: 300
 --- !u!1 &1611444029
 GameObject:
   m_ObjectHideFlags: 0
@@ -49777,6 +49774,7 @@ GameObject:
   - component: {fileID: 1645640869}
   - component: {fileID: 1645640868}
   - component: {fileID: 1645640867}
+  - component: {fileID: 1645640870}
   m_Layer: 5
   m_Name: Select Button
   m_TagString: Untagged
@@ -49886,6 +49884,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1645640865}
   m_CullTransparentMesh: 1
+--- !u!114 &1645640870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1645640865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93c0e6daf8d944d6bbef2bccb23a1e59, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisBtn: {fileID: 1645640867}
+  value: 200
 --- !u!1 &1646367019
 GameObject:
   m_ObjectHideFlags: 0
@@ -51640,7 +51652,6 @@ GameObject:
   - component: {fileID: 1709328996}
   - component: {fileID: 1709328998}
   - component: {fileID: 1709328997}
-  - component: {fileID: 1709328999}
   m_Layer: 5
   m_Name: 50 COINS
   m_TagString: Untagged
@@ -51708,20 +51719,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1709328995}
   m_CullTransparentMesh: 1
---- !u!114 &1709328999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1709328995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdfe7fdb1ed4af94cbefd6eb5972d53e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buyBtn: {fileID: 527986008}
-  value: 50
 --- !u!1 &1715218191
 GameObject:
   m_ObjectHideFlags: 0
@@ -58668,7 +58665,7 @@ GameObject:
   - component: {fileID: 1954622547}
   - component: {fileID: 1954622549}
   m_Layer: 5
-  m_Name: CoinSelection Panel
+  m_Name: Select Coins To Play Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58741,10 +58738,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1954622545}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6296ab2dfaf4a4cb4811d93900b50e, type: 3}
+  m_Script: {fileID: 11500000, guid: 1f62650c98b554adb97eef011adfba60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  closeBtn: {fileID: 912332218}
+  backBtn: {fileID: 598796837}
 --- !u!1 &1961744826
 GameObject:
   m_ObjectHideFlags: 0

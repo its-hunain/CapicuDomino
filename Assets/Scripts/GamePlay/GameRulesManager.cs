@@ -13,16 +13,29 @@ public class GameRulesManager : MonoBehaviour
     public static bool wasTheWinnerTied = false;
     public static bool forceLeave = true;
     public static bool isPrivateRoom = false;
+    public static bool isCreatingRoom = false;
     public static string privateRoomId = "";
     public static TournamentDetails matchDetails;
+
+    public static MatchType currentSelectedGame_MatchType = MatchType.Bot;
+    public static GameType currentSelectedGame_GameType = GameType.SingleMatch;
+    public static GameRules currentSelectedGame_Rule = GameRules.GameMode4;
+    public static string currentSelectedGame_RuleDescription = "";
+    public static int currentSelectedGame_ScoreToWin = Rule4.maxScoreToWin; //Dynamic based on game
+    public static int currentSelectedGame_CoinsToPlay = 100; //default 100 coins game
+    public static int noOfPlayers = 2;//2,3,4
+
+    public static GameRulesManager instance;
+
+    public static bool TurnStarted;
 
     public enum GameRules
     {
         GameMode1,
         GameMode2,
         GameMode3,
-        GameMode4,
-        GameMode5,
+        GameMode4, //Block
+        GameMode5, //Capicu and Nines
         GameMode6
     }
 
@@ -37,18 +50,6 @@ public class GameRulesManager : MonoBehaviour
         SingleMatch,
         Tournament
     }
-
-    public static MatchType currentSelectedGame_MatchType = MatchType.Bot;
-    public static GameType currentSelectedGame_GameType = GameType.SingleMatch;
-    public static GameRules currentSelectedGame_Rule = GameRules.GameMode1;
-    public static string currentSelectedGame_RuleDescription = "";
-    public static int currentSelectedGame_ScoreToWin = 200; //Dynamic based on game
-    public static int currentSelectedGame_CoinsToPlay = 100; //default 100 coins game
-    public static int noOfPlayers = 2;//2,3,4
-
-    public static GameRulesManager instance;
-
-    public static bool TurnStarted;
 
     private void Awake()
     {

@@ -23,7 +23,7 @@ public class GameModeScreen : MonoBehaviour
     void GameModeSelection(GameRulesManager.GameRules gameRules,Button btn,bool isNines)
     {
         GameRulesManager.currentSelectedGame_Rule = gameRules;
-        UI_Manager.instance.ChangeScreen(UI_Manager.instance.noOfPlayers.gameObject, true);
+        UI_Manager.instance.ChangeScreen(UI_Manager.instance.selectCoinsToPlayScreen.gameObject, true);
         ChangeNoOfPlayers(btn) ;
         Rule5.isNines = isNines;
     }

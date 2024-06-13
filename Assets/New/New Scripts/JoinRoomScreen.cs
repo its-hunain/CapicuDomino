@@ -18,6 +18,11 @@ public class JoinRoomScreen : MonoBehaviour
 
     }
 
+    private void OnEnable()
+    {
+        roomID.text = "";
+    }
+
     public void JoinBtnCallBack()
     {
         if (string.IsNullOrEmpty(roomID.text.Trim()))
@@ -26,10 +31,12 @@ public class JoinRoomScreen : MonoBehaviour
         }
         else 
         {
+            GameRulesManager.isPrivateRoom = true;
+            GameRulesManager.privateRoomId = roomID.text.Trim();
             //UI_Manager.instance.ChangeScreen(UI_Manager.instance.createJoinRoomButtonPanel.gameObject, false);
+            
             UI_Manager.instance.ChangeScreen(UI_Manager.instance.joinRoomScreen.gameObject, false);
-            SceneManager.LoadScene(Global.GameScene);
-
+            UI_Manager.instance.ChangeScreen(UI_Manager.instance.gameModeScreen.gameObject, true);
         }
     }
 
