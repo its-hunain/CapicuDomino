@@ -14,16 +14,21 @@ public class EditProfileScreen : MonoBehaviour
     public InputField name;
     public InputField country;
     public InputField age;
-    public InputField gender;
 
+    public Button gender;
     public Button backBtn;
     public Button saveBtn;
+
+    bool isMale = true;
+
 
     void Start()
     {
         backBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.editProfileScreen.gameObject, false));
         uploadImageBtn.onClick.AddListener(() => PickImage(512));
         saveBtn.onClick.AddListener(() => SavePlayerInfo());
+
+        gender.onClick.AddListener(() => ChangeGender());
     }
 
  
@@ -67,9 +72,9 @@ public class EditProfileScreen : MonoBehaviour
         string userName = name.text.ToString();
         string country = this.country.text.ToString();
         string age = this.age.text.ToString();
-        string gender = this.gender.text.ToString();
+        string gender =isMale==true? "male":"female";
         postData.Add("userName", userName);
-        postData.Add("country", country);
+       // postData.Add("country", country);
         postData.Add("age", age);
         postData.Add("gender", gender);
 
@@ -87,8 +92,25 @@ public class EditProfileScreen : MonoBehaviour
         profileImage.sprite = temp;
          country.text = PlayerPersonalData.country;
          age.text =     PlayerPersonalData.age.ToString();
-         gender.text = PlayerPersonalData.gender;
+         ChangeGender(PlayerPersonalData.gender);
 
+
+    }
+
+    public void ChangeGender(string str=null)
+    {
+            isMale = !isMale;
+
+        if (str !=null)
+        {
+            isMale = str == "male" ? true : false;
+            if (isMale)
+                return;
+        }
+        //else
+
+            gender.transform.Rotate(0, 0, 180);
+        Debug.LogError("male? "+isMale);
 
     }
 }
