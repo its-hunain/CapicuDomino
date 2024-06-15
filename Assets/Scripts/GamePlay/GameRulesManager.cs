@@ -983,7 +983,7 @@ public class Rule5 : GameRulesManager
     /// <returns></returns>
     public static PlayerScore/*Winner*/ CalculateScore_RoundBlocked(List<PlayerScore> playerScores)
     {
-        List<PlayerScore> playerScoresListCache = playerScores.OrderByDescending(x => x.Score).ToList(); // Acesding order
+        List<PlayerScore> playerScoresListCache = playerScores.OrderBy(x => x.Score).ToList(); // Acesding order
         PlayerScore winnerPlayer = null;
 
         //if tie in scoring, Play the tie breaker
@@ -997,6 +997,7 @@ public class Rule5 : GameRulesManager
         {
             winnerPlayer = playerScoresListCache[0];
             lastRoundWinnerPlayer = winnerPlayer.Player;
+            winnerPlayer.Score = playerScoresListCache.Where(item => item != playerScoresListCache[0]).Sum(item => item.Score); //sum of opponent points
         }
         return winnerPlayer;
     }

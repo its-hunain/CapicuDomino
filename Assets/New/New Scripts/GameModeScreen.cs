@@ -23,7 +23,14 @@ public class GameModeScreen : MonoBehaviour
     void GameModeSelection(GameRulesManager.GameRules gameRules,Button btn,bool isNines)
     {
         GameRulesManager.currentSelectedGame_Rule = gameRules;
-        UI_Manager.instance.ChangeScreen(UI_Manager.instance.selectCoinsToPlayScreen.gameObject, true);
+        if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Multiplayer)
+        {
+            UI_Manager.instance.ChangeScreen(UI_Manager.instance.selectCoinsToPlayScreen.gameObject, true);
+        }
+        else
+        {
+            UI_Manager.instance.ChangeScreen(UI_Manager.instance.noOfPlayers.gameObject, true);
+        }
         ChangeNoOfPlayers(btn) ;
         Rule5.isNines = isNines;
     }

@@ -773,20 +773,22 @@ public class GridManager : MonoBehaviour
                         Debug.Log("********** Rule5 Blocked **********");
                         winnerPlayer = Rule5.CalculateScore_RoundBlocked(playerScoresList);
 
-                        ////Tie, Play Tie Breaker
-                        //if (winnerPlayer == null)
-                        //{
-                        //    List<PlayerScore> tiePlayers = GameRulesManager.FindTiePlayers(playerScoresList);
 
-                        //    //Destroying each player hand tiles
-                        //    foreach (var player in GamePlayUIPanel.instance.players)
-                        //    {
-                        //        player.DestroyOldDominoTiles();
-                        //    }
+                        //Tie, Play Tie Breaker
+                        //This code will not work anymore because in this rule if tie in scoring we give first turn to the last round winner.
+                        if (winnerPlayer == null)
+                        {
+                            List<PlayerScore> tiePlayers = GameRulesManager.FindTiePlayers(playerScoresList);
 
-                        //    yield return StartCoroutine(_PlayTieBreaker(tiePlayers));
-                        //    winnerPlayer = TieBreaker.instance.winnerPlayer;
-                        //}
+                            //Destroying each player hand tiles
+                            foreach (var player in GamePlayUIPanel.instance.players)
+                            {
+                                player.DestroyOldDominoTiles();
+                            }
+
+                            yield return StartCoroutine(_PlayTieBreaker(tiePlayers));
+                            winnerPlayer = TieBreaker.instance.winnerPlayer;
+                        }
 
                         Debug.Log(winnerPlayer == null ? "Error to identify a tie. . ." : "No Error in Tie.");
                         wasLastRoundTie = winnerPlayer == null ? true : false;
@@ -794,13 +796,29 @@ public class GridManager : MonoBehaviour
 
                         if (winnerPlayer != null)
                         {
-                            foreach (var item in playerScoresList)
-                            {
-                                //Step 8: Set Score on profile
-                                yield return StartCoroutine(item.Player._SetScore(item.Score));
-                                yield return new WaitForSeconds(0.5f);
-                            }
+                            //Because GM 5 is not a 1 round game now so we need to distribute score and continue next round same as normal games.
+                            //Step 6: Move Badges To Center
+                            Debug.Log("Step 6: MoveBadgesToCenter");
+                            yield return StartCoroutine(LTGUI.MoveBadgesToCenter(winnerPlayer.Player, playerScoresList));
+
+                            yield return new WaitForSeconds(.5f);
+                            //Step 7: Move Badges To Winner Pos
+                            yield return StartCoroutine(LTGUI.MoveBadgeToWinner(winnerPlayer.Player, winnerPlayer.Score));
+
+                            yield return new WaitForSeconds(.5f);
+                            //Step 8: Set Score on profile
+                            yield return StartCoroutine(winnerPlayer.Player._SetScore(winnerPlayer.Score));
                             yield return new WaitForSeconds(0.5f);
+
+                            //Because GM 5 is not a 1 round game now so we need to distribute score and continue next round same as normal games.
+
+                            //foreach (var item in playerScoresList)
+                            //{
+                            //    //Step 8: Set Score on profile
+                            //    yield return StartCoroutine(item.Player._SetScore(item.Score));
+                            //    yield return new WaitForSeconds(0.5f);
+                            //}
+                            //yield return new WaitForSeconds(0.5f);
                         }
                         else
                         {

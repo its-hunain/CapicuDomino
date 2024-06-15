@@ -73,6 +73,59 @@ public class GamePlayUIPanel : MonoBehaviour
         leaveGameBtn.onClick.AddListener(()=> OpenClosePopUp(quitGamePopup.gameObject,true,true));
         soundBtn.onClick.AddListener(()=> soundBtnClickedEvent());
     }
+
+
+    private void Update()
+    {
+        if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5 && !Rule5.isNines && GameRulesManager.noOfPlayers == 4)
+        {
+
+            //Match And Sync Score with Partner
+            if (players.Count == 4)
+            {
+                //Debug.Log("its 4 player Capicu.");
+                if (players[0].playerPersonalData.playerScore != players[2].playerPersonalData.playerScore)
+                {
+                    //Debug.Log("Capicu players[0] Score: " + players[0].playerPersonalData.playerScore);
+                    //Debug.Log("Capicu players[2] Score: " + players[2].playerPersonalData.playerScore);
+                    if (players[0].playerPersonalData.playerScore > players[2].playerPersonalData.playerScore)
+                    {
+                        players[2].playerPersonalData.playerScore = players[0].playerPersonalData.playerScore;
+                        players[2].playerPersonalData.ScoreText.text = players[0].playerPersonalData.ScoreText.text;
+                    }
+                    else
+                    {
+                        players[0].playerPersonalData.playerScore = players[2].playerPersonalData.playerScore;
+                        players[0].playerPersonalData.ScoreText.text = players[2].playerPersonalData.ScoreText.text;
+                    }
+
+                    //Debug.Log("Capicu Update Score.");
+
+                }
+
+                if (players[1].playerPersonalData.playerScore != players[3].playerPersonalData.playerScore)
+                {
+                    //Debug.Log("Capicu players[0] Score: " + players[0].playerPersonalData.playerScore);
+                    //Debug.Log("Capicu players[2] Score: " + players[2].playerPersonalData.playerScore);
+                    if (players[1].playerPersonalData.playerScore > players[3].playerPersonalData.playerScore)
+                    {
+                        players[3].playerPersonalData.playerScore = players[1].playerPersonalData.playerScore;
+                        players[3].playerPersonalData.ScoreText.text = players[1].playerPersonalData.ScoreText.text;
+                    }
+                    else
+                    {
+                        players[1].playerPersonalData.playerScore = players[3].playerPersonalData.playerScore;
+                        players[1].playerPersonalData.ScoreText.text = players[3].playerPersonalData.ScoreText.text;
+                    }
+
+                    //Debug.Log("Capicu Update Score.");
+
+                }
+
+            }
+        }
+    }
+
     public static void UpdateBoneYardText(int value)
     {
         instance.boneYardText.text = value.ToString();
