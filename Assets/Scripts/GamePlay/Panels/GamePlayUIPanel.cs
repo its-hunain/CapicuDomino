@@ -164,13 +164,13 @@ public class GamePlayUIPanel : MonoBehaviour
 
         if (isWin)
         {
-            WinnerScreen.DomiCoinStatus.text = "Domicoin Won";
+           // WinnerScreen.DomiCoinStatus.text = "Domicoin Won";
             WinnerScreen.WinBorder.gameObject.SetActive(true);
             WinnerScreen.LostBorder.gameObject.SetActive(false);
         }
         else
         {
-            WinnerScreen.DomiCoinStatus.text = "Domicoin Lost";
+         //   WinnerScreen.DomiCoinStatus.text = "Domicoin Lost";
             WinnerScreen.WinBorder.gameObject.SetActive(false);
             WinnerScreen.LostBorder.gameObject.SetActive(true);
         }
@@ -188,7 +188,7 @@ public class GamePlayUIPanel : MonoBehaviour
         OpenClosePopUp(WinnerScreen.gameObject, true, true);
         //gameObject.SetActive(true);
         if(tex!=null) WinnerScreen.Avatar.sprite = Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100.0f);
-        WinnerScreen.DomiCoins.text = Coins.ToString();
+        WinnerScreen.DomiCoins.text = winner.playerPersonalData.playerName.ToString();
 
 
         if(winner!=null) ShowWinnerEffect(winner);
