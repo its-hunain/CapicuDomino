@@ -203,6 +203,23 @@ namespace Dominos
     {
         public static CheckWhiteList FromJson(string json) => JsonConvert.DeserializeObject<CheckWhiteList>(json, Dominos.Converter.Settings);
     }
+
+
+    public partial class ImageUpload
+    {
+        [JsonProperty("file_name")]
+        public bool fileName;
+        
+        [JsonProperty("file_url")]
+        public bool fileURL;
+
+    }
+    public partial class ImageUpload
+    {
+        public static ImageUpload FromJson(string json) => JsonConvert.DeserializeObject<ImageUpload>(json, Dominos.Converter.Settings);
+    }
+
+
     #endregion
 
     #region Seasons

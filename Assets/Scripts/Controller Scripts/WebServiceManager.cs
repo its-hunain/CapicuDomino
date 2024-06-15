@@ -82,6 +82,19 @@ public class WebServiceManager : MonoBehaviour
     }
 
 
+    public void UploadT0Bucket(string getFunction, Method getMethod, string rawData = null, Dictionary<string, object> getParameters = null, Action<string, long> OnSuccess = null, Action<string> OnFail = null, CACHEABLE cacheable = 0, bool showLoader = true, FileUplaod fileUplaod = null)
+    {
+        if (showLoader)
+            WaitingLoader.instance.ShowHide(showLoader);
+
+        //--
+        if (debug)
+            print("Upload To Bucket " + getMethod.ToString() + " "  + getFunction);
+
+        //--
+        StartCoroutine(WaitForRequest("", getFunction, getMethod, rawData, getParameters, OnSuccess, OnFail, cacheable, showLoader , fileUplaod));
+    }
+
     public void APIRequest(string getFunction, Method getMethod, string rawData = null, Dictionary<string, object> getParameters = null, Action<string, long> OnSuccess = null, Action<string> OnFail = null, CACHEABLE cacheable = 0, bool showLoader = true, FileUplaod fileUplaod = null)
     {
         if (showLoader)

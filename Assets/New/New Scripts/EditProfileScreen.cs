@@ -1,4 +1,5 @@
 
+using Dominos;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -28,7 +29,7 @@ public class EditProfileScreen : MonoBehaviour
     {
         backBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.editProfileScreen.gameObject, false));
         uploadImageBtn.onClick.AddListener(() => PickImage(512));
-        saveBtn.onClick.AddListener(() => SavePlayerInfo());
+        saveBtn.onClick.AddListener(() => UploadImage());
 
         gender.onClick.AddListener(() => ChangeGender());
     }
@@ -68,10 +69,22 @@ public class EditProfileScreen : MonoBehaviour
         Debug.Log("Permission result: " + permission);
     }
 
+    public void UploadImage()
+    {
+        string route = "https://lady-luck-api-dev.cubestagearea.xyz/api/upload/image";
 
-    public void SavePlayerInfo()
+        Dictionary<string, object> postData = new Dictionary<string, object>();
+        postData.Add("file",profileImage);
+
+        WebServiceManager.instance.UploadT0Bucket(route, Method.POST,null,postData,SavePlayerInfo);
+    }
+    public void SavePlayerInfo(string keyValuePairs, long code)
     {
         //UI_Manager.instance.SaveUserData(name.text.ToString(), country.text.ToString(), age.text.ToString(), gender.text.ToString());
+
+        Debug.LogError("image data: "+ keyValuePairs.ToString());
+        ImageUpload fileData = ImageUpload.FromJson(keyValuePairs.ToString());
+
 
 
         Dictionary<string, object> postData = new Dictionary<string, object>();
@@ -81,18 +94,17 @@ public class EditProfileScreen : MonoBehaviour
         string country = this.country.text.ToString();
         string age = this.age.text.ToString();
         string gender = genderValue;
+
         postData.Add("userName", userName);
-       // postData.Add("country", country);
+        postData.Add("profilePicUrl", fileData.fileURL);
         postData.Add("age", age);
         postData.Add("gender", gender);
 
         WebServiceManager.instance.APIRequest(WebServiceManager.instance.getPlayerProfile, Method.POST, null, postData,PlayerPersonalData.OnSuccessfullyProfileUpdated, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
         UI_Manager.instance.ChangeScreen(UI_Manager.instance.editProfileScreen.gameObject, false);
     }
-    public void UpdateUISuccess()
-    {
 
-    }
+
     public void UpdateUI()
     {
         name.text = PlayerPersonalData.playerName;
