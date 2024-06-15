@@ -18,10 +18,12 @@ public class EditProfileScreen : MonoBehaviour
     public Button gender;
     public Button backBtn;
     public Button saveBtn;
+    string genderValue = "male";
 
-    bool isMale = true;
-
-
+    private void OnEnable()
+    {
+        UpdateUI();
+    }
     void Start()
     {
         backBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.editProfileScreen.gameObject, false));
@@ -31,7 +33,12 @@ public class EditProfileScreen : MonoBehaviour
         gender.onClick.AddListener(() => ChangeGender());
     }
 
- 
+    private void ChangeGender()
+    {
+        genderValue = genderValue == "male" ? "female" : "male";
+        UpdateGender();
+    }
+
     private void PictureFetch(Texture2D texture2D)
     {
         profileImage.sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), new Vector2(texture2D.width / 2, texture2D.height / 2));
@@ -69,10 +76,11 @@ public class EditProfileScreen : MonoBehaviour
 
         Dictionary<string, object> postData = new Dictionary<string, object>();
 
+
         string userName = name.text.ToString();
         string country = this.country.text.ToString();
         string age = this.age.text.ToString();
-        string gender =isMale==true? "male":"female";
+        string gender = genderValue;
         postData.Add("userName", userName);
        // postData.Add("country", country);
         postData.Add("age", age);
@@ -90,27 +98,15 @@ public class EditProfileScreen : MonoBehaviour
         name.text = PlayerPersonalData.playerName;
         var temp = Sprite.Create(PlayerPersonalData.playerTexture, new Rect(0.0f, 0.0f, PlayerPersonalData.playerTexture.width, PlayerPersonalData.playerTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
         profileImage.sprite = temp;
-         country.text = PlayerPersonalData.country;
-         age.text =     PlayerPersonalData.age.ToString();
-         ChangeGender(PlayerPersonalData.gender);
-
-
+        country.text = PlayerPersonalData.country;
+        age.text =     PlayerPersonalData.age.ToString();
+        genderValue = PlayerPersonalData.gender;
+        UpdateGender();
     }
 
-    public void ChangeGender(string str=null)
+    public void UpdateGender()
     {
-            isMale = !isMale;
-
-        if (str !=null)
-        {
-            isMale = str == "male" ? true : false;
-            if (isMale)
-                return;
-        }
-        //else
-
-            gender.transform.Rotate(0, 0, 180);
-        Debug.LogError("male? "+isMale);
-
+        gender.transform.rotation = new Quaternion(0, 0, (genderValue == "male") ? 0 : 180 , 0);
+        Debug.Log("genderValue: " + genderValue);
     }
 }

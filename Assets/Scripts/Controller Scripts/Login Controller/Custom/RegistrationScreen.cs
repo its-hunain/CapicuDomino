@@ -49,7 +49,7 @@ public class RegistrationScreen : MonoBehaviour
         keyValuePairs.Add("Email", email);
         keyValuePairs.Add("Password", password);
 
-        WebServiceManager.instance.APIRequest(WebServiceManager.instance.customLoginFunction, Method.POST, null, keyValuePairs, PlayerPersonalData.OnSuccessfullyProfileDownload, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
+        WebServiceManager.instance.APIRequest(WebServiceManager.instance.signUpFunction, Method.POST, null, keyValuePairs, PlayerPersonalData.OnSuccessfullyProfileDownload, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
     }
 
 
@@ -90,7 +90,7 @@ public class RegistrationScreen : MonoBehaviour
             keyValuePairs.Add("Password", password);
             //keyValuePairs.Add("AuthProvider", PlayerProfile.authProvider);
 
-            WebServiceManager.instance.APIRequest(WebServiceManager.instance.customLoginFunction, Method.POST, null, keyValuePairs, PlayerPersonalData.OnSuccessfullyProfileDownload, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
+            WebServiceManager.instance.APIRequest(WebServiceManager.instance.signUpFunction, Method.POST, null, keyValuePairs, PlayerPersonalData.OnSuccessfullyProfileDownload, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
         }
     }
 

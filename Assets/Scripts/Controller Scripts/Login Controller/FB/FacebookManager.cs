@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.Networking;
 using Newtonsoft.Json.Linq;
+using Nakama.TinyJson;
 
 public class FacebookManager : MonoBehaviour
 {
@@ -15,9 +16,6 @@ public class FacebookManager : MonoBehaviour
     List<string> friendsID = new List<string>();
     List<string> friendsname = new List<string>();
 
-    [Space]
-    [Header("Login Screen")]
-    public GameObject LoginScreen;
 
     private void Awake()
     {
@@ -82,11 +80,6 @@ public class FacebookManager : MonoBehaviour
         }
     }
 
-    private IEnumerator EnableLoginScreen()
-    {
-        yield return new WaitForSeconds(0.5f);
-        LoginScreen.SetActive(true);
-    }
 
     private void Start()
     {
@@ -169,7 +162,7 @@ public class FacebookManager : MonoBehaviour
         {
             string query = "/me/friends";
             FB.API("/me?fields=id,name,email", HttpMethod.GET, GetData);
-            FB.API("me/picture?type=square&height=350&width=350", HttpMethod.GET, GetPicture);
+            FB.API("/me/picture?type=square&height=350&width=350", HttpMethod.GET, GetPicture);
             FB.API(query, HttpMethod.GET, GetFriendsData);
 
             yield return null;
@@ -192,7 +185,7 @@ public class FacebookManager : MonoBehaviour
         string Player_UserName;
         string Player_UserID;
         string Player_Email;
-        Debug.Log(result);
+        Debug.Log(result.ResultDictionary.ToJson());
         if (result.ResultDictionary.TryGetValue("id", out Player_UserID))
         {
             PlayerPersonalData.playerUserID = Player_UserID;
@@ -228,7 +221,6 @@ public class FacebookManager : MonoBehaviour
     /// <param name="result"></param>
     public void GetPicture(IGraphResult result)
     {
-        Debug.Log(result);
         if (result.Error == null && result.Texture != null)
         {
             PlayerPersonalData.playerTexture = result.Texture;
@@ -248,12 +240,21 @@ public class FacebookManager : MonoBehaviour
 
 
         Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
-        keyValuePairs.Add("UserID", PlayerPersonalData.playerUserID);
-        keyValuePairs.Add("FullName", PlayerPersonalData.playerName);
-        keyValuePairs.Add("Email", PlayerPersonalData.playerEmail);
-        keyValuePairs.Add("Password", PlayerPersonalData.playerPassword);
-        keyValuePairs.Add("AuthProvider", PlayerPersonalData.authProvider);
+        keyValuePairs.Add("userId", PlayerPersonalData.playerUserID);
+        keyValuePairs.Add("displayName", PlayerPersonalData.playerName);
+        keyValuePairs.Add("email", PlayerPersonalData.playerEmail);
+        keyValuePairs.Add("userName", PlayerPersonalData.playerName);
+        keyValuePairs.Add("authProvider", PlayerPersonalData.authProvider);
         //keyValuePairs.Add("image", PlayerProfile.imageUrl);
+
+        PlayerPrefs.SetString(Global.AuthProvider, Global.Guest);
+        PlayerPrefs.SetString(Global.UserID, PlayerPersonalData.playerUserID);
+        PlayerPrefs.SetString(Global.UserName, PlayerPersonalData.playerName);
+        PlayerPrefs.SetString(Global.UserEmail, PlayerPersonalData.playerEmail);
+        PlayerPrefs.Save();
+
+
+        UI_Manager.instance.ChangeScreen(UI_Manager.instance.menuScreen.gameObject, true);
 
         WebServiceManager.instance.APIRequest(WebServiceManager.instance.signUpFunction, Method.POST, null, keyValuePairs, PlayerPersonalData.OnSuccessfullyProfileDownload, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
     }

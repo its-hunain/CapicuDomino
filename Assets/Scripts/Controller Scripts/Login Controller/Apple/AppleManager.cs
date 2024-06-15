@@ -31,9 +31,6 @@ public class AppleManager : MonoBehaviour
 
     public Button AppleButton;
 
-    public Texture2D appleTexture;
-    public List<Texture2D> AvatarsList;
-
     [Space]
     [Header("User Details")]
     public string userid = "";
@@ -43,7 +40,6 @@ public class AppleManager : MonoBehaviour
     public string f_name = "";
     public string l_name = "";
 
-    public Text errorText;
 
     private void Awake()
     {
@@ -154,14 +150,14 @@ public class AppleManager : MonoBehaviour
                         else
                         {
                             int val = Random.Range(0, 9999);
-                            userid = "GuestUser" + val + (val * 10);
+                            userid = "AppleGuestUser" + val + (val * 10);
                         }
 
                         try //email
                         {
                             if (appleIdCredential.Email is null || appleIdCredential.Email == null)
                             {
-                                email = "GuestUser@Poker.com";
+                                email = GuestLoginGenerator.GenerateUniqueEmail();
                                 Debug.Log(email);
                             }
                             else
@@ -176,7 +172,7 @@ public class AppleManager : MonoBehaviour
                         catch (Exception ex)
                         {
                             Debug.Log("appleIdCredential.Email=> " + ex);
-                            email = "GuestUser@Poker.com";
+                            email = GuestLoginGenerator.GenerateUniqueEmail();
                         }
 
                         try //f name
@@ -243,9 +239,6 @@ public class AppleManager : MonoBehaviour
                         0,
                         appleIdCredential.AuthorizationCode.Length);
 
-                    int avatarIndex = Random.Range(0, AvatarsList.Count);
-                    appleTexture = AvatarsList[avatarIndex];
-                    TextureConverter.Texture2DToBase64(appleTexture);
 
                     PlayerPrefs.SetString(Global.UserID, userid);
                     PlayerPrefs.SetString(Global.UserName, fullname);
@@ -285,13 +278,20 @@ public class AppleManager : MonoBehaviour
         PlayerPersonalData.authProvider = Global.Apple;
 
         Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
-        keyValuePairs.Add("UserID", PlayerPersonalData.playerUserID);
-        keyValuePairs.Add("FullName", PlayerPersonalData.playerName);
-        keyValuePairs.Add("Email", PlayerPersonalData.playerEmail);
-        keyValuePairs.Add("Password", PlayerPersonalData.playerPassword);
-        keyValuePairs.Add("AuthProvider", PlayerPersonalData.authProvider);
-        keyValuePairs.Add("Image", TextureConverter.Get_Base64Image());
+        keyValuePairs.Add("userId", PlayerPersonalData.playerUserID);
+        keyValuePairs.Add("displayName", PlayerPersonalData.playerName);
+        keyValuePairs.Add("email", PlayerPersonalData.playerEmail);
+        keyValuePairs.Add("userName", PlayerPersonalData.playerName);
+        keyValuePairs.Add("authProvider", PlayerPersonalData.authProvider);
+        //keyValuePairs.Add("image", PlayerProfile.imageUrl);
 
+        PlayerPrefs.SetString(Global.AuthProvider, Global.Guest);
+        PlayerPrefs.SetString(Global.UserID, PlayerPersonalData.playerUserID);
+        PlayerPrefs.SetString(Global.UserName, PlayerPersonalData.playerName);
+        PlayerPrefs.SetString(Global.UserEmail, PlayerPersonalData.playerEmail);
+        PlayerPrefs.Save();
+
+        UI_Manager.instance.ChangeScreen(UI_Manager.instance.menuScreen.gameObject, true);
         WebServiceManager.instance.APIRequest(WebServiceManager.instance.signUpFunction, Method.POST, null, keyValuePairs, PlayerPersonalData.OnSuccessfullyProfileDownload, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
     }
 
@@ -358,8 +358,8 @@ public class AppleManager : MonoBehaviour
         userid = PlayerPrefs.GetString(Global.UserID);
         fullname = PlayerPrefs.GetString(Global.UserName);
         email = PlayerPrefs.GetString(Global.UserEmail);
-        var appleTexture = TextureConverter.Base64ToTexture2D(TextureConverter.Get_Base64Image());
-        PlayerPersonalData.playerTexture = appleTexture;
+        //var appleTexture = TextureConverter.Base64ToTexture2D(TextureConverter.Get_Base64Image());
+        //PlayerPersonalData.playerTexture = appleTexture;
         SendDataToPlayerProfile();
 
 

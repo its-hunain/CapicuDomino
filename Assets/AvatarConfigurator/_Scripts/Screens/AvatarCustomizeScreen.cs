@@ -21,7 +21,7 @@ namespace AvatarBuilder
         {
             camerControllerforConfigurator.MoveCamera(CamerControllerforConfigurator.AvatarTargetPositions.bodyView);
 
-            AvatarConfigurator.CategoriesDownloaderAsynchrously(WebServiceManager.instance.getAvatarBuilderCategories);
+            //AvatarConfigurator.CategoriesDownloaderAsynchrously(WebServiceManager.instance.getAvatarBuilderCategories);
 
             ItemSelectionPanel.isAnimationAllowed = true; // To play the animation only once.
 

@@ -8,21 +8,8 @@ using Random = UnityEngine.Random;
 public class GuestLoginController : MonoBehaviour
 {
     [Space]
-    public PlayerPersonalData profile;
-
-    [Space]
     public Button loginBtn;
 
-    [Space]
-    public Texture2D GuestUserPic;
-    public List<Texture2D> AvatarsList;
-
-    public static GuestLoginController GuestLoginControllerRef;
-
-    private void Awake()
-    {
-        GuestLoginControllerRef = this;
-    }
 
     private void Start()
     {
@@ -116,7 +103,7 @@ public class GuestLoginGenerator
 
     public static string GenerateUniqueEmail()
     {
-        string email = namePrefix.ToLower() + uniqueId + "@trashtalk.com";
+        string email = namePrefix.ToLower() + uniqueId + "@capicu.com";
         return email;
     }
 

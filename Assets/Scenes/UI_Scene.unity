@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -461,6 +460,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11169510}
   m_CullTransparentMesh: 1
+--- !u!1 &13997865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 13997866}
+  - component: {fileID: 13997867}
+  m_Layer: 0
+  m_Name: GuestLoginController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &13997866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13997865}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 365798384}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &13997867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13997865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d806c58159e77431ba93e9005ba42d4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AppleButton: {fileID: 996514845}
+  userid: 
+  email: 
+  fullname: 
+  identitytoken: 
+  f_name: 
+  l_name: 
 --- !u!1 &16345584
 GameObject:
   m_ObjectHideFlags: 0
@@ -2952,6 +3002,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 102515133}
   m_CullTransparentMesh: 1
+--- !u!1 &107999866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 107999867}
+  - component: {fileID: 107999868}
+  m_Layer: 0
+  m_Name: FacebookLoginController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &107999867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107999866}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 365798384}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &107999868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107999866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e48a950b2ff4541579269687bdd74bc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FbLoginBtn: {fileID: 1494043832}
 --- !u!1 &109796571
 GameObject:
   m_ObjectHideFlags: 0
@@ -9755,6 +9850,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1635339240}
+  - {fileID: 107999867}
+  - {fileID: 13997866}
   - {fileID: 161171763}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10944,6 +11041,10 @@ PrefabInstance:
       value: api/users/getProducts
       objectReference: {fileID: 0}
     - target: {fileID: 7451005440754805605, guid: 5d76c51a9972c4c92bed4ea2255aff00, type: 3}
+      propertyPath: socialLogin
+      value: socialLogin
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451005440754805605, guid: 5d76c51a9972c4c92bed4ea2255aff00, type: 3}
       propertyPath: signUpFunction
       value: api/auth/mobile/socialLogin
       objectReference: {fileID: 0}
@@ -10954,7 +11055,7 @@ PrefabInstance:
     - target: {fileID: 7451005440754805605, guid: 5d76c51a9972c4c92bed4ea2255aff00, type: 3}
       propertyPath: tempFlagTexture
       value: 
-      objectReference: {fileID: 2800000, guid: faa108c367c98459283ecee5635192c3, type: 3}
+      objectReference: {fileID: 2800000, guid: a7d311ae0b572aa4b9dc7fe499be2be2, type: 3}
     - target: {fileID: 7451005440754805606, guid: 5d76c51a9972c4c92bed4ea2255aff00, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -45670,10 +45771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5cee7345786b4639806d8bd72083d05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 161171764}
   loginBtn: {fileID: 835029265}
-  GuestUserPic: {fileID: 0}
-  AvatarsList: []
 --- !u!1 &1642156751
 GameObject:
   m_ObjectHideFlags: 0

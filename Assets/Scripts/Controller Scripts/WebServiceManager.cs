@@ -21,33 +21,20 @@ public enum CACHEABLE { NULL, USER_DATA }
 public class WebServiceManager : MonoBehaviour
 {
     public Texture2D tempFlagTexture;
-    [SerializeField] internal string getSetUserAvatarSpecs            = "";
-    [SerializeField] internal string getAvatarBuilderCategories       = "";
-    [SerializeField] internal string uploadObjectToS3Server           = "";
-    [SerializeField] internal string uploadImageToS3Server            = "";
-    [SerializeField] internal string getAssetBuilderCategories        = "";
-    [SerializeField] internal string GetAssetBuilderItemsByCategoryID = "";
-    [SerializeField] internal string getUserAssetsCategories          = "";
-    [SerializeField] internal string setUserAssetsCategories          = "";
-    [SerializeField] internal string getMintedUserAssetsCategories    = "";
-    [SerializeField] internal string setMintedUserAssetsCategories    = "";
 
-    [Space]
-    [Header("General Apis")]
-    [SerializeField]    internal string getDomiCoins                  = "";
-    [SerializeField]    internal string getGameCenter                 = "";
-    [SerializeField]    internal string getPlayerProfile              = ""; //can be also use as post
-    [SerializeField]    internal string checkInternetConnectivity     = "";
     
     [Space]
     [Header("New Apis")]
     [SerializeField] internal string signUpFunction = "";
-    [SerializeField] internal string customLoginFunction = "";
-
     [SerializeField] internal string getProducts = "";
     [SerializeField] internal string buyProducts = "";
-
     [SerializeField] internal string getLeaderboards = "";
+
+    [Space]
+    [Header("General Apis")]
+    [SerializeField] internal string getPlayerProfile              = ""; //can be also use as post
+    [SerializeField] internal string checkInternetConnectivity     = "";
+    [SerializeField] internal string uploadImageToS3Server         = "";
 
     public static WebServiceManager instance;
 
@@ -74,7 +61,6 @@ public class WebServiceManager : MonoBehaviour
 
     [Header("Sprites")]
     public List<Sprite> flagSprites = new List<Sprite>();
-    public List<Sprite> classSprites = new List<Sprite>();
 
     [SerializeField] public PlayerPersonalDataJSON playerPersonalData;
 
@@ -410,19 +396,6 @@ public class WebServiceManager : MonoBehaviour
             WaitingLoader.instance.ShowHide(false);
     }
 
-    internal Sprite FindClassSprite(string playerClass = null)
-    {
-
-        if (playerClass != null)
-        {
-            return classSprites.Find(x => x.name.ToLower().Equals(playerClass.ToLower()));
-        }
-        else
-        {
-            Debug.LogError("Class Short Code is null...");
-            return classSprites[0];
-        }
-    }
 
     internal Sprite FindFlagSprite(string flagShortCode = null)
     {

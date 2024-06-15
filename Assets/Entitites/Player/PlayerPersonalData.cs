@@ -85,8 +85,7 @@ public class PlayerPersonalData : MonoBehaviour
         //playerStatesJson.tournnamentLost = playerPersonalDataJson.Data.TournamentStats.TournamentLost;
         //playerStatesJson.championshipsWon = playerPersonalDataJson.Data.TournamentStats.ChampionshipWon;
 
-        playerStatesJson.playerFlagShortCode = playerPersonalDataJson.Data.User.FlagShortCode;
-
+        playerStatesJson.playerFlagShortCode = playerPersonalDataJson.Data.User.Country;
 
 
 
@@ -95,7 +94,7 @@ public class PlayerPersonalData : MonoBehaviour
         ImageCacheManager.instance.CheckOrDownloadImage(profilePicURL, null, UpdatePic);
 
         //WebServiceManager.instance.StartCoroutine(_GetTexture(profilePicURL));
-      //  WebServiceManager.instance.StartCoroutine(_GetFlag(playerStatesJson.playerFlagShortCode));
+        WebServiceManager.instance.StartCoroutine(_GetFlag(playerStatesJson.playerFlagShortCode));
 
         //if (SceneManager.GetActiveScene().name.Equals(Global.SplashScene))
         //{
@@ -138,12 +137,11 @@ public class PlayerPersonalData : MonoBehaviour
         playerPassword = user.Email;
         location = user.Country;
         profilePicURL = user.ProfilePicUrl;
-
-        PlayerStates playerStatesJson = new PlayerStates();
+        country = user.Country;
 
         ImageCacheManager.instance.CheckOrDownloadImage(profilePicURL , null, UpdatePic);
         //WebServiceManager.instance.StartCoroutine(_GetTexture(profilePicURL));
-       //  WebServiceManager.instance.StartCoroutine(_GetFlag(playerStatesJson.playerFlagShortCode));
+         WebServiceManager.instance.StartCoroutine(_GetFlag(country));
 
         //if (SceneManager.GetActiveScene().name.Equals(Global.SplashScene))
         //{
@@ -235,22 +233,4 @@ public class PlayerStates
 
         flagSprite = WebServiceManager.instance.FindFlagSprite(playerFlagShortCode);
     }
-
-
-    UserGameModeScoreInfo[] GenerateRandomGameScoreInfoForBot()
-    {
-        List<UserGameModeScoreInfo> userGameModeScoreInfos = new List<UserGameModeScoreInfo>();
-        UserGameModeScoreInfo userGameModeScoreInfo = new UserGameModeScoreInfo();
-        userGameModeScoreInfo.GameMode = GameRulesManager.currentSelectedGame_Rule;
-        userGameModeScoreInfo.medalRank = UnityEngine.Random.Range(1, 6);
-        userGameModeScoreInfos.Add(userGameModeScoreInfo);
-        return userGameModeScoreInfos.ToArray();
-    }
 }
-
-//[Serializable]
-//public class BlockChainData
-//{
-//    public string avatarJsonURL;
-//    public string avatarScreenShotURL;
-//}

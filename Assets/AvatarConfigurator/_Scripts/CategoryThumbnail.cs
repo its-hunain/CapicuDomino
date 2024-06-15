@@ -52,10 +52,10 @@ namespace AvatarBuilder
                 avatarScreenManager.DisableAllItemThumbnailSelectionPanels();
             }
 
-            if (itemsThumbnailList.Count == 0)
-            {
-                AvatarConfigurator.ItemsDownloaderAsynchrously(FillCategoryItems, category_Name, string.Format($"{WebServiceManager.instance.getAvatarBuilderCategories}/{mongoDBCategory_ID}/items"));
-            }
+            //if (itemsThumbnailList.Count == 0)
+            //{
+            //    AvatarConfigurator.ItemsDownloaderAsynchrously(FillCategoryItems, category_Name, string.Format($"{WebServiceManager.instance.getAvatarBuilderCategories}/{mongoDBCategory_ID}/items"));
+            //}
         }
 
         public void FillCategoryItems(ItemDataJson itemsThumbnailData)
