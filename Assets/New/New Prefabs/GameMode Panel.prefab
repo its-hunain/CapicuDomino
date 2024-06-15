@@ -1862,6 +1862,9 @@ MonoBehaviour:
   blocking: {fileID: 7277622013466454380}
   capicu: {fileID: 8440698599291068177}
   nines: {fileID: 1362754873693407387}
+  blockingInfo: {fileID: 158518976609913331}
+  capicuInfo: {fileID: 6914538816655583643}
+  ninesInfo: {fileID: 5586644349035361341}
 --- !u!1 &8498317482128080273
 GameObject:
   m_ObjectHideFlags: 0

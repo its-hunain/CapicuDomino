@@ -15,7 +15,7 @@ public class AboutScreen : MonoBehaviour
         closeBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.aboutScreen.gameObject, false));
 
     }
-    public void UpdateUI(string heading=null,string context=null)
+    public void UpdateUIText(string heading=null,string context=null)
     {
         if (heading != null)
         {
