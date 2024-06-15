@@ -86,53 +86,16 @@ public class Tile : MonoBehaviour
             childPossibility.topChild.isSamePhase = childPossibility.bottomChild.isSamePhase = true;
         }
 
-        orignalTexture = Resources.Load<Texture>("DominoSprites/3DTilesTexture/" + First.ToString() + Second.ToString());
+        var str = PlayerPrefs.GetString("TileTheme", "TileTheme1");
+        Debug.Log("theme: " + str);
+
+        if (str != null) 
+        {
+            orignalTexture = Resources.Load<Texture>("DominoSprites/"+ str + "/3DTilesTexture/" + First.ToString() + Second.ToString());
+        }
+
         originalSprite = Resources.Load<Sprite>("DominoSprites/UITilesSprite/" + First.ToString() + Second.ToString());
         mat.materials[1].mainTexture = emptyTexture;
-
-        var str = PlayerPrefs.GetString("TileTheme");
-        UpdateTileTheme(str);
-
-    }
-
-
-    public void UpdateTileTheme(string theme)
-    {
-        Color color = Color.white;
-
-        if (theme == "TileTheme1")
-        {
-            color = Color.white;
-        }
-
-        else if (theme == "TileTheme2")
-        {
-
-            color = new Color(235, 95, 165, 255);
-        }
-        else if (theme == "TileTheme3")
-        {
-
-            color = new Color(127, 142, 243, 255);
-        }
-        else if (theme == "TileTheme4")
-        {
-            color = new Color(157, 51, 238, 255);
-        }
-        else
-        {
-            color = Color.white;
-        }
-
-        foreach (var item in mat.sharedMaterials)
-        {
-            item.SetColor("_Color", color);
-
-            //item.color = color;
-            Debug.Log(" item.color : " + item.color);
-        }
-
-        Debug.Log("theme: "  + theme);
     }
 
     /// <summary>

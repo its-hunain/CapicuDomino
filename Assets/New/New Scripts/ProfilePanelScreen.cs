@@ -42,8 +42,8 @@ public class ProfilePanelScreen : MonoBehaviour
 
         country.text = PlayerPersonalData.country;
         email.text = PlayerPersonalData.playerEmail;
-        age.text = PlayerPersonalData.age.ToString();
-        gender.text = PlayerPersonalData.gender;
+        age.text = PlayerPersonalData.age.ToString() +" years old";
+        gender.text = PlayerPersonalData.gender.ToUpper();
 
 
         totalWinning.text = PlayerPersonalData.playerStates.gamesWon;

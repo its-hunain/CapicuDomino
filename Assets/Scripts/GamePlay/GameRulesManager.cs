@@ -1022,6 +1022,14 @@ public class Rule5 : GameRulesManager
             //Tie, Play Tie Breaker
             if (playersCache[0].playerPersonalData.playerScore == playersCache[1].playerPersonalData.playerScore)
             {
+                if (!Rule5.isNines)
+                {
+                    Debug.Log("2 players won");
+                    Debug.Log("Player 1 :"+ playersCache[0].playerPersonalData.playerName);
+                    Debug.Log("Player 2 :"+ playersCache[1].playerPersonalData.playerName);
+                    return playersCache[0];
+                }
+
                 Debug.Log("It's a tie to decide a winner, let's play another round. . .");
                 wasTheWinnerTied = true;
                 return null;

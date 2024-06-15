@@ -775,7 +775,8 @@ public class GridManager : MonoBehaviour
 
 
                         //Tie, Play Tie Breaker
-                        //This code will not work anymore because in this rule if tie in scoring we give first turn to the last round winner.
+                        //Because GM 5 is not a 1 round game now so we need to distribute score and continue next round same as normal games.
+
                         if (winnerPlayer == null)
                         {
                             List<PlayerScore> tiePlayers = GameRulesManager.FindTiePlayers(playerScoresList);
@@ -788,6 +789,7 @@ public class GridManager : MonoBehaviour
 
                             yield return StartCoroutine(_PlayTieBreaker(tiePlayers));
                             winnerPlayer = TieBreaker.instance.winnerPlayer;
+                            winnerPlayer.Score = playerScoresList.OrderBy(x => x.Score).ToList().Where(item => item.Player.playerPersonalData.playerUserID != winnerPlayer.Player.playerPersonalData.playerUserID).Sum(item => item.Score);
                         }
 
                         Debug.Log(winnerPlayer == null ? "Error to identify a tie. . ." : "No Error in Tie.");
