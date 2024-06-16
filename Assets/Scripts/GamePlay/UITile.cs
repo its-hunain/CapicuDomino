@@ -30,45 +30,11 @@ public class UITile : MonoBehaviour , IPointerDownHandler // required interface 
         tileImage.sprite = sprite;
       
         var str = PlayerPrefs.GetString("TileTheme", "TileTheme1");
-        UpdateTileTheme(str , tileImage);
+        tileImage.color = TileTheme.ColorUtility.UpdateTileTheme(str);
 
         this.parentTile = parentTile;
     }
 
-    public void UpdateTileTheme(string theme, Image tileImage)
-    {
-        Color color = Color.white;
-
-        if (theme == "TileTheme1")
-        {
-            color = Color.white;
-        }
-
-        else if (theme == "TileTheme2")
-        {
-
-            color = new Color(235, 95, 165, 255);
-        }
-        else if (theme == "TileTheme3")
-        {
-
-            color = Color.yellow;// new Color(127, 142, 243, 255);
-        }
-        else if (theme == "TileTheme4")
-        {
-            color = new Color(157, 51, 238, 255);
-        }
-        else
-        {
-            color = Color.white;
-        }
-
-        
-        tileImage.color = color;
-
-
-        Debug.Log("theme: " + theme);
-    }
 
     public void EnableDisable_UI_Tile(bool isEnabled)
     {

@@ -92,3 +92,76 @@ public static class Global
 
     public const string hasSessionKey = "hasSession";
 }
+
+
+namespace TileTheme
+{
+    public static class ColorUtility
+    {
+        public static Color HexToColor(string hex)
+        {
+            // Remove the '#' character if present
+            if (hex.StartsWith("#"))
+            {
+                hex = hex.Substring(1);
+            }
+
+            // Ensure the hex string is valid (6 or 8 characters long)
+            if (hex.Length != 6 && hex.Length != 8)
+            {
+                Debug.LogError("Invalid hex string length. Must be 6 or 8 characters long.");
+                return Color.white; // Return a default color
+            }
+
+            // Parse the hex string into RGB(A) components
+            byte r = byte.Parse(hex.Substring(0, 2), System.Globalization.NumberStyles.HexNumber);
+            byte g = byte.Parse(hex.Substring(2, 2), System.Globalization.NumberStyles.HexNumber);
+            byte b = byte.Parse(hex.Substring(4, 2), System.Globalization.NumberStyles.HexNumber);
+            byte a = 255; // Default to opaque if no alpha value is provided
+
+            if (hex.Length == 8)
+            {
+                a = byte.Parse(hex.Substring(6, 2), System.Globalization.NumberStyles.HexNumber);
+            }
+
+            // Convert to a Color object
+            return new Color32(r, g, b, a);
+        }
+
+
+        public static Color UpdateTileTheme(string theme)
+        {
+            Color color = Color.white;
+
+            if (theme == "TileTheme1")
+            {
+                color = Color.white;
+            }
+
+            else if (theme == "TileTheme2")
+            {
+                //color = new Color(235, 95, 165, 255);
+                color = HexToColor("#EB5FA5FF");
+            }
+            else if (theme == "TileTheme3")
+            {
+                color = HexToColor("#7F8EF3FF");
+
+                //color = Color.yellow;// new Color(127, 142, 243, 255);
+            }
+            else if (theme == "TileTheme4")
+            {
+                color = HexToColor("#9D33EEFF");
+
+                //color = new Color(157, 51, 238, 255);
+            }
+            else
+            {
+                color = Color.white;
+            }
+
+            Debug.Log("theme: " + theme);
+            return color;
+        }
+    }
+}

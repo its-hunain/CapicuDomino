@@ -96,6 +96,8 @@ public class Tile : MonoBehaviour
 
         originalSprite = Resources.Load<Sprite>("DominoSprites/UITilesSprite/" + First.ToString() + Second.ToString());
         mat.materials[1].mainTexture = emptyTexture;
+
+        mat.materials[1].color = TileTheme.ColorUtility.UpdateTileTheme(str);
     }
 
     /// <summary>
@@ -107,6 +109,8 @@ public class Tile : MonoBehaviour
         if (!isFrontFace)
             isFrontFace = true;
         mat.materials[1].mainTexture = orignalTexture;
+        var str = PlayerPrefs.GetString("TileTheme", "TileTheme1");
+        mat.materials[1].color = TileTheme.ColorUtility.UpdateTileTheme(str);
     }
     #endregion
 
