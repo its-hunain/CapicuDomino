@@ -11,7 +11,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BotScene.unity
     guid: e3c66d9449e9244cfac61755f66fadb5
-  - enabled: 0
-    path: Assets/AvatarConfigurator/_Scenes/AvatarConfigurator.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}

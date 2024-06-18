@@ -385,7 +385,7 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.Log("ReloadSplashScene");
-            SceneManager.LoadScene(Global.SplashScene);
+            SceneManager.LoadScene(Global.UIScene);
         }
 
     }

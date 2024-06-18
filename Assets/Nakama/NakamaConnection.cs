@@ -97,7 +97,6 @@ public class NakamaConnection : ScriptableObject
     {
         string GameRule = GameRulesManager.currentSelectedGame_Rule.ToString();
         double coinsToPlay = double.Parse(GameRulesManager.currentSelectedGame_CoinsToPlay.ToString());
-        int maxPlayers = GameRulesManager.noOfPlayers;
 
         string query = "";
         const string engine = "unity";
@@ -130,11 +129,10 @@ public class NakamaConnection : ScriptableObject
             " +properties.coins:" + coinsToPlay +
             " +properties.noOfPlayers:" + GameRulesManager.noOfPlayers;
 
-        int minPlayer = GameRulesManager.currentSelectedGame_GameType == GameRulesManager.GameType.Tournament ? 2 : maxPlayers;
 
         Debug.Log("Querry: " + query);
         // Add this client to the matchmaking pool and get a ticket.
-        var matchmakerTicket = await Socket.AddMatchmakerAsync(query, minPlayer /*min count*/, maxPlayers /*max count*/, stringProperties, numericProperties);
+        var matchmakerTicket = await Socket.AddMatchmakerAsync(query, GameRulesManager.noOfPlayers /*min count*/, GameRulesManager.noOfPlayers /*max count*/, stringProperties, numericProperties);
         currentMatchmakingTicket = matchmakerTicket.Ticket;
     }
 
