@@ -202,8 +202,8 @@ public class GameManager : MonoBehaviour
         remotePlayerNetworkData.MatchId = matchId;
         remotePlayerNetworkData.User = jsonPlayerData;
         remotePlayerNetworkData.UserDetails = apiUser;
-        remotePlayerNetworkData.AvatarURL = "https://play-lh.googleusercontent.com/HnzbI7urJlB6V26dtKiawYoBrH4iR5DAAk4KqNZzIa0NRWQukskR6aX7IrV55AULKIgA=w240-h480-rw";// apiUser.AvatarUrl;
-        remotePlayerNetworkData.DisplayName = "User234252";//apiUser.DisplayName;
+        remotePlayerNetworkData.AvatarURL = apiUser.AvatarUrl;
+        remotePlayerNetworkData.DisplayName = apiUser.DisplayName;
         remotePlayerNetworkData.UserName = apiUser.Username;
         remotePlayerNetworkData.UserID = apiUser.Id;
 

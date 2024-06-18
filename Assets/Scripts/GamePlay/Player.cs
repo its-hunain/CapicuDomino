@@ -109,7 +109,10 @@ public class Player : MonoBehaviour
         playerPersonalData.playerNameText.text = name.Split(' ')[0];
         playerPersonalData.playerStates = playerStates;
         if (texture2D != null) playerPersonalData.playerRawImage.texture = playerPersonalData.playerTexture = texture2D;
-        else playerPersonalData.playerRawImage.texture = playerPersonalData.playerTexture = BotRandomData.malePics[0];
+        else
+        {
+            playerPersonalData.playerRawImage.texture = playerPersonalData.playerTexture = BotRandomData.malePics[0];
+        }
         //playerPersonalData.playerClassSprite = playerStates.classSprite;
         if (userID.Contains("bot"))
             playerPersonalData.flagImage.sprite = playerPersonalData.playerFlagSprite = playerStates.flagSprite;
@@ -140,24 +143,16 @@ public class Player : MonoBehaviour
             yield break;
         }
 
-        UnityWebRequest www = UnityWebRequestTexture.GetTexture(url);
-        yield return www.SendWebRequest();
-
-        if (www.result != UnityWebRequest.Result.Success)
-        {
-            Debug.Log(www.error);
-        }
-        else
-        {
-            Texture2D texture2D = ((DownloadHandlerTexture)www.downloadHandler).texture;
-            if (texture2D != null) playerPersonalData.playerRawImage.texture = playerPersonalData.playerTexture = texture2D;
-            else playerPersonalData.playerRawImage.texture = playerPersonalData.playerTexture = BotRandomData.malePics[0];
-
-            //remotePlayerNetworkData.UserTexture = await DownLoadPicture(remotePlayerNetworkData.AvatarURL);
-            Debug.Log("Downloaded. . . ");
-        }
+        ImageCacheManager.instance.CheckOrDownloadImage(url, null, UpdatePic);
     }
 
+
+
+    private void UpdatePic(Texture2D texture2D)
+    {
+        if (texture2D != null) playerPersonalData.playerRawImage.texture = playerPersonalData.playerTexture = texture2D;
+        else playerPersonalData.playerRawImage.texture = playerPersonalData.playerTexture = BotRandomData.malePics[0];
+    }
 
 
     IEnumerator _GetFlag(string flagShortCode)
