@@ -80,6 +80,12 @@ namespace Dominos
         public string GamesWonPercentage;
     }
 
+    public partial class ErrorData
+    {
+        public int statusCode { get; set; }
+        public List<string> message { get; set; }
+        public string error { get; set; }
+    }
 
     [Serializable]
     public partial class User
@@ -189,6 +195,11 @@ namespace Dominos
         public static User FromJson(string json) => JsonConvert.DeserializeObject<User>(json, Dominos.Converter.Settings);
     }
 
+    public partial class ErrorData
+    {
+        public static ErrorData FromJson(string json) => JsonConvert.DeserializeObject<ErrorData>(json, Dominos.Converter.Settings);
+    }
+
     [Serializable]
     public partial class CheckWhiteList
     {
@@ -205,14 +216,17 @@ namespace Dominos
     }
 
 
+
+    public class ImageData
+    {
+        public string file_name { get; set; }
+        public string file_url { get; set; }
+    }
+
     public partial class ImageUpload
     {
-        [JsonProperty("file_name")]
-        public bool fileName;
-        
-        [JsonProperty("file_url")]
-        public bool fileURL;
-
+        public string message { get; set; }
+        public ImageData data { get; set; }
     }
     public partial class ImageUpload
     {

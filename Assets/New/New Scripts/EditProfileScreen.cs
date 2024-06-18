@@ -10,6 +10,7 @@ using static NativeGallery;
 public class EditProfileScreen : MonoBehaviour
 {
     public Image profileImage;
+    public Texture2D playerTexture;
     public Button uploadImageBtn;
 
     public InputField name;
@@ -43,8 +44,9 @@ public class EditProfileScreen : MonoBehaviour
     private void PictureFetch(Texture2D texture2D)
     {
         profileImage.sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), new Vector2(texture2D.width / 2, texture2D.height / 2));
+        playerTexture = texture2D;
 
-        
+
     }
 
     private void PickImage(int maxSize)
@@ -55,7 +57,7 @@ public class EditProfileScreen : MonoBehaviour
             if (path != null)
             {
                 // Create Texture from selected image
-                Texture2D texture = LoadImageAtPath(path, maxSize);
+                Texture2D texture = LoadImageAtPath(path, 512 , false);
                 if (texture == null)
                 {
                     Debug.Log("Couldn't load texture from " + path);
@@ -74,13 +76,32 @@ public class EditProfileScreen : MonoBehaviour
         string route = "https://lady-luck-api-dev.cubestagearea.xyz/api/upload/image";
 
         Dictionary<string, object> postData = new Dictionary<string, object>();
-        postData.Add("file",profileImage);
+        FileUplaod fileUplaod = new FileUplaod();
+        fileUplaod.key = "file";
+        fileUplaod.mimeType = ".jpg";
+        fileUplaod.name = "profilePic";
+        fileUplaod.data = playerTexture.EncodeToPNG();
 
-        WebServiceManager.instance.UploadT0Bucket(route, Method.POST,null,postData,SavePlayerInfo);
+        WebServiceManager.instance.UploadT0Bucket(route, Method.POST,null,null,SavePlayerInfo , OnFail , CACHEABLE.NULL,true,fileUplaod );
     }
+
+    private void OnFail(string obj)
+    {
+        Debug.LogError("Error: " + obj);
+
+    }
+
     public void SavePlayerInfo(string keyValuePairs, long code)
     {
         //UI_Manager.instance.SaveUserData(name.text.ToString(), country.text.ToString(), age.text.ToString(), gender.text.ToString());
+
+        if (!ResponseStatus.Check(code))
+        {
+            Debug.LogError("Error: " + keyValuePairs.ToString());
+
+            
+            return;
+        }
 
         Debug.LogError("image data: "+ keyValuePairs.ToString());
         ImageUpload fileData = ImageUpload.FromJson(keyValuePairs.ToString());
@@ -95,8 +116,9 @@ public class EditProfileScreen : MonoBehaviour
         string age = this.age.text.ToString();
         string gender = genderValue;
 
-        postData.Add("userName", userName);
-        postData.Add("profilePicUrl", fileData.fileURL);
+        postData.Add("displayName", userName);
+        Debug.Log("fileData.file_url: " + fileData.data.file_url);
+        postData.Add("profilePicUrl", fileData.data.file_url);
         postData.Add("age", age);
         postData.Add("gender", gender);
 
@@ -110,6 +132,7 @@ public class EditProfileScreen : MonoBehaviour
         name.text = PlayerPersonalData.playerName;
         var temp = Sprite.Create(PlayerPersonalData.playerTexture, new Rect(0.0f, 0.0f, PlayerPersonalData.playerTexture.width, PlayerPersonalData.playerTexture.height), new Vector2(0.5f, 0.5f), 100.0f);
         profileImage.sprite = temp;
+        playerTexture = PlayerPersonalData.playerTexture;
         country.text = PlayerPersonalData.country;
         age.text =     PlayerPersonalData.age.ToString();
         genderValue = PlayerPersonalData.gender;

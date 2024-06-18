@@ -134,6 +134,8 @@ public class WebServiceManager : MonoBehaviour
             {
                 foreach (var item in getParameters)
                 {
+                        print(" item.Key = " + item.Key.ToString());
+                        print(" VALUE = " + item.Value.ToString());
                     if (debug)
                         print(item.Key + " = " + item.Value.ToString());
                     //--

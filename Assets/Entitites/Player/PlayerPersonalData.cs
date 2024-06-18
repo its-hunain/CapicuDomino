@@ -109,12 +109,15 @@ public class PlayerPersonalData : MonoBehaviour
         {
             Debug.LogError("successCode Error: " + successCode.ToString());
             Debug.LogError("Some Error: " + keyValuePairs.ToString());
+            
             if (successCode == 403)
             {
                 WebglUserSession.userLoggedIn = false;
                 UI_ScreenManager.OpenClosePopUp(WebglUserSession.instance.userSessionFailedPopUp, true, true);
+                return;
 
             }
+            MesgBar.instance.show(ErrorData.FromJson(keyValuePairs.ToString()).message[0]);
             return;
         }
         WebglUserSession.userLoggedIn = true;

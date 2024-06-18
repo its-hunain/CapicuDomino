@@ -154,8 +154,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 574108829}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.61, y: 0.6266236}
-  m_AnchorMax: {x: 0.6794498, y: 0.691255}
+  m_AnchorMin: {x: 0.40372938, y: 0.6266236}
+  m_AnchorMax: {x: 0.47317916, y: 0.691255}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -21964,10 +21964,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 574108829}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.32200003, y: 0.61149424}
-  m_AnchorMax: {x: 0.586, y: 0.7118707}
-  m_AnchoredPosition: {x: 0.05000305, y: 0}
-  m_SizeDelta: {x: 0.070007324, y: -1.2099915}
+  m_AnchorMin: {x: 0.32201377, y: 0.612327}
+  m_AnchorMax: {x: 0.40372947, y: 0.71103793}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0.0000076293945, y: -0.0000021457672}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &788947907
 MonoBehaviour:
@@ -22002,7 +22002,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: United States
+  m_Text: US
 --- !u!222 &788947908
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -35613,7 +35613,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1282591647
 RectTransform:
   m_ObjectHideFlags: 0
