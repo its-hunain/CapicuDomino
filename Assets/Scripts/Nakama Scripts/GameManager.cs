@@ -889,7 +889,7 @@ public class GameManager : MonoBehaviour
         var playerPrefab = NetworkRemotePlayerPrefab;
 
         // Spawn the new player.
-        var player = Instantiate(playerPrefab, GamePlayUIPanel.instance.players[sortIndex].playerPhysicalPosition.currentplayerPosition.position, Quaternion.identity);
+        var player = Instantiate(playerPrefab, GamePlayUIPanel.instance.players[sortIndex].transform.position, Quaternion.identity);
 
         //Destroy(spawnPoint.gameObject);
         //// Setup the appropriate network data values for player.

@@ -394,7 +394,7 @@ public class Player : MonoBehaviour
 
     public void DestroyPlayer()
     {
-        playerPhysicalPosition.currentplayerPosition.GetComponentInChildren<AvatarParent_FbxHolder>().gameObject.SetActive(false);
+        //playerPhysicalPosition.currentplayerPosition.GetComponentInChildren<AvatarParent_FbxHolder>().gameObject.SetActive(false);
         gameObject.SetActive(false);
         DestroyOldDominoTiles();
         GamePlayUIPanel.instance.players.Remove(this);
