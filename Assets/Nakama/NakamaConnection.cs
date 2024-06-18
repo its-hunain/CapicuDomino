@@ -124,7 +124,7 @@ public class NakamaConnection : ScriptableObject
             " +properties.gameRule:" + GameRule +
             " +properties.isNines:" + Rule5.isNines.ToString() +
             " +properties.gameType:" + GameRulesManager.currentSelectedGame_GameType.ToString() +
-            " +privateRoomId:" + privateRoomId +
+            " +properties.privateRoomId:" + privateRoomId +
             " +properties.gameCenter:" + GameCenterSelectionScreen.selectedGameCenterID.ToString() +
             " +properties.coins:" + coinsToPlay +
             " +properties.noOfPlayers:" + GameRulesManager.noOfPlayers;
