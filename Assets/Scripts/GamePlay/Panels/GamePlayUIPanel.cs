@@ -387,7 +387,7 @@ public class GamePlayUIPanel : MonoBehaviour
             if (!item.gameObject.activeInHierarchy)
             {
                 instance.players.Remove(item);
-                item.playerPhysicalPosition.currentplayerPosition.gameObject.SetActive(false);
+                //item.playerPhysicalPosition.currentplayerPosition.gameObject.SetActive(false);
             }
         }
 
