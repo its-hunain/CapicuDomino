@@ -16,10 +16,20 @@ public class SettingsScreen : MonoBehaviour
 
     public bool soundOn = true;
     public bool musicOn = true;
-
+    public bool isGameScene=false;
 
     private void Start()
     {
+
+        if (!isGameScene)
+        {
+            closeBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.settingScreen.gameObject, false));
+            aboutBtn.onClick.AddListener(() => AboutBtnCallBack(aboutBtn));
+            termsBtn.onClick.AddListener(() => AboutBtnCallBack(termsBtn));
+            policyBtn.onClick.AddListener(() => AboutBtnCallBack(policyBtn));
+            logoutBtn.onClick.AddListener(() => LogOut());
+        }
+
         GetSoundSettings();
 
         CustomToggler(musicBtn, musicOn);
@@ -28,14 +38,6 @@ public class SettingsScreen : MonoBehaviour
         musicBtn.onClick.AddListener(() => MusicToggle());
         soundBtn.onClick.AddListener(() => SoundToggle());
 
-        closeBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.settingScreen.gameObject, false));
-
-        aboutBtn.onClick.AddListener(()  => AboutBtnCallBack(aboutBtn));
-        termsBtn.onClick.AddListener(()  => AboutBtnCallBack(termsBtn));
-        policyBtn.onClick.AddListener(() => AboutBtnCallBack(policyBtn));
-
-
-        logoutBtn.onClick.AddListener(() => LogOut());
     }
 
     public void LogOut()
