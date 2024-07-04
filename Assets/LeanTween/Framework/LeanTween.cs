@@ -1026,11 +1026,11 @@ public class LeanTween : MonoBehaviour {
     * <summary>Play a sequence of images on a Unity UI Object</summary>
     * 
     * @method LeanTween.play
-    * @param {RectTransform} rectTransform:RectTransform RectTransform that you want to play the sequence of sprites on
-    * @param {Sprite[]} sprites:Sprite[] Sequence of sprites to be played
+    * @param {RectTransform} rectTransform:RectTransform RectTransform that you want to play the sequence of sprite on
+    * @param {Sprite[]} sprite:Sprite[] Sequence of sprite to be played
     * @return {LTDescr} LTDescr an object that distinguishes the tween <br />
     * @example
-    * LeanTween.play(gameObject.GetComponent&lt;RectTransform&gt;(), sprites).setLoopPingPong();
+    * LeanTween.play(gameObject.GetComponent&lt;RectTransform&gt;(), sprite).setLoopPingPong();
     */  
     public static LTDescr play(RectTransform rectTransform, UnityEngine.Sprite[] sprites){
         float defaultFrameRate = 0.25f;

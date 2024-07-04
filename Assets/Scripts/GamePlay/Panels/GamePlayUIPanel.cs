@@ -45,6 +45,7 @@ public class GamePlayUIPanel : MonoBehaviour
     [Header("PopUps")]
     public MessagePopUp messagePopUp;
     public MessagePopUp messagePopUp2;
+    public SpecialHeadings specialHeadings;
 
     public RectTransform FinalPopUpPos;
 
@@ -55,6 +56,8 @@ public class GamePlayUIPanel : MonoBehaviour
     public Text roundNumberHeading;
     public Text scoreToWinHeading;
     public Transform boneyardTileImage;
+    public Sprite emptyboneyardTileImage;
+    public Sprite nonEmptyboneyardTileImage;
 
     //[Header("Sprites")]
     //public List<Sprite> flagSprites = new List<Sprite>();
@@ -128,7 +131,16 @@ public class GamePlayUIPanel : MonoBehaviour
 
     public static void UpdateBoneYardText(int value)
     {
-        instance.boneYardText.text = value.ToString();
+        if (value == 0)
+        {
+            instance.boneYardText.text = "";
+            instance.boneyardTileImage.GetComponent<Image>().sprite = instance.emptyboneyardTileImage;
+        }
+        else
+        {
+            instance.boneYardText.text = value.ToString();
+            instance.boneyardTileImage.GetComponent<Image>().sprite = instance.nonEmptyboneyardTileImage;
+        }
     }
     private void soundBtnClickedEvent()
     {
@@ -203,18 +215,26 @@ public class GamePlayUIPanel : MonoBehaviour
         messagePopUp.gameObject.SetActive(true);
         StartCoroutine(FadeTo(messagePopUp.GetComponent<Image>() ,1, 0 , 1));
     }
-    
-    public void PopUpController(string msg , Texture2D texture2D)
+
+    public void PopUpController(string msg, Texture2D texture2D)
     {
         //Debug.Log("PopUpController: " + initialPos_Transform.transform.position);
-        
+
         messagePopUp2.transform.position = GridManager.instance.HeadingPos.position;
         //messagePopUp2.transform.position = initialPos_Transform.position;
-        messagePopUp2.ShowData(msg , texture2D);
+        messagePopUp2.ShowData(msg, texture2D);
         messagePopUp2.gameObject.SetActive(true);
-        StartCoroutine(FadeTo(messagePopUp2.GetComponent<Image>() ,1, 0 , 1));
+        StartCoroutine(FadeTo(messagePopUp2.GetComponent<Image>(), 1, 0, 1));
     }
-    
+
+
+    public void PopUpController(string msg)
+    {
+        specialHeadings.ShowData(msg);
+    }
+
+
+
     IEnumerator FadeTo(Image MessagePopUp, float fromValue, float toValue, float alphaTime)
     {
         //MessagePopUp.color = new Color(1,1,1,fromValue);

@@ -45,7 +45,7 @@ public class LTDescrOptional  {
 //	public RectTransform rectTransform;
 //	public UnityEngine.UI.Text uiText;
 //	public UnityEngine.UI.Image uiImage;
-//	public UnityEngine.Sprite[] sprites;
+//	public UnityEngine.Sprite[] sprite;
 //	#endif
 
 

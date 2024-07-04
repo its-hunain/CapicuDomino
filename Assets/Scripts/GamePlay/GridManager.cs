@@ -1446,7 +1446,7 @@ public class GridManager : MonoBehaviour
         //Destroy Old Tiles
         //Distribute one tile tiePlayers
         //Find the smallest amount player
-        GamePlayUIPanel.instance.PopUpController(HeadingPos, "Tie in scoring.");
+        GamePlayUIPanel.instance.PopUpController(HeadingPos, "Tie Breaker.");
         yield return new WaitForSeconds(1f);
         if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Bot)
         {

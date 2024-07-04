@@ -90,11 +90,14 @@ public class Tile : MonoBehaviour
 
         if (str != null) 
         {
-            orignalTexture = Resources.Load<Texture>("DominoSprites/"+ str + "/3DTilesTexture/" + First.ToString() + Second.ToString());
+            orignalTexture = Resources.Load<Texture>("DominoSprites/TileTheme1/3DTilesTexture/" + First.ToString() + Second.ToString());
         }
 
         originalSprite = Resources.Load<Sprite>("DominoSprites/UITilesSprite/" + First.ToString() + Second.ToString());
         mat.materials[1].mainTexture = emptyTexture;
+
+        mat.materials[0].color = TileTheme.ColorUtility.UpdateTileTheme(str);
+        mat.materials[1].color = TileTheme.ColorUtility.UpdateTileTheme(str);
 
         //mat.materials[1].color = TileTheme.ColorUtility.UpdateTileTheme(str);
     }
@@ -109,7 +112,8 @@ public class Tile : MonoBehaviour
             isFrontFace = true;
         mat.materials[1].mainTexture = orignalTexture;
         var str = PlayerPrefs.GetString("TileTheme", "TileTheme1");
-        //mat.materials[1].color = TileTheme.ColorUtility.UpdateTileTheme(str);
+        mat.materials[0].color = TileTheme.ColorUtility.UpdateTileTheme(str);
+        mat.materials[1].color = TileTheme.ColorUtility.UpdateTileTheme(str);
     }
     #endregion
 

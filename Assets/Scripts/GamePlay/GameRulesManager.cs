@@ -648,7 +648,7 @@ public class Rule3 : GameRulesManager
     {
         Player lastTilePlayedPlayer = GridManager.instance.lastTilePlayedPlayer;
         Debug.Log("Rule 3: Pass Runnning Points to: " + lastTilePlayedPlayer);
-        GamePlayUIPanel.instance.PopUpController("Pass Running Points" , lastTilePlayedPlayer.playerPersonalData.playerTexture);
+        GamePlayUIPanel.instance.PopUpController("Pass Running Points");
 
         yield return instance.StartCoroutine(lastTilePlayedPlayer.SpawnPlayerScoreBadge(passRunningPoint, GamePlayUIPanel.instance.FinalPopUpPos, lastTilePlayedPlayer.playerPersonalData.playerRawImage.transform));
         yield return instance.StartCoroutine(lastTilePlayedPlayer._SetScore(passRunningPoint));
@@ -682,7 +682,7 @@ public class Rule3 : GameRulesManager
         Player currentPlayer = GridManager.instance.currentPlayer;
         Player lastTilePlayedPlayer = GridManager.instance.lastTilePlayedPlayer;
         Debug.Log("Rule 3: Immediate Pass Point to: " + lastTilePlayedPlayer);
-        GamePlayUIPanel.instance.PopUpController("Start Points" , lastTilePlayedPlayer.playerPersonalData.playerTexture);
+        GamePlayUIPanel.instance.PopUpController("Start Points");
 
         yield return instance.StartCoroutine(lastTilePlayedPlayer.SpawnPlayerScoreBadge(startPointScore, currentPlayer.playerPersonalData.playerRawImage.GetComponent<RectTransform>(), lastTilePlayedPlayer.playerPersonalData.playerRawImage.transform));
         yield return instance.StartCoroutine(lastTilePlayedPlayer._SetScore(startPointScore));
@@ -854,7 +854,7 @@ public class Rule4 : GameRulesManager
         {
 
             Debug.Log("it's a Capicua");
-            GamePlayUIPanel.instance.PopUpController("Capicua" , GridManager.instance.currentPlayer.playerPersonalData.playerTexture);
+            GamePlayUIPanel.instance.PopUpController("Capicua");
             return true;
         }
         else
@@ -885,7 +885,7 @@ public class Rule4 : GameRulesManager
         Player currentPlayer = GridManager.instance.currentPlayer;
         Player lastTilePlayedPlayer = GridManager.instance.lastTilePlayedPlayer;
         Debug.Log("Rule 4: Pass Points to: " + lastTilePlayedPlayer);
-        GamePlayUIPanel.instance.PopUpController("Pass Points" , lastTilePlayedPlayer.playerPersonalData.playerTexture);
+        GamePlayUIPanel.instance.PopUpController("Pass Points");
 
         yield return instance.StartCoroutine(lastTilePlayedPlayer.SpawnPlayerScoreBadge(passPoint, currentPlayer.playerPersonalData.playerRawImage.GetComponent<RectTransform>(), lastTilePlayedPlayer.playerPersonalData.playerRawImage.transform));
         yield return instance.StartCoroutine(lastTilePlayedPlayer._SetScore(passPoint));
@@ -1192,7 +1192,7 @@ public class Rule6 : GameRulesManager
     {
         if ((tile.First + tile.Second) == 0 && tile.SameFace)
         {
-            GamePlayUIPanel.instance.PopUpController("It's Sabanio" , GridManager.instance.currentPlayer.playerPersonalData.playerTexture);
+            GamePlayUIPanel.instance.PopUpController("Chuchazo");
             return true;
         }
         else
