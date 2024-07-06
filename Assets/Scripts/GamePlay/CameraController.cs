@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
+    public ProfileStrech[] profileStreches;
+
     [Header("Top View Vectors")]
     public Vector3 topCameraPos;
     public Vector3 topCameraRot;
@@ -38,6 +40,10 @@ public class CameraController : MonoBehaviour
 
     public void SwitchToTopView()
     {
+        foreach (var item in profileStreches)
+        {
+            item.EnableDisableBgPanel(false);
+        } 
         selectedCameraView = CameraView.Top;
         LeanTween.move(mainCamera.gameObject,topCameraPos, 0.5f);
         LeanTween.rotate(mainCamera.gameObject, topCameraRot, 0.5f);
@@ -45,6 +51,10 @@ public class CameraController : MonoBehaviour
 
     public void SwitchToSidelView(float time)
     {
+        foreach (var item in profileStreches)
+        {
+            item.EnableDisableBgPanel(true);
+        }
         selectedCameraView = CameraView.Side;
         LeanTween.move(mainCamera.gameObject,sideCameraPos, time).setEaseOutSine();
         LeanTween.rotate(mainCamera.gameObject, sideCameraRot, time).setEaseOutSine();
