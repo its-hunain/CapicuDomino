@@ -14,7 +14,7 @@ public class WinnerScreen : MonoBehaviour
     public Image WinBorder;
     public Image LostBorder;
 
-    public List<Image> modeSprites = new List<Image>();
+    public List<GameObject> modeSprites = new List<GameObject>();
 
     public Button continueBtn;
 
@@ -60,7 +60,7 @@ public class WinnerScreen : MonoBehaviour
 
 
         if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode4)
-            index = 0;
+            index = 1;
         
         else if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5)
         {
@@ -68,7 +68,7 @@ public class WinnerScreen : MonoBehaviour
                 index = 2;
 
             else
-                index = 1;
+                index = 0;
         }
         modeSprites[index].gameObject.SetActive(true);
 

@@ -67,7 +67,7 @@ public class ChatScreenHandler : MonoBehaviour
     Transform parent = null;
     public void SpawnChatMessage(ChatData.MsgType msgType, int index , string playerID)
     {
-        //Debug.Log("SpawnChatMessage: \n playerID: " + playerID + "\n index:" + index + "\n msgType:" + msgType.ToString());
+        Debug.Log("SpawnChatMessage: \n playerID: " + playerID + "\n index:" + index + "\n msgType:" + msgType.ToString());
         var player = GamePlayUIPanel.instance.players.Find(x => x.playerPersonalData.playerUserID.Contains(playerID));
 
         if (player != null)

@@ -6,12 +6,18 @@ using System.Threading.Tasks;
 using AvatarBuilder;
 using Dominos;
 using Nakama.TinyJson;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEngine.ParticleSystem;
 
 public class GridManager : MonoBehaviour
 {
+
+    public Material tableTopMat;
+
+
     [Header("High Five Special Collider")]
     public List<PlayerData> tempPlayers = new List<PlayerData>();
 
@@ -112,6 +118,14 @@ public class GridManager : MonoBehaviour
     {
 
         Debug.Log("Match Started...");
+       
+        var str = PlayerPrefs.GetString("TableTheme", "TableTheme1");
+       
+
+        if (str != null)
+        {
+            tableTopMat.mainTexture = Resources.Load<Texture>("DominoSprites/TableTheme/" + str);
+        }
 
         //if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Multiplayer)
         //{

@@ -31,6 +31,7 @@ public class ShopItemBtn : MonoBehaviour
     }
     void OnEnable()
     {
+        //Debug.Log("Table Theme: "+ PlayerPrefs.GetString("TableTheme"));
         if (itemType == ItemTypeEnum.domino && PlayerPrefs.GetString("TileTheme") == productId)
         {
             isBought = true;
@@ -90,8 +91,20 @@ public class ShopItemBtn : MonoBehaviour
     }
     void OnSuccess(string keyValuePairs, long successCode)
     {
-       // UI_Manager.instance.purchaseSuccessPanel.SetActive(true);
-
+        // UI_Manager.instance.purchaseSuccessPanel.SetActive(true);
+        if (itemType == ItemTypeEnum.domino)
+        {
+            PlayerPrefs.SetString("TileTheme", productId);
+        }
+        else if (itemType == ItemTypeEnum.table)
+        {
+            PlayerPrefs.SetString("TableTheme", productId);
+        }
+        else 
+        { 
+            Debug.Log("Coins Purchased.");
+        }
+        
         Debug.Log("OnSuccessfullyGetProducts: " + keyValuePairs.ToString());
         UI_Manager.instance.shopScreen.ownedProducts = FetchOwnShopItem.FromJson(keyValuePairs.ToString());
 

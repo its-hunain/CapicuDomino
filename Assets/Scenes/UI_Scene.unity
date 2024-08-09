@@ -10477,7 +10477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   productId: TableTheme1
-  productName: Capicu Table
+  productName: Yellow Table
   itemType: 2
   price: 0
   isBought: 1
@@ -28983,7 +28983,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $5.00
+  m_Text: $10.00
 --- !u!222 &1022643018
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -29371,7 +29371,7 @@ MonoBehaviour:
   productId: TileTheme4
   productName: Magenta
   itemType: 1
-  price: 5
+  price: 15
   isBought: 0
   btn: {fileID: 1233984431}
   priceTxt: {fileID: 1254276924}
@@ -30210,9 +30210,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   productId: TableTheme2
-  productName: 
+  productName: Green Table
   itemType: 2
-  price: 5
+  price: 10
   isBought: 0
   btn: {fileID: 1483520767}
   priceTxt: {fileID: 1022643017}
@@ -35101,7 +35101,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $5.00
+  m_Text: $15.00
 --- !u!222 &1254276925
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -45037,7 +45037,7 @@ MonoBehaviour:
   productId: TileTheme3
   productName: Blue
   itemType: 1
-  price: 5
+  price: 10
   isBought: 0
   btn: {fileID: 401917148}
   priceTxt: {fileID: 1906228272}
@@ -52840,7 +52840,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: $5.00
+  m_Text: $10.00
 --- !u!222 &1906228273
 CanvasRenderer:
   m_ObjectHideFlags: 0

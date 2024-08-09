@@ -49,7 +49,7 @@ public class ShopScreen : MonoBehaviour
 
     void SwitchPanels(Button btn, GameObject panel)
     {
-        print("karwa");
+        //print("karwa");
         coinsScroll.SetActive(false);
         tilesScroll.SetActive(false);
         tablesScroll.SetActive(false);
