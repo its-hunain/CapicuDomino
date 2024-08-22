@@ -71,6 +71,11 @@ public class GamePlayUIPanel : MonoBehaviour
         if(SoundManager.instance!=null) SoundManager.instance.GameplayBGPlayer(true);
     }
 
+    private void OnDisable()
+    {
+        if (SoundManager.instance != null) SoundManager.instance.GameplayBGPlayer(false);
+    }
+
     private void Start()
     {
         leaveGameBtn.onClick.AddListener(()=> OpenClosePopUp(quitGamePopup.gameObject,true,true));

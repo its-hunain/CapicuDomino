@@ -113,34 +113,34 @@ public class CameraController : MonoBehaviour
         if (selectedCameraView != CameraView.Top)
             return;
 
-        // Handle pinch-to-zoom
-        if (Input.touchCount == 2)
-        {
-            Touch touchZero = Input.GetTouch(0);
-            Touch touchOne = Input.GetTouch(1);
+        //// Handle pinch-to-zoom
+        //if (Input.touchCount == 2)
+        //{
+        //    Touch touchZero = Input.GetTouch(0);
+        //    Touch touchOne = Input.GetTouch(1);
 
-            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
-            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+        //    Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+        //    Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
 
-            float prevMagnitude = (touchZeroPrevPos - touchOnePrevPos).magnitude;
-            float currentMagnitude = (touchZero.position - touchOne.position).magnitude;
+        //    float prevMagnitude = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+        //    float currentMagnitude = (touchZero.position - touchOne.position).magnitude;
 
-            float difference = currentMagnitude - prevMagnitude;
+        //    float difference = currentMagnitude - prevMagnitude;
 
-            Zoom(difference * 0.01f); // Adjust the sensitivity of zoom
-        }
+        //    Zoom(difference * 0.01f); // Adjust the sensitivity of zoom
+        //}
 
-        // Handle pan (two-finger drag)
-        if (Input.touchCount == 2)
-        {
-            if (Input.GetTouch(0).phase == TouchPhase.Began || Input.GetTouch(1).phase == TouchPhase.Began)
-            {
-                touchStart = mainCamera.ScreenToWorldPoint(Input.GetTouch(0).position);
-            }
+        //// Handle pan (two-finger drag)
+        //if (Input.touchCount == 2)
+        //{
+        //    if (Input.GetTouch(0).phase == TouchPhase.Began || Input.GetTouch(1).phase == TouchPhase.Began)
+        //    {
+        //        touchStart = mainCamera.ScreenToWorldPoint(Input.GetTouch(0).position);
+        //    }
 
-            Vector3 direction = touchStart - mainCamera.ScreenToWorldPoint(Input.GetTouch(0).position);
-            PanCamera(direction);
-        }
+        //    Vector3 direction = touchStart - mainCamera.ScreenToWorldPoint(Input.GetTouch(0).position);
+        //    PanCamera(direction);
+        //}
     }
 
     void Zoom(float increment)

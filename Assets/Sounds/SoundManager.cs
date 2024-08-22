@@ -57,6 +57,11 @@ public class SoundManager : MonoBehaviour
             instance.gameplayBGSource.Stop();
             instance.menuMusicSource.Play();
         }
+        else
+        {
+            instance.gameplayBGSource.Play();
+            instance.menuMusicSource.Stop();
+        }
     }
 
     public  void ButtonPressPlayer(bool enabled)
@@ -81,6 +86,11 @@ public class SoundManager : MonoBehaviour
         {
             instance.menuMusicSource.Stop();
             instance.gameplayBGSource.Play();
+        }
+        else
+        {
+            instance.menuMusicSource.Play();
+            instance.gameplayBGSource.Stop();
         }
     }
 
@@ -111,18 +121,22 @@ public class SoundManager : MonoBehaviour
 
     public void SFXControllor(int _isOnValue)
     {
-        buttonPressSource.volume    = _isOnValue;
-        selectModeSource.volume     = _isOnValue;
-        pointsSource.volume         = _isOnValue; 
-        camViewSource.volume        = _isOnValue;
-        dominoDistributionSource.volume = _isOnValue;
-        boneyardSource.volume       = _isOnValue;
-        placetileSource.volume = _isOnValue;
+        bool isOn = _isOnValue == 1 ? true : false;
+
+        buttonPressSource.enabled = isOn;
+        selectModeSource.enabled = isOn;
+        pointsSource.enabled = isOn; 
+        camViewSource.enabled = isOn;
+        dominoDistributionSource.enabled = isOn;
+        boneyardSource.enabled = isOn;
+        placetileSource.enabled = isOn;
     }
 
     public void MusicControllor(int _isOnValue)
     {
-        menuMusicSource.volume    = _isOnValue;
-        gameplayBGSource.volume     = _isOnValue;
+        bool isOn = _isOnValue == 1 ? true : false;
+
+        menuMusicSource.enabled     = isOn;
+        gameplayBGSource.enabled    = isOn;
     }
 }

@@ -36,6 +36,7 @@ public class UI_Manager : MonoBehaviour //new
         instance = this;
         // StartCoroutine(UpdateUI());
 
+        if (SoundManager.instance != null) SoundManager.instance.MenuBGPlayer(true);
 
     }
 
@@ -59,6 +60,7 @@ public class UI_Manager : MonoBehaviour //new
     //}
     public void ChangeScreen(GameObject obj,bool on)
     {
+        if (SoundManager.instance != null) SoundManager.instance.PlacetileAudioPlayer(true);
         obj.SetActive(on);
     }
 
