@@ -6789,7 +6789,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 690902334}
+    m_TransformParent: {fileID: 2355278678887540282}
     m_Modifications:
     - target: {fileID: 4760166919457148102, guid: 605abdd137feb47448c8054bb9b9e98b, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -6857,15 +6857,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4760166919710739386, guid: 605abdd137feb47448c8054bb9b9e98b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4760166919710739386, guid: 605abdd137feb47448c8054bb9b9e98b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4760166919710739386, guid: 605abdd137feb47448c8054bb9b9e98b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4760166919710739386, guid: 605abdd137feb47448c8054bb9b9e98b, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -15966,7 +15966,6 @@ RectTransform:
   - {fileID: 269139118}
   - {fileID: 1923099358}
   - {fileID: 1371555493}
-  - {fileID: 277970214}
   - {fileID: 914434486}
   - {fileID: 8020028161970377455}
   - {fileID: 3857382871799071388}
@@ -54887,6 +54886,7 @@ RectTransform:
   - {fileID: 1863623347}
   - {fileID: 1215402081}
   - {fileID: 1953749520}
+  - {fileID: 277970214}
   m_Father: {fileID: 690902334}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -54906,6 +54906,7 @@ GameObject:
   - component: {fileID: 2355278678887540280}
   - component: {fileID: 2355278678887540281}
   - component: {fileID: 2355278678887540284}
+  - component: {fileID: 2355278678887540285}
   m_Layer: 5
   m_Name: GamePlayScreen
   m_TagString: Untagged
@@ -54975,6 +54976,21 @@ MonoBehaviour:
   boneyardTileImage: {fileID: 277970214}
   emptyboneyardTileImage: {fileID: 21300000, guid: 5b0e8ba3c21969b4385964292ec0b1ce, type: 3}
   nonEmptyboneyardTileImage: {fileID: 21300000, guid: 8368789ddda1d7d4792732199edb08d3, type: 3}
+--- !u!114 &2355278678887540285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2355278678887540283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c97afc556caea1c44969477eb7ddec74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConformX: 1
+  ConformY: 1
+  Logging: 0
 --- !u!222 &2361840201124004434
 CanvasRenderer:
   m_ObjectHideFlags: 0
