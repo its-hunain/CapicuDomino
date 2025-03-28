@@ -12053,7 +12053,7 @@ MonoBehaviour:
   - {fileID: 1094293343}
   topCameraPos: {x: 0, y: 3.36, z: 0}
   topCameraRot: {x: 90, y: 0, z: 0}
-  sideCameraPos: {x: 0, y: 5.2, z: -1.25}
+  sideCameraPos: {x: 0, y: 3.2, z: -1.04}
   sideCameraRot: {x: 75, y: 0, z: 0}
   FPVCameraPos: {x: 3.37, y: 1.443, z: -3.3}
   FPVCameraRot: {x: 22.651, y: -45, z: 0}
@@ -40076,7 +40076,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Exit Room
+  m_Text: Exit Table
 --- !u!222 &1648673001
 CanvasRenderer:
   m_ObjectHideFlags: 0

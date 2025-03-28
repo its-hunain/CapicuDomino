@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class ShopCoinsBtn : MonoBehaviour
 {
     public Button buyBtn;
+    public float price;
     public int value;
 
     // Start is called before the first frame update
