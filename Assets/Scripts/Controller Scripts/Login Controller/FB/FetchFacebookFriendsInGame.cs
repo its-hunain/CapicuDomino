@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Newtonsoft.Json;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class FetchFacebookFriendsInGame : MonoBehaviour
@@ -16,6 +17,7 @@ public class FetchFacebookFriendsInGame : MonoBehaviour
     {
         RequestBtn.onClick.AddListener(()=> SendRequestToFriends());
 
+        Debug.Log("friends: " + JsonConvert.SerializeObject(FacebookManager.friendList));
         foreach (var item in FacebookManager.friendList)
         {
             GameObject Friend = Instantiate(FriendRows, Vector3.zero, Quaternion.identity, FriendRowsParent);
@@ -28,18 +30,21 @@ public class FetchFacebookFriendsInGame : MonoBehaviour
     private void SendRequestToFriends()
     {
         FriendRow[] friendRows = FriendRowsParent.GetComponentsInChildren<FriendRow>();
+        string roomName = GenerateRandomRoomId();
+
         foreach (var item in friendRows)
         {
-            if (item.toggle.isOn)
+            if (item.doInvite)
             {
-                //item.SendGameRequest(PhotonNetwork.CurrentRoom.Name , PlayerProfile.Player_UserName , PlayerProfile.Player_UserID , item.userID);
+                item.SendGameRequest(roomName , PlayerPersonalData.playerName , PlayerPersonalData.playerUserID, item.userID);
             } 
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private string GenerateRandomRoomId()
     {
-        
+        int num = Random.Range(500, 5000);
+        string roomId = GameRulesManager.privateRoomId = "CAPICU" + num.ToString();
+        return roomId;
     }
 }

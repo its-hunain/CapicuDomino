@@ -6,6 +6,7 @@ using System.Collections;
 using UnityEngine.Networking;
 using Newtonsoft.Json.Linq;
 using Nakama.TinyJson;
+using Newtonsoft.Json;
 
 public class FacebookManager : MonoBehaviour
 {
@@ -247,7 +248,7 @@ public class FacebookManager : MonoBehaviour
         keyValuePairs.Add("authProvider", PlayerPersonalData.authProvider);
         //keyValuePairs.Add("image", PlayerProfile.imageUrl);
 
-        PlayerPrefs.SetString(Global.AuthProvider, Global.Guest);
+        PlayerPrefs.SetString(Global.AuthProvider, Global.Facebook);
         PlayerPrefs.SetString(Global.UserID, PlayerPersonalData.playerUserID);
         PlayerPrefs.SetString(Global.UserName, PlayerPersonalData.playerName);
         PlayerPrefs.SetString(Global.UserEmail, PlayerPersonalData.playerEmail);
@@ -275,6 +276,8 @@ public class FacebookManager : MonoBehaviour
         friendsname.Clear();
 
         var dictionary = (Dictionary<string, object>)Facebook.MiniJSON.Json.Deserialize(result.RawResult);
+
+        Debug.Log("friends data: " + JsonConvert.SerializeObject(dictionary));
         var friendsList = (List<object>)dictionary["data"];
         foreach (var dict in friendsList)
         {

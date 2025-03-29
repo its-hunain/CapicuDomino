@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Networking;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using Photon.Realtime;
+using Photon;
 
 public class FriendRow : MonoBehaviour
 {
@@ -10,39 +9,42 @@ public class FriendRow : MonoBehaviour
     public string userName;
 
     public Text friendName_Text;
-    public RawImage friend_RawImage;
+    public Text coins_Text;
+    public Image friend_Image;
 
 
-    public Toggle toggle;
+    public Button inviteBtn;
+    public Image inviteBtnImage;
 
-    private void Awake()
-    {
-    }
+    public Sprite unselectedImage;
+    public Sprite selectedImage;
+
+    public bool doInvite;
+
+
     private void Start()
+        =>  inviteBtn.onClick.AddListener(()=> SelectPartner());
+
+    private void SelectPartner() 
     {
-        //requestBtn.onClick.AddListener(()=> SendGameRequest());
+        doInvite = !doInvite;
+        inviteBtnImage.sprite = doInvite ? selectedImage : unselectedImage;
     }
 
-    
-    public void SendGameRequest(string roomName , string playerName, string playerUserID, string friendUserID)
+    public void SendGameRequest(string roomName, string playerName, string playerUserID, string friendUserID)
     {
-        Debug.Log(roomName);
-        Debug.Log(playerName);
-        Debug.Log(playerUserID);
-        Debug.Log(friendUserID);
-
-        //SendGameRequest to friend using Pun chat
-        //if (PhotonChat.Instance.chatClient == null)
-        //{
-        //    Debug.LogError("Chat Client was null");
-        //    PhotonChat.Instance.Connect();
-        //}
+        Debug.Log("roomName: " + roomName + 
+                    "\n" + "playerName: " + playerName + 
+                    "\n" + "playerUserID: " + playerUserID + 
+                    "\n" + "friendUserID: " + friendUserID 
+                    );
     }
 
     public void Setter(string userID, string userName, Texture2D texture2D)
     {
         this.userID = userID;
         friendName_Text.text = this.userName = userName;
-        friend_RawImage.texture = texture2D;
+        var friendPic = Sprite.Create(texture2D, new Rect(0.0f, 0.0f, texture2D.width, texture2D.height), new Vector2(0.5f, 0.5f), 100.0f);
+        friend_Image.sprite = friendPic;
     }
 }

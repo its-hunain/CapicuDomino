@@ -10,6 +10,5 @@ public class PartnerScreen : MonoBehaviour
     private void Start()
     {
         closeBtn.onClick.AddListener(() => UI_Manager.instance.ChangeScreen(UI_Manager.instance.partnerScreen.gameObject, false));
-
     }
 }
