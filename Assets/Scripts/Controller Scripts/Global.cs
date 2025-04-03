@@ -151,7 +151,7 @@ namespace TileTheme
             }
             else if (theme == "TileTheme4")
             {
-                color = HexToColor("#9D33EEFF");
+                color = HexToColor("#FF0000FF");
 
                 //color = new Color(157, 51, 238, 255);
             }
