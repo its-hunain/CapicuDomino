@@ -39,7 +39,7 @@ public class WebServiceManager : MonoBehaviour
     public static WebServiceManager instance;
 
     //Live
-    public static string baseURL = "http://3.22.222.43:3002/";
+    public static string baseURL = "https://d1pmzhilnqtbmz.cloudfront.net/";
 
     //public static string baseURL;// = "https://dominosapi-dev.cubestagearea.xyz/";
     //--

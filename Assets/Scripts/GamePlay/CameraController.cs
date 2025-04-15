@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CameraController : MonoBehaviour
 {
+    public Slider slider;
     public ProfileStrech[] profileStreches;
 
     [Header("Top View Vectors")]
@@ -24,7 +25,8 @@ public class CameraController : MonoBehaviour
     public Button cameraViewBtn;
 
     public  CameraView selectedCameraView = CameraView.Side;
-    
+    float startY = 3.36f;
+    float endY = 2.3f;
     public enum CameraView
     {
         Top,
@@ -37,6 +39,18 @@ public class CameraController : MonoBehaviour
         maxFov = mainCamera.fieldOfView;
         cameraViewBtn.onClick.AddListener(()=> ChangeCameraView());
         SwitchToSidelView(1.4f);
+        slider.onValueChanged.AddListener(UpdateCameraHeight);
+
+    }
+    void UpdateCameraHeight(float value)
+    {
+        // Interpolate Y based on slider value
+        float t = value / slider.maxValue;
+        float newY = Mathf.Lerp(startY, endY, t);
+
+        Vector3 pos = mainCamera.transform.position;
+        pos.y = newY;
+        mainCamera.transform.position = pos;
     }
 
     public void SwitchToTopView()
@@ -48,6 +62,7 @@ public class CameraController : MonoBehaviour
         selectedCameraView = CameraView.Top;
         LeanTween.move(mainCamera.gameObject,topCameraPos, 0.5f);
         LeanTween.rotate(mainCamera.gameObject, topCameraRot, 0.5f).setOnComplete(ChangePOV);
+        slider.gameObject.SetActive(true);
     }
 
     public void SwitchToSidelView(float time)
@@ -59,6 +74,8 @@ public class CameraController : MonoBehaviour
         selectedCameraView = CameraView.Side;
         LeanTween.move(mainCamera.gameObject,sideCameraPos, time).setEaseOutSine();
         LeanTween.rotate(mainCamera.gameObject, sideCameraRot, time).setEaseOutSine().setOnComplete(ChangePOV);
+        slider.gameObject.SetActive(false);
+        slider.value = 0;
     }
 
 
