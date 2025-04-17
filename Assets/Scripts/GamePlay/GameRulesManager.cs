@@ -854,6 +854,7 @@ public class Rule4 : GameRulesManager
         {
 
             Debug.Log("it's a Capicua");
+            CapicuAnimation.Instance.PlayAnimation();
             GamePlayUIPanel.instance.PopUpController("Capicua");
             return true;
         }
