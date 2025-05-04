@@ -676,7 +676,9 @@ public class GameManager : MonoBehaviour
             case GameUpdates.Capicua:
                 Debug.Log("GameUpdates.Capicua");
                 Debug.Log("It's a Capicua ");
-                Rule4.canLastTilePlayedOnBothSides = Rule4.CheckCapicua(2);
+                Rule4.ShowCapicua();
+                int capicuPoints = 25;
+                StartCoroutine(GridManager.instance.GiveMultipleOfFiveScore(capicuPoints, gridManager.currentPlayer));
                 break;
 
 

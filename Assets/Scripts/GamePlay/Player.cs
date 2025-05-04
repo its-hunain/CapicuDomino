@@ -473,32 +473,38 @@ public class Player : MonoBehaviour
                     }
                 }
             }
-
-            //Check Capicua
-            if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5 &&  noOfPossibilities >= 2 && GridManager.instance.currentPlayer.dominosCurrentList.Count == 1)
-            {
-                if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Bot)
-                {
-                    Debug.LogError("********************* No Of Possibilities: " + noOfPossibilities);
-                    Rule4.canLastTilePlayedOnBothSides = Rule4.CheckCapicua(noOfPossibilities);
-                }
-                else
-                {
-                    UpdateMessage updateMessage = new UpdateMessage
-                    {
-                        code = GameUpdates.Capicua,
-                        data = "Capicua"
-                    };
-                    GameManager.instace.SendMatchStateAsync(OpCodes.UPDATE, updateMessage.ToJson());
-                }
-            }
-
         }
 
         if (uITile != null)
         {
             currentSelected_UI_Tile = uITile;
             uITile.EnableDisable_UI_Tile(true);
+        }
+    }
+
+    public void CheckCapicu(int noOfPossibilities)
+    {
+        Debug.Log("Check Capicu:");
+        Debug.Log("noOfPossibilities: "+ noOfPossibilities);
+        //Check Capicua
+        if (noOfPossibilities > 2 && dominosCurrentList.Count == 1)
+        {
+            if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Bot)
+            {
+                Debug.LogError("********************* No Of Possibilities: " + noOfPossibilities);
+                int capicuPoints = 25;
+                Rule4.ShowCapicua();
+                StartCoroutine(GridManager.instance.GiveMultipleOfFiveScore(capicuPoints, this));
+            }
+            else
+            {
+                UpdateMessage updateMessage = new UpdateMessage
+                {
+                    code = GameUpdates.Capicua,
+                    data = "Capicua"
+                };
+                GameManager.instace.SendMatchStateAsync(OpCodes.UPDATE, updateMessage.ToJson());
+            }
         }
     }
 
@@ -523,7 +529,6 @@ public class Player : MonoBehaviour
                 bool canPlayThisTile = false;
                 foreach (var item in tilePossibilities)
                 {
-
                     Debug.Log("1:Possibilities(first loop for finding possiblities)");
                     if (dominosCurrentList[i].First == item.value || dominosCurrentList[i].Second == item.value)
                     {   
@@ -531,6 +536,7 @@ public class Player : MonoBehaviour
                         canPlayThisTile = true;
                         MakeTileInteractableToMove(dominosCurrentList[i], true);
                         Playable = true;
+
                         break;
                     }
                 }
@@ -539,6 +545,9 @@ public class Player : MonoBehaviour
                     MakeTileInteractableToMove(dominosCurrentList[i], false);
                 }
             }
+
+            if(GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5) 
+                CheckCapicu(tilePossibilities.Length);
 
             //if player don't have any tile to play. (No match found)
             if (!Playable)
