@@ -27,6 +27,7 @@ public class ShopItemBtn : MonoBehaviour
         {
             priceTxt.text = "SELECT";
         }
+        else { priceTxt.text = price.ToString() + " coins"; }
         btn.onClick.AddListener(() => OnPurchase());
     }
     void OnEnable()
@@ -59,6 +60,11 @@ public class ShopItemBtn : MonoBehaviour
                 break;
 
             case ItemTypeEnum.domino:
+                if (PlayerPersonalData.playerDomiCoins < price)
+                {
+                    UI_Manager.instance.errorPopUpScreen.OpenCloseWarning(true, "You don't have enough coins");
+                    return;
+                }
                 if (!isBought)
                 {
                     BuyProduct();
@@ -69,6 +75,11 @@ public class ShopItemBtn : MonoBehaviour
                 break;
 
             case ItemTypeEnum.table:
+                if (PlayerPersonalData.playerDomiCoins < price)
+                {
+                    UI_Manager.instance.errorPopUpScreen.OpenCloseWarning(true, "You don't have enough coins");
+                    return;
+                }
                 if (!isBought)
                 {
                     BuyProduct();

@@ -25,7 +25,7 @@ public class UI_Manager : MonoBehaviour //new
     public PartnerScreen partnerScreen;
     public ScoreToWinScreen scoreToWinScreen;
     public LeaderBoardScript leaderBoardScreen;
-    
+    public ErrorPopUpScreen errorPopUpScreen;
     public GameObject purchaseSuccessPanel;
     public GameObject purchaseFailPanel;
 

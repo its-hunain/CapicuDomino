@@ -522,12 +522,12 @@ public class GridManager : MonoBehaviour
 
             if (currentPlayer.dominosCurrentList.Count == 0)
             {
-                //Check Sabanio
-               // if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode6)
+                //Check CheckChuchazo
+                // if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode6)
                 if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5)
                 {
-                    Debug.Log("********************* Check Sabanio *********************");
-                    allPlayerPipsSum = (Rule6.CheckSabanio(currentPlayer.currentPlacedTile)) ? allPlayerPipsSum *= 2 : allPlayerPipsSum; //Double the score if Sabanio
+                    Debug.Log("********************* Check Chuchazo *********************");
+                    allPlayerPipsSum = (Rule6.CheckChuchazo(currentPlayer.currentPlacedTile)) ? allPlayerPipsSum *= 2 : allPlayerPipsSum; //Double the score if Sabanio
                     yield return null;
                 }
 

@@ -1,9 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Newtonsoft.Json.Linq;
+﻿using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 using UnityEngine;
-using UnityEngine.Networking;
+using System.Collections;
 
 public class InternetConnectivityCheck : MonoBehaviour
 {
@@ -13,6 +11,8 @@ public class InternetConnectivityCheck : MonoBehaviour
     private Vector3 rotationEuler;
     public static InternetConnectivityCheck instance;
 
+    private bool hasLoadedScene = false; // ✅ Flag to prevent multiple scene loads
+
     void Awake()
     {
         waitingLoader.SetActive(false);
@@ -20,7 +20,6 @@ public class InternetConnectivityCheck : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
-
         }
         else
         {
@@ -28,18 +27,16 @@ public class InternetConnectivityCheck : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(CheckInternetConnection());
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (waitingLoader.gameObject.activeInHierarchy)
         {
-            rotationEuler -= Vector3.forward * 180 * Time.deltaTime; //increment 30 degrees every second
+            rotationEuler -= Vector3.forward * 180 * Time.deltaTime;
             rotator.rotation = Quaternion.Euler(rotationEuler);
         }
     }
@@ -47,15 +44,13 @@ public class InternetConnectivityCheck : MonoBehaviour
     IEnumerator CheckInternetConnection()
     {
         yield return new WaitForSeconds(2f);
-        //WebServiceManager.instance.APIRequest(WebServiceManager.instance.checkInternetConnectivity, Method.GET, null, null, OnSuccess, OnFail, CACHEABLE.NULL, false, null);
 
-        UnityWebRequest request = UnityWebRequest.Get(WebServiceManager.baseURL +  WebServiceManager.instance.checkInternetConnectivity);
+        UnityWebRequest request = UnityWebRequest.Get(WebServiceManager.baseURL + WebServiceManager.instance.checkInternetConnectivity);
 
         yield return request.SendWebRequest();
 
         if (request.result == UnityWebRequest.Result.Success)
         {
-           // Debug.Log("Internet connection available");
             OnSuccess();
         }
         else
@@ -63,20 +58,22 @@ public class InternetConnectivityCheck : MonoBehaviour
             Debug.Log("No internet connection");
             OnFail();
         }
-
     }
-
-
 
     private void OnFail()
     {
         waitingLoader.SetActive(true);
-        Start();
+        StartCoroutine(CheckInternetConnection());
     }
 
     private void OnSuccess()
     {
         waitingLoader.SetActive(false);
-        Start();
+
+        if (!hasLoadedScene)
+        {
+            hasLoadedScene = true; // ✅ Set flag to prevent future loads
+            SceneManager.LoadScene("UI_Scene");
+        }
     }
 }

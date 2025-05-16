@@ -674,11 +674,20 @@ public class GameManager : MonoBehaviour
 
 
             case GameUpdates.Capicua:
-                Debug.Log("GameUpdates.Capicua");
-                Debug.Log("It's a Capicua ");
-                Rule4.ShowCapicua();
-                int capicuPoints = 25;
-                StartCoroutine(GridManager.instance.GiveMultipleOfFiveScore(capicuPoints, gridManager.currentPlayer));
+                if (gridManager.currentPlayer.dominosCurrentList[0].SameFace)
+                {
+                    Debug.Log("GameUpdates.Chuchazo");
+                    Debug.Log("It's a Chuchazo ");
+                    Rule4.ShowChuchazo();
+                }
+                else
+                {
+                    Debug.Log("GameUpdates.Capicua");
+                    Debug.Log("It's a Capicua ");
+                    Rule4.ShowCapicua();
+                }
+                //int bonusPoints = 25;
+                //StartCoroutine(GridManager.instance.GiveMultipleOfFiveScore(bonusPoints, gridManager.currentPlayer));
                 break;
 
 

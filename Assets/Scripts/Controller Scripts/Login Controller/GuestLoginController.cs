@@ -99,7 +99,7 @@ public class GuestLoginGenerator
     private const string namePrefix = "Guest_";
     private const string passwordSuffix = "_pass";
 
-    static string uniqueId = Random.Range(1, 51).ToString();
+    static string uniqueId = Random.Range(99, 9999).ToString();
 
     public static string GenerateUniqueEmail()
     {
@@ -109,7 +109,7 @@ public class GuestLoginGenerator
 
     public static string GenerateUniqueUserId()
     {
-        string userID = SystemInfo.deviceUniqueIdentifier;
+        string userID = namePrefix + uniqueId + "_" + SystemInfo.deviceUniqueIdentifier;
         return userID;
     }
 

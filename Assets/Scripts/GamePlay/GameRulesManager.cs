@@ -821,9 +821,15 @@ public class Rule4 : GameRulesManager
     /// </summary>
     public static void ShowCapicua()
     {
-            Debug.Log("it's a Capicua");
-            CapicuAnimation.Instance.PlayAnimation();
-            GamePlayUIPanel.instance.PopUpController("Capicua");
+        Debug.Log("it's a Capicua");
+        CapicuAnimation.Instance.PlayAnimation();
+        //GamePlayUIPanel.instance.PopUpController("Capicua");
+    }
+
+    public static void ShowChuchazo()
+    {
+        Debug.Log("it's a Chuchazo");
+        GamePlayUIPanel.instance.PopUpController("Chuchazo");
     }
 
     // <summary>
@@ -957,11 +963,58 @@ public class Rule5 : GameRulesManager
         }
         else
         {
-            winnerPlayer = playerScoresListCache[0];
-            lastRoundWinnerPlayer = winnerPlayer.Player;
-            winnerPlayer.Score = playerScoresListCache.Where(item => item != playerScoresListCache[0]).Sum(item => item.Score); //sum of opponent points
+            //Partner combined scoring
+            if (playerScores.Count == 4)
+            {
+                int team1Score = playerScores[0].Score + playerScores[2].Score;
+                int team2Score = playerScores[1].Score + playerScores[3].Score;
+           
+                if (team1Score < team2Score)
+                {
+                    Debug.Log("Team 1 Wins the round.");
+                    winnerPlayer = playerScores[0];
+                    lastRoundWinnerPlayer = winnerPlayer.Player;
+                    winnerPlayer.Score = playerScores.Sum(item => item.Score); //sum of all pips
+                }
+                else if (team2Score < team1Score)
+                {
+                    Debug.Log("Team 2 Wins the round.");
+                    winnerPlayer = playerScores[1];
+                    lastRoundWinnerPlayer = winnerPlayer.Player;
+                    winnerPlayer.Score = playerScores.Sum(item => item.Score); //sum of all pips
+                }
+                else
+                {
+                    //The player with the lowest pip wins
+                    Debug.Log("Team 1 and Team 2 Tie.");
+                    winnerPlayer = playerScoresListCache[0];
+                    lastRoundWinnerPlayer = winnerPlayer.Player;
+                    winnerPlayer.Score = playerScores.Sum(item => item.Score); //sum of all pips
+                }
+            }
+            else 
+            {
+                winnerPlayer = playerScoresListCache[0];
+                lastRoundWinnerPlayer = winnerPlayer.Player;
+                winnerPlayer.Score = playerScores.Sum(item => item.Score); //sum of all pips
+            }
         }
         return winnerPlayer;
+    }
+
+    public int[] GetAdjacentPlayers(int index)
+    {
+        if (index < 0 || index > 3)
+            throw new ArgumentOutOfRangeException("index", "Value must be between 0 and 3.");
+
+        switch (index)
+        {
+            case 0: return new int[] { 1, 3 };
+            case 1: return new int[] { 0, 2 };
+            case 2: return new int[] { 1, 3 };
+            case 3: return new int[] { 0, 2 };
+            default: return new int[0]; // fallback (not needed due to guard clause)
+        }
     }
 
     /// <summary>
@@ -1150,7 +1203,7 @@ public class Rule6 : GameRulesManager
     /// </summary>
     /// <param name="tile"></param>
     /// <returns></returns>
-    internal static bool CheckSabanio(Tile tile)
+    internal static bool CheckChuchazo(Tile tile)
     {
         if ((tile.First + tile.Second) == 0 && tile.SameFace)
         {

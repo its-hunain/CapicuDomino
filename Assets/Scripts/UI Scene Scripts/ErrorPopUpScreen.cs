@@ -38,14 +38,12 @@ public class ErrorPopUpScreen : MonoBehaviour
     {
         callback = action;
         okBtn.gameObject.SetActive(!hideOkButton);
-
         SetWarning(warning);
-
-        UI_ScreenManager.OpenClosePopUp(UI_ScreenManager.instance.errorPopUpScreen.gameObject, state, state);
+        gameObject.SetActive(state);
     }
 
     public void Close()
     {
-        UI_ScreenManager.OpenClosePopUp(UI_ScreenManager.instance.errorPopUpScreen.gameObject, false, false);
+        gameObject.SetActive(false);
     }
 }

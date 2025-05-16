@@ -7,8 +7,10 @@ using AvatarBuilder;
 using Dominos;
 using Nakama.TinyJson;
 using Newtonsoft.Json.Linq;
+using Photon.Realtime;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -473,6 +475,32 @@ public class Player : MonoBehaviour
                     }
                 }
             }
+            //Check Capicua
+            if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5 && noOfPossibilities >= 2 && GridManager.instance.currentPlayer.dominosCurrentList.Count == 1)
+            {
+                Debug.LogError("********************* No Of Possibilities: " + noOfPossibilities);
+                
+                //Only Show Heading
+                if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Bot)
+                {
+                    if (noOfPossibilities >= 2 && dominosCurrentList.Count == 1)
+                    {
+                        if (dominosCurrentList[0].SameFace)
+                            Rule4.ShowChuchazo();
+                        else
+                            Rule4.ShowCapicua();
+                    }
+                }
+                else
+                {
+                    UpdateMessage updateMessage = new UpdateMessage
+                    {
+                        code = GameUpdates.Capicua,
+                        data = "Capicua"
+                    };
+                    GameManager.instace.SendMatchStateAsync(OpCodes.UPDATE, updateMessage.ToJson());
+                }
+            }
         }
 
         if (uITile != null)
@@ -482,29 +510,57 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void CheckCapicu(int noOfPossibilities)
+    public void ShowCapicu() 
+    {
+        if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Bot)
+        {
+            if (dominosCurrentList[0].SameFace)
+                Rule4.ShowChuchazo();
+            else
+                Rule4.ShowCapicua();
+
+            int bonusPoints = 25;
+            StartCoroutine(GridManager.instance.GiveMultipleOfFiveScore(bonusPoints, this));
+        }
+        else
+        {
+            UpdateMessage updateMessage = new UpdateMessage
+            {
+                code = GameUpdates.Capicua,
+                data = "Capicua"
+            };
+            GameManager.instace.SendMatchStateAsync(OpCodes.UPDATE, updateMessage.ToJson());
+          
+            UpdatePlayerScore highFiveScore = new UpdatePlayerScore
+            {
+                score = 25,
+                playerID = this.playerPersonalData.playerUserID
+            };
+
+            UpdateMessage updateMessage2 = new UpdateMessage
+            {
+                code = GameUpdates.MultipleOfFive,
+                data = highFiveScore.ToJson()
+            };
+            GameManager.instace.SendMatchStateAsync(OpCodes.UPDATE, updateMessage2.ToJson());
+
+        }
+    }
+
+    public bool CheckCapicu(int noOfPossibilities)
     {
         Debug.Log("Check Capicu:");
-        Debug.Log("noOfPossibilities: "+ noOfPossibilities);
+        Debug.Log("noOfPossibilities: " + noOfPossibilities);
         //Check Capicua
         if (noOfPossibilities > 2 && dominosCurrentList.Count == 1)
         {
-            if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Bot)
-            {
-                Debug.LogError("********************* No Of Possibilities: " + noOfPossibilities);
-                int capicuPoints = 25;
-                Rule4.ShowCapicua();
-                StartCoroutine(GridManager.instance.GiveMultipleOfFiveScore(capicuPoints, this));
-            }
-            else
-            {
-                UpdateMessage updateMessage = new UpdateMessage
-                {
-                    code = GameUpdates.Capicua,
-                    data = "Capicua"
-                };
-                GameManager.instace.SendMatchStateAsync(OpCodes.UPDATE, updateMessage.ToJson());
-            }
+            Debug.Log("Yes, it's Capicu");
+            return true;
+        }
+        else
+        {
+            Debug.Log("No, it's not a Capicu");
+            return false;
         }
     }
 
@@ -546,9 +602,13 @@ public class Player : MonoBehaviour
                 }
             }
 
-            if(GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5) 
-                CheckCapicu(tilePossibilities.Length);
-
+            if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5)
+            {
+                if (CheckCapicu(tilePossibilities.Length)) 
+                {
+                    ShowCapicu();
+                }
+            }
             //if player don't have any tile to play. (No match found)
             if (!Playable)
             {
