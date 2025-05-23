@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Dominos;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -53,8 +54,9 @@ public class PlayerPersonalData : MonoBehaviour
         }
         WebglUserSession.userLoggedIn = true;
 
-        PlayerPersonalDataJSON playerPersonalDataJson = PlayerPersonalDataJSON.FromJson(keyValuePairs.ToString());
+        PlayerPersonalDataJSON playerPersonalDataJson = JsonConvert.DeserializeObject<PlayerPersonalDataJSON>(keyValuePairs);
 
+        Debug.Log("playerPersonalDataJson: "+JsonConvert.SerializeObject(keyValuePairs.ToString()));
         if (!String.IsNullOrEmpty(playerPersonalDataJson.Data.User.accessToken))
         {
             Global.GetBearerToken = Global.GetAuthToken = playerPersonalDataJson.Data.User.accessToken;

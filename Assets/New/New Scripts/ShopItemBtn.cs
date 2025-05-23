@@ -1,8 +1,11 @@
 using Dominos;
-using System.Collections;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Debug = UnityEngine.Debug;
+
 
 public class ShopItemBtn : MonoBehaviour
 {
@@ -122,8 +125,38 @@ public class ShopItemBtn : MonoBehaviour
         isBought = true;
         priceTxt.text = "SELECT";
         WaitingLoader.instance.ShowHide();
+
+        WebServiceManager.instance.APIRequest(WebServiceManager.instance.getPlayerProfile, Method.GET, null, null, OnSuccessfullyProfileDownload, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
     }
 
+    internal void OnSuccessfullyProfileDownload(string keyValuePairs, long successCode)
+    {
+        Debug.Log("OnSuccessfullyProfileDownload: " + keyValuePairs.ToString());
+        if (!ResponseStatus.Check(successCode))
+        {
+            Debug.LogError("successCode Error: " + successCode.ToString());
+            Debug.LogError("Some Error: " + keyValuePairs.ToString());
+            if (successCode == 403)
+            {
+                WebglUserSession.userLoggedIn = false;
+                UI_ScreenManager.OpenClosePopUp(WebglUserSession.instance.userSessionFailedPopUp, true, true);
+
+            }
+            return;
+        }
+        WebglUserSession.userLoggedIn = true;
+
+        PlayerPersonalDataJSON2 playerPersonalDataJson = JsonConvert.DeserializeObject<PlayerPersonalDataJSON2>(keyValuePairs);
+
+        Debug.Log("playerPersonalDataJson: " + JsonConvert.SerializeObject(keyValuePairs.ToString()));
+        int coins 
+            = WebServiceManager.instance.playerPersonalData.Data.User.Domicoins 
+            = PlayerPersonalData.playerDomiCoins 
+            = playerPersonalDataJson.Data.User.Domicoins;
+
+        UI_Manager.instance.menuScreen.coinTxt.text = coins.ToString();
+        UI_Manager.instance.shopScreen.coinsText.text = coins.ToString();
+    }
 
     void OnFail(string msg)
     {

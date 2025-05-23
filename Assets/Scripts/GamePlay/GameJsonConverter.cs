@@ -48,6 +48,26 @@ namespace Dominos
     }
 
     [Serializable]
+    public partial class PlayerPersonalDataJSON2
+    {
+        [JsonProperty("message")]
+        public string Message;
+
+        [JsonProperty("data")]
+        public PlayerData2 Data;
+    }
+
+    [Serializable]
+    public partial class PlayerData2
+    {
+        [JsonProperty("user")]
+        public User User;
+
+        [JsonProperty("games")]
+        public Games Games;
+    }
+
+    [Serializable]
     public partial class UserGameModeScoreInfo
     {
         [JsonProperty("id")]
