@@ -948,9 +948,11 @@ public class GridManager : MonoBehaviour
         else
         {
 
-
-           // if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode3)
-            if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5)
+            /*
+             * Passing points 
+             * When all players  cannot play during 1v1 or 9s game mode +25 is NOT to be given this is only allowed in capicu game mode 2v2
+             */
+            if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5 && GameRulesManager.noOfPlayers == 4)
             {
                 if (TurnSwitch == GamePlayUIPanel.instance.players.Count - 1)
                 {

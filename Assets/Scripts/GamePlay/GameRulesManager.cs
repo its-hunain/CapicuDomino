@@ -679,6 +679,7 @@ public class Rule3 : GameRulesManager
 
     static IEnumerator _FirstImmediatePassPointsToWinner()
     {
+
         Player currentPlayer = GridManager.instance.currentPlayer;
         Player lastTilePlayedPlayer = GridManager.instance.lastTilePlayedPlayer;
         Debug.Log("Rule 3: Immediate Pass Point to: " + lastTilePlayedPlayer);
@@ -807,8 +808,8 @@ public class Rule4 : GameRulesManager
             winnerPlayer = playerScoresList[0];
             lastRoundWinnerPlayer = winnerPlayer.Player;
         }
-        //int total = playerScoresList.Sum(item => item.Score); //sum of all players points
-        int total = playerScoresList.Where(item => item != playerScoresList[0]).Sum(item => item.Score); //sum of opponent points
+        int total = playerScoresList.Sum(item => item.Score); //sum of all players points
+        //int total = playerScoresList.Where(item => item != playerScoresList[0]).Sum(item => item.Score); //sum of opponent points
         total = CalculateRoundEndScoring(total);
         winnerPlayer.Score = total;
         return winnerPlayer;

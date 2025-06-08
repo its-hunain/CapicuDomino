@@ -55,44 +55,36 @@ public class ShopItemBtn : MonoBehaviour
     void OnPurchase()
     {
         UI_Manager.instance.shopScreen.ChangeSelectable();
+        
+        if (isBought)
+        {
+            selectionFrame.gameObject.SetActive(true);
+            return;
+        }
 
+        if (PlayerPersonalData.playerDomiCoins < price)
+        {
+            UI_Manager.instance.errorPopUpScreen.OpenCloseWarning(true, "You don't have enough coins");
+            return;
+        }
+
+        BuyProduct();
+        selectionFrame.gameObject.SetActive(true);
 
         switch (itemType)
         {
             case ItemTypeEnum.coin:
+                // No action needed for ItemTypeEnum.coin (do nothing)
                 break;
-
             case ItemTypeEnum.domino:
-                if (PlayerPersonalData.playerDomiCoins < price)
-                {
-                    UI_Manager.instance.errorPopUpScreen.OpenCloseWarning(true, "You don't have enough coins");
-                    return;
-                }
-                if (!isBought)
-                {
-                    BuyProduct();
-                }
-               // UpdateTileTheme(Color.blue);
-                selectionFrame.gameObject.SetActive(true);
                 PlayerPrefs.SetString("TileTheme", productId);
                 break;
-
             case ItemTypeEnum.table:
-                if (PlayerPersonalData.playerDomiCoins < price)
-                {
-                    UI_Manager.instance.errorPopUpScreen.OpenCloseWarning(true, "You don't have enough coins");
-                    return;
-                }
-                if (!isBought)
-                {
-                    BuyProduct();
-                }
-                selectionFrame.gameObject.SetActive(true);
                 PlayerPrefs.SetString("TableTheme", productId);
                 break;
-
         }
     }
+
     void BuyProduct()
     {
         Dictionary<string, object> postData = new Dictionary<string, object>();

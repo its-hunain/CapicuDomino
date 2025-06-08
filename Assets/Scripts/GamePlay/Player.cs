@@ -510,7 +510,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ShowCapicu() 
+    public void ShowCapicuOrChuchazo() 
     {
         if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Bot)
         {
@@ -547,19 +547,25 @@ public class Player : MonoBehaviour
         }
     }
 
-    public bool CheckCapicu(int noOfPossibilities)
+    public bool CheckCapicu(TilePossibilities[] tilePossibilities, Tile tile)
     {
+        int noOfPossibilities = 0;
+
+        foreach (var item in tilePossibilities) 
+            if (item.isSamePhase == false && (item.value == tile.First || item.value == tile.Second))
+                noOfPossibilities++;
+
         Debug.Log("Check Capicu:");
         Debug.Log("noOfPossibilities: " + noOfPossibilities);
-        //Check Capicua
-        if (noOfPossibilities > 2 && dominosCurrentList.Count == 1)
+        
+        //Check Capicua and Chuchazo
+        if (noOfPossibilities >= 2)
         {
-            Debug.Log("Yes, it's Capicu");
             return true;
         }
         else
         {
-            Debug.Log("No, it's not a Capicu");
+            Debug.Log("No, it's not a Capicu nor a chuchazo");
             return false;
         }
     }
@@ -604,10 +610,9 @@ public class Player : MonoBehaviour
 
             if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5)
             {
-                if (CheckCapicu(tilePossibilities.Length)) 
-                {
-                    ShowCapicu();
-                }
+                if (dominosCurrentList.Count == 1)
+                    if (CheckCapicu(tilePossibilities, dominosCurrentList[0]))
+                        ShowCapicuOrChuchazo();
             }
             //if player don't have any tile to play. (No match found)
             if (!Playable)
@@ -937,7 +942,12 @@ public class Player : MonoBehaviour
         //        Debug.LogError(Rule4.CheckPassPoints() == true ? "Yes it's a pass, rewarding 2 points" : "No pass");
         //    }
         // else 
-        if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5)
+
+        /*
+         * Passing points 
+         * When all players  cannot play during 1v1 or 9s game mode +25 is NOT to be given this is only allowed in capicu game mode 2v2 
+         */
+        if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5 && GameRulesManager.noOfPlayers == 4)
         {
             Debug.LogError(Rule3.FirstImmediatePassPoints() == true ? "Yes it's a first immediate pass point, rewarding 25 points" : "No immediate pass");
         }
