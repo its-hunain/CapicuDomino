@@ -520,7 +520,8 @@ public class Player : MonoBehaviour
                 Rule4.ShowCapicua();
 
             int bonusPoints = 25;
-            StartCoroutine(GridManager.instance.GiveMultipleOfFiveScore(bonusPoints, this));
+            if(GameRulesManager.noOfPlayers == 4)
+                StartCoroutine(GridManager.instance.GiveMultipleOfFiveScore(bonusPoints, this));
         }
         else
         {
@@ -542,8 +543,9 @@ public class Player : MonoBehaviour
                 code = GameUpdates.MultipleOfFive,
                 data = highFiveScore.ToJson()
             };
-            GameManager.instace.SendMatchStateAsync(OpCodes.UPDATE, updateMessage2.ToJson());
 
+            if (GameRulesManager.noOfPlayers == 4)
+                GameManager.instace.SendMatchStateAsync(OpCodes.UPDATE, updateMessage2.ToJson());
         }
     }
 

@@ -15489,7 +15489,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: THE SPACE
+  m_Text: SPACE JAM
 --- !u!222 &540733366
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -28789,7 +28789,7 @@ MonoBehaviour:
   productId: TileTheme4
   productName: Magenta
   itemType: 1
-  price: 500
+  price: 650
   isBought: 0
   btn: {fileID: 1233984431}
   priceTxt: {fileID: 1254276924}
@@ -29630,7 +29630,7 @@ MonoBehaviour:
   productId: TableTheme2
   productName: THE CELTIC
   itemType: 2
-  price: 1000
+  price: 1500
   isBought: 0
   btn: {fileID: 1483520767}
   priceTxt: {fileID: 1022643017}
@@ -44011,7 +44011,7 @@ MonoBehaviour:
   productId: TileTheme3
   productName: Blue
   itemType: 1
-  price: 500
+  price: 650
   isBought: 0
   btn: {fileID: 401917148}
   priceTxt: {fileID: 1906228272}
@@ -48769,7 +48769,7 @@ MonoBehaviour:
   productId: TileTheme2
   productName: Rose Gold
   itemType: 1
-  price: 500
+  price: 650
   isBought: 0
   btn: {fileID: 783582460}
   priceTxt: {fileID: 2099937547}
@@ -50335,9 +50335,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   productId: TableTheme3
-  productName: THE SPACE
+  productName: SPACE JAM
   itemType: 2
-  price: 1000
+  price: 2500
   isBought: 0
   btn: {fileID: 834494238}
   priceTxt: {fileID: 1015415687}
