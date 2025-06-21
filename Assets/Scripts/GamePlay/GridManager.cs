@@ -1273,6 +1273,7 @@ public class GridManager : MonoBehaviour
                     }
                 }
                 player.dominosCurrentList.Add(dominosCurrentList[0]); //adding current tile in player hand list.
+                player.handTiles.ShowNextTile();
 
                 if (player.isMe)
                 {

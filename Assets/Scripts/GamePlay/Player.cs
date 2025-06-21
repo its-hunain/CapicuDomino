@@ -52,6 +52,7 @@ public class Player : MonoBehaviour
     [Space]
     public List<Tile> dominosCurrentList = new List<Tile>();
     public List<UITile> dominosCurrentListUI = new List<UITile>();
+    public Player3dHandTiles handTiles;
 
     private bool Playable = false;
 
@@ -262,10 +263,10 @@ public class Player : MonoBehaviour
         for (int i = 0; i < dominosCurrentList.Count; i++)
         {
             dominosCurrentList[i].ShowFront();
+            handTiles.HideLastTile();
             LeanTween.rotateLocal(dominosCurrentList[i].gameObject, DisplayTilesPlaces[i].eulerAngles, 0.3f);
 
             LeanTween.move(dominosCurrentList[i].gameObject, DisplayTilesPlaces[i], 0.3f);
-
             dominosCurrentList[i].transform.localScale = Vector3.one;
             yield return new WaitForSeconds(0.2f);
         }
@@ -282,6 +283,7 @@ public class Player : MonoBehaviour
         {
             if (!dominosCurrentList[i].SameFace) continue;
             dominosCurrentList[i].ShowFront();
+            handTiles.HideLastTile();
             LeanTween.rotateLocal(dominosCurrentList[i].gameObject, DisplayTilesPlaces[i].eulerAngles, 0.3f);
 
             LeanTween.move(dominosCurrentList[i].gameObject, DisplayTilesPlaces[i], 0.3f);
@@ -381,6 +383,8 @@ public class Player : MonoBehaviour
             Destroy(tile.gameObject);
         }
         dominosCurrentList.Clear();
+
+        handTiles.HideAllTiles();
 
         foreach (var tile in dominosCurrentListUI)
         {
@@ -647,6 +651,7 @@ public class Player : MonoBehaviour
                         Debug.Log("Picking Up New Tile");
                         TurnTimerController.instance.StartTimer(this);
                         dominosCurrentList.Add(GridManager.instance.dominosCurrentList[0]);
+                        handTiles.ShowNextTile();
                         GridManager.instance.spawnUITile(this);
                         Shuffle();
                         GridManager.instance.dominosCurrentList.RemoveAt(0);
@@ -722,7 +727,7 @@ public class Player : MonoBehaviour
         TurnTimerController.instance.StartTimer(this);
         Debug.Log("Picking Up New Tile");
         dominosCurrentList.Add(GridManager.instance.dominosCurrentList[0]);
-
+        handTiles.ShowNextTile();
         if (isMe)
         {
             //GridManager.instance.hiddenLayerMask.SetActive(true);
@@ -797,16 +802,17 @@ public class Player : MonoBehaviour
             //Taking new tile from boneyard
             if (GridManager.instance.dominosCurrentList.Count > 0 && GameRulesManager.currentSelectedGame_Rule != GameRulesManager.GameRules.GameMode4)
             {
-                    //reset timer
-                    //ResetTimerImageValue();
-                    TurnTimerController.instance.StartTimer(this);
-                    Debug.Log("Picking Up New Tile");
-                    dominosCurrentList.Add(GridManager.instance.dominosCurrentList[0]);
-                    Shuffle();
-                    GridManager.instance.dominosCurrentList.RemoveAt(0);
-                    GamePlayUIPanel.UpdateBoneYardText(GridManager.instance.dominosCurrentList.Count);
+                //reset timer
+                //ResetTimerImageValue();
+                TurnTimerController.instance.StartTimer(this);
+                Debug.Log("Picking Up New Tile");
+                dominosCurrentList.Add(GridManager.instance.dominosCurrentList[0]);
+                handTiles.ShowNextTile();
+                Shuffle();
+                GridManager.instance.dominosCurrentList.RemoveAt(0);
+                GamePlayUIPanel.UpdateBoneYardText(GridManager.instance.dominosCurrentList.Count);
 
-                    StartCoroutine(_StartMove());
+                StartCoroutine(_StartMove());
             }
             //Pass the Turn, this Bot can not play
             else

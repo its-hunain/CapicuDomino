@@ -58,7 +58,7 @@ public class ShopItemBtn : MonoBehaviour
         
         if (isBought)
         {
-            selectionFrame.gameObject.SetActive(true);
+            ApplyItemPurchase(itemType, productId);
             return;
         }
 
@@ -69,12 +69,16 @@ public class ShopItemBtn : MonoBehaviour
         }
 
         BuyProduct();
-        selectionFrame.gameObject.SetActive(true);
+        ApplyItemPurchase(itemType, productId);
+    }
 
+    public void ApplyItemPurchase(ItemTypeEnum itemType, string productId)
+    {
+        selectionFrame.gameObject.SetActive(true);
         switch (itemType)
         {
             case ItemTypeEnum.coin:
-                // No action needed for ItemTypeEnum.coin (do nothing)
+                // No action needed
                 break;
             case ItemTypeEnum.domino:
                 PlayerPrefs.SetString("TileTheme", productId);
@@ -84,7 +88,6 @@ public class ShopItemBtn : MonoBehaviour
                 break;
         }
     }
-
     void BuyProduct()
     {
         Dictionary<string, object> postData = new Dictionary<string, object>();

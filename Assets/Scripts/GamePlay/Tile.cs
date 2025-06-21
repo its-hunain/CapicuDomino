@@ -225,6 +225,8 @@ public class Tile : MonoBehaviour
         {
             Debug.Log("Contains this tile in player list..");
             GridManager.instance.currentPlayer.dominosCurrentList.Remove(this);
+            GridManager.instance.currentPlayer.handTiles.HideLastTile();
+
         }
         else
         {
@@ -253,6 +255,7 @@ public class Tile : MonoBehaviour
         {
             Debug.Log("Contains this tile in player list..");
             GridManager.instance.currentPlayer.dominosCurrentList.Remove(this);
+            GridManager.instance.currentPlayer.handTiles.HideLastTile();
         }
         else
         {
