@@ -489,9 +489,9 @@ public class Player : MonoBehaviour
                 {
                     if (noOfPossibilities >= 2 && dominosCurrentList.Count == 1)
                     {
-                        if (dominosCurrentList[0].SameFace)
+                        if (dominosCurrentList[0].SameFace && dominosCurrentList[0].First == 0 && dominosCurrentList[0].Second == 0)
                             Rule4.ShowChuchazo();
-                        else
+                        if(!dominosCurrentList[0].SameFace)
                             Rule4.ShowCapicua();
                     }
                 }
@@ -518,17 +518,37 @@ public class Player : MonoBehaviour
     {
         if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Bot)
         {
-            if (dominosCurrentList[0].SameFace)
+            bool giveReward = false;
+            if (dominosCurrentList[0].SameFace && dominosCurrentList[0].First == 0 && dominosCurrentList[0].Second == 0)
+            {
+                giveReward = true; 
                 Rule4.ShowChuchazo();
-            else
+            }
+            if (!dominosCurrentList[0].SameFace)
+            {
+                giveReward = true;
                 Rule4.ShowCapicua();
+            }
 
             int bonusPoints = 25;
-            if(GameRulesManager.noOfPlayers == 4)
+            if(GameRulesManager.noOfPlayers == 4 && giveReward == true)
                 StartCoroutine(GridManager.instance.GiveMultipleOfFiveScore(bonusPoints, this));
         }
         else
         {
+            bool giveReward = false;
+            if (dominosCurrentList[0].SameFace && dominosCurrentList[0].First == 0 && dominosCurrentList[0].Second == 0)
+            {
+                giveReward = true;
+            }
+            if (!dominosCurrentList[0].SameFace)
+            {
+                giveReward = true;
+            }
+
+            if (giveReward == false)
+                return;
+
             UpdateMessage updateMessage = new UpdateMessage
             {
                 code = GameUpdates.Capicua,

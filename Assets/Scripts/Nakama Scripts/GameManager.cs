@@ -674,13 +674,15 @@ public class GameManager : MonoBehaviour
 
 
             case GameUpdates.Capicua:
-                if (gridManager.currentPlayer.dominosCurrentList[0].SameFace)
+                if (gridManager.currentPlayer.dominosCurrentList[0].SameFace 
+                    && gridManager.currentPlayer.dominosCurrentList[0].First == 0
+                    && gridManager.currentPlayer.dominosCurrentList[0].Second == 0)
                 {
                     Debug.Log("GameUpdates.Chuchazo");
                     Debug.Log("It's a Chuchazo ");
                     Rule4.ShowChuchazo();
                 }
-                else
+                if(!gridManager.currentPlayer.dominosCurrentList[0].SameFace)
                 {
                     Debug.Log("GameUpdates.Capicua");
                     Debug.Log("It's a Capicua ");

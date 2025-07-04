@@ -179,7 +179,9 @@ public class PlayerPersonalData : MonoBehaviour
 
     private static void UpdatePic(Texture2D texture)
     {
-        playerTexture = texture;
+        string base64 = PlayerPrefs.GetString("pic", TextureConverter.Texture2DToBase64(PlayerPersonalData.playerTexture));
+        playerTexture = TextureConverter.Base64ToTexture2D(base64);
+        //playerTexture = texture;
         UI_Manager.instance.UpdateUI();
 
         UI_Manager.instance.settingScreen.GetSoundSettings();

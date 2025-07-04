@@ -45,7 +45,7 @@ public class EditProfileScreen : MonoBehaviour
     {
         profileImage.sprite = Sprite.Create(texture2D, new Rect(0, 0, texture2D.width, texture2D.height), new Vector2(texture2D.width / 2, texture2D.height / 2));
         playerTexture = texture2D;
-
+        PlayerPersonalData.playerTexture = texture2D;
 
     }
 
@@ -57,7 +57,7 @@ public class EditProfileScreen : MonoBehaviour
             if (path != null)
             {
                 // Create Texture from selected image
-                Texture2D texture = LoadImageAtPath(path, 512 , false);
+                Texture2D texture = LoadImageAtPath(path, 256 , false , false, false);
                 if (texture == null)
                 {
                     Debug.Log("Couldn't load texture from " + path);
@@ -81,8 +81,10 @@ public class EditProfileScreen : MonoBehaviour
         fileUplaod.mimeType = ".jpg";
         fileUplaod.name = "profilePic";
         fileUplaod.data = playerTexture.EncodeToPNG();
-
-        WebServiceManager.instance.UploadT0Bucket(route, Method.POST,null,null,SavePlayerInfo , OnFail , CACHEABLE.NULL,true,fileUplaod );
+        PlayerPrefs.SetString("pic",TextureConverter.Texture2DToBase64(playerTexture));
+        PlayerPrefs.Save();
+        //WebServiceManager.instance.UploadT0Bucket(route, Method.POST,null,null,SavePlayerInfo , OnFail , CACHEABLE.NULL,true,fileUplaod );
+        SavePlayerInfo();
     }
 
     private void OnFail(string obj)
@@ -91,20 +93,20 @@ public class EditProfileScreen : MonoBehaviour
 
     }
 
-    public void SavePlayerInfo(string keyValuePairs, long code)
+    public void SavePlayerInfo()
     {
         //UI_Manager.instance.SaveUserData(name.text.ToString(), country.text.ToString(), age.text.ToString(), gender.text.ToString());
 
-        if (!ResponseStatus.Check(code))
-        {
-            Debug.LogError("Error: " + keyValuePairs.ToString());
+        //if (!ResponseStatus.Check(code))
+        //{
+        //    Debug.LogError("Error: " + keyValuePairs.ToString());
 
             
-            return;
-        }
+        //    return;
+        //}
 
-        Debug.LogError("image data: "+ keyValuePairs.ToString());
-        ImageUpload fileData = ImageUpload.FromJson(keyValuePairs.ToString());
+        //Debug.LogError("image data: "+ keyValuePairs.ToString());
+        //ImageUpload fileData = ImageUpload.FromJson(keyValuePairs.ToString());
 
 
 
@@ -117,8 +119,8 @@ public class EditProfileScreen : MonoBehaviour
         string gender = genderValue;
 
         postData.Add("displayName", userName);
-        Debug.Log("fileData.file_url: " + fileData.data.file_url);
-        postData.Add("profilePicUrl", fileData.data.file_url);
+        //Debug.Log("fileData.file_url: " + fileData.data.file_url);
+        //postData.Add("profilePicUrl", fileData.data.file_url);
         postData.Add("age", age);
         postData.Add("gender", gender);
 
