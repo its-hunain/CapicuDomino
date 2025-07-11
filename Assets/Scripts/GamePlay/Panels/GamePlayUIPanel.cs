@@ -136,16 +136,26 @@ public class GamePlayUIPanel : MonoBehaviour
 
     public static void UpdateBoneYardText(int value)
     {
+        if (!instance.boneyardTileImage.TryGetComponent<Image>(out var tileImage))
+        {
+            Debug.LogWarning("boneyardTileImage is missing an Image component.");
+            return;
+        }
+
         if (value == 0)
         {
             instance.boneYardText.text = "";
-            instance.boneyardTileImage.GetComponent<Image>().sprite = instance.emptyboneyardTileImage;
+            tileImage.sprite = instance.emptyboneyardTileImage;
         }
         else
         {
             instance.boneYardText.text = value.ToString();
-            instance.boneyardTileImage.GetComponent<Image>().sprite = instance.nonEmptyboneyardTileImage;
+            tileImage.sprite = instance.nonEmptyboneyardTileImage;
+
+            string themeName = PlayerPrefs.GetString("TileTheme", "TileTheme1");
+            tileImage.color = TileTheme.ColorUtility.UpdateTileTheme(themeName);
         }
+
     }
     private void soundBtnClickedEvent()
     {

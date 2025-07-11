@@ -1902,6 +1902,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4822717946067863987, guid: aa84c571afd58bf47b602f1d8a427c64, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822717946067863987, guid: aa84c571afd58bf47b602f1d8a427c64, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4822717946067863987, guid: aa84c571afd58bf47b602f1d8a427c64, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -13817,6 +13829,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5131229414209899299, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131229414209899299, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131229414209899299, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9038146429383270592, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
       propertyPath: m_Name
       value: partner row (3)
@@ -19565,7 +19589,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 2069269687}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.1289649}
+  m_AnchorMin: {x: 0, y: 0.553499}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.5, y: -25}
   m_SizeDelta: {x: -2, y: 0}
@@ -21808,8 +21832,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 837.05005}
+  m_AnchoredPosition: {x: 0, y: 0.000061035156}
+  m_SizeDelta: {x: 0, y: 1632.919}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &801023453
 MonoBehaviour:
@@ -25344,7 +25368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.8156863}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -26644,8 +26668,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 889.67, y: -413.52502}
-  m_SizeDelta: {x: 1779.34, y: 827.05005}
+  m_AnchoredPosition: {x: 889.67, y: -811.4595}
+  m_SizeDelta: {x: 1779.34, y: 1622.919}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &959628063
 MonoBehaviour:
@@ -26668,7 +26692,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: cc9be52cc537747f9ad360c257138a27, type: 3}
+    m_Font: {fileID: 12800000, guid: 793be5a7ffe246440ae23aaed971243f, type: 3}
     m_FontSize: 45
     m_FontStyle: 0
     m_BestFit: 0
@@ -26680,27 +26704,28 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Lorem ipsum dolor sit amet consectetur adipiscing elit odio, mattis quam
-    tortor taciti aenean luctus nullam enim, dui praesent ad dapibus tempus natoque
-    a. Rhoncus praesent massa torquent malesuada maecenas arcu curae, porta pulvinar
-    potenti at mus sem, vel purus proin eleifend nisi dictum. Egestas tortor blandit
-    vestibulum tempus dignissim cras placerat, ligula ridiculus sollicitudin interdum
-    quisque facilisis, suscipit tempor justo tristique et mattis. Nisl imperdiet
-    donec nascetur feugiat massa vehicula elementum nullam purus morbi, sagittis
-    et penatibus taciti vitae lobortis facilisis maecenas gravida, venenatis sed
-    pellentesque suspendisse sociis magna class nibh volutpat. Sodales leo arcu ornare
-    eget torquent dictumst, id morbi fringilla ultricies suscipit, nulla sapien a
-    aliquet tempor. Tristique non eros a felis quam convallis nascetur montes auctor
-    hendrerit, mollis metus sodales ligula magnis condimentum et arcu nam. id morbi
-    fringilla ultricies suscipit, nulla sapien a aliquet tempor. Tristique non eros
-    a felis quam convallis nascetur montes auctor hendrerit, mollis metus sodales
-    ligula magnis condimentum et arcu nam. Lorem ipsum dolor sit amet consectetur
-    adipiscing elit odio, mattis quam tortor taciti aenean luctus nullam enim, dui
-    praesent ad dapibus tempus natoque a. Rhoncus praesent massa torquent malesuada
-    maecenas arcu curae, porta pulvinar potenti at mus sem, vel purus proin eleifend
-    nisi dictum Tristique non eros a felis quam convallis nascetur montes auctor
-    hendrerit, mollis metus sodales ligula magnis condimentum et arcu nam. Lorem
-    ipsum dolnam
+  m_Text: "Born from the passion of two seasoned domino gamers, Capic\xFA has quickly
+    become the go-to platform for players seeking the authentic thrill of competitive
+    dominoes. Designed by people who live and breathe the game, Capic\xFA brings
+    a fresh, immersive, and fast-paced experience to domino enthusiasts everywhere.
+    Whether you\u2019ve been playing dominoes for years or are just discovering the
+    game, Capic\xFA offers a unique way to enjoy this timeless pastime, combining
+    strategy, camaraderie, and excitement right at your fingertips. With a global
+    community of players, Capic\xFA provides the pure joy of dominoes anytime, anywhere.\n\r\nCapic\xFA
+    isn\u2019t just another domino game\u2014it\u2019s a reflection of the passion
+    and dedication of its creators. Built by individuals who\u2019ve spent years
+    honing their skills in competitive dominoes, Capic\xFA delivers an experience
+    that captures the essence of the game\u2019s rich traditions and thrilling dynamics.
+    Here\u2019s why <b>Capic\xFA stands out:</b>\r\n\r\n<b>Authenticity at Its Core:</b>
+    Capic\xFA\u2019s creators have ensured the game stays true to its roots. The
+    rules, gameplay, and interface are designed to mimic the feeling of playing a
+    real-life game of dominoes with friends.\r\n\r\n<b>Fast-Paced Gameplay:</b> Dominoes
+    is a game of both strategy and speed. Capic\xFA reflects this by offering a fast-paced
+    environment that keeps players on their toes while maintaining the integrity
+    of the game.\r\n\r\n<b>Global Community:</b> Capic\xFA brings together players
+    worldwide, fostering a sense of community and competition. Whether you\u2019re
+    looking to test your skills against seasoned players or make new friends, Capic\xFA
+    is the perfect platform for social interaction and competitive fun.\r\n"
 --- !u!222 &959628064
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -30411,7 +30436,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 726900346}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.8710351
+  m_Size: 0.44650105
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -33170,7 +33195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -38836,6 +38861,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4768797050688017968, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131229414209899299, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131229414209899299, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131229414209899299, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9038146429383270592, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
@@ -46970,6 +47007,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5131229414209899299, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131229414209899299, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131229414209899299, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9038146429383270592, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
       propertyPath: m_Name
       value: partner row (4)
@@ -49851,6 +49900,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4768797050688017968, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131229414209899299, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131229414209899299, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131229414209899299, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9038146429383270592, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
@@ -54163,7 +54224,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 60, y: -42.200012}
-  m_SizeDelta: {x: 445.59, y: 109.98}
+  m_SizeDelta: {x: 906.45, y: 109.98}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1991362343
 MonoBehaviour:
@@ -54186,7 +54247,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 3ea5d0ba109d88a45b276a8675ae0041, type: 3}
+    m_Font: {fileID: 12800000, guid: c8c50e399a55b644c98e1180117572fc, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 1
@@ -55010,7 +55071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -59116,7 +59177,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 125969181}
   m_HandleRect: {fileID: 125969180}
   m_Direction: 0
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -66219,6 +66280,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4768797050688017968, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131229414209899299, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131229414209899299, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5131229414209899299, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9038146429383270592, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}

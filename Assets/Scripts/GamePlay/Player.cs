@@ -531,7 +531,7 @@ public class Player : MonoBehaviour
             }
 
             int bonusPoints = 25;
-            if(GameRulesManager.noOfPlayers == 4 && giveReward == true)
+            if((GameRulesManager.noOfPlayers == 4 || GameRulesManager.noOfPlayers == 2) && giveReward == true)
                 StartCoroutine(GridManager.instance.GiveMultipleOfFiveScore(bonusPoints, this));
         }
         else
@@ -568,7 +568,7 @@ public class Player : MonoBehaviour
                 data = highFiveScore.ToJson()
             };
 
-            if (GameRulesManager.noOfPlayers == 4)
+            if ((GameRulesManager.noOfPlayers == 4 || GameRulesManager.noOfPlayers == 2))
                 GameManager.instace.SendMatchStateAsync(OpCodes.UPDATE, updateMessage2.ToJson());
         }
     }

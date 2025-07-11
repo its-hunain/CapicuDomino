@@ -12,7 +12,21 @@ public class Player3dHandTiles : MonoBehaviour
     {
         if (currentVisibleCount < tiles.Count)
         {
-            tiles[currentVisibleCount].SetActive(true);
+            GameObject tile = tiles[currentVisibleCount];
+            tile.SetActive(true);
+
+            string themeName = PlayerPrefs.GetString("TileTheme", "TileTheme1");
+            Color themeColor = TileTheme.ColorUtility.UpdateTileTheme(themeName);
+
+            if (tile.TryGetComponent<MeshRenderer>(out var meshRenderer))
+            {
+                meshRenderer.material.color = themeColor;
+            }
+            else
+            {
+                Debug.LogWarning($"Tile at index {currentVisibleCount} has no MeshRenderer component.");
+            }
+
             currentVisibleCount++;
         }
     }
