@@ -82,6 +82,8 @@ public class EditProfileScreen : MonoBehaviour
         fileUplaod.name = "profilePic";
         fileUplaod.data = playerTexture.EncodeToPNG();
         PlayerPrefs.SetString("pic",TextureConverter.Texture2DToBase64(playerTexture));
+        PlayerPrefs.SetString("playerName", name.text.ToString());
+
         PlayerPrefs.Save();
         //WebServiceManager.instance.UploadT0Bucket(route, Method.POST,null,null,SavePlayerInfo , OnFail , CACHEABLE.NULL,true,fileUplaod );
         SavePlayerInfo();

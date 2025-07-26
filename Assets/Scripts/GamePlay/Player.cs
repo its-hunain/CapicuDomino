@@ -723,9 +723,20 @@ public class Player : MonoBehaviour
             if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Bot)
             {
                 //Bot playing turn
+                if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5)
+                {
+                    if (dominosCurrentList.Count == 1)
+                        if (CheckCapicu(tilePossibilities, dominosCurrentList[0]))
+                        {
+                            ShowCapicuOrChuchazo();
+                            Debug.Log("Bot Capicu Case");
+                        }
+                }
+
                 int randomWait = Random.Range(2, 5);
                 yield return new WaitForSeconds(randomWait);
                 AutoPlayTurn();
+
             }
             else
             {

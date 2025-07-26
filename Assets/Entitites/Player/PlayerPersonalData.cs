@@ -181,6 +181,7 @@ public class PlayerPersonalData : MonoBehaviour
     {
         string base64 = PlayerPrefs.GetString("pic", TextureConverter.Texture2DToBase64(PlayerPersonalData.playerTexture));
         playerTexture = TextureConverter.Base64ToTexture2D(base64);
+        playerName = PlayerPrefs.GetString("playerName", playerName);
         //playerTexture = texture;
         UI_Manager.instance.UpdateUI();
 

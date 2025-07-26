@@ -816,9 +816,9 @@ public class Rule4 : GameRulesManager
     }
 
     /// <summary>
-    ///  Capicúa: 
-    ///     it is used in the Capicúa modality. If a player places his last piece, and it can be placed from both ends, he is said to be Capicúa,
-    ///     and double the points earned on that hand are added to The person who made the Capicúa.If the token is double, then there is no capicúa.
+    ///  Capicua: 
+    ///     it is used in the Capicua modality. If a player places his last piece, and it can be placed from both ends, he is said to be Capicua,
+    ///     and double the points earned on that hand are added to The person who made the Capicua.If the token is double, then there is no Capicua.
     /// </summary>
     public static void ShowCapicua()
     {
