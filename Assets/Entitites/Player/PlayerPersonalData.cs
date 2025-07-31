@@ -11,7 +11,7 @@ using UnityEngine.SceneManagement;
 [Serializable]
 public class PlayerPersonalData : MonoBehaviour
 {
-    
+
     public static string Player_OS;
     public static string GameId;
     public static string playerUserID;//= UI_Manager.instance.userName;
@@ -37,9 +37,10 @@ public class PlayerPersonalData : MonoBehaviour
     public static string sessionID;
     internal static List<FriendDetail> facebookFriends;
 
+
     internal static void OnSuccessfullyProfileDownload(string keyValuePairs, long successCode)
     {
-        Debug.Log("OnSuccessfullyProfileDownload: "  + keyValuePairs.ToString());
+        Debug.Log("OnSuccessfullyProfileDownload: " + keyValuePairs.ToString());
         if (!ResponseStatus.Check(successCode))
         {
             Debug.LogError("successCode Error: " + successCode.ToString());
@@ -56,7 +57,7 @@ public class PlayerPersonalData : MonoBehaviour
 
         PlayerPersonalDataJSON playerPersonalDataJson = JsonConvert.DeserializeObject<PlayerPersonalDataJSON>(keyValuePairs);
 
-        Debug.Log("playerPersonalDataJson: "+JsonConvert.SerializeObject(keyValuePairs.ToString()));
+        Debug.Log("playerPersonalDataJson: " + JsonConvert.SerializeObject(keyValuePairs.ToString()));
         if (!String.IsNullOrEmpty(playerPersonalDataJson.Data.User.accessToken))
         {
             Global.GetBearerToken = Global.GetAuthToken = playerPersonalDataJson.Data.User.accessToken;
@@ -111,7 +112,7 @@ public class PlayerPersonalData : MonoBehaviour
         {
             Debug.LogError("successCode Error: " + successCode.ToString());
             Debug.LogError("Some Error: " + keyValuePairs.ToString());
-            
+
             if (successCode == 403)
             {
                 WebglUserSession.userLoggedIn = false;
@@ -126,12 +127,12 @@ public class PlayerPersonalData : MonoBehaviour
 
         User user = User.FromJson(keyValuePairs.ToString());
 
-            Global.GetBearerToken = Global.GetAuthToken = user.accessToken;
+        Global.GetBearerToken = Global.GetAuthToken = user.accessToken;
         WebServiceManager.instance.playerPersonalData.Data.User = user;
         playerUserID = user.userID;
-        playerName =   user.UserName;//.FirstName + " " + playerPersonalDataJson.Data.User.LastName;
-        playerEmail =  user.Email;
-        country =      user.Country;
+        playerName = user.UserName;//.FirstName + " " + playerPersonalDataJson.Data.User.LastName;
+        playerEmail = user.Email;
+        country = user.Country;
         gender = user.Gender;
         age = int.Parse(user.Age);
         playerDomiCoins = user.Domicoins;
@@ -144,9 +145,9 @@ public class PlayerPersonalData : MonoBehaviour
         profilePicURL = user.ProfilePicUrl;
         country = user.Country;
 
-        ImageCacheManager.instance.CheckOrDownloadImage(profilePicURL , null, UpdatePic);
+        ImageCacheManager.instance.CheckOrDownloadImage(profilePicURL, null, UpdatePic);
         //WebServiceManager.instance.StartCoroutine(_GetTexture(profilePicURL));
-         WebServiceManager.instance.StartCoroutine(_GetFlag(country));
+        WebServiceManager.instance.StartCoroutine(_GetFlag(country));
 
         //if (SceneManager.GetActiveScene().name.Equals(Global.SplashScene))
         //{
@@ -172,14 +173,16 @@ public class PlayerPersonalData : MonoBehaviour
         else
         {
             PlayerPersonalData.playerTexture = ((DownloadHandlerTexture)www.downloadHandler).texture;
-            print("PlayerPersonalData.playerTexture : "  + PlayerPersonalData.playerTexture == null);
+            print("PlayerPersonalData.playerTexture : " + PlayerPersonalData.playerTexture == null);
         }
 
     }
 
     private static void UpdatePic(Texture2D texture)
     {
-        string base64 = PlayerPrefs.GetString("pic", TextureConverter.Texture2DToBase64(PlayerPersonalData.playerTexture));
+        var texture2D = Resources.Load<Texture2D>("dummypic");
+        Debug.Log("pic name: " + texture2D.name);
+        string base64 = PlayerPrefs.GetString("pic", TextureConverter.Texture2DToBase64(texture2D));
         playerTexture = TextureConverter.Base64ToTexture2D(base64);
         playerName = PlayerPrefs.GetString("playerName", playerName);
         //playerTexture = texture;
@@ -231,7 +234,7 @@ public class PlayerStates
     public Sprite flagSprite;
 
     public void GenerateDummyData()
-    {   
+    {
         gamesPlayed = UnityEngine.Random.Range(0, 10).ToString();
         gamesWon = UnityEngine.Random.Range(0, 10).ToString();
         gamesWonPercentage = UnityEngine.Random.Range(0f, 10.0f).ToString();
