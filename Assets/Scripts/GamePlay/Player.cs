@@ -443,6 +443,8 @@ public class Player : MonoBehaviour
             tilePossibility.GetComponent<BoxCollider>().enabled = true;
         }
 
+        List<TilePossibilities> availableTilePossibilities = new List<TilePossibilities>();
+        
         if (tile != null)
         {
             currentSelectedTile = tile;
@@ -460,6 +462,7 @@ public class Player : MonoBehaviour
                     {
                         if (item.value == tile.First)
                         {
+                            availableTilePossibilities.Add(item);
                             noOfPossibilities++;
                             item.GetComponent<MeshRenderer>().enabled = true;
                             item.GetComponent<BoxCollider>().enabled = true;
@@ -472,6 +475,7 @@ public class Player : MonoBehaviour
                     {
                         if (item.value == tile.First || item.value == tile.Second)
                         {
+                            availableTilePossibilities.Add(item);
                             noOfPossibilities++;
                             item.GetComponent<MeshRenderer>().enabled = true;
                             item.GetComponent<BoxCollider>().enabled = true;
@@ -484,14 +488,20 @@ public class Player : MonoBehaviour
             {
                 Debug.LogError("********************* No Of Possibilities: " + noOfPossibilities);
                 
+                bool allSame = availableTilePossibilities.Count > 0 &&
+                        availableTilePossibilities.All(tp => tp.value == availableTilePossibilities[0].value);
+    
+                Debug.Log("allSame: " + allSame);
+
                 //Only Show Heading
                 if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Bot)
                 {
                     if (noOfPossibilities >= 2 && dominosCurrentList.Count == 1)
                     {
+
                         if (dominosCurrentList[0].SameFace && dominosCurrentList[0].First == 0 && dominosCurrentList[0].Second == 0)
                             Rule4.ShowChuchazo();
-                        if(!dominosCurrentList[0].SameFace)
+                        if (!dominosCurrentList[0].SameFace && !allSame)
                             Rule4.ShowCapicua();
                     }
                 }
@@ -514,7 +524,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ShowCapicuOrChuchazo() 
+    public void ShowCapicuOrChuchazo(bool allSame) 
     {
         if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Bot)
         {
@@ -524,7 +534,7 @@ public class Player : MonoBehaviour
                 giveReward = true; 
                 Rule4.ShowChuchazo();
             }
-            if (!dominosCurrentList[0].SameFace)
+            if (!dominosCurrentList[0].SameFace && !allSame)
             {
                 giveReward = true;
                 Rule4.ShowCapicua();
@@ -541,7 +551,7 @@ public class Player : MonoBehaviour
             {
                 giveReward = true;
             }
-            if (!dominosCurrentList[0].SameFace)
+            if (!dominosCurrentList[0].SameFace && !allSame)
             {
                 giveReward = true;
             }
@@ -573,27 +583,29 @@ public class Player : MonoBehaviour
         }
     }
 
-    public bool CheckCapicu(TilePossibilities[] tilePossibilities, Tile tile)
+    public (bool isCapicu, bool allSame) CheckCapicu(TilePossibilities[] tilePossibilities, Tile tile)
     {
+        List<TilePossibilities> availableTilePossibilities = new List<TilePossibilities>();
+
         int noOfPossibilities = 0;
-
-        foreach (var item in tilePossibilities) 
+        bool allSame = false;
+      
+        foreach (var item in tilePossibilities)
+        {
             if (item.isSamePhase == false && (item.value == tile.First || item.value == tile.Second))
-                noOfPossibilities++;
+            {
+                allSame = availableTilePossibilities.Count > 0 &&
+                    availableTilePossibilities.All(tp => tp.value == availableTilePossibilities[0].value);
 
+                noOfPossibilities++;
+            }
+        }
         Debug.Log("Check Capicu:");
         Debug.Log("noOfPossibilities: " + noOfPossibilities);
-        
-        //Check Capicua and Chuchazo
-        if (noOfPossibilities >= 2)
-        {
-            return true;
-        }
-        else
-        {
-            Debug.Log("No, it's not a Capicu nor a chuchazo");
-            return false;
-        }
+
+        // Check Capicu and Chuchazo condition
+        bool isCapicu = noOfPossibilities >= 2;
+        return (isCapicu, allSame);
     }
 
     /// <summary>
@@ -637,8 +649,14 @@ public class Player : MonoBehaviour
             if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5)
             {
                 if (dominosCurrentList.Count == 1)
-                    if (CheckCapicu(tilePossibilities, dominosCurrentList[0]))
-                        ShowCapicuOrChuchazo();
+                {
+                    var result = CheckCapicu(tilePossibilities, dominosCurrentList[0]);
+
+                    if (result.isCapicu)
+                    {
+                        ShowCapicuOrChuchazo(result.allSame);
+                    }
+                }
             }
             //if player don't have any tile to play. (No match found)
             if (!Playable)
@@ -726,11 +744,15 @@ public class Player : MonoBehaviour
                 if (GameRulesManager.currentSelectedGame_Rule == GameRulesManager.GameRules.GameMode5)
                 {
                     if (dominosCurrentList.Count == 1)
-                        if (CheckCapicu(tilePossibilities, dominosCurrentList[0]))
+                    {
+                        var result = CheckCapicu(tilePossibilities, dominosCurrentList[0]);
+
+                        if (result.isCapicu)
                         {
-                            ShowCapicuOrChuchazo();
+                            ShowCapicuOrChuchazo(result.allSame);
                             Debug.Log("Bot Capicu Case");
                         }
+                    }
                 }
 
                 int randomWait = Random.Range(2, 5);
