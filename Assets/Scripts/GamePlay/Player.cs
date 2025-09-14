@@ -539,12 +539,6 @@ public class Player : MonoBehaviour
                 giveReward = true;
                 Rule4.ShowCapicua();
             }
-            
-            if (dominosCurrentList[0].SameFace && allSame)
-            {
-                giveReward = true;
-                Rule4.ShowCapicua();
-            }
 
             int bonusPoints = 25;
             if((GameRulesManager.noOfPlayers == 4 || GameRulesManager.noOfPlayers == 2) && giveReward == true)
@@ -558,10 +552,6 @@ public class Player : MonoBehaviour
                 giveReward = true;
             }
             if (!dominosCurrentList[0].SameFace && !allSame)
-            {
-                giveReward = true;
-            }
-            if (dominosCurrentList[0].SameFace && allSame && dominosCurrentList[0].First != 0)
             {
                 giveReward = true;
             }
