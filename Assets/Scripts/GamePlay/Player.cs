@@ -539,6 +539,12 @@ public class Player : MonoBehaviour
                 giveReward = true;
                 Rule4.ShowCapicua();
             }
+            
+            if (dominosCurrentList[0].SameFace && allSame)
+            {
+                giveReward = true;
+                Rule4.ShowCapicua();
+            }
 
             int bonusPoints = 25;
             if((GameRulesManager.noOfPlayers == 4 || GameRulesManager.noOfPlayers == 2) && giveReward == true)
@@ -552,6 +558,10 @@ public class Player : MonoBehaviour
                 giveReward = true;
             }
             if (!dominosCurrentList[0].SameFace && !allSame)
+            {
+                giveReward = true;
+            }
+            if (dominosCurrentList[0].SameFace && allSame && dominosCurrentList[0].First != 0)
             {
                 giveReward = true;
             }
@@ -585,23 +595,24 @@ public class Player : MonoBehaviour
 
     public (bool isCapicu, bool allSame) CheckCapicu(TilePossibilities[] tilePossibilities, Tile tile)
     {
-        List<TilePossibilities> availableTilePossibilities = new List<TilePossibilities>();
+        List<TilePossibilities> availableTilePossibilities = tilePossibilities.ToList();
 
         int noOfPossibilities = 0;
-        bool allSame = false;
-      
+        bool allSame = 
+            availableTilePossibilities.Count > 0 &&
+                  availableTilePossibilities.All(tp => tp.value == availableTilePossibilities[0].value);
+
         foreach (var item in tilePossibilities)
         {
+            Debug.Log("item: "+item.value,item);
             if (item.isSamePhase == false && (item.value == tile.First || item.value == tile.Second))
             {
-                allSame = availableTilePossibilities.Count > 0 &&
-                    availableTilePossibilities.All(tp => tp.value == availableTilePossibilities[0].value);
-
                 noOfPossibilities++;
             }
         }
         Debug.Log("Check Capicu:");
         Debug.Log("noOfPossibilities: " + noOfPossibilities);
+        Debug.Log("all same: " + allSame);
 
         // Check Capicu and Chuchazo condition
         bool isCapicu = noOfPossibilities >= 2;

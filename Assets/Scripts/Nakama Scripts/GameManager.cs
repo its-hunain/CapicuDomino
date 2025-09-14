@@ -688,6 +688,13 @@ public class GameManager : MonoBehaviour
                     Debug.Log("It's a Capicua ");
                     Rule4.ShowCapicua();
                 }
+                if(gridManager.currentPlayer.dominosCurrentList[0].SameFace                    
+                   && gridManager.currentPlayer.dominosCurrentList[0].First != 0)
+                {
+                    Debug.Log("GameUpdates.Capicua");
+                    Debug.Log("It's a Capicua ");
+                    Rule4.ShowCapicua();
+                }
                 //int bonusPoints = 25;
                 //StartCoroutine(GridManager.instance.GiveMultipleOfFiveScore(bonusPoints, gridManager.currentPlayer));
                 break;
