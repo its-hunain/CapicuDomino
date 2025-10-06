@@ -391,6 +391,16 @@ public class GridManager : MonoBehaviour
         }
         else
         {
+            // VS AI Mode: Show interstitial ad every 3 rounds
+            // Note: roundNum has already been incremented in UpdateRound(), so we check roundNum - 1
+            // This shows ad after rounds 3, 6, 9, etc. complete (when moving to rounds 4, 7, 10, etc.)
+            if ((roundNum - 1) % 3 == 0 && roundNum > 1 && AdMobManager.instance != null)
+            {
+                Debug.Log("Completed round " + (roundNum - 1) + " - Showing interstitial ad before round " + roundNum);
+                AdMobManager.instance.ShowInterstitialAd();
+                yield return new WaitForSeconds(1.5f); // Wait for ad to potentially show
+            }
+
             yield return new WaitForSeconds(1);
 
             StartGame();
