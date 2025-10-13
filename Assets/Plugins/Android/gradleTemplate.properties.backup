@@ -1,0 +1,18 @@
+# Unity Gradle Properties Template
+org.gradle.jvmargs=-Xmx4096M
+org.gradle.parallel=true
+org.gradle.daemon=true
+org.gradle.configureondemand=true
+
+# Required for AndroidX & Jetifier
+android.useAndroidX=true
+android.enableJetifier=true
+
+# Disable Jetifier warnings
+android.jetifier.ignorelist=bcprov-jdk15on
+
+# For faster builds
+org.gradle.caching=true
+android.nonTransitiveRClass=true
+
+android.jetifier.ignorelist=annotation-experimental-1.4.0.aar
