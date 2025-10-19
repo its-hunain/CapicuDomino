@@ -70,3 +70,20 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# Gradle backup files (Unity auto-generated)
+*.gradle.backup
+*.gradle.backup*
+*.properties.backup
+*.properties.backup*
+
+# Claude Code AI assistant files
+.claude/
+
+# Unity auto-generated test/performance files
+Assets/Resources/PerformanceTestRunInfo.json
+Assets/Resources/PerformanceTestRunInfo.json.meta
+Assets/Resources/PerformanceTestRunSettings.json
+Assets/Resources/PerformanceTestRunSettings.json.meta
+Assets/Resources/BillingMode.json
+Assets/Resources/BillingMode.json.meta

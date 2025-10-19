@@ -180,16 +180,38 @@ public class PlayerPersonalData : MonoBehaviour
 
     private static void UpdatePic(Texture2D texture)
     {
-        var texture2D = Resources.Load<Texture2D>("dummypic");
-        Debug.Log("pic name: " + texture2D.name);
-        string base64 = PlayerPrefs.GetString("pic", TextureConverter.Texture2DToBase64(texture2D));
-        playerTexture = TextureConverter.Base64ToTexture2D(base64);
+        // Use the downloaded texture if available, otherwise use cached or default
+        if (texture != null)
+        {
+            playerTexture = texture;
+            // Cache the texture as base64 for next time
+            string base64 = TextureConverter.Texture2DToBase64(texture);
+            PlayerPrefs.SetString("pic", base64);
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            // Try to load from cache
+            string cachedBase64 = PlayerPrefs.GetString("pic", "");
+            if (!string.IsNullOrEmpty(cachedBase64))
+            {
+                playerTexture = TextureConverter.Base64ToTexture2D(cachedBase64);
+            }
+            else
+            {
+                // Fall back to dummy texture
+                var texture2D = Resources.Load<Texture2D>("dummypic");
+                if (texture2D != null)
+                {
+                    Debug.Log("Using dummy pic: " + texture2D.name);
+                    playerTexture = texture2D;
+                }
+            }
+        }
+
         playerName = PlayerPrefs.GetString("playerName", playerName);
-        //playerTexture = texture;
         UI_Manager.instance.UpdateUI();
-
         UI_Manager.instance.settingScreen.GetSoundSettings();
-
     }
 
     /// <summary>

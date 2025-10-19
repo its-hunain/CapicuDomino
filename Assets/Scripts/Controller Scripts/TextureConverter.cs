@@ -69,17 +69,26 @@ public class TextureConverter : MonoBehaviour
 		{
 			return instance.defaultTexture;
 		}
+
 		byte[] imageData = Convert.FromBase64String(encodedData);
 
-		int width, height;
-		GetImageSize(imageData, out width, out height);
-
-		Texture2D texture = new Texture2D(width, height, TextureFormat.ARGB32, false, true);
+		// Create a temporary texture with minimal size
+		// LoadImage will resize it automatically based on the actual image data
+		Texture2D texture = new Texture2D(2, 2, TextureFormat.ARGB32, false, true);
 		texture.hideFlags = HideFlags.HideAndDontSave;
 		texture.filterMode = FilterMode.Point;
-		texture.LoadImage(imageData);
 
-		return texture;
+		// LoadImage will automatically resize the texture to match the image dimensions
+		if (texture.LoadImage(imageData))
+		{
+			return texture;
+		}
+		else
+		{
+			// If loading fails, return default texture
+			Debug.LogError("Failed to load texture from base64 data");
+			return instance.defaultTexture;
+		}
 	}
 
 	public static void SaveBase64Image(string base64String)
