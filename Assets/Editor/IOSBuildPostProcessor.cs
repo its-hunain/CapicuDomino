@@ -10,9 +10,11 @@ using System.IO;
 /// - ATT permission for AdMob
 /// - Swift library embedding for Facebook SDK & AdMob
 /// - Framework embedding for CocoaPods
+/// - Podfile restructuring (pods ONLY in UnityFramework, NOT in Unity-iPhone)
 /// - Podfile post-install hooks
 ///
 /// NO MANUAL STEPS REQUIRED - Just build from Unity and run pod install!
+/// This prevents duplicate class warnings and ensures ads work correctly.
 /// </summary>
 public class IOSBuildPostProcessor
 {
@@ -98,34 +100,57 @@ public class IOSBuildPostProcessor
 
         string podfileContent = File.ReadAllText(podfilePath);
 
-        // Check if post_install already exists
-        if (podfileContent.Contains("post_install do |installer|"))
+        // Extract all pod declarations from the Podfile
+        System.Collections.Generic.List<string> podDeclarations = new System.Collections.Generic.List<string>();
+        string[] lines = podfileContent.Split('\n');
+
+        foreach (string line in lines)
         {
-            UnityEngine.Debug.Log("ℹ️ Podfile already has post_install hook");
-            return;
+            string trimmedLine = line.Trim();
+            if (trimmedLine.StartsWith("pod '") && !podDeclarations.Contains(trimmedLine))
+            {
+                podDeclarations.Add(trimmedLine);
+            }
         }
 
-        // Add comprehensive post_install hook
-        string postInstallHook = @"
+        UnityEngine.Debug.Log($"Found {podDeclarations.Count} unique pod declarations");
+
+        // Generate a completely new Podfile with correct structure
+        string newPodfile = @"source 'https://cdn.cocoapods.org/'
+source 'https://github.com/CocoaPods/Specs'
+
+platform :ios, '13.0'
+
+# Pods ONLY for UnityFramework (where the code actually runs)
+target 'UnityFramework' do
+  use_frameworks!
+
+";
+
+        // Add all pod declarations to UnityFramework target
+        foreach (string pod in podDeclarations)
+        {
+            newPodfile += "  " + pod + "\n";
+        }
+
+        newPodfile += @"end
+
+# Main app target - NO pods here (just use_frameworks for compatibility)
+target 'Unity-iPhone' do
+  use_frameworks!
+end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|
-      # Disable bitcode for all pods
       config.build_settings['ENABLE_BITCODE'] = 'NO'
-
-      # Set minimum iOS version
       config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
-
-      # Disable Swift library embedding for pod targets
-      config.build_settings['ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES'] = 'NO'
-
-      # Enable module support
       config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
+      config.build_settings['ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES'] = 'NO'
     end
   end
 
-  # Enable Swift library embedding ONLY for main app target
+  # Enable Swift embedding ONLY for Unity-iPhone
   installer.aggregate_targets.each do |aggregate_target|
     aggregate_target.xcconfigs.each do |config_name, config_file|
       if aggregate_target.name == 'Pods-Unity-iPhone'
@@ -136,9 +161,10 @@ post_install do |installer|
 end
 ";
 
-        // Append post_install hook to Podfile
-        File.AppendAllText(podfilePath, postInstallHook);
-        UnityEngine.Debug.Log("✅ Added post_install hook to Podfile");
+        // Write the new Podfile
+        File.WriteAllText(podfilePath, newPodfile);
+        UnityEngine.Debug.Log("✅ Restructured Podfile - Pods only in UnityFramework target");
+        UnityEngine.Debug.Log("   This prevents duplicate class warnings and ensures proper linking");
     }
 }
 #endif
