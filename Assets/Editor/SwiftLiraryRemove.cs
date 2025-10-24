@@ -23,10 +23,11 @@ public class SwiftLiraryRemove : MonoBehaviour
 
 
     /// <summary>
-    /// Automatically disables ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES on iOS builds
-    /// Reference : https://www.cxyzjd.com/article/qq534575060/114381877 no.49
+    /// Properly configures ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES for iOS builds
+    /// Main target needs YES to embed Swift libraries for FB SDK and AdMob
+    /// Framework target needs NO to avoid duplicate symbols
     /// </summary>
-    public static class IOSAlwaysEmbedSwiftStandardLibrariesDisabler
+    public static class IOSAlwaysEmbedSwiftStandardLibrariesFixer
     {
         [PostProcessBuildAttribute(999)]
         public static void OnPostProcessBuild(BuildTarget buildTarget, string pathToBuildProject)
@@ -35,12 +36,18 @@ public class SwiftLiraryRemove : MonoBehaviour
             string projectPath = pathToBuildProject + "/Unity-iPhone.xcodeproj/project.pbxproj";
             PBXProject pbxProject = new PBXProject();
             pbxProject.ReadFromFile(projectPath);
- 
-            //Disabling ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES Unity Framework target
-            string target = pbxProject.GetUnityFrameworkTargetGuid();
-            pbxProject.SetBuildProperty(target, "ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES", "NO");
- 
+
+            // Enable Swift library embedding for main target (required for FB SDK and AdMob)
+            string mainTarget = pbxProject.GetUnityMainTargetGuid();
+            pbxProject.SetBuildProperty(mainTarget, "ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES", "YES");
+
+            // Disable for Unity Framework target to avoid duplicate symbols
+            string frameworkTarget = pbxProject.GetUnityFrameworkTargetGuid();
+            pbxProject.SetBuildProperty(frameworkTarget, "ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES", "NO");
+
             pbxProject.WriteToFile(projectPath);
+
+            Debug.Log("iOS Build: Configured Swift standard libraries - Main target: YES, Framework target: NO");
          }
     }
 }

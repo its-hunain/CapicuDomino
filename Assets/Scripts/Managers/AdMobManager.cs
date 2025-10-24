@@ -1,9 +1,19 @@
 using System;
+using System.Collections;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using GoogleMobileAds.Api;
 
 public class AdMobManager : MonoBehaviour
 {
+#if UNITY_IOS
+    [DllImport("__Internal")]
+    private static extern int AppTrackingTransparencyStatus();
+
+    [DllImport("__Internal")]
+    private static extern void RequestAppTrackingTransparency();
+#endif
+
     public static AdMobManager instance;
 
     [Header("Ad Unit IDs - Android")]
@@ -39,6 +49,27 @@ public class AdMobManager : MonoBehaviour
 
     void Start()
     {
+        StartCoroutine(RequestTrackingPermissionAndInitialize());
+    }
+
+    private IEnumerator RequestTrackingPermissionAndInitialize()
+    {
+#if UNITY_IOS && !UNITY_EDITOR
+        // Wait for ATT dialog on iOS 14.5+
+        int status = AppTrackingTransparencyStatus();
+        if (status == 0) // Not determined
+        {
+            Debug.Log("Requesting App Tracking Transparency permission...");
+            RequestAppTrackingTransparency();
+
+            // Wait for user response
+            yield return new WaitForSeconds(2f);
+            status = AppTrackingTransparencyStatus();
+        }
+
+        Debug.Log($"ATT Status: {status} (0=NotDetermined, 1=Restricted, 2=Denied, 3=Authorized)");
+#endif
+        yield return null;
         InitializeAdMob();
     }
 
