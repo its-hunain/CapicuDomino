@@ -17,12 +17,12 @@ public class AdMobManager : MonoBehaviour
     public static AdMobManager instance;
 
     [Header("Ad Unit IDs - Android")]
-    [SerializeField] private string androidInterstitialAdUnitId = "ca-app-pub-3940256099942544/1033173712"; // Test ID
-    [SerializeField] private string androidRewardedAdUnitId = "ca-app-pub-3940256099942544/5224354917"; // Test ID
+    [SerializeField] private string androidInterstitialAdUnitId ; 
+    [SerializeField] private string androidRewardedAdUnitId ;
 
     [Header("Ad Unit IDs - iOS")]
-    [SerializeField] private string iosInterstitialAdUnitId = "ca-app-pub-3940256099942544/4411468910"; // Test ID
-    [SerializeField] private string iosRewardedAdUnitId = "ca-app-pub-3940256099942544/1712485313"; // Test ID
+    [SerializeField] private string iosInterstitialAdUnitId; 
+    [SerializeField] private string iosRewardedAdUnitId; 
 
     private InterstitialAd interstitialAd;
     private RewardedAd rewardedAd;
