@@ -1,3 +1,4 @@
+using Dominos;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -189,6 +190,13 @@ public class GamePlayUIPanel : MonoBehaviour
         WinnerScreen.Status.transform.GetChild(0).gameObject.SetActive(isWin);   //victory ribbon
         WinnerScreen.Status.transform.GetChild(1).gameObject.SetActive(!isWin);  //loss ribbon
 
+        if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Multiplayer &&
+            winner.playerPersonalData.playerUserID == PlayerPersonalData.playerUserID)
+        {
+            int winningCoins = (int)Coins * (GameRulesManager.noOfPlayers-1);
+            Debug.Log("winner coins:"+ winningCoins);
+            SyncCoinsWithServer(winningCoins);
+        }
         if (isWin)
         {
            // WinnerScreen.DomiCoinStatus.text = "Domicoin Won";
@@ -220,6 +228,28 @@ public class GamePlayUIPanel : MonoBehaviour
 
         if(winner!=null) ShowWinnerEffect(winner);
         Debug.Log("_SetDataAfterDelay End");
+    }
+
+    private void SyncCoinsWithServer(int amount)
+    {
+        // Send the amount to ADD (not the total)
+        Dictionary<string, object> postData = new Dictionary<string, object>();
+        postData.Add("coins", amount);
+
+        WebServiceManager.instance.APIRequest(
+            WebServiceManager.instance.getPlayerProfile,
+            Method.POST,
+            null,
+            postData,
+            (data, code) =>
+            {
+                // Update local coins with server response
+                User user = User.FromJson(data.ToString());
+                WebServiceManager.instance.playerPersonalData.Data.User.Domicoins = PlayerPersonalData.playerDomiCoins = user.Domicoins;
+
+            },
+            (msg) => { Debug.LogWarning($"WinnerScreen: Failed to sync coins with server: {msg}"); }
+        );
     }
 
     public void PopUpController(RectTransform initialPos_Transform , string msg)
