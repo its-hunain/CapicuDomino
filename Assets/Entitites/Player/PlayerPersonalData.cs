@@ -94,7 +94,19 @@ public class PlayerPersonalData : MonoBehaviour
 
         playerStates = playerStatesJson;
 
-        ImageCacheManager.instance.CheckOrDownloadImage(profilePicURL, null, UpdatePic);
+        // Check if we have a locally cached image first (prioritize local cache)
+        string cachedBase64 = PlayerPrefs.GetString("pic", "");
+        if (!string.IsNullOrEmpty(cachedBase64))
+        {
+            // Use locally cached image instead of downloading from server
+            Debug.Log("Using locally cached profile image on app restart");
+            UpdatePic(null); // This will load from PlayerPrefs cache
+        }
+        else
+        {
+            // No local cache, download from server
+            ImageCacheManager.instance.CheckOrDownloadImage(profilePicURL, null, UpdatePic);
+        }
 
         //WebServiceManager.instance.StartCoroutine(_GetTexture(profilePicURL));
         WebServiceManager.instance.StartCoroutine(_GetFlag(playerStatesJson.playerFlagShortCode));
@@ -145,7 +157,20 @@ public class PlayerPersonalData : MonoBehaviour
         profilePicURL = user.ProfilePicUrl;
         country = user.Country;
 
-        ImageCacheManager.instance.CheckOrDownloadImage(profilePicURL, null, UpdatePic);
+        // Always prioritize locally cached image over server image
+        string cachedBase64 = PlayerPrefs.GetString("pic", "");
+        if (!string.IsNullOrEmpty(cachedBase64))
+        {
+            // Use locally cached image instead of downloading from server
+            Debug.Log("Using locally cached profile image after profile update");
+            UpdatePic(null); // This will load from PlayerPrefs cache
+        }
+        else
+        {
+            // No local cache, download from server
+            ImageCacheManager.instance.CheckOrDownloadImage(profilePicURL, null, UpdatePic);
+        }
+
         //WebServiceManager.instance.StartCoroutine(_GetTexture(profilePicURL));
         WebServiceManager.instance.StartCoroutine(_GetFlag(country));
 

@@ -81,10 +81,13 @@ public class EditProfileScreen : MonoBehaviour
         fileUplaod.mimeType = ".jpg";
         fileUplaod.name = "profilePic";
         fileUplaod.data = playerTexture.EncodeToPNG();
+
+        // Save image locally
         PlayerPrefs.SetString("pic",TextureConverter.Texture2DToBase64(playerTexture));
         PlayerPrefs.SetString("playerName", name.text.ToString());
-
         PlayerPrefs.Save();
+
+        // Skip server upload, just save profile info
         //WebServiceManager.instance.UploadT0Bucket(route, Method.POST,null,null,SavePlayerInfo , OnFail , CACHEABLE.NULL,true,fileUplaod );
         SavePlayerInfo();
     }
@@ -97,23 +100,7 @@ public class EditProfileScreen : MonoBehaviour
 
     public void SavePlayerInfo()
     {
-        //UI_Manager.instance.SaveUserData(name.text.ToString(), country.text.ToString(), age.text.ToString(), gender.text.ToString());
-
-        //if (!ResponseStatus.Check(code))
-        //{
-        //    Debug.LogError("Error: " + keyValuePairs.ToString());
-
-            
-        //    return;
-        //}
-
-        //Debug.LogError("image data: "+ keyValuePairs.ToString());
-        //ImageUpload fileData = ImageUpload.FromJson(keyValuePairs.ToString());
-
-
-
         Dictionary<string, object> postData = new Dictionary<string, object>();
-
 
         string userName = name.text.ToString();
         string country = this.country.text.ToString();
@@ -121,12 +108,10 @@ public class EditProfileScreen : MonoBehaviour
         string gender = genderValue;
 
         postData.Add("displayName", userName);
-        //Debug.Log("fileData.file_url: " + fileData.data.file_url);
-        //postData.Add("profilePicUrl", fileData.data.file_url);
         postData.Add("age", age);
         postData.Add("gender", gender);
 
-        WebServiceManager.instance.APIRequest(WebServiceManager.instance.getPlayerProfile, Method.POST, null, postData,PlayerPersonalData.OnSuccessfullyProfileUpdated, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
+        WebServiceManager.instance.APIRequest(WebServiceManager.instance.getPlayerProfile, Method.POST, null, postData, PlayerPersonalData.OnSuccessfullyProfileUpdated, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
         UI_Manager.instance.ChangeScreen(UI_Manager.instance.editProfileScreen.gameObject, false);
     }
 
