@@ -94,19 +94,8 @@ public class PlayerPersonalData : MonoBehaviour
 
         playerStates = playerStatesJson;
 
-        // Check if we have a locally cached image first (prioritize local cache)
-        string cachedBase64 = PlayerPrefs.GetString("pic", "");
-        if (!string.IsNullOrEmpty(cachedBase64))
-        {
-            // Use locally cached image instead of downloading from server
-            Debug.Log("Using locally cached profile image on app restart");
-            UpdatePic(null); // This will load from PlayerPrefs cache
-        }
-        else
-        {
-            // No local cache, download from server
-            ImageCacheManager.instance.CheckOrDownloadImage(profilePicURL, null, UpdatePic);
-        }
+        // Download profile image from server
+        ImageCacheManager.instance.CheckOrDownloadImage(profilePicURL, null, UpdatePic);
 
         //WebServiceManager.instance.StartCoroutine(_GetTexture(profilePicURL));
         WebServiceManager.instance.StartCoroutine(_GetFlag(playerStatesJson.playerFlagShortCode));
@@ -157,22 +146,12 @@ public class PlayerPersonalData : MonoBehaviour
         profilePicURL = user.ProfilePicUrl;
         country = user.Country;
 
-        // Always prioritize locally cached image over server image
-        string cachedBase64 = PlayerPrefs.GetString("pic", "");
-        if (!string.IsNullOrEmpty(cachedBase64))
-        {
-            // Use locally cached image instead of downloading from server
-            Debug.Log("Using locally cached profile image after profile update");
-            UpdatePic(null); // This will load from PlayerPrefs cache
-        }
-        else
-        {
-            // No local cache, download from server
-            ImageCacheManager.instance.CheckOrDownloadImage(profilePicURL, null, UpdatePic);
-        }
+        // Download profile image from server
+        ImageCacheManager.instance.CheckOrDownloadImage(profilePicURL, null, UpdatePic);
 
         //WebServiceManager.instance.StartCoroutine(_GetTexture(profilePicURL));
         WebServiceManager.instance.StartCoroutine(_GetFlag(country));
+
 
         //if (SceneManager.GetActiveScene().name.Equals(Global.SplashScene))
         //{
@@ -205,36 +184,22 @@ public class PlayerPersonalData : MonoBehaviour
 
     private static void UpdatePic(Texture2D texture)
     {
-        // Use the downloaded texture if available, otherwise use cached or default
+        // Use the downloaded texture if available, otherwise use default
         if (texture != null)
         {
             playerTexture = texture;
-            // Cache the texture as base64 for next time
-            string base64 = TextureConverter.Texture2DToBase64(texture);
-            PlayerPrefs.SetString("pic", base64);
-            PlayerPrefs.Save();
         }
         else
         {
-            // Try to load from cache
-            string cachedBase64 = PlayerPrefs.GetString("pic", "");
-            if (!string.IsNullOrEmpty(cachedBase64))
+            // Fall back to dummy texture
+            var texture2D = Resources.Load<Texture2D>("dummypic");
+            if (texture2D != null)
             {
-                playerTexture = TextureConverter.Base64ToTexture2D(cachedBase64);
-            }
-            else
-            {
-                // Fall back to dummy texture
-                var texture2D = Resources.Load<Texture2D>("dummypic");
-                if (texture2D != null)
-                {
-                    Debug.Log("Using dummy pic: " + texture2D.name);
-                    playerTexture = texture2D;
-                }
+                Debug.Log("Using dummy pic: " + texture2D.name);
+                playerTexture = texture2D;
             }
         }
 
-        playerName = PlayerPrefs.GetString("playerName", playerName);
         UI_Manager.instance.UpdateUI();
         UI_Manager.instance.settingScreen.GetSoundSettings();
     }

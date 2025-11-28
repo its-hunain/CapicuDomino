@@ -125,7 +125,7 @@ public class WebServiceManager : MonoBehaviour
                 print(fileUplaod.name);
                 print(fileUplaod.mimeType);
 
-                form.AddBinaryData(fileUplaod.key, fileUplaod.data);
+                form.AddBinaryData(fileUplaod.key, fileUplaod.data, fileUplaod.name, fileUplaod.mimeType);
 
             }
 
@@ -268,7 +268,7 @@ public class WebServiceManager : MonoBehaviour
         //--
         if (www.result == UnityWebRequest.Result.ConnectionError)
         {
-            OnFail?.Invoke("Connection Error");
+            OnFail?.Invoke("Connection Error: " + www.error);
             RaiseOnWebServiceError(www.error, getFunction);
         }
         else

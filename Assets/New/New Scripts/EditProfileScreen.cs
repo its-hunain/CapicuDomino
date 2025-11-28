@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static NativeGallery;
+using Newtonsoft.Json.Linq;
 
 public class EditProfileScreen : MonoBehaviour
 {
@@ -20,6 +21,11 @@ public class EditProfileScreen : MonoBehaviour
     public Button gender;
     public Button backBtn;
     public Button saveBtn;
+
+    [Header("ImgBB Configuration")]
+    [Tooltip("Get your free API key from https://api.imgbb.com/")]
+    public string imgbbApiKey = "eeb0c71d4a137a26a29abf55cc8aae0f";
+
     string genderValue = "male";
 
     private void OnEnable()
@@ -73,23 +79,45 @@ public class EditProfileScreen : MonoBehaviour
 
     public void UploadImage()
     {
-        string route = "https://lady-luck-api-dev.cubestagearea.xyz/api/upload/image";
+        // ImgBB API configuration
+        string imgbbUrl = "https://api.imgbb.com/1/upload?key=" + imgbbApiKey;
 
+        // Convert image to base64
+        byte[] imageBytes = playerTexture.EncodeToJPG();
+        string base64Image = System.Convert.ToBase64String(imageBytes);
+
+        // Prepare form data for ImgBB
         Dictionary<string, object> postData = new Dictionary<string, object>();
-        FileUplaod fileUplaod = new FileUplaod();
-        fileUplaod.key = "file";
-        fileUplaod.mimeType = ".jpg";
-        fileUplaod.name = "profilePic";
-        fileUplaod.data = playerTexture.EncodeToPNG();
+        postData.Add("image", base64Image);
 
-        // Save image locally
-        PlayerPrefs.SetString("pic",TextureConverter.Texture2DToBase64(playerTexture));
-        PlayerPrefs.SetString("playerName", name.text.ToString());
-        PlayerPrefs.Save();
+        Debug.Log("Uploading image to ImgBB...");
 
-        // Skip server upload, just save profile info
-        //WebServiceManager.instance.UploadT0Bucket(route, Method.POST,null,null,SavePlayerInfo , OnFail , CACHEABLE.NULL,true,fileUplaod );
-        SavePlayerInfo();
+        // Upload image to ImgBB
+        WebServiceManager.instance.UploadT0Bucket(imgbbUrl, Method.POST, null, postData, OnImageUploadSuccess, OnFail, CACHEABLE.NULL, true, null);
+    }
+
+    private void OnImageUploadSuccess(string response, long statusCode)
+    {
+        Debug.Log("ImgBB upload response: " + response);
+
+        try
+        {
+            JObject jsonResponse = JObject.Parse(response);
+
+            // ImgBB response format: {"data": {"url": "https://i.ibb.co/..."}, "success": true}
+            string fileUrl = jsonResponse["data"]["url"].ToString();
+
+            Debug.Log("Profile image URL from ImgBB: " + fileUrl);
+
+            // Now save the player info with the profile URL
+            SavePlayerInfo(fileUrl);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Failed to parse ImgBB response: " + ex.Message);
+            Debug.LogError("Response was: " + response);
+            OnFail("Failed to parse upload response");
+        }
     }
 
     private void OnFail(string obj)
@@ -98,7 +126,7 @@ public class EditProfileScreen : MonoBehaviour
 
     }
 
-    public void SavePlayerInfo()
+    public void SavePlayerInfo(string profileUrl = null)
     {
         Dictionary<string, object> postData = new Dictionary<string, object>();
 
@@ -107,9 +135,15 @@ public class EditProfileScreen : MonoBehaviour
         string age = this.age.text.ToString();
         string gender = genderValue;
 
-        postData.Add("displayName", userName);
+        postData.Add("userName", userName);
         postData.Add("age", age);
         postData.Add("gender", gender);
+
+        // Add profile URL if provided
+        if (!string.IsNullOrEmpty(profileUrl))
+        {
+            postData.Add("profilePicUrl", profileUrl);
+        }
 
         WebServiceManager.instance.APIRequest(WebServiceManager.instance.getPlayerProfile, Method.POST, null, postData, PlayerPersonalData.OnSuccessfullyProfileUpdated, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
         UI_Manager.instance.ChangeScreen(UI_Manager.instance.editProfileScreen.gameObject, false);
