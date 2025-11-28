@@ -193,9 +193,9 @@ public class GamePlayUIPanel : MonoBehaviour
         if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Multiplayer &&
             winner.playerPersonalData.playerUserID == PlayerPersonalData.playerUserID)
         {
-            int winningCoins = (int)Coins * (GameRulesManager.noOfPlayers-1);
+            int winningCoins = (int)Coins * GameRulesManager.noOfPlayers;
             Debug.Log("winner coins:"+ winningCoins);
-            SyncCoinsWithServer(winningCoins);
+            UpdateCoinsOnServer(winningCoins);
         }
         if (isWin)
         {
@@ -230,7 +230,7 @@ public class GamePlayUIPanel : MonoBehaviour
         Debug.Log("_SetDataAfterDelay End");
     }
 
-    private void SyncCoinsWithServer(int amount)
+    private void UpdateCoinsOnServer(int amount)
     {
         // Send the amount to ADD (not the total)
         Dictionary<string, object> postData = new Dictionary<string, object>();

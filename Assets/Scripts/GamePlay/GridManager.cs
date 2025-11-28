@@ -164,12 +164,12 @@ public class GridManager : MonoBehaviour
 
         if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Multiplayer)
         {
-            SyncCoinsWithServer(-GameRulesManager.currentSelectedGame_CoinsToPlay);
+            CreateGameUpdateCoinOnServer(-GameRulesManager.currentSelectedGame_CoinsToPlay);
             Debug.Log("coins" + -GameRulesManager.currentSelectedGame_CoinsToPlay);
         }
     }
 
-    private void SyncCoinsWithServer(int amount)
+    private void CreateGameUpdateCoinOnServer(int amount)
     {
         // Send the amount to ADD (not the total)
         Dictionary<string, object> postData = new Dictionary<string, object>();
