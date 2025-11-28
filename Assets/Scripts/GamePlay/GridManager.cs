@@ -162,35 +162,8 @@ public class GridManager : MonoBehaviour
 
         StartCoroutine(_DistributeTilesToPlayers());
 
-        if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Multiplayer)
-        {
-            CreateGameUpdateCoinOnServer(-GameRulesManager.currentSelectedGame_CoinsToPlay);
-            Debug.Log("coins" + -GameRulesManager.currentSelectedGame_CoinsToPlay);
-        }
+
     }
-
-    private void CreateGameUpdateCoinOnServer(int amount)
-    {
-        // Send the amount to ADD (not the total)
-        Dictionary<string, object> postData = new Dictionary<string, object>();
-        postData.Add("coins", amount);
-
-        WebServiceManager.instance.APIRequest(
-            WebServiceManager.instance.getPlayerProfile,
-            Method.POST,
-            null,
-            postData,
-            (data, code) =>
-            {
-                // Update local coins with server response
-                User user = User.FromJson(data.ToString());
-                WebServiceManager.instance.playerPersonalData.Data.User.Domicoins = PlayerPersonalData.playerDomiCoins = user.Domicoins;
-
-            },
-            (msg) => { Debug.LogWarning($"WinnerScreen: Failed to sync coins with server: {msg}"); }
-        );
-    }
-
 
     public IEnumerator _DistributeTilesToPlayers()
     {

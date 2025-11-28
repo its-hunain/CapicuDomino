@@ -194,7 +194,36 @@ public class GameManager : MonoBehaviour
 
         //Joining Chat Channel after joining     match.
         await chatManager.JoinChatChannel(chatChannelName);
+
+        if (GameRulesManager.currentSelectedGame_MatchType == GameRulesManager.MatchType.Multiplayer)
+        {
+            CreateGameUpdateCoinOnServer(-GameRulesManager.currentSelectedGame_CoinsToPlay);
+            Debug.Log("coins" + -GameRulesManager.currentSelectedGame_CoinsToPlay);
+        }
     }
+
+    private void CreateGameUpdateCoinOnServer(int amount)
+    {
+        // Send the amount to ADD (not the total)
+        Dictionary<string, object> postData = new Dictionary<string, object>();
+        postData.Add("coins", amount);
+
+        WebServiceManager.instance.APIRequest(
+            WebServiceManager.instance.getPlayerProfile,
+            Method.POST,
+            null,
+            postData,
+            (data, code) =>
+            {
+                // Update local coins with server response
+                User user = User.FromJson(data.ToString());
+                WebServiceManager.instance.playerPersonalData.Data.User.Domicoins = PlayerPersonalData.playerDomiCoins = user.Domicoins;
+                Debug.Log("Before Win: " + user.Domicoins);
+            },
+            (msg) => { Debug.LogWarning($"WinnerScreen: Failed to sync coins with server: {msg}"); }
+        );
+    }
+
 
     private void _FillPlayerProperties(string matchId, IApiUser apiUser, NewJsonPlayer jsonPlayerData , GameObject player , int index)
     {

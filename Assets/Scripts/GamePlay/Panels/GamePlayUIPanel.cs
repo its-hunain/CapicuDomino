@@ -246,7 +246,7 @@ public class GamePlayUIPanel : MonoBehaviour
                 // Update local coins with server response
                 User user = User.FromJson(data.ToString());
                 WebServiceManager.instance.playerPersonalData.Data.User.Domicoins = PlayerPersonalData.playerDomiCoins = user.Domicoins;
-
+                Debug.Log("After Win: " + user.Domicoins);
             },
             (msg) => { Debug.LogWarning($"WinnerScreen: Failed to sync coins with server: {msg}"); }
         );
