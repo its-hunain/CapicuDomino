@@ -116,50 +116,51 @@ public class IOSBuildPostProcessor
         UnityEngine.Debug.Log($"Found {podDeclarations.Count} unique pod declarations");
 
         // Generate a completely new Podfile with correct structure
-        string newPodfile = @"source 'https://cdn.cocoapods.org/'
-source 'https://github.com/CocoaPods/Specs'
-
-platform :ios, '13.0'
-
-# Pods ONLY for UnityFramework (where the code actually runs)
-target 'UnityFramework' do
-  use_frameworks!
-
-";
+        System.Text.StringBuilder podfileBuilder = new System.Text.StringBuilder();
+        podfileBuilder.AppendLine("source 'https://cdn.cocoapods.org/'");
+        podfileBuilder.AppendLine("source 'https://github.com/CocoaPods/Specs'");
+        podfileBuilder.AppendLine();
+        podfileBuilder.AppendLine("platform :ios, '13.0'");
+        podfileBuilder.AppendLine();
+        podfileBuilder.AppendLine("# Pods ONLY for UnityFramework (where the code actually runs)");
+        podfileBuilder.AppendLine("target 'UnityFramework' do");
+        podfileBuilder.AppendLine("  use_frameworks!");
+        podfileBuilder.AppendLine();
 
         // Add all pod declarations to UnityFramework target
         foreach (string pod in podDeclarations)
         {
-            newPodfile += "  " + pod + "\n";
+            podfileBuilder.AppendLine("  " + pod);
         }
 
-        newPodfile += @"end
+        podfileBuilder.AppendLine("end");
+        podfileBuilder.AppendLine();
+        podfileBuilder.AppendLine("# Main app target - NO pods here (just use_frameworks for compatibility)");
+        podfileBuilder.AppendLine("target 'Unity-iPhone' do");
+        podfileBuilder.AppendLine("  use_frameworks!");
+        podfileBuilder.AppendLine("end");
+        podfileBuilder.AppendLine();
+        podfileBuilder.AppendLine("post_install do |installer|");
+        podfileBuilder.AppendLine("  installer.pods_project.targets.each do |target|");
+        podfileBuilder.AppendLine("    target.build_configurations.each do |config|");
+        podfileBuilder.AppendLine("      config.build_settings['ENABLE_BITCODE'] = 'NO'");
+        podfileBuilder.AppendLine("      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'");
+        podfileBuilder.AppendLine("      config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'");
+        podfileBuilder.AppendLine("      config.build_settings['ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES'] = 'NO'");
+        podfileBuilder.AppendLine("    end");
+        podfileBuilder.AppendLine("  end");
+        podfileBuilder.AppendLine();
+        podfileBuilder.AppendLine("  # Enable Swift embedding ONLY for Unity-iPhone");
+        podfileBuilder.AppendLine("  installer.aggregate_targets.each do |aggregate_target|");
+        podfileBuilder.AppendLine("    aggregate_target.xcconfigs.each do |config_name, config_file|");
+        podfileBuilder.AppendLine("      if aggregate_target.name == 'Pods-Unity-iPhone'");
+        podfileBuilder.AppendLine("        config_file.attributes['ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES'] = 'YES'");
+        podfileBuilder.AppendLine("      end");
+        podfileBuilder.AppendLine("    end");
+        podfileBuilder.AppendLine("  end");
+        podfileBuilder.AppendLine("end");
 
-# Main app target - NO pods here (just use_frameworks for compatibility)
-target 'Unity-iPhone' do
-  use_frameworks!
-end
-
-post_install do |installer|
-  installer.pods_project.targets.each do |target|
-    target.build_configurations.each do |config|
-      config.build_settings['ENABLE_BITCODE'] = 'NO'
-      config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '13.0'
-      config.build_settings['BUILD_LIBRARY_FOR_DISTRIBUTION'] = 'YES'
-      config.build_settings['ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES'] = 'NO'
-    end
-  end
-
-  # Enable Swift embedding ONLY for Unity-iPhone
-  installer.aggregate_targets.each do |aggregate_target|
-    aggregate_target.xcconfigs.each do |config_name, config_file|
-      if aggregate_target.name == 'Pods-Unity-iPhone'
-        config_file.attributes['ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES'] = 'YES'
-      end
-    end
-  end
-end
-";
+        string newPodfile = podfileBuilder.ToString();
 
         // Write the new Podfile
         File.WriteAllText(podfilePath, newPodfile);
