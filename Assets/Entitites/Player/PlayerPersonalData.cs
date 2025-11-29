@@ -35,7 +35,7 @@ public class PlayerPersonalData : MonoBehaviour
     public static Texture2D playerTexture;
     [Header("Nakama Details")]
     public static string sessionID;
-    internal static List<FriendDetail> facebookFriends;
+    //internal static List<FriendDetail> facebookFriends;
 
 
     internal static void OnSuccessfullyProfileDownload(string keyValuePairs, long successCode)

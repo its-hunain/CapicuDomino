@@ -8,7 +8,7 @@ using System.IO;
 /// Comprehensive iOS post-build processor
 /// Handles ALL iOS build configuration automatically:
 /// - ATT permission for AdMob
-/// - Swift library embedding for Facebook SDK & AdMob
+/// - Swift library embedding for AdMob
 /// - Framework embedding for CocoaPods
 /// - Podfile restructuring (pods ONLY in UnityFramework, NOT in Unity-iPhone)
 /// - Podfile post-install hooks
@@ -80,7 +80,7 @@ public class IOSBuildPostProcessor
         string frameworkTarget = project.GetUnityFrameworkTargetGuid();
         project.SetBuildProperty(frameworkTarget, "ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES", "NO");
 
-        // Disable bitcode (required for Facebook SDK)
+        // Disable bitcode
         project.SetBuildProperty(mainTarget, "ENABLE_BITCODE", "NO");
         project.SetBuildProperty(frameworkTarget, "ENABLE_BITCODE", "NO");
 

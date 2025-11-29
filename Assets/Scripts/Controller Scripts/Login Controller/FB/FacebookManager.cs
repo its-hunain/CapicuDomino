@@ -1,391 +1,391 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
-using Facebook.Unity;
-using UnityEngine.UI;
-using System.Collections;
-using UnityEngine.Networking;
-using Newtonsoft.Json.Linq;
-using Nakama.TinyJson;
-using Newtonsoft.Json;
+﻿//using System.Collections.Generic;
+//using UnityEngine;
+//using Facebook.Unity;
+//using UnityEngine.UI;
+//using System.Collections;
+//using UnityEngine.Networking;
+//using Newtonsoft.Json.Linq;
+//using Nakama.TinyJson;
+//using Newtonsoft.Json;
 
-public class FacebookManager : MonoBehaviour
-{
-    [Header("FacebookScreen UI Elements")]
-    public Button FbLoginBtn;
+//public class FacebookManager : MonoBehaviour
+//{
+//    [Header("FacebookScreen UI Elements")]
+//    public Button FbLoginBtn;
 
-    public static List<FriendDetail> friendList = new List<FriendDetail>();
-    List<string> friendsID = new List<string>();
-    List<string> friendsname = new List<string>();
-
-
-    private void Awake()
-    {
-        if (!FB.IsInitialized)
-        {
-            Debug.Log("Initializing Facebook.");
-            FB.Init(InitCallback);
-
-            //FB.Init(() =>
-            //{
-            //    if (FB.IsInitialized)
-            //    {
-            //        FB.ActivateApp();
-            //        Debug.Log("Activating app fb init if");
-            //    }
-
-            //    else
-            //        Debug.LogError("Couldn't initialize app");
-            //    if (FB.IsLoggedIn)
-            //    {
-            //        Debug.Log("Successfull Login");
-            //        AfterSuccessfullLogin();
-            //    }
-            //},
-            //isGameShown =>
-            //{
-            //    if (!isGameShown)
-            //        Time.timeScale = 0;
-            //    else
-            //        Time.timeScale = 1;
-
-            //});
-        }
-        else
-        {
-            Debug.Log("====>Already Initialized.");
-
-            FB.ActivateApp();
-            //Debug.Log("else Facebook Login");
-            //AfterSuccessfullLogin();
-        }
-
-        // Check if the user is already logged in
-        if (FB.IsLoggedIn)
-        {
-            // Continue with your app's logic after silent login
-            Debug.Log("====>Already Logged in.");
-            AfterSuccessfullLogin();
-        }
-    }
-
-    private void InitCallback()
-    {
-        if (FB.IsInitialized)
-        {
-            // Signal that Facebook SDK is initialized
-            FB.ActivateApp();
-        }
-        else
-        {
-            Debug.LogError("====>Failed to initialize the Facebook SDK");
-        }
-    }
+//    public static List<FriendDetail> friendList = new List<FriendDetail>();
+//    List<string> friendsID = new List<string>();
+//    List<string> friendsname = new List<string>();
 
 
-    private void Start()
-    {
-        FbLoginBtn.onClick.AddListener(() => FacebookLogin());
-    }
+//    private void Awake()
+//    {
+//        if (!FB.IsInitialized)
+//        {
+//            Debug.Log("Initializing Facebook.");
+//            FB.Init(InitCallback);
 
-    #region Login/ Logout
+//            //FB.Init(() =>
+//            //{
+//            //    if (FB.IsInitialized)
+//            //    {
+//            //        FB.ActivateApp();
+//            //        Debug.Log("Activating app fb init if");
+//            //    }
 
-    public void FacebookLogin()
-    {
-        Debug.Log("====>FacebookLogin()");
-        if (!FB.IsInitialized)
-        {
-            Debug.Log("Initializing Facebook.");
-            FB.Init(InitCallback);
-        }
+//            //    else
+//            //        Debug.LogError("Couldn't initialize app");
+//            //    if (FB.IsLoggedIn)
+//            //    {
+//            //        Debug.Log("Successfull Login");
+//            //        AfterSuccessfullLogin();
+//            //    }
+//            //},
+//            //isGameShown =>
+//            //{
+//            //    if (!isGameShown)
+//            //        Time.timeScale = 0;
+//            //    else
+//            //        Time.timeScale = 1;
 
-        if (!FB.IsLoggedIn)
-        {
-            Debug.Log("Facebook Login");
-            var permission = new List<string>() { "public_profile", "user_friends", "email" };
-            FB.LogInWithReadPermissions(permission, AuthCallback);
-            Debug.Log(permission);
-        }
-        else
-        {
-            Debug.LogError("Facebook is already logged in.");
-        }
-        //AfterSuccessfullLogin();
-    }
-    public void FacebookLogOut()
-    {
-        Debug.Log("FacebookLogOut.");
-        FB.LogOut();
-    }
+//            //});
+//        }
+//        else
+//        {
+//            Debug.Log("====>Already Initialized.");
 
-    private void AuthCallback(ILoginResult result)
-    {
-        if (FB.IsLoggedIn)
-        {
-            // Continue with your app's logic after successful login
-            AfterSuccessfullLogin();
-        }
-        else
-        {
-            Debug.Log("Facebook login failed.");
-        }
-    }
+//            FB.ActivateApp();
+//            //Debug.Log("else Facebook Login");
+//            //AfterSuccessfullLogin();
+//        }
 
-    #endregion
+//        // Check if the user is already logged in
+//        if (FB.IsLoggedIn)
+//        {
+//            // Continue with your app's logic after silent login
+//            Debug.Log("====>Already Logged in.");
+//            AfterSuccessfullLogin();
+//        }
+//    }
 
-    #region if Fb is Logged in Anywhere/Any app
-    public void AfterSuccessfullLogin()
-    {
-        // generate token and facebook id
-        if (FB.IsLoggedIn)
-        {
-            Debug.Log("Successful Login After ");
-            var atoken = AccessToken.CurrentAccessToken;
-            string facebookID = AccessToken.CurrentAccessToken.UserId;
-
-            // Print current access token's granted permissions
-            //foreach (string perm in atoken.Permissions)
-            //{
-            //    Debug.LogError("perm: " + perm);
-            //}
-            //tokentext.text = atoken;
-            StartCoroutine(UpdateData());
-        }
-    }
-    /// <summary>
-    /// Hits 2 different APIs
-    /// one for profile picture
-    /// one for name id email
-    /// </summary>
-    /// <returns></returns>
-    IEnumerator UpdateData()
-    {
-        if (FB.IsLoggedIn)
-        {
-            string query = "/me/friends";
-            FB.API("/me?fields=id,name,email", HttpMethod.GET, GetData);
-            FB.API("/me/picture?type=square&height=350&width=350", HttpMethod.GET, GetPicture);
-            FB.API(query, HttpMethod.GET, GetFriendsData);
-
-            yield return null;
-        }
-        else
-            Debug.Log("Failed to Get Data");
-    }
-
-    /// <summary>
-    /// gets API response for name email and userid
-    /// </summary>
-    /// <param name="result"></param>
-    private void GetData(IGraphResult result)
-    {
-        if (result.Error != null)
-        {
-            Debug.Log(result.Error);
-            return;
-        }
-        string Player_UserName;
-        string Player_UserID;
-        string Player_Email;
-        Debug.Log(result.ResultDictionary.ToJson());
-        if (result.ResultDictionary.TryGetValue("id", out Player_UserID))
-        {
-            PlayerPersonalData.playerUserID = Player_UserID;
-            Debug.Log(Player_UserID);
-        }
-
-        if (result.ResultDictionary.TryGetValue("name", out Player_UserName))
-        {
-            PlayerPersonalData.playerName = Player_UserName;
-            Debug.Log(Player_UserName);
-        }
-
-        if (result.ResultDictionary.TryGetValue("email", out Player_Email))
-        {
-            PlayerPersonalData.playerEmail = Player_Email;
-            Debug.Log(Player_Email);
-        }
-        else
-        {
-            PlayerPersonalData.playerEmail = GuestLoginGenerator.GenerateUniqueEmail();
-        }
-
-        //UIEvents.ShowPanel(Panel.TabPanels);
-        //UIEvents.HidePanel(Panel.SignupPanel);
-
-    }
+//    private void InitCallback()
+//    {
+//        if (FB.IsInitialized)
+//        {
+//            // Signal that Facebook SDK is initialized
+//            FB.ActivateApp();
+//        }
+//        else
+//        {
+//            Debug.LogError("====>Failed to initialize the Facebook SDK");
+//        }
+//    }
 
 
-    /// <summary>
-    /// gets API response for profile picture
-    ///  without downloading
-    /// </summary>
-    /// <param name="result"></param>
-    public void GetPicture(IGraphResult result)
-    {
-        if (result.Error == null && result.Texture != null)
-        {
-            PlayerPersonalData.playerTexture = result.Texture;
-        }
-        else
-        {
-            Debug.Log(result.Error);
-        }
+//    private void Start()
+//    {
+//        FbLoginBtn.onClick.AddListener(() => FacebookLogin());
+//    }
 
-        PlayerPersonalData.authProvider = Global.Facebook;
-        AttemptLogin();
+//    #region Login/ Logout
 
-    }
+//    public void FacebookLogin()
+//    {
+//        Debug.Log("====>FacebookLogin()");
+//        if (!FB.IsInitialized)
+//        {
+//            Debug.Log("Initializing Facebook.");
+//            FB.Init(InitCallback);
+//        }
 
-    private void AttemptLogin()
-    {
+//        if (!FB.IsLoggedIn)
+//        {
+//            Debug.Log("Facebook Login");
+//            var permission = new List<string>() { "public_profile", "user_friends", "email" };
+//            FB.LogInWithReadPermissions(permission, AuthCallback);
+//            Debug.Log(permission);
+//        }
+//        else
+//        {
+//            Debug.LogError("Facebook is already logged in.");
+//        }
+//        //AfterSuccessfullLogin();
+//    }
+//    public void FacebookLogOut()
+//    {
+//        Debug.Log("FacebookLogOut.");
+//        FB.LogOut();
+//    }
+
+//    private void AuthCallback(ILoginResult result)
+//    {
+//        if (FB.IsLoggedIn)
+//        {
+//            // Continue with your app's logic after successful login
+//            AfterSuccessfullLogin();
+//        }
+//        else
+//        {
+//            Debug.Log("Facebook login failed.");
+//        }
+//    }
+
+//    #endregion
+
+//    #region if Fb is Logged in Anywhere/Any app
+//    public void AfterSuccessfullLogin()
+//    {
+//        // generate token and facebook id
+//        if (FB.IsLoggedIn)
+//        {
+//            Debug.Log("Successful Login After ");
+//            var atoken = AccessToken.CurrentAccessToken;
+//            string facebookID = AccessToken.CurrentAccessToken.UserId;
+
+//            // Print current access token's granted permissions
+//            //foreach (string perm in atoken.Permissions)
+//            //{
+//            //    Debug.LogError("perm: " + perm);
+//            //}
+//            //tokentext.text = atoken;
+//            StartCoroutine(UpdateData());
+//        }
+//    }
+//    /// <summary>
+//    /// Hits 2 different APIs
+//    /// one for profile picture
+//    /// one for name id email
+//    /// </summary>
+//    /// <returns></returns>
+//    IEnumerator UpdateData()
+//    {
+//        if (FB.IsLoggedIn)
+//        {
+//            string query = "/me/friends";
+//            FB.API("/me?fields=id,name,email", HttpMethod.GET, GetData);
+//            FB.API("/me/picture?type=square&height=350&width=350", HttpMethod.GET, GetPicture);
+//            FB.API(query, HttpMethod.GET, GetFriendsData);
+
+//            yield return null;
+//        }
+//        else
+//            Debug.Log("Failed to Get Data");
+//    }
+
+//    /// <summary>
+//    /// gets API response for name email and userid
+//    /// </summary>
+//    /// <param name="result"></param>
+//    private void GetData(IGraphResult result)
+//    {
+//        if (result.Error != null)
+//        {
+//            Debug.Log(result.Error);
+//            return;
+//        }
+//        string Player_UserName;
+//        string Player_UserID;
+//        string Player_Email;
+//        Debug.Log(result.ResultDictionary.ToJson());
+//        if (result.ResultDictionary.TryGetValue("id", out Player_UserID))
+//        {
+//            PlayerPersonalData.playerUserID = Player_UserID;
+//            Debug.Log(Player_UserID);
+//        }
+
+//        if (result.ResultDictionary.TryGetValue("name", out Player_UserName))
+//        {
+//            PlayerPersonalData.playerName = Player_UserName;
+//            Debug.Log(Player_UserName);
+//        }
+
+//        if (result.ResultDictionary.TryGetValue("email", out Player_Email))
+//        {
+//            PlayerPersonalData.playerEmail = Player_Email;
+//            Debug.Log(Player_Email);
+//        }
+//        else
+//        {
+//            PlayerPersonalData.playerEmail = GuestLoginGenerator.GenerateUniqueEmail();
+//        }
+
+//        //UIEvents.ShowPanel(Panel.TabPanels);
+//        //UIEvents.HidePanel(Panel.SignupPanel);
+
+//    }
 
 
-        Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
-        keyValuePairs.Add("userId", PlayerPersonalData.playerUserID);
-        keyValuePairs.Add("displayName", PlayerPersonalData.playerName);
-        keyValuePairs.Add("email", PlayerPersonalData.playerEmail);
-        keyValuePairs.Add("userName", PlayerPersonalData.playerName);
-        keyValuePairs.Add("authProvider", PlayerPersonalData.authProvider);
-        //keyValuePairs.Add("image", PlayerProfile.imageUrl);
+//    /// <summary>
+//    /// gets API response for profile picture
+//    ///  without downloading
+//    /// </summary>
+//    /// <param name="result"></param>
+//    public void GetPicture(IGraphResult result)
+//    {
+//        if (result.Error == null && result.Texture != null)
+//        {
+//            PlayerPersonalData.playerTexture = result.Texture;
+//        }
+//        else
+//        {
+//            Debug.Log(result.Error);
+//        }
 
-        PlayerPrefs.SetString(Global.AuthProvider, Global.Facebook);
-        PlayerPrefs.SetString(Global.UserID, PlayerPersonalData.playerUserID);
-        PlayerPrefs.SetString(Global.UserName, PlayerPersonalData.playerName);
-        PlayerPrefs.SetString(Global.UserEmail, PlayerPersonalData.playerEmail);
-        PlayerPrefs.Save();
+//        PlayerPersonalData.authProvider = Global.Facebook;
+//        AttemptLogin();
+
+//    }
+
+//    private void AttemptLogin()
+//    {
 
 
-        UI_Manager.instance.ChangeScreen(UI_Manager.instance.menuScreen.gameObject, true);
+//        Dictionary<string, object> keyValuePairs = new Dictionary<string, object>();
+//        keyValuePairs.Add("userId", PlayerPersonalData.playerUserID);
+//        keyValuePairs.Add("displayName", PlayerPersonalData.playerName);
+//        keyValuePairs.Add("email", PlayerPersonalData.playerEmail);
+//        keyValuePairs.Add("userName", PlayerPersonalData.playerName);
+//        keyValuePairs.Add("authProvider", PlayerPersonalData.authProvider);
+//        //keyValuePairs.Add("image", PlayerProfile.imageUrl);
 
-        WebServiceManager.instance.APIRequest(WebServiceManager.instance.signUpFunction, Method.POST, null, keyValuePairs, PlayerPersonalData.OnSuccessfullyProfileDownload, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
-    }
+//        PlayerPrefs.SetString(Global.AuthProvider, Global.Facebook);
+//        PlayerPrefs.SetString(Global.UserID, PlayerPersonalData.playerUserID);
+//        PlayerPrefs.SetString(Global.UserName, PlayerPersonalData.playerName);
+//        PlayerPrefs.SetString(Global.UserEmail, PlayerPersonalData.playerEmail);
+//        PlayerPrefs.Save();
 
-    private void OnFail(string obj)
-    {
-        Debug.LogError("OnFail: " + obj.ToString());
-    }
 
-    /// <summary>
-    /// gets API response for friends playing this game
-    /// </summary>
-    /// <param name="result"></param>
-    void GetFriendsData(IGraphResult result)
-    {
-        friendList.Clear();
-        friendsID.Clear();
-        friendsname.Clear();
+//        UI_Manager.instance.ChangeScreen(UI_Manager.instance.menuScreen.gameObject, true);
 
-        var dictionary = (Dictionary<string, object>)Facebook.MiniJSON.Json.Deserialize(result.RawResult);
+//        WebServiceManager.instance.APIRequest(WebServiceManager.instance.signUpFunction, Method.POST, null, keyValuePairs, PlayerPersonalData.OnSuccessfullyProfileDownload, PlayerPersonalData.OnFailDownload, CACHEABLE.NULL, true, null);
+//    }
 
-        Debug.Log("friends data: " + JsonConvert.SerializeObject(dictionary));
-        var friendsList = (List<object>)dictionary["data"];
-        foreach (var dict in friendsList)
-        {
-            string friendName = (string)((Dictionary<string, object>)dict)["name"];
-            string friendId = (string)((Dictionary<string, object>)dict)["id"];
+//    private void OnFail(string obj)
+//    {
+//        Debug.LogError("OnFail: " + obj.ToString());
+//    }
 
-            friendsID.Add(friendId);
-            friendsname.Add(friendName);
-            FriendDetail friendDetail = new FriendDetail();
-            friendDetail.friendUserID = friendId;
-            friendList.Add(friendDetail);
-        }
+//    /// <summary>
+//    /// gets API response for friends playing this game
+//    /// </summary>
+//    /// <param name="result"></param>
+//    void GetFriendsData(IGraphResult result)
+//    {
+//        friendList.Clear();
+//        friendsID.Clear();
+//        friendsname.Clear();
 
-        DownloadFriendPicture();
-    }
+//        var dictionary = (Dictionary<string, object>)Facebook.MiniJSON.Json.Deserialize(result.RawResult);
+
+//        Debug.Log("friends data: " + JsonConvert.SerializeObject(dictionary));
+//        var friendsList = (List<object>)dictionary["data"];
+//        foreach (var dict in friendsList)
+//        {
+//            string friendName = (string)((Dictionary<string, object>)dict)["name"];
+//            string friendId = (string)((Dictionary<string, object>)dict)["id"];
+
+//            friendsID.Add(friendId);
+//            friendsname.Add(friendName);
+//            FriendDetail friendDetail = new FriendDetail();
+//            friendDetail.friendUserID = friendId;
+//            friendList.Add(friendDetail);
+//        }
+
+//        DownloadFriendPicture();
+//    }
 
         
-    void DownloadFriendPicture()
-    {
+//    void DownloadFriendPicture()
+//    {
 
-        foreach (var item in friendsID)
-        {
+//        foreach (var item in friendsID)
+//        {
 
-            FB.API("/" + item + "/picture?redirect=false&width=100&height=100", HttpMethod.GET, result =>
-            {
-                if (friendList.Find(x => x.friendUserID.Equals(item)) != null)
-                {
-                    IDictionary data = result.ResultDictionary["data"] as IDictionary;
-                    string photoURL = data["url"] as string;
+//            FB.API("/" + item + "/picture?redirect=false&width=100&height=100", HttpMethod.GET, result =>
+//            {
+//                if (friendList.Find(x => x.friendUserID.Equals(item)) != null)
+//                {
+//                    IDictionary data = result.ResultDictionary["data"] as IDictionary;
+//                    string photoURL = data["url"] as string;
 
-                    StartCoroutine(DownloadFriendPicture_FromURL(photoURL, item));
+//                    StartCoroutine(DownloadFriendPicture_FromURL(photoURL, item));
 
-                }
-            });
+//                }
+//            });
 
-        }
+//        }
 
-        //NextPanel.SetActive(true);
-    }
-
-
-    IEnumerator DownloadFriendPicture_FromURL(string friendPic_url, string friendID/*user id */)
-    {
-        using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(friendPic_url))
-        {
-            yield return uwr.SendWebRequest();
-
-            if (uwr.isNetworkError || uwr.isHttpError)
-            {
-                Debug.Log(uwr.error);
-            }
-            else
-            {
-                int index = friendsID.IndexOf(friendID);
-
-                Texture friendpicture = DownloadHandlerTexture.GetContent(uwr);
-
-                var friendDetail = friendList.Find(x => x.friendUserID.Equals(friendID));
-                if (friendDetail != null)
-                {
-                    friendDetail.friendPic = (Texture2D)friendpicture;
-                    friendDetail.friendName = friendsname[index];
-                    friendDetail.friendPicURl = friendPic_url;
-                }
-
-                PlayerPersonalData.facebookFriends.Add(friendDetail);
+//        //NextPanel.SetActive(true);
+//    }
 
 
-                //GameObject Friend = Instantiate(FriendRows, Vector3.zero, Quaternion.identity, FriendRowsParent);
-                //FriendRow FriendInfo = Friend.GetComponent<FriendRow>();
-                //FriendInfo.userName = friendsDic[friendID].friendName;
-                //FriendInfo.UserID = friendID;
-                //FriendInfo.rawImage.texture = friendpicture;
-                //FriendInfo.Setter();
+//    IEnumerator DownloadFriendPicture_FromURL(string friendPic_url, string friendID/*user id */)
+//    {
+//        using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(friendPic_url))
+//        {
+//            yield return uwr.SendWebRequest();
 
-                /////
-                ///// Show Dictionary as a gameobject
-                /////
+//            if (uwr.isNetworkError || uwr.isHttpError)
+//            {
+//                Debug.Log(uwr.error);
+//            }
+//            else
+//            {
+//                int index = friendsID.IndexOf(friendID);
 
-                //GameObject key_Obj = new GameObject();
-                //GameObject name_Obj = new GameObject();
-                //GameObject texture_Obj = new GameObject();
-                //key_Obj.name = friendID;
+//                Texture friendpicture = DownloadHandlerTexture.GetContent(uwr);
 
-                //name_Obj.transform.SetParent(key_Obj.transform);
-                //name_Obj.name = friendsDic[friendID].friendName;
+//                var friendDetail = friendList.Find(x => x.friendUserID.Equals(friendID));
+//                if (friendDetail != null)
+//                {
+//                    friendDetail.friendPic = (Texture2D)friendpicture;
+//                    friendDetail.friendName = friendsname[index];
+//                    friendDetail.friendPicURl = friendPic_url;
+//                }
 
-                //texture_Obj.transform.SetParent(name_Obj.transform);
-                //texture_Obj.name = "Profile Pic";
-                //texture_Obj.AddComponent<RawImage>();
-                //texture_Obj.GetComponent<RawImage>().texture = friendDetail.friendPic;
+//                PlayerPersonalData.facebookFriends.Add(friendDetail);
 
-            }
 
-        }
-        #endregion
+//                //GameObject Friend = Instantiate(FriendRows, Vector3.zero, Quaternion.identity, FriendRowsParent);
+//                //FriendRow FriendInfo = Friend.GetComponent<FriendRow>();
+//                //FriendInfo.userName = friendsDic[friendID].friendName;
+//                //FriendInfo.UserID = friendID;
+//                //FriendInfo.rawImage.texture = friendpicture;
+//                //FriendInfo.Setter();
 
-    }
+//                /////
+//                ///// Show Dictionary as a gameobject
+//                /////
 
-    private void SetImage(FriendDetail friendDetail)
-    {
+//                //GameObject key_Obj = new GameObject();
+//                //GameObject name_Obj = new GameObject();
+//                //GameObject texture_Obj = new GameObject();
+//                //key_Obj.name = friendID;
 
-    }
-}
-public class FriendDetail
-{
-    public string friendUserID;
-    public string friendName;
-    public string friendPicURl;
-    public Texture2D friendPic;
-}
+//                //name_Obj.transform.SetParent(key_Obj.transform);
+//                //name_Obj.name = friendsDic[friendID].friendName;
+
+//                //texture_Obj.transform.SetParent(name_Obj.transform);
+//                //texture_Obj.name = "Profile Pic";
+//                //texture_Obj.AddComponent<RawImage>();
+//                //texture_Obj.GetComponent<RawImage>().texture = friendDetail.friendPic;
+
+//            }
+
+//        }
+//        #endregion
+
+//    }
+
+//    private void SetImage(FriendDetail friendDetail)
+//    {
+
+//    }
+//}
+//public class FriendDetail
+//{
+//    public string friendUserID;
+//    public string friendName;
+//    public string friendPicURl;
+//    public Texture2D friendPic;
+//}
