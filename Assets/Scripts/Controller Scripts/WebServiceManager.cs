@@ -29,7 +29,8 @@ public class WebServiceManager : MonoBehaviour
     [SerializeField] internal string getProducts = "";
     [SerializeField] internal string buyProducts = "";
     [SerializeField] internal string getLeaderboards = "";
-
+    [SerializeField] internal string winGameApi = "";
+    
     [Space]
     [Header("General Apis")]
     [SerializeField] internal string getPlayerProfile              = ""; //can be also use as post

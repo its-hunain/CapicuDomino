@@ -195,7 +195,7 @@ public class GamePlayUIPanel : MonoBehaviour
         {
             int winningCoins = (int)Coins * GameRulesManager.noOfPlayers;
             Debug.Log("winner coins:"+ winningCoins);
-            UpdateCoinsOnServer(winningCoins);
+            UpdateWinnerCoinsOnServer(winningCoins);
         }
         if (isWin)
         {
@@ -230,7 +230,7 @@ public class GamePlayUIPanel : MonoBehaviour
         Debug.Log("_SetDataAfterDelay End");
     }
 
-    private void UpdateCoinsOnServer(int amount)
+    private void UpdateWinnerCoinsOnServer(int amount)
     {
         // Send the amount to ADD (not the total)
         Dictionary<string, object> postData = new Dictionary<string, object>();
@@ -250,6 +250,22 @@ public class GamePlayUIPanel : MonoBehaviour
             },
             (msg) => { Debug.LogWarning($"WinnerScreen: Failed to sync coins with server: {msg}"); }
         );
+
+        Dictionary<string, object> winnerPostData = new Dictionary<string, object>();
+        winnerPostData.Add("winnerId", PlayerPersonalData.playerUserID);
+        WebServiceManager.instance.APIRequest(
+            WebServiceManager.instance.winGameApi,
+            Method.POST,
+            null,
+            winnerPostData,
+            (data, code) =>
+            {
+                // Update win count successfully
+                Debug.Log("Win Api hit success: " + data.ToString());
+            },
+            (msg) => { Debug.LogError($"Win Api hit Fail: {msg}"); }
+        );
+
     }
 
     public void PopUpController(RectTransform initialPos_Transform , string msg)

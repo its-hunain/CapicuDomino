@@ -3193,7 +3193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e48a950b2ff4541579269687bdd74bc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FbLoginBtn: {fileID: 1494043832}
 --- !u!1 &109796571
 GameObject:
   m_ObjectHideFlags: 0
@@ -11211,6 +11210,10 @@ PrefabInstance:
     - target: {fileID: 7451005440754805605, guid: 5d76c51a9972c4c92bed4ea2255aff00, type: 3}
       propertyPath: debug
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451005440754805605, guid: 5d76c51a9972c4c92bed4ea2255aff00, type: 3}
+      propertyPath: winGameApi
+      value: api/game/end-game
       objectReference: {fileID: 0}
     - target: {fileID: 7451005440754805605, guid: 5d76c51a9972c4c92bed4ea2255aff00, type: 3}
       propertyPath: buyProducts
@@ -26562,9 +26565,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a4dbfadefc194f3e924aa31085511e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FriendRows: {fileID: 9038146429383270592, guid: 56c43107bca32fe47be51f9dc7a58258, type: 3}
-  FriendRowsParent: {fileID: 2074272499}
-  RequestBtn: {fileID: 1151586199}
 --- !u!1 &957469044
 GameObject:
   m_ObjectHideFlags: 0
