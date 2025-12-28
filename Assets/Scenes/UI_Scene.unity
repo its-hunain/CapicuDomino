@@ -1499,6 +1499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 870276902}
+  productId: 20000coins
   price: 99.99
   value: 20000
 --- !u!1 &54053390
@@ -10543,6 +10544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 163190528}
+  productId: 650coins
   price: 4.99
   value: 650
 --- !u!114 &393258711
@@ -12279,6 +12281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 148746797}
+  productId: 1500coins
   price: 9.99
   value: 1500
 --- !u!1 &449465822
@@ -15698,6 +15701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 16345586}
+  productId: 3500coins
   price: 19.99
   value: 3500
 --- !u!1 &547394692
@@ -16942,6 +16946,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 2018136065}
+  productId: 20000coins
   price: 99.99
   value: 20000
 --- !u!114 &616543219
@@ -22972,7 +22977,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 500, y: -250}
+  m_AnchoredPosition: {x: 0, y: -250}
   m_SizeDelta: {x: 786.18, y: 163.53998}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &835029265
@@ -24411,6 +24416,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 934489251}
+  productId: 120coins
   price: 0.99
   value: 120
 --- !u!1 &900642616
@@ -26937,6 +26943,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 1891192352}
+  productId: 650coins
   price: 4.99
   value: 650
 --- !u!1 &967611101
@@ -27513,7 +27520,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &996514844
 RectTransform:
   m_ObjectHideFlags: 0
@@ -34625,6 +34632,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 2015083747}
+  productId: 9500coins
   price: 49.99
   value: 9500
 --- !u!1 &1264806700
@@ -45636,6 +45644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 316414132}
+  productId: 3500coins
   price: 19.99
   value: 3500
 --- !u!1 &1651018112
@@ -47261,6 +47270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 808625246}
+  productId: 1500coins
   price: 9.99
   value: 1500
 --- !u!1 &1715531043
@@ -48629,6 +48639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 1779689805}
+  productId: 9500coins
   price: 49.99
   value: 9500
 --- !u!114 &1755085192
@@ -54367,6 +54378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 404910258}
+  productId: 120coins
   price: 0.99
   value: 120
 --- !u!1 &1984402829
