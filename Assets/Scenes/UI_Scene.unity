@@ -1500,7 +1500,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 870276902}
   productId: 20000coins
-  price: 99.99
   value: 20000
 --- !u!1 &54053390
 GameObject:
@@ -10545,7 +10544,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 163190528}
   productId: 650coins
-  price: 4.99
   value: 650
 --- !u!114 &393258711
 MonoBehaviour:
@@ -12282,7 +12280,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 148746797}
   productId: 1500coins
-  price: 9.99
   value: 1500
 --- !u!1 &449465822
 GameObject:
@@ -15702,7 +15699,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 16345586}
   productId: 3500coins
-  price: 19.99
   value: 3500
 --- !u!1 &547394692
 GameObject:
@@ -16947,7 +16943,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 2018136065}
   productId: 20000coins
-  price: 99.99
   value: 20000
 --- !u!114 &616543219
 MonoBehaviour:
@@ -24417,7 +24412,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 934489251}
   productId: 120coins
-  price: 0.99
   value: 120
 --- !u!1 &900642616
 GameObject:
@@ -26944,7 +26938,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 1891192352}
   productId: 650coins
-  price: 4.99
   value: 650
 --- !u!1 &967611101
 GameObject:
@@ -28832,6 +28825,50 @@ MonoBehaviour:
   btn: {fileID: 1233984431}
   priceTxt: {fileID: 1254276924}
   selectionFrame: {fileID: 322526128}
+--- !u!1 &1038602131
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1038602132}
+  - component: {fileID: 1038602133}
+  m_Layer: 0
+  m_Name: 'IAPManager '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1038602132
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038602131}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1038602133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1038602131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2b53cacdb1b88c489f7cfd4470d8c45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1040301157
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34633,7 +34670,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 2015083747}
   productId: 9500coins
-  price: 49.99
   value: 9500
 --- !u!1 &1264806700
 GameObject:
@@ -45645,7 +45681,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 316414132}
   productId: 3500coins
-  price: 19.99
   value: 3500
 --- !u!1 &1651018112
 GameObject:
@@ -47271,7 +47306,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 808625246}
   productId: 1500coins
-  price: 9.99
   value: 1500
 --- !u!1 &1715531043
 GameObject:
@@ -48640,7 +48674,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 1779689805}
   productId: 9500coins
-  price: 49.99
   value: 9500
 --- !u!114 &1755085192
 MonoBehaviour:
@@ -54379,7 +54412,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buyBtn: {fileID: 404910258}
   productId: 120coins
-  price: 0.99
   value: 120
 --- !u!1 &1984402829
 GameObject:
@@ -66684,3 +66716,4 @@ SceneRoots:
   - {fileID: 338543066}
   - {fileID: 6233989600906900960}
   - {fileID: 1060231148}
+  - {fileID: 1038602132}
