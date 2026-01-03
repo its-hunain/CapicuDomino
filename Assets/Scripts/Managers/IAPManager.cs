@@ -29,17 +29,39 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener
 
     void InitializeIAP()
     {
-        var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
+        Debug.Log("========================================");
+        Debug.Log("IAP INITIALIZATION STARTED");
+        Debug.Log("========================================");
+
+        // Initialize with StandardPurchasingModule - will use real stores when billing library is present
+        var module = StandardPurchasingModule.Instance();
+
+        // IMPORTANT: Disable fake store for production builds
+        // Fake store should only be used in Unity Editor for testing
+        #if !UNITY_EDITOR
+        module.useFakeStoreAlways = false;
+        module.useFakeStoreUIMode = FakeStoreUIMode.DeveloperUser;
+        Debug.Log("✅ Fake store disabled - using real store");
+        #else
+        Debug.Log("⚠️ Editor mode - using fake store for testing");
+        #endif
+
+        var builder = ConfigurationBuilder.Instance(module);
 
         // 🔹 Register ALL products here
+        // IMPORTANT: These product IDs must match exactly with your Google Play Console and App Store Connect
+        Debug.Log("Registering IAP products...");
         builder.AddProduct("120coins", ProductType.Consumable);
         builder.AddProduct("650coins", ProductType.Consumable);
         builder.AddProduct("1500coins", ProductType.Consumable);
         builder.AddProduct("3500coins", ProductType.Consumable);
         builder.AddProduct("9500coins", ProductType.Consumable);
         builder.AddProduct("20000coins", ProductType.Consumable);
+        Debug.Log("✅ 6 products registered");
 
+        Debug.Log("Calling UnityPurchasing.Initialize...");
         UnityPurchasing.Initialize(this, builder);
+        Debug.Log("IAP Initialization request sent - waiting for callback...");
     }
 
     #region Public Purchase API
@@ -72,17 +94,46 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener
     {
         storeController = controller;
         extensionProvider = extensions;
-        Debug.Log("IAP Initialized Successfully");
+        Debug.Log("========================================");
+        Debug.Log("✅✅✅ IAP INITIALIZED SUCCESSFULLY ✅✅✅");
+        Debug.Log("========================================");
+        Debug.Log("Available products:");
+        foreach (var product in controller.products.all)
+        {
+            Debug.Log($"  - {product.definition.id}: Available={product.availableToPurchase}, Price={product.metadata.localizedPriceString}");
+        }
+        Debug.Log("========================================");
     }
 
     public void OnInitializeFailed(InitializationFailureReason error)
     {
-        Debug.LogError("IAP Init Failed: " + error);
+        Debug.LogError("========================================");
+        Debug.LogError("❌❌❌ IAP INITIALIZATION FAILED ❌❌❌");
+        Debug.LogError("========================================");
+        Debug.LogError("Reason: " + error);
+        Debug.LogError("========================================");
+        Debug.LogError("Possible causes:");
+        Debug.LogError("1. In-App Purchase capability not enabled in Xcode");
+        Debug.LogError("2. Products not created in App Store Connect");
+        Debug.LogError("3. Bundle ID mismatch");
+        Debug.LogError("4. StoreKit framework not linked");
+        Debug.LogError("========================================");
     }
 
     public void OnInitializeFailed(InitializationFailureReason error, string message)
     {
-        Debug.LogError($"IAP Init Failed: {error} - {message}");
+        Debug.LogError("========================================");
+        Debug.LogError("❌❌❌ IAP INITIALIZATION FAILED ❌❌❌");
+        Debug.LogError("========================================");
+        Debug.LogError($"Reason: {error}");
+        Debug.LogError($"Message: {message}");
+        Debug.LogError("========================================");
+        Debug.LogError("Possible causes:");
+        Debug.LogError("1. In-App Purchase capability not enabled in Xcode");
+        Debug.LogError("2. Products not created in App Store Connect");
+        Debug.LogError("3. Bundle ID mismatch");
+        Debug.LogError("4. StoreKit framework not linked");
+        Debug.LogError("========================================");
     }
 
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args)
