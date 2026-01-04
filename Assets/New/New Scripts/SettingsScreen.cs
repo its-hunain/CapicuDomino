@@ -12,6 +12,7 @@ public class SettingsScreen : MonoBehaviour
     public Button aboutBtn;
     public Button termsBtn;
     public Button policyBtn;
+    public Button deleteAccountBtn;
     public Button closeBtn;
 
     public bool soundOn = true;
@@ -28,6 +29,8 @@ public class SettingsScreen : MonoBehaviour
             termsBtn.onClick.AddListener(() => AboutBtnCallBack(termsBtn));
             policyBtn.onClick.AddListener(() => AboutBtnCallBack(policyBtn));
             logoutBtn.onClick.AddListener(() => LogOut());
+
+            deleteAccountBtn.onClick.AddListener(() => DeleteUserAccount());
         }
 
         GetSoundSettings();
@@ -39,6 +42,47 @@ public class SettingsScreen : MonoBehaviour
         soundBtn.onClick.AddListener(() => SoundToggle());
 
     }
+
+    void DeleteUserAccount()
+    {
+        // Show confirmation dialog before deleting
+        UI_Manager.instance.deleteAccountPopUp.OpenCloseWarning(
+            true, 
+            "Are you sure you want to delete your account? This action cannot be undone.",
+            false,
+            ConfirmDeleteAccount
+            );
+    }
+
+    void ConfirmDeleteAccount()
+    {
+        // Call the delete user API
+        WebServiceManager.instance.APIRequest(
+            WebServiceManager.instance.deleteUserApi,
+            Method.DELETE,
+            null, // No raw data needed
+            null, // No parameters needed
+            OnDeleteUserSuccess,
+            OnDeleteUserFail,
+            CACHEABLE.NULL,
+            true // Show loader
+        );
+    }
+
+    void OnDeleteUserSuccess(string response, long code)
+    {
+        Debug.Log("User deleted successfully: " + response);
+
+        // Clear all local data
+        PlayerPrefs.DeleteAll();
+
+        // Reload the UI scene to go back to login
+        SceneManager.LoadScene(Global.UIScene);
+    }
+
+    void OnDeleteUserFail(string error)
+        =>  Debug.LogError("Failed to delete user: " + error);
+    
 
     public void LogOut()
     {

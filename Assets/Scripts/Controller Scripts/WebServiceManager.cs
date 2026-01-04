@@ -30,6 +30,7 @@ public class WebServiceManager : MonoBehaviour
     [SerializeField] internal string buyProducts = "";
     [SerializeField] internal string getLeaderboards = "";
     [SerializeField] internal string winGameApi = "";
+    [SerializeField] internal string deleteUserApi = "";
     
     [Space]
     [Header("General Apis")]
@@ -163,6 +164,7 @@ public class WebServiceManager : MonoBehaviour
         else if (getMethod == Method.DELETE)
         {
             www = UnityWebRequest.Delete(baseURL + getFunction);
+            www.downloadHandler = new DownloadHandlerBuffer();
         }
         else if (getMethod == Method.PUT)
         {
