@@ -19,12 +19,16 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            InitializeIAP();
         }
         else
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Start()
+    {
+        InitializeIAP();
     }
 
     void InitializeIAP()
@@ -33,20 +37,35 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener
         Debug.Log("IAP INITIALIZATION STARTED");
         Debug.Log("========================================");
 
-        // Initialize with StandardPurchasingModule - will use real stores when billing library is present
+        // 🔑 CRITICAL: Override the default store BEFORE initializing
+        // This ensures Unity IAP uses the correct store regardless of BillingMode.json
+        #if UNITY_ANDROID && !UNITY_EDITOR
+        DefaultStoreHelper.OverrideDefaultStoreName(GooglePlay.Name);
+        Debug.Log("✅ Forced Google Play Store for Android");
+        #elif UNITY_IOS && !UNITY_EDITOR
+        DefaultStoreHelper.OverrideDefaultStoreName(AppleAppStore.Name);
+        Debug.Log("✅ Forced Apple App Store for iOS");
+        #endif
+
+        // Initialize with StandardPurchasingModule
         var module = StandardPurchasingModule.Instance();
 
-        // IMPORTANT: Disable fake store for production builds
-        // Fake store should only be used in Unity Editor for testing
-        #if !UNITY_EDITOR
-        module.useFakeStoreAlways = false;
+        // IMPORTANT: Only configure fake store in Unity Editor
+        // Production builds should NEVER set useFakeStoreUIMode or useFakeStoreAlways
+        #if UNITY_EDITOR
         module.useFakeStoreUIMode = FakeStoreUIMode.DeveloperUser;
-        Debug.Log("✅ Fake store disabled - using real store");
-        #else
         Debug.Log("⚠️ Editor mode - using fake store for testing");
+        #else
+        // DO NOT set any fake store properties here
+        // Let Unity IAP use the real Google Play/App Store automatically
+        Debug.Log("✅ Production build - will use real store (Google Play/App Store)");
         #endif
 
         var builder = ConfigurationBuilder.Instance(module);
+
+        // ℹ️ NOTE: In Unity IAP 5.x, the Google Play public key is configured automatically
+        // through Unity Services and the generated GooglePlayTangle.cs file.
+        // No manual SetPublicKey() call is needed - Unity IAP handles this internally.
 
         // 🔹 Register ALL products here
         // IMPORTANT: These product IDs must match exactly with your Google Play Console and App Store Connect
@@ -97,6 +116,25 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener
         Debug.Log("========================================");
         Debug.Log("✅✅✅ IAP INITIALIZED SUCCESSFULLY ✅✅✅");
         Debug.Log("========================================");
+
+        // Check which store is being used
+        #if UNITY_ANDROID
+        Debug.Log($"Platform: Android");
+        Debug.Log($"Store Name: {StandardPurchasingModule.Instance().appStore}");
+        var googleConfig = extensions.GetExtension<IGooglePlayStoreExtensions>();
+        if (googleConfig != null)
+        {
+            Debug.Log("✅ Google Play Store Extensions detected - using REAL store");
+        }
+        else
+        {
+            Debug.LogWarning("⚠️ Google Play Store Extensions NOT found - might be using fake store");
+        }
+        #elif UNITY_IOS
+        Debug.Log($"Platform: iOS");
+        Debug.Log($"Store Name: {StandardPurchasingModule.Instance().appStore}");
+        #endif
+
         Debug.Log("Available products:");
         foreach (var product in controller.products.all)
         {
