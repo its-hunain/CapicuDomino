@@ -45,8 +45,6 @@ For questions, bug reports, or future maintenance requests regarding this projec
 **Mohammad Hunain**
 - 📧 Email: [mohammadhunain83@gmail.com](mailto:mohammadhunain83@gmail.com)
 - 📱 Phone: +92 315 8327536
-- 🌐 Portfolio: [hunain.online](https://hunain.online/)
-- 💼 LinkedIn: [linkedin.com/in/mohammad-hunain](https://www.linkedin.com/in/mohammad-hunain/)
 
 ## License
 
