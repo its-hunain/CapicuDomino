@@ -1,0 +1,67 @@
+{
+    "data":
+    {
+        "texture":
+        [
+            {
+                "url": "Textures/EyeBrowsTexture1",
+                "value": "",
+                "thumbnailURL": "AvatarBuilder/EyeBrows/eyeBrows1"
+            },
+            {
+                "url": "Textures/EyeBrowsTexture2",
+                "value": "",
+                "thumbnailURL": "AvatarBuilder/EyeBrows/eyeBrows2"
+            },
+            {
+                "url": "Textures/EyeBrowsTexture3",
+                "value": "",
+                "thumbnailURL": "AvatarBuilder/EyeBrows/eyeBrows3"
+            }
+        ],
+        "mesh":
+        [
+            {
+                "url": "",
+                "value": "eyeBrows",
+                "thumbnailURL": ""
+            }
+        ],
+        "color":
+        [
+            {
+                "url": "",
+                "value": "#FFFFF0",
+                "thumbnailURL": ""
+            },
+            {
+                "url": "",
+                "value": "#FFFF0F",
+                "thumbnailURL": ""
+            },
+            {
+                "url": "",
+                "value": "#FFF0FF",
+                "thumbnailURL": ""
+            },
+            {
+                "url": "",
+                "value": "#FF0FFF",
+                "thumbnailURL": ""
+            },
+            {
+                "url": "",
+                "value": "#F0FFFF",
+                "thumbnailURL": ""
+            }
+        ],
+        "blend":
+        [
+            {
+                "url": "",
+                "value": "",
+                "thumbnailURL": ""
+            }
+        ]
+    }
+}

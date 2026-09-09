@@ -1,0 +1,41 @@
+{
+    "data": {
+        "texture": [
+            {
+                "url": "Textures/noseTexture",
+                "value": "",
+                "thumbnailURL": ""
+            }
+        ],
+        "mesh": [
+            {
+                "url": "",
+                "value": "nose",
+                "thumbnailURL": ""
+            }
+        ],
+        "color": [],
+        "blend": [
+            {
+                "url": "",
+                "value": "0",
+                "thumbnailURL": "AvatarBuilder/Nose/nose1"
+            },
+            {
+                "url": "",
+                "value": "1",
+                "thumbnailURL": "AvatarBuilder/Nose/nose2"
+            },
+            {
+                "url": "",
+                "value": "2",
+                "thumbnailURL": "AvatarBuilder/Nose/nose3"
+            },
+            {
+                "url": "",
+                "value": "3",
+                "thumbnailURL": "AvatarBuilder/Nose/nose4"
+            }
+        ]
+    }
+}

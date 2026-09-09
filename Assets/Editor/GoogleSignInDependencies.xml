@@ -1,0 +1,6 @@
+<dependencies>
+  <androidPackages>
+    <!-- Google Sign-In for Android (required by google-signin-unity plugin) -->
+    <androidPackage spec="com.google.android.gms:play-services-auth:21.0.0" />
+  </androidPackages>
+</dependencies>

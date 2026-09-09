@@ -1,0 +1,25 @@
+# Ensure all text files are treated as UTF-8
+* text=auto eol=lf encoding=UTF-8
+
+# Explicitly mark C# files as text with UTF-8 encoding
+*.cs text eol=lf encoding=UTF-8
+*.txt text eol=lf encoding=UTF-8
+*.md text eol=lf encoding=UTF-8
+*.json text eol=lf encoding=UTF-8
+*.xml text eol=lf encoding=UTF-8
+
+# Unity-specific files
+*.unity text eol=lf encoding=UTF-8 -merge=unityyamlmerge
+*.prefab text eol=lf encoding=UTF-8 -merge=unityyamlmerge
+*.asset text eol=lf encoding=UTF-8
+*.meta text eol=lf encoding=UTF-8
+*.mat text eol=lf encoding=UTF-8
+
+# Binary files
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.dll binary
+*.so binary
+*.apk binary
+*.ipa binary
