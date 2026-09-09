@@ -1,0 +1,8 @@
+{
+    "baseUrl": "https://pre-api.dewskill2earn.com/",
+    "websiteUrl": "http://138.68.50.136:4200/",
+    "nakamaScheme": "http",
+    "nakamaHost": "192.168.14.239",
+    "nakamaPort": 7350,
+    "nakamaServerKey": "dominosasdsocketcvxkey"
+}

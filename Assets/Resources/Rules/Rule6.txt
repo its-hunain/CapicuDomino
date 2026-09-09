@@ -1,0 +1,6 @@
+<b>Objective: </b> The game ends when the player reaches or exceeds 75 points.
+<b>How the game is played: </b> The game will restart automatically in case a player draws 5 or more doubles.
+The player with the double six starts the first round. While with 3 or less players the highest double starts the game (double 5, double 4, double 3, double 2, double 1, if there is no double 6). In case there is no double at the start of the round, the player with the highest tile starts, this only applies for 2 or 3 players.
+After placing the first tile, the following players must join a tile from their hand with an open end on the playing line. In the following rounds, the player to the right of the player who wins in the previous round will start with any domino of his choice. Then, in the second round, the player to his right follows, counterclockwise, and so on.
+<b>Points: </b> The sum of all points is awarded to the player who ran out of dominoes in his hand.
+<b>Sabaniao: </b> used in the Sabaniao mode. If a player places his last piece being double 0, and double the points earned in that hand are added to the winner.

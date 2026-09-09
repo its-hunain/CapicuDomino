@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "34341353650",
+    "project_id": "capicu-1a7f4",
+    "storage_bucket": "capicu-1a7f4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34341353650:android:334fa4fe32f890024131ab",
+        "android_client_info": {
+          "package_name": "com.ttpgames.capicu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "34341353650-is0dil5ldl7ttsrlumhfea7s3hmaqd6l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ttpgames.capicu",
+            "certificate_hash": "a7dd8b2b74e2da4b390b972eb55bba9b337c3396"
+          }
+        },
+        {
+          "client_id": "34341353650-k379571171ieufdb09sla134a8cov74i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ttpgames.capicu",
+            "certificate_hash": "835ec7b12a902c16ff5a0b86ccd08edd722adcd0"
+          }
+        },
+        {
+          "client_id": "34341353650-8723j78svdq1cohu37carq46tn6ah5gs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3CM-9IPJ7keMEaKWYOt1YMjCQxprxRoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "34341353650-8723j78svdq1cohu37carq46tn6ah5gs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
