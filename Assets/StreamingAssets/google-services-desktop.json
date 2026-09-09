@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "34341353650",
+    "project_id": "capicu-1a7f4",
+    "storage_bucket": "capicu-1a7f4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:34341353650:android:334fa4fe32f890024131ab",
+        "android_client_info": {
+          "package_name": "com.ttpgames.capicu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA3CM-9IPJ7keMEaKWYOt1YMjCQxprxRoU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

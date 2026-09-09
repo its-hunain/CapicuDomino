@@ -1,0 +1,40 @@
+{
+    "message": "",
+    "data": [
+        {
+            "id": 1,
+            "name": "Skin",
+            "shorCode": "skin"
+        },
+        {
+            "id": 2,
+            "name": "Face Cut",
+            "shorCode": "faceCut"
+        },
+        {
+            "id": 3,
+            "name": "Eye Brows",
+            "shorCode": "eyebrows"
+        },
+        {
+            "id": 4,
+            "name": "Eyes",
+            "shorCode": "eyes"
+        },
+        {
+            "id": 5,
+            "name": "Hair",
+            "shorCode": "hair"
+        },
+        {
+            "id": 6,
+            "name": "Nose",
+            "shorCode": "nose"
+        },
+        {
+            "id": 7,
+            "name": "Lips",
+            "shorCode": "lips"
+        }
+    ]
+}
