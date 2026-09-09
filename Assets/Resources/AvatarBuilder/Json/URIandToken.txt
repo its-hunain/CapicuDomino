@@ -1,0 +1,4 @@
+{
+	"message":"Success",
+	"data":	[{"uri":"https://dominoes-images-preprod.s3.amazonaws.com/avatar-male-class-1/RyylCH6yd5QrlFyE3tUGv.json","tokenId":"9387"}]
+}

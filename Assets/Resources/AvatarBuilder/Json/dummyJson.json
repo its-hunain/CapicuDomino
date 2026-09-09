@@ -1,0 +1,170 @@
+{
+    "message": "user avatar categories",
+    "avatarCategories": [
+        {
+            "_id": "636cb43ba985d44c2b026f4c",
+            "categoryType": "skin",
+            "data": {
+                "texture": [],
+                "mesh": [],
+                "color": [
+                    {
+                        "itemID": "a0713987-586a-48df-99d3-504d59c300ec",
+                        "url": "",
+                        "value": "#8d5524",
+                        "thumbnailURL": ""
+                    }
+                ],
+                "blend": []
+            }
+        },
+        {
+            "_id": "636cb595a985d44c2b026f4d",
+            "categoryType": "faceCut",
+            "data": {
+                "texture": [],
+                "mesh": [],
+                "color": [],
+                "blend": [
+                    {
+                        "itemID": "fdd8b382-2678-47b3-abc9-54b374754cf8",
+                        "url": "",
+                        "value": "{\"itemType\":\"FaceCut\",\"data\":[{\"index\":60,\"name\":\"blendShape2.FaceCut_Cartoon\",\"value\":50.0}, {\"index\":61,\"name\":\"blendShape2.FaceCut_Cartoon1\",\"value\":0.0}, {\"index\":62,\"name\":\"blendShape2.FaceCut_SharpCheekBigChin\",\"value\":0.0}, {\"index\":63,\"name\":\"blendShape2.FaceCut_Samll\",\"value\":0.0}, {\"index\":64,\"name\":\"blendShape2.FaceCut_V_Shape\",\"value\":0.0}, {\"index\":65,\"name\":\"blendShape2.FaceCut_Fat\",\"value\":0.0}, {\"index\":66,\"name\":\"blendShape2.FaceCut_SharpCheekSmallChin\",\"value\":0.0}, {\"index\":67,\"name\":\"blendShape2.FaceCut_SharpCuts\",\"value\":0.0}, {\"index\":68,\"name\":\"blendShape2.FaceCut_SharpLong\",\"value\":0.0}, {\"index\":69,\"name\":\"blendShape2.FaceCut_Big\",\"value\":0.0}, {\"index\":70,\"name\":\"blendShape2.FaceCut_ShortChinRound\",\"value\":0.0}, {\"index\":71,\"name\":\"blendShape2.FaceCut_LongSharpChin\",\"value\":0.0}, {\"index\":72,\"name\":\"blendShape2.FaceCut_SquareShortChin\",\"value\":0.0}, {\"index\":73,\"name\":\"blendShape2.FaceCut_SharpCheekBone\",\"value\":0.0}, {\"index\":74,\"name\":\"blendShape2.FaceCut_SharpChin\",\"value\":0.0}, {\"index\":75,\"name\":\"blendShape2.FaceCut_Boxy\",\"value\":0.0}, {\"index\":76,\"name\":\"blendShape2.FaceCut_Young\",\"value\":0.0}, {\"index\":77,\"name\":\"blendShape2.FaceCut_SoftJaw\",\"value\":0.0}, {\"index\":78,\"name\":\"blendShape2.FaceCut_SquareFace\",\"value\":0.0}, {\"index\":79,\"name\":\"blendShape2.FaceCut_BasicFace\",\"value\":0.0}]}",
+                        "thumbnailURL": "https://cubixco.s3.us-west-2.amazonaws.com/prcuxue23xlaasysr41668068583952.png"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "636cb5c5a985d44c2b026f4e",
+            "categoryType": "eyeBrows",
+            "data": {
+                "texture": [
+                    {
+                        "itemID": "ee5af4ad-9c2e-47e0-80cc-b9ee2dcd8d25",
+                        "url": "https://cubixco.s3.us-west-2.amazonaws.com/prcuxue23xlajm6q041668601391908.png",
+                        "value": "texture1",
+                        "thumbnailURL": "https://cubixco.s3.us-west-2.amazonaws.com/prcuxue23xlajm6zer1668601404099.png"
+                    }
+                ],
+                "mesh": [],
+                "color": [
+                    {
+                        "itemID": "17fc38db-1c3b-4aab-a53c-32d54db6707c",
+                        "url": "",
+                        "value": "#8d5524",
+                        "thumbnailURL": ""
+                    }
+                ],
+                "blend": []
+            }
+        },
+        {
+            "_id": "636cb6bfa985d44c2b026f4f",
+            "categoryType": "eyes",
+            "data": {
+                "texture": [],
+                "mesh": [],
+                "color": [],
+                "blend": [
+                    {
+                        "itemID": "e782667e-e052-4fbc-aad4-9aa3df3202fa",
+                        "url": "",
+                        "value": "{\"itemType\":\"Eyes\",\"data\": [{\"index\":40,\"name\":\"blendShape2.Eyes_TopShapedBottomStraightSmall\",\"value\":50.0}, {\"index\":41,\"name\":\"blendShape2.Eyes_TopShapedBottomStraight\",\"value\":0.0}, {\"index\":42,\"name\":\"blendShape2.Eyes_Big1\",\"value\":0.0}, {\"index\":43,\"name\":\"blendShape2.Eyes_SmallCornerPinched\",\"value\":0.0}, {\"index\":44,\"name\":\"blendShape2.Eyes_Big\",\"value\":0.0}, {\"index\":45,\"name\":\"blendShape2.Eye_Chinies\",\"value\":0.0}, {\"index\":46,\"name\":\"blendShape2.Eyes_WideBig\",\"value\":0.0}, {\"index\":47,\"name\":\"blendShape2.Eye_Small\",\"value\":0.0}, {\"index\":48,\"name\":\"blendShape2.Eye_Shaped2\",\"value\":0.0}, {\"index\":49,\"name\":\"blendShape2.Eyes_Box\",\"value\":0.0}, {\"index\":50,\"name\":\"blendShape2.Eye_Shaped1\",\"value\":0.0}, {\"index\":51,\"name\":\"blendShape2.Eyes_UpperRound\",\"value\":0.0}, {\"index\":52,\"name\":\"blendShape2.Eyes_Squar\",\"value\":0.0}, {\"index\":53,\"name\":\"blendShape2.Eyes_Ellips\",\"value\":0.0}, {\"index\":54,\"name\":\"blendShape2.Eyes_SmallOpen\",\"value\":0.0}, {\"index\":55,\"name\":\"blendShape2.Eyes_Round\",\"value\":0.0}, {\"index\":56,\"name\":\"blendShape2.Eyes_WidePinched2\",\"value\":0.0}, {\"index\":57,\"name\":\"blendShape2.Eyes_WidePinched\",\"value\":0.0}, {\"index\":58,\"name\":\"blendShape2.Eyes1_Wide\",\"value\":0.0}, {\"index\":59,\"name\":\"blendShape2.Eyes_Basic\",\"value\":0.0}]}",
+                        "thumbnailURL": "https://cubixco.s3.us-west-2.amazonaws.com/prcuxue23xlaat4mnm1668068855986.png"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "636cbd3ba985d44c2b026f53",
+            "categoryType": "hair",
+            "data": {
+                "texture": [],
+                "mesh": [
+                    {
+                        "itemID": "ca342444-cbee-41e8-97bc-75c7c8d7bd7d",
+                        "url": "",
+                        "value": "MaleHair_01",
+                        "thumbnailURL": ""
+                    }
+                ],
+                "color": [
+                    {
+                        "itemID": "7ff4962d-6b8b-4007-81e9-fd43bc9f89ae",
+                        "url": "",
+                        "value": "#8d5524",
+                        "thumbnailURL": ""
+                    }
+                ],
+                "blend": []
+            }
+        },
+        {
+            "_id": "636cba65a985d44c2b026f50",
+            "categoryType": "nose",
+            "data": {
+                "texture": [],
+                "mesh": [],
+                "color": [],
+                "blend": [
+                    {
+                        "itemID": "29253ede-9c94-48e5-b705-e3c0e85dd6b3",
+                        "url": "",
+                        "value": "{\"itemType\":\"Nose\",\"data\":[{\"index\":20,\"name\":\"blendShape2.Nose_Small2\",\"value\":50.0}, {\"index\":21,\"name\":\"blendShape2.Nose_Shape18\",\"value\":0.0}, {\"index\":22,\"name\":\"blendShape2.Nose_Small1\",\"value\":0.0}, {\"index\":23,\"name\":\"blendShape2.Nose_TopPinched\",\"value\":0.0}, {\"index\":24,\"name\":\"blendShape2.Nose_LongThin\",\"value\":0.0}, {\"index\":25,\"name\":\"blendShape2.Nose_ThinkStraight\",\"value\":0.0}, {\"index\":26,\"name\":\"blendShape2.Nose_Witches\",\"value\":0.0}, {\"index\":27,\"name\":\"blendShape2.Nose_CurvedBone\",\"value\":0.0}, {\"index\":28,\"name\":\"blendShape2.Nose_StriaghtSmall\",\"value\":0.0}, {\"index\":29,\"name\":\"blendShape2.Nose_BigNostrils3\",\"value\":0.0}, {\"index\":30,\"name\":\"blendShape2.Nose_BallThik\",\"value\":0.0}, {\"index\":31,\"name\":\"blendShape2.Nose_BigNostrils2\",\"value\":0.0}, {\"index\":32,\"name\":\"blendShape2.Nose_StriaghtShape3\",\"value\":0.0}, {\"index\":33,\"name\":\"blendShape2.Nose_StriaghtShape2\",\"value\":0.0}, {\"index\":34,\"name\":\"blendShape2.Nose_StriaghtShape1\",\"value\":0.0}, {\"index\":35,\"name\":\"blendShape2.Nose_WideBone1\",\"value\":0.0}, {\"index\":36,\"name\":\"blendShape2.Nose_PinchedBone2\",\"value\":0.0}, {\"index\":37,\"name\":\"blendShape2.Nose_PinchedBone1\",\"value\":0.0}, {\"index\":38,\"name\":\"blendShape2.Nose_Basic\",\"value\":0.0}, {\"index\":39,\"name\":\"blendShape2.Nose_BigNostrils1\",\"value\":0.0}]}",
+                        "thumbnailURL": "https://cubixco.s3.us-west-2.amazonaws.com/prcuxue23xlaatm4yw1668069672872.png"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "636cba7ea985d44c2b026f51",
+            "categoryType": "lips",
+            "data": {
+                "texture": [],
+                "mesh": [],
+                "color": [
+                    {
+                        "itemID": "1d4f2a8b-50d5-448c-ad69-bd8a677b0c60",
+                        "url": "",
+                        "value": "#F98787",
+                        "thumbnailURL": ""
+                    }
+                ],
+                "blend": [
+                    {
+                        "itemID": "8f5d78ee-2bfd-4fe8-ac42-df2cfbece9a7",
+                        "url": "",
+                        "value": "{\"itemType\":\"Lips\",\"data\":[{\"index\":0,\"name\":\"blendShape2.Lips_BigRound\",\"value\":50.0}, {\"index\":1,\"name\":\"blendShape2.Lips_SmallRound\",\"value\":0.0}, {\"index\":2,\"name\":\"blendShape2.Lips_SideDown\",\"value\":0.0}, {\"index\":3,\"name\":\"blendShape2.Lips_SideUp\",\"value\":0.0}, {\"index\":4,\"name\":\"blendShape2.Lips_Standard2\",\"value\":0.0}, {\"index\":5,\"name\":\"blendShape2.Lips_Small\",\"value\":0.0}, {\"index\":6,\"name\":\"blendShape2.Lips_Standard\",\"value\":0.0}, {\"index\":7,\"name\":\"blendShape2.Lips_ThikShapDown\",\"value\":0.0}, {\"index\":8,\"name\":\"blendShape2.Lips_ThikShapUp\",\"value\":0.0}, {\"index\":9,\"name\":\"blendShape2.Lips_Shape10\",\"value\":0.0}, {\"index\":10,\"name\":\"blendShape2.Lips_Thik3\",\"value\":0.0}, {\"index\":11,\"name\":\"blendShape2.Lips_Thik2\",\"value\":0.0}, {\"index\":12,\"name\":\"blendShape2.Lips_ThinShape\",\"value\":0.0}, {\"index\":13,\"name\":\"blendShape2.Lips_Small2\",\"value\":0.0}, {\"index\":14,\"name\":\"blendShape2.Lips_Thik1\",\"value\":0.0}, {\"index\":15,\"name\":\"blendShape2.Lips_Shape6\",\"value\":0.0}, {\"index\":16,\"name\":\"blendShape2.Lips_Small1\",\"value\":0.0}, {\"index\":17,\"name\":\"blendShape2.Lips_Curved\",\"value\":0.0}, {\"index\":18,\"name\":\"blendShape2.Lips_Basic\",\"value\":0.0}, {\"index\":19,\"name\":\"blendShape2.Lips_Wide\",\"value\":0.0}]}",
+                        "thumbnailURL": "https://cubixco.s3.us-west-2.amazonaws.com/prcuxue23xlaatyho71668070249207.png"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": "636cbd22a985d44c2b026f52",
+            "categoryType": "facialHair",
+            "data": {
+                "texture": [
+                    {
+                        "itemID": "3e0ccad2-5bac-4fe1-8699-ff7986a5044d",
+                        "url": "https://cubixco.s3.us-west-2.amazonaws.com/prcuxue23xlajmg3721668601828910.png",
+                        "value": "texture1",
+                        "thumbnailURL": "https://cubixco.s3.us-west-2.amazonaws.com/prcuxue23xlajmg9181668601836476.png"
+                    }
+                ],
+                "mesh": [],
+                "color": [
+                    {
+                        "itemID": "481ea169-f887-4a5f-9653-d3ccb864fbe0",
+                        "url": "",
+                        "value": "#dbebe1",
+                        "thumbnailURL": ""
+                    }
+                ],
+                "blend": []
+            }
+        }
+    ],
+    "avatarGender": "male"
+}

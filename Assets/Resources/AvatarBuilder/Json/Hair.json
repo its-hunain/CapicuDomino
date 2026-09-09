@@ -1,0 +1,66 @@
+{
+    "data":
+    {
+        "texture":
+        [
+            {
+                "url": "Textures/HairTexture",
+                "value": "",
+                "thumbnailURL": ""
+            }
+        ],
+        "mesh":
+        [
+            {
+                "url": "",
+                "value": "hair1",
+                "thumbnailURL": "AvatarBuilder/Hair/Hair1"
+            },
+            {
+                "url": "",
+                "value": "hair2",
+                "thumbnailURL": "AvatarBuilder/Hair/Hair2"
+            },
+            {
+                "url": "",
+                "value": "hair3",
+                "thumbnailURL": "AvatarBuilder/Hair/Hair3"
+            }
+        ],
+        "color":
+        [
+            {
+                "url": "",
+                "value": "#FFFFF0",
+                "thumbnailURL": ""
+            },
+            {
+                "url": "",
+                "value": "#FFFF0F",
+                "thumbnailURL": ""
+            },
+            {
+                "url": "",
+                "value": "#FFF0FF",
+                "thumbnailURL": ""
+            },
+            {
+                "url": "",
+                "value": "#FF0FFF",
+                "thumbnailURL": ""
+            },
+            {
+                "url": "",
+                "value": "#F0FFFF",
+                "thumbnailURL": ""
+            }
+        ],
+        "blend": [
+            {
+                "url": "",
+                "value": "",
+                "thumbnailURL": ""
+            }
+        ]
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "data": {
+        "texture": [
+            {
+                "url": "Textures/skinTexture",
+                "value": "",
+                "thumbnailURL": ""
+            }
+        ],
+        "mesh": [
+            {
+                "url": "",
+                "value": "faceCut",
+                "thumbnailURL": ""
+            }
+        ],
+        "color": [],
+        "blend": [
+            {
+                "url": "",
+                "value": "0",
+                "thumbnailURL": "AvatarBuilder/FaceCut/FaceCut1"
+            },
+            {
+                "url": "",
+                "value": "1",
+                "thumbnailURL": "AvatarBuilder/FaceCut/FaceCut2"
+            },
+            {
+                "url": "",
+                "value": "2",
+                "thumbnailURL": "AvatarBuilder/FaceCut/FaceCut3"
+            }
+        ]
+    }
+}
