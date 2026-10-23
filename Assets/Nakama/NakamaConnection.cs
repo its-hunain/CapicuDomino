@@ -36,7 +36,7 @@ public class NakamaConnection : ScriptableObject
         try
         {
             // Connect to the Nakama server.
-            Client = new Client("http", "3.21.102.93", 7350, "dominosasdsocketcvxkey", UnityWebRequestAdapter.Instance);
+            Client = new Client("https", "d1xueog6090npy.cloudfront.net", 443, "defaultkey", UnityWebRequestAdapter.Instance);
 
             // Attempt to restore an existing user session.
             var authToken = "";//PlayerPrefs.GetString(AuthTokenSessionPrefName);
