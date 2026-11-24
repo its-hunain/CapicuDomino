@@ -10,10 +10,6 @@
     </androidPackage>
   </androidPackages>
 
-  <!-- iOS Cocoapod dependencies can be specified by each iosPod element. -->
-  <iosPods>
-    <iosPod name="GoogleSignIn" version=">= 4.0.2" bitcodeEnabled="false"
-        minTargetSdk="6.0">
-    </iosPod>
-  </iosPods>
+  <!-- iOS: GoogleSignIn pod intentionally removed. Google Sign-In is Android-only
+       in this project; iOS uses Apple Sign-In. Do not re-add the iosPod here. -->
 </dependencies>

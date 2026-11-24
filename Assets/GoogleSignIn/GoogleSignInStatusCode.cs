@@ -15,6 +15,7 @@
 // </copyright>
 
 namespace Google {
+#if UNITY_ANDROID
 
   /// <summary>
   /// Status code for the SignIn operations.
@@ -68,5 +69,6 @@ namespace Google {
     /// </summary>
     Error = 9,
   }
+#endif
 }  // namespace GoogleSignIn
 

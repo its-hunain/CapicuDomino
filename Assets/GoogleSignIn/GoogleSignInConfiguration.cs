@@ -15,6 +15,7 @@
 // </copyright>
 
 namespace Google {
+#if UNITY_ANDROID
   using System.Collections.Generic;
 
   /// <summary>
@@ -59,5 +60,6 @@ namespace Google {
     /// <summary>Additional scopes to request, requires consent.</summary>
     public IEnumerable<string> AdditionalScopes = null;
   }
+#endif
 }
 

@@ -14,6 +14,7 @@
 //  limitations under the License.
 // </copyright>
 namespace Google.Impl {
+#if UNITY_ANDROID
   using UnityEngine;
 
   ///<summary>Helper object to connect the Sign-in API to the Unity Game Scene.
@@ -39,4 +40,5 @@ namespace Google.Impl {
       }
     }
   }
+#endif
 }

@@ -15,6 +15,7 @@
 // </copyright>
 
 namespace Google {
+#if UNITY_ANDROID
   using System;
 
     /// <summary> Information for the authenticated user.</summary>
@@ -73,4 +74,5 @@ namespace Google {
       internal set;
     }
   }
+#endif
 }

@@ -15,6 +15,7 @@
 // </copyright>
 
 namespace Google.Impl {
+#if UNITY_ANDROID
   using System;
   using System.Runtime.InteropServices;
 
@@ -99,4 +100,5 @@ namespace Google.Impl {
       }
     }
   }
+#endif
 }

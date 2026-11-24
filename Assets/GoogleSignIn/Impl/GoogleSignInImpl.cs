@@ -15,17 +15,14 @@
 // </copyright>
 
 namespace Google.Impl {
+#if UNITY_ANDROID
   using System;
   using System.Collections.Generic;
   using System.Runtime.InteropServices;
 
   internal class GoogleSignInImpl : BaseObject, ISignInImpl {
 
-#if UNITY_ANDROID
     private const string DllName = "native-googlesignin";
-#else
-    private const string DllName = "__Internal";
-#endif
 
     internal GoogleSignInImpl(GoogleSignInConfiguration configuration)
           : base(GoogleSignIn_Create(GetPlayerActivity())) {
@@ -174,14 +171,11 @@ namespace Google.Impl {
     // Gets the Unity player activity.
     // For iOS, this returns Zero.
     private static IntPtr GetPlayerActivity() {
-#if UNITY_ANDROID
       UnityEngine.AndroidJavaClass jc = new UnityEngine.AndroidJavaClass(
         "com.unity3d.player.UnityPlayer");
       return jc.GetStatic<UnityEngine.AndroidJavaObject>("currentActivity")
                .GetRawObject();
-#else
-      return IntPtr.Zero;
-#endif
     }
   }
+#endif
 }

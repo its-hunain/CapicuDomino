@@ -22,7 +22,7 @@ PluginImporter:
       settings:
         DefaultValueInitialized: true
     iOS:
-      enabled: 1
+      enabled: 0
       settings: {}
   userData: 
   assetBundleName: 

@@ -15,6 +15,7 @@
 // </copyright>
 
 namespace Google {
+#if UNITY_ANDROID
   using System;
   using System.Runtime.Serialization;
   using System.Threading.Tasks;
@@ -49,12 +50,6 @@ namespace Google {
   /// </remarks>
   public class GoogleSignIn {
 
-#if !UNITY_ANDROID && !UNITY_IOS
-  static GoogleSignIn() {
-    Debug.LogError("This platform is not supported");
-  }
-#endif
-
     private static GoogleSignIn theInstance = null;
     private static GoogleSignInConfiguration theConfiguration = null;
     private ISignInImpl impl;
@@ -87,14 +82,7 @@ namespace Google {
     public static GoogleSignIn DefaultInstance {
       get {
         if (theInstance == null) {
-#if UNITY_ANDROID || UNITY_IOS
           theInstance = new GoogleSignIn(new GoogleSignInImpl(Configuration));
-#else
-          theInstance = new GoogleSignIn(null);
-          throw new SignInException(
-              GoogleSignInStatusCode.DeveloperError,
-              "This platform is not supported by GoogleSignIn");
-#endif
         }
         return theInstance;
       }
@@ -199,4 +187,5 @@ namespace Google {
     void SignOut();
     void Disconnect();
   }
+#endif
 }  // namespace Google

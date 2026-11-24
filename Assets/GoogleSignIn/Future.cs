@@ -14,6 +14,7 @@
 //    limitations under the License.
 // </copyright>
 namespace Google {
+#if UNITY_ANDROID
   using System.Collections;
   using System.Threading.Tasks;
   using UnityEngine;
@@ -81,4 +82,5 @@ namespace Google {
       }
     }
   }
+#endif
 }
